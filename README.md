@@ -23,29 +23,6 @@ Packages in this project extend Wolfram Language with commands that are related 
 - The [Transformations on Wolfram expressions][10] Mathematica Notebook is a demonstration of functions in the Utilities package
 - The OrientDB API Package can be tested with [Demo 1-Test API Commands][11] and [Demo 3-Schemaless vs Schemafull Operations][12] Notebooks
 
-### Visit HEALIS forDocumentation Pages
-If you have already installed the DBAPI project, then you can search Wolfram Mathematica documentation for `DBAPI`. This is your starting point for browsing the documentation.
-
-For demonstration purposes, we have included here the following documentation pages in pdf format for the `ODBapi` and `ODBgetFieldAttributes` functions of the `OrientDB Package`
-
-<!-- Set a 1row x 2columns Grid, i.e. 2columns x 6width = 12  -->
-<div class="row t60">
-  <!-- First Row -->
-    <div class="medium-6 columns b30">
-      <iframe  
-        src = "http://test.healis.eu/dbapi/DocumentationPDF/ODBapi.pdf"  width='595'  height='842'>
-      </iframe>  
-    </div>
-
-    <!-- Leave this cell empty -->
-    <div class="medium-6 columns b30">
-      <iframe  
-        src = "http://test.healis.eu/dbapi/DocumentationPDF/ODBgetFieldAttributes.pdf"  width='595'  height='842'>
-      </iframe>  
-    </div>
-  <!-- End of First Row -->
-</div> <!-- End of Grid -->
-
 
 [01]:http://reference.wolfram.com/language/ref/List.html
 [02]:http://reference.wolfram.com/language/ref/Rule.html
