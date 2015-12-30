@@ -1,0 +1,239 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7476,        230]
+NotebookOptionsPosition[      6279,        184]
+NotebookOutlinePosition[      6606,        199]
+CellTagsIndexPosition[      6563,        196]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Installation Test", "Title",
+ CellChangeTimes->{{3.66045454688968*^9, 3.660454552950371*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.654011830443759*^9, 3.6540118431064587`*^9}, {
+  3.654422741223345*^9, 3.6544227414832783`*^9}, {3.654422851600245*^9, 
+  3.65442288477632*^9}, {3.658058215807373*^9, 3.658058218622905*^9}, {
+  3.6604532378457727`*^9, 3.660453239517941*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Environment and Paths", "Subsection",
+ CellChangeTimes->{{3.660454599910095*^9, 3.660454610710021*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+   "$OperatingSystem", ",", "\[IndentingNewLine]", "$HomeDirectory", ",", 
+    "\[IndentingNewLine]", "$UserBaseDirectory", ",", "\[IndentingNewLine]", 
+    "$BaseDirectory", ",", "\[IndentingNewLine]", "$InstallationDirectory"}], 
+   "}"}], "//", "TableForm"}]], "Input",
+ CellChangeTimes->{{3.660453123405748*^9, 3.660453156734939*^9}, {
+  3.66045331955014*^9, 3.660453333862975*^9}, {3.660454651792262*^9, 
+  3.660454671770589*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Package Installation Path", "Subsection",
+ CellChangeTimes->{{3.6604547424939947`*^9, 3.660454771301567*^9}}],
+
+Cell[TextData[{
+ "Unzip the latest release of DBAPI, ",
+ StyleBox["dbapi-latest-release.zip,",
+  FontWeight->"Bold"],
+ " and copy the folder under "
+}], "Text",
+ CellChangeTimes->{{3.6604548356385107`*^9, 3.6604548752229233`*^9}, {
+  3.660454938534465*^9, 3.660454999582663*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FileNameJoin", "[", 
+  RowBox[{"{", 
+   RowBox[{"$UserBaseDirectory", ",", "\"\<Applications\>\""}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6604548797672567`*^9, 3.660454918247169*^9}}],
+
+Cell[TextData[StyleBox["Check package installation path", "Subsubsection"]], \
+"Text",
+ CellChangeTimes->{{3.660455047764661*^9, 3.660455049372757*^9}, {
+  3.660455081830295*^9, 3.6604551009665117`*^9}, {3.6604552535347357`*^9, 
+  3.660455271766376*^9}, {3.660456293926725*^9, 3.6604562941587677`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FileNames", "[", 
+   RowBox[{"\"\<DBAPI\>\"", ",", "$UserBaseDirectory", ",", "Infinity"}], 
+   "]"}], "[", 
+  RowBox[{"[", "1", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6604537441506357`*^9, 3.660453781923558*^9}, {
+  3.66045388314324*^9, 3.660453883303735*^9}, {3.6604539137750463`*^9, 
+  3.660453916021607*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Options of ODBapi function ", "Subsection",
+ CellChangeTimes->{{3.660455114678112*^9, 3.660455138082608*^9}, {
+  3.660455312110608*^9, 3.6604553233343363`*^9}}],
+
+Cell[TextData[{
+ "Copy the file ",
+ StyleBox["ODBapi.m ",
+  FontWeight->"Bold"],
+ "into the OptionValues folder of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " Installation"
+}], "Text",
+ CellChangeTimes->{{3.660455431502408*^9, 3.6604554572068996`*^9}, {
+  3.660455546582481*^9, 3.6604555484549217`*^9}, {3.660455889526896*^9, 
+  3.660455907382907*^9}}],
+
+Cell[BoxData[
+ RowBox[{"from", "=", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+    "$UserBaseDirectory", ",", "\"\<Applications\>\"", ",", "\"\<DBAPI\>\"", 
+     ",", "\"\<Options\>\"", ",", "\"\<ODBapi.m\>\""}], "}"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6604554645754213`*^9, 3.6604555330550537`*^9}, {
+  3.660455646240829*^9, 3.660455647231482*^9}}],
+
+Cell[BoxData[
+ RowBox[{"to", "=", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+    "$InstallationDirectory", ",", " ", "\"\<SystemFiles\>\"", ",", " ", 
+     "\"\<FrontEnd\>\"", ",", "\n", "  ", "\"\<SystemResources\>\"", ",", 
+     " ", "\"\<FunctionalFrequency\>\"", ",", " ", "\"\<OptionValues\>\"", 
+     ",", "\"\<ODBapi.m\>\""}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.660455652933942*^9, 3.660455707022687*^9}}],
+
+Cell[BoxData[
+ RowBox[{"CopyFile", "[", 
+  RowBox[{"from", ",", "to"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6604557979535933`*^9, 3.660455812632917*^9}, {
+  3.66045585777501*^9, 3.660455862734799*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Check ODBapi options installation path", "Subsubsection",
+ CellChangeTimes->{{3.6604552354142323`*^9, 3.660455250390221*^9}, {
+  3.660455409790444*^9, 3.660455419953945*^9}, {3.6604559253825083`*^9, 
+  3.660455927894793*^9}, {3.6604562969742107`*^9, 3.660456297238429*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FileNames", "[", 
+   RowBox[{"\"\<ODBapi.m\>\"", ",", 
+    RowBox[{"FileNameJoin", "[", 
+     RowBox[{"{", 
+      RowBox[{
+      "$InstallationDirectory", ",", " ", "\"\<SystemFiles\>\"", ",", " ", 
+       "\"\<FrontEnd\>\"", ",", "\n", "  ", "\"\<SystemResources\>\"", ",", 
+       " ", "\"\<FunctionalFrequency\>\"", ",", " ", "\"\<OptionValues\>\""}],
+       "}"}], "]"}]}], "]"}], "[", 
+  RowBox[{"[", "1", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.660454415252529*^9, 3.6604544340624104`*^9}, {
+  3.6604544709433813`*^9, 3.660454481231245*^9}, {3.660455766703903*^9, 
+  3.660455784471425*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load the package", "Subsection",
+ CellChangeTimes->{{3.660455386398532*^9, 3.660455388758359*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "DBAPI`"}]], "Input",
+ CellChangeTimes->{{3.654422888273635*^9, 3.654422892822809*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Check the ", "Subsection",
+ CellChangeTimes->{{3.660455978502831*^9, 3.6604559805901318`*^9}, 
+   3.66045601486283*^9}],
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "//", "Information"}]], "Input",
+ CellChangeTimes->{{3.659093693454859*^9, 3.659093699557692*^9}, {
+  3.659093800783122*^9, 3.659093806118116*^9}, {3.659094000942073*^9, 
+  3.659094002365958*^9}, {3.660456053488262*^9, 3.660456085127224*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{995, 810},
+WindowMargins->{{0, Automatic}, {270, -37}},
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 99, 1, 96, "Title"],
+Cell[682, 25, 340, 5, 32, "Input"],
+Cell[CellGroupData[{
+Cell[1047, 34, 109, 1, 47, "Subsection"],
+Cell[1159, 37, 510, 10, 143, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1706, 52, 115, 1, 47, "Subsection"],
+Cell[1824, 55, 279, 7, 31, "Text"],
+Cell[2106, 64, 219, 5, 32, "Input"],
+Cell[2328, 71, 302, 4, 39, "Text"],
+Cell[2633, 77, 354, 8, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3024, 90, 166, 2, 47, "Subsection"],
+Cell[3193, 94, 363, 11, 31, "Text"],
+Cell[3559, 107, 381, 9, 32, "Input"],
+Cell[3943, 118, 445, 9, 55, "Input"],
+Cell[4391, 129, 204, 4, 32, "Input"],
+Cell[CellGroupData[{
+Cell[4620, 137, 279, 3, 37, "Subsubsection"],
+Cell[4902, 142, 637, 14, 55, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5588, 162, 104, 1, 47, "Subsection"],
+Cell[5695, 165, 116, 2, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5848, 172, 125, 2, 47, "Subsection"],
+Cell[5976, 176, 275, 4, 32, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

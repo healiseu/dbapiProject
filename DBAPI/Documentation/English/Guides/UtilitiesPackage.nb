@@ -1,0 +1,493 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15341,        483]
+NotebookOptionsPosition[     12303,        399]
+NotebookOutlinePosition[     14035,        439]
+CellTagsIndexPosition[     13992,        436]
+WindowTitle->Utilities Package - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["D B A P I PACKAGE GUIDE", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Functions \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Association\"\>":>
+       Documentation`HelpLookup["paclet:ref/Association"], "\<\"Dataset\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/Dataset"], "\<\"DBDatasetToSQL92\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBDatasetToSQL92"], "\<\"DBexpressionToJSON\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBexpressionToJSON"], "\<\"DBjsonToAssociations\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBjsonToAssociations"], "\<\"DBjsonToDataset\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBjsonToDataset"], "\<\"DBjsonToRules\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBjsonToRules"], "\<\"DBListSetToAssociationSet\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBListSetToAssociationSet"], "\<\"DBListSetToDataset\
+\"\>":>Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBListSetToDataset"], "\<\"DBListSetToRuleSet\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBListSetToRuleSet"], "\<\"DBListSetToSQL92\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBListSetToSQL92"], "\<\"List\"\>":>
+       Documentation`HelpLookup["paclet:ref/List"], "\<\"Rule\"\>":>
+       Documentation`HelpLookup["paclet:ref/Rule"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBAPI/guide/UtilitiesPackage\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DBAPI/guide/UtilitiesPackage"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/DBAPI/guide/\
+UtilitiesPackage.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "DBAPI/guide/UtilitiesPackage", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["Utilities Package", "GuideTitle",
+ CellID->942062912],
+
+Cell[TextData[{
+ "The functions ",
+ Cell[TextData[ButtonBox["DBjsonToRules",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBjsonToRules"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DBjsonToAssociations",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBjsonToAssociations"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DBjsonToDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBjsonToDataset"]], "InlineFunctionSans"],
+ " transform a JSON string to ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ ", ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ ", ",
+ ButtonBox["Dataset ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/Dataset structures"],
+ "hierarchical data structures respectively. In the opposite way, ",
+ Cell[TextData[ButtonBox["DBexpressionToJSON",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBexpressionToJSON"]], "InlineFunctionSans"],
+ " converts a nested list of ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ "(s), ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ "(s), or a ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " to JSON. "
+}], "GuideAbstract",
+ CellID->2001916300],
+
+Cell[TextData[{
+ "The ",
+ Cell[TextData[ButtonBox["DBListSetToRuleSet",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBListSetToRuleSet"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DBListSetToAssociationSet",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBListSetToAssociationSet"]], 
+  "InlineFunctionSans"],
+ " and ",
+ Cell[TextData[ButtonBox["DBListSetToDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBListSetToDataset"]], "InlineFunctionSans"],
+ " transform a ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ " set of keys and values to ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ " set, ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ " set and ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " respectively."
+}], "GuideAbstract",
+ CellID->743454508],
+
+Cell[TextData[{
+ "Functions ",
+ Cell[TextData[ButtonBox["DBListSetToSQL92",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBListSetToSQL92"]], "InlineFunctionSans"],
+ " and ",
+ Cell[TextData[ButtonBox["DBDatasetToSQL92",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBDatasetToSQL92"]], "InlineFunctionSans"],
+ " transform a ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ " set and ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " respectively to SQL92 format string list."
+}], "GuideAbstract",
+ CellID->103835966],
+
+Cell[TextData[{
+ "Other transformations from a nested list of ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ "(s) to either ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ "(s) or ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " are possible using the undocumented built-in function ToAssociations of \
+the GeneralUtilities package that is included in ",
+ StyleBox[ButtonBox["Utilities Package",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "GuideAbstract",
+ CellID->163381276],
+
+Cell[CellGroupData[{
+
+Cell["JSON Transformations", "GuideFunctionsSubsection",
+ CellID->5306763],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DBjsonToRules",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBjsonToRules"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "transforms a JSON string to a nested ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ " structure"
+}], "GuideText",
+ CellID->203374175],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DBjsonToAssociations",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBjsonToAssociations"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "transforms a JSON string to a ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ " of ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ "(s)"
+}], "GuideText",
+ CellID->1463276848],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DBjsonToDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBjsonToDataset"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " transforms a JSON string to a ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " structure\n",
+ Cell[TextData[ButtonBox["DBexpressionToJSON",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBexpressionToJSON"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "transforms any ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ ", ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ ", ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " expression to JSON string"
+}], "GuideText",
+ CellID->261720106],
+
+Cell["\t", "GuideDelimiterSubsection",
+ CellID->8958390]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["List Set Transformations", "GuideFunctionsSubsection",
+ CellID->107317385],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DBListSetToRuleSet",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBListSetToRuleSet"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "converts a relational set represented with List(s) to an equivalent one \
+represented with Rule(s)"
+}], "GuideText",
+ CellID->8699720],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DBListSetToAssociationSet",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBListSetToAssociationSet"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "converts a relational set represented with ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ "(s) to an equivalent one represented with ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ "(s)"
+}], "GuideText",
+ CellID->398668454],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DBListSetToDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBListSetToDataset"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "converts a relational set represented with ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ "(s) to an equivalent one represented as a table ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " with named columns"
+}], "GuideText",
+ CellID->534457265],
+
+Cell["\t", "GuideDelimiterSubsection",
+ CellID->311258892]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["SQL92 Transformations", "GuideFunctionsSubsection",
+ CellID->10885953],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DBDatasetToSQL92",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBDatasetToSQL92"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Transforms table ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " with named columns, to SQL-92 format string lists of keys and values"
+}], "GuideText",
+ CellID->22106910],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DBListSetToSQL92",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBListSetToSQL92"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "Transforms Header or Body of a relation represented with ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ " structure, to SQL-92 format list string of keys or values"
+}], "GuideText",
+ CellID->66866400]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Utilities Package - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "GuideColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DBAPI/guide/DBAPI", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}], 
+        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
+  "Metadata" -> {
+   "built" -> "{2015, 12, 24, 23, 58, 35.0102824}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {}, 
+    "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
+     "label" -> "D B A P I Package Guide", "language" -> "en", "paclet" -> 
+    "DBAPI Package", "status" -> "None", "summary" -> 
+    "The functions DBjsonToRules, DBjsonToAssociations, DBjsonToDataset \
+transform a JSON string to Rule, Association, Dataset hierarchical data \
+structures respectively. In the opposite way, DBexpressionToJSON converts a \
+nested list of Rule(s), Association(s), or a Dataset to JSON. ", 
+    "synonyms" -> {}, "title" -> "Utilities Package", "titlemodifier" -> "", 
+    "windowtitle" -> "Utilities Package", "type" -> "Guide", "uri" -> 
+    "DBAPI/guide/UtilitiesPackage"}, "SearchTextTranslated" -> ""},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+  CharacterEncoding -> "WindowsGreek"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[611, 21, 3526, 75, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4162, 100, 59, 1, 70, "GuideTitle",
+ CellID->942062912],
+Cell[4224, 103, 1351, 43, 70, "GuideAbstract",
+ CellID->2001916300],
+Cell[5578, 148, 946, 32, 70, "GuideAbstract",
+ CellID->743454508],
+Cell[6527, 182, 597, 19, 70, "GuideAbstract",
+ CellID->103835966],
+Cell[7127, 203, 660, 20, 70, "GuideAbstract",
+ CellID->163381276],
+Cell[CellGroupData[{
+Cell[7812, 227, 74, 1, 70, "GuideFunctionsSubsection",
+ CellID->5306763],
+Cell[7889, 230, 371, 13, 70, "GuideText",
+ CellID->203374175],
+Cell[8263, 245, 469, 17, 70, "GuideText",
+ CellID->1463276848],
+Cell[8735, 264, 877, 31, 70, "GuideText",
+ CellID->261720106],
+Cell[9615, 297, 56, 1, 70, "GuideDelimiterSubsection",
+ CellID->8958390]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9708, 303, 80, 1, 70, "GuideFunctionsSubsection",
+ CellID->107317385],
+Cell[9791, 306, 351, 10, 70, "GuideText",
+ CellID->8699720],
+Cell[10145, 318, 532, 18, 70, "GuideText",
+ CellID->398668454],
+Cell[10680, 338, 529, 17, 70, "GuideText",
+ CellID->534457265],
+Cell[11212, 357, 58, 1, 70, "GuideDelimiterSubsection",
+ CellID->311258892]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11307, 363, 76, 1, 70, "GuideFunctionsSubsection",
+ CellID->10885953],
+Cell[11386, 366, 416, 12, 70, "GuideText",
+ CellID->22106910],
+Cell[11805, 380, 444, 13, 70, "GuideText",
+ CellID->66866400]
+}, Open  ]]
+}, Open  ]],
+Cell[12276, 397, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

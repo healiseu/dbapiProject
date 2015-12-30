@@ -1,0 +1,228 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7674,        218]
+NotebookOptionsPosition[      5250,        161]
+NotebookOutlinePosition[      7426,        208]
+CellTagsIndexPosition[      7383,        205]
+WindowTitle->Database API Project - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["D B A P I GUIDE", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox["\<\"URL \[RightGuillemet]\"\>",
+       StripOnInput->False], {"\<\"DBAPI/guide/Database API\"\>":>
+      None, "\<\"Copy Mathematica url\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DBAPI/guide/Database API"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web url\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/mathematica/DBAPI/guide/Database \
+API.html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+           "http://reference.wolfram.com/mathematica/", 
+            "DBAPI/guide/Database API", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["Database API Project", "GuideTitle",
+ CellID->942062912],
+
+Cell[TextData[{
+ "Packages in this project extend Wolfram Language with commands that are \
+related to data management and especially generic database management. There \
+is a basic ",
+ ButtonBox["Utilities",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+ " package that is used in transformations between Wolfram Language \
+constructs such as ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ ", ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ ", ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ ", and ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ ", and external serialization standards such as ",
+ ButtonBox["JSON ",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://www.json.org/"], None},
+  ButtonNote->"http://www.json.org/"],
+ "and comma-separated values (",
+ ButtonBox["CSV",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://en.wikipedia.org/wiki/Comma-separated_values"], None},
+  ButtonNote->"https://en.wikipedia.org/wiki/Comma-separated_values"],
+ ") files. On top of that package we are porting RESTful APIs from various \
+web services through ",
+ ButtonBox["URLFetch",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/URLFetch"],
+ " into Wolfram Language building commands with arguments that specify \
+options with rules of the form name\[Rule]value. An example of such a RESTful \
+API is the OrientDB HTTP API and the OrientDB package."
+}], "GuideAbstract",
+ CellID->2001916300],
+
+Cell[TextData[{
+ Cell[TextData[{
+  ButtonBox["Utilities",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+  ButtonBox[" ",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+  ButtonBox["Package",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]
+ }], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " "
+}], "GuideText",
+ CellID->1463276848],
+
+Cell[TextData[{
+ Cell[TextData[{
+  ButtonBox["OrientDB",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"],
+  ButtonBox[" ",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"],
+  ButtonBox["API",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"],
+  ButtonBox[" ",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"],
+  ButtonBox["Package",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"]
+ }], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " "
+}], "GuideText",
+ CellID->203374175]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Database API Project - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "GuideColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        StyleBox[
+         ButtonBox[
+         "Mathematica", ButtonData -> "paclet:guide/Mathematica", 
+          BaseStyle -> {"Link", "DockedLinkTrail"}], FontSlant -> "Italic"], 
+        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
+  "Metadata" -> {
+   "built" -> "{2015, 12, 24, 23, 58, 31.7944621}", 
+    "history" -> {"0.0", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "D B A P I Guide", "language" -> "en", "paclet" -> 
+    "DBAPI", "status" -> "None", "summary" -> 
+    "Packages in this project extend Wolfram Language with commands that are \
+related to data management and especially generic database management. There \
+is a basic Utilities package that is used in transformations between Wolfram \
+Language constructs such as List, Rule, Association, and Dataset, and \
+external serialization standards such as JSON and comma-separated values \
+(CSV) files. On top of that package we are porting RESTful APIs from various \
+web services through URLFetch into Wolfram Language building commands with \
+arguments that specify options with rules of the form name\[Rule]value. An \
+example of such a RESTful API is the OrientDB HTTP API and the OrientDB \
+package.", "synonyms" -> {}, "title" -> "Database API Project", 
+    "titlemodifier" -> "", "windowtitle" -> "Database API Project", "type" -> 
+    "Guide", "uri" -> "DBAPI/guide/Database API"}, "SearchTextTranslated" -> 
+  ""},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+  CharacterEncoding -> "WindowsGreek"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[614, 21, 1856, 41, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[2495, 66, 62, 1, 70, "GuideTitle",
+ CellID->942062912],
+Cell[2560, 69, 1579, 45, 70, "GuideAbstract",
+ CellID->2001916300],
+Cell[4142, 116, 445, 16, 70, "GuideText",
+ CellID->1463276848],
+Cell[4590, 134, 618, 22, 70, "GuideText",
+ CellID->203374175]
+}, Open  ]],
+Cell[5223, 159, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

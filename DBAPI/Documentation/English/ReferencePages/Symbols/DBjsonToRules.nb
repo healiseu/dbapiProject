@@ -1,0 +1,738 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23634,        728]
+NotebookOptionsPosition[     19208,        585]
+NotebookOutlinePosition[     21284,        640]
+CellTagsIndexPosition[     21199,        635]
+WindowTitle->DBjsonToRules - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["D B A P I SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBjsonToAssociations\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBjsonToAssociations"], "\<\"DBjsonToDataset\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/ref/DBjsonToDataset"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Utilities Package\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/guide/UtilitiesPackage"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBAPI/ref/DBjsonToRules\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DBAPI/ref/DBjsonToRules"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/DBAPI/ref/\
+DBjsonToRules.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "DBAPI/ref/DBjsonToRules", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell["DBjsonToRules", "ObjectName",
+ CellID->1224892054],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox[
+        ButtonBox["DBjsonToRules",
+         BaseStyle->"Link",
+         ButtonData->"paclet:DBAPI/ref/DBjsonToRules"],
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/"], "[", 
+       RowBox[{"JSON", " ", "String"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]transforms a JSON string to a nested ",
+     ButtonBox["Rule",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Rule"],
+     " structure"
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  FrameBox[
+   StyleBox[
+    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
+   StripOnInput->False],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->116923367],
+
+Cell[TextData[{
+ StyleBox["Arguments :",
+  FontWeight->"Bold"],
+ "\nJSON formatted ",
+ ButtonBox["String",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/String"]
+}], "Notes",
+ CellID->88723942],
+
+Cell[TextData[{
+ StyleBox["Returns:",
+  FontWeight->"Bold"],
+ "\nA nested list of ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ "(s)"
+}], "Notes",
+ CellID->96909655],
+
+Cell[TextData[{
+ StyleBox["Dependencies:",
+  FontWeight->"Bold"],
+ "\nBased on ",
+ ButtonBox["ImportString ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ImportString"],
+ "built-in function taking a format parameter with value \"",
+ ButtonBox["JSON",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/format/JSON"],
+ "\" "
+}], "Notes",
+ CellID->68413452],
+
+Cell[TextData[{
+ StyleBox["Use:\[LineSeparator]",
+  FontWeight->"Bold"],
+ "This is an easier to remember function name, rather than using the \
+Import[.json,\"JSON\"] or ImportString[.json,\"JSON\"]"
+}], "Notes",
+ CellID->58638840],
+
+Cell[TextData[{
+ StyleBox["Internals:\[LineSeparator]",
+  FontWeight->"Bold"],
+ "Important notice : By default, Import and Export use the \"",
+ ButtonBox["JSON",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/format/JSON"],
+ "\" format, i.e. JSON objects are represented with ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ "(s) of ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ "(s), for files ending in .json, rather than the \"",
+ ButtonBox["RawJSON",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/format/RawJSON"],
+ "\" format."
+}], "Notes",
+ CellID->59529440],
+
+Cell[TextData[{
+ "DBAPI`Utils`internal predicate ",
+ StyleBox["DBjsonQ",
+  FontWeight->"Bold"],
+ " checks the validity of JSON formatted string"
+}], "Notes",
+ CellID->69397352]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->90555023],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->995186],
+
+Cell["Load Packages", "ExampleText",
+ CellID->772149713],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "DBAPI`"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->108474329],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Data Utilities Package v0.9\"\>"], "Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->362366598],
+
+Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
+"Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->206220589],
+
+Cell[BoxData["\<\"OrientDB HTTP API Package v0.9\"\>"], "Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->94113930],
+
+Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
+"Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->325861770]
+}, Open  ]]
+}, Open  ]],
+
+Cell["Import JSON as a string", "ExampleText",
+ CellID->13228248],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jsonStr", "=", 
+  RowBox[{"Import", "[", 
+   RowBox[{
+   "\"\<I:\\\\Downloads\\\\contacts_output.json\>\"", ",", "\"\<Text\>\""}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->110544352],
+
+Cell[BoxData["\<\"[ {\\n        \\\"firstName\\\" : \\\"John\\\",\\n        \
+\\\"lastName\\\" : \\\"Smith\\\",\\n        \\\"age\\\" : \\\"25\\\",\\n      \
+  \\\"address\\\" : {\\n            \\\"streetAddress\\\" : \\\"21 2nd Street\
+\\\",\\n            \\\"city\\\" : \\\"New York\\\",\\n            \
+\\\"state\\\" : \\\"NY\\\",\\n            \\\"postalCode\\\" : \
+\\\"10021\\\"\\n        },\\n        \\\"phoneNumbers\\\" : [ {\\n            \
+\\\"type\\\" : \\\"home\\\",\\n            \\\"number\\\" : \\\"212 \
+555-1234\\\"\\n        }, {\\n            \\\"type\\\" : \\\"fax\\\",\\n      \
+      \\\"number\\\" : \\\"646 555-4567\\\"\\n        } ],\\n        \
+\\\"newSubscription\\\" : \\\"false\\\",\\n        \\\"companyName\\\" : \
+\\\"IBM\\\"\\n    }, {\\n        \\\"firstName\\\" : \\\"Adam\\\",\\n        \
+\\\"lastName\\\" : \\\"Li\\\",\\n        \\\"age\\\" : \\\"15\\\",\\n        \
+\\\"address\\\" : {\\n            \\\"streetAddress\\\" : \\\"21 2nd Street\\\
+\",\\n            \\\"city\\\" : \\\"BOca Raton\\\",\\n            \
+\\\"state\\\" : \\\"FL\\\",\\n            \\\"postalCode\\\" : \
+\\\"33334\\\"\\n        },\\n        \\\"phoneNumbers\\\" : [ ],\\n        \\\
+\"newSubscription\\\" : \\\"true\\\",\\n        \\\"companyName\\\" : \\\"IBM\
+\\\"\\n    } \\n]\"\>"], "Output",
+ ImageSize->{326, 577},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->234955430]
+}, Open  ]],
+
+Cell[TextData[{
+ "Apply ",
+ Cell[BoxData[
+  ButtonBox["DBjsonToRules",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/DBjsonToRules"]], "InlineFormula"]
+}], "ExampleText",
+ CellID->8355679],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jsonRules", "=", 
+  RowBox[{"jsonStr", "//", "DBjsonToRules"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->339678374],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\<\"phoneNumbers\"\>", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"home\"\>"}], ",", 
+          RowBox[{"\<\"number\"\>", "\[Rule]", "\<\"212 555-1234\"\>"}]}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"fax\"\>"}], ",", 
+          RowBox[{"\<\"number\"\>", "\[Rule]", "\<\"646 555-4567\"\>"}]}], 
+         "}"}]}], "}"}]}], ",", 
+     RowBox[{"\<\"firstName\"\>", "\[Rule]", "\<\"John\"\>"}], ",", 
+     RowBox[{"\<\"lastName\"\>", "\[Rule]", "\<\"Smith\"\>"}], ",", 
+     RowBox[{"\<\"age\"\>", "\[Rule]", "\<\"25\"\>"}], ",", 
+     RowBox[{"\<\"address\"\>", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\<\"postalCode\"\>", "\[Rule]", "\<\"10021\"\>"}], ",", 
+        RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"New York\"\>"}], ",", 
+        RowBox[{"\<\"streetAddress\"\>", "\[Rule]", "\<\"21 2nd Street\"\>"}],
+         ",", 
+        RowBox[{"\<\"state\"\>", "\[Rule]", "\<\"NY\"\>"}]}], "}"}]}], ",", 
+     RowBox[{"\<\"newSubscription\"\>", "\[Rule]", "\<\"false\"\>"}], ",", 
+     RowBox[{"\<\"companyName\"\>", "\[Rule]", "\<\"IBM\"\>"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\<\"phoneNumbers\"\>", "\[Rule]", 
+      RowBox[{"{", "}"}]}], ",", 
+     RowBox[{"\<\"firstName\"\>", "\[Rule]", "\<\"Adam\"\>"}], ",", 
+     RowBox[{"\<\"lastName\"\>", "\[Rule]", "\<\"Li\"\>"}], ",", 
+     RowBox[{"\<\"age\"\>", "\[Rule]", "\<\"15\"\>"}], ",", 
+     RowBox[{"\<\"address\"\>", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\<\"postalCode\"\>", "\[Rule]", "\<\"33334\"\>"}], ",", 
+        RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"BOca Raton\"\>"}], ",", 
+        RowBox[{"\<\"streetAddress\"\>", "\[Rule]", "\<\"21 2nd Street\"\>"}],
+         ",", 
+        RowBox[{"\<\"state\"\>", "\[Rule]", "\<\"FL\"\>"}]}], "}"}]}], ",", 
+     RowBox[{"\<\"newSubscription\"\>", "\[Rule]", "\<\"true\"\>"}], ",", 
+     RowBox[{"\<\"companyName\"\>", "\[Rule]", "\<\"IBM\"\>"}]}], "}"}]}], 
+  "}"}]], "Output",
+ ImageSize->{583, 135},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->682903679]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jsonRules", "//", 
+  RowBox[{
+   RowBox[{"TableForm", "[", 
+    RowBox[{
+     RowBox[{"#", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "All", ",", "2"}], "]"}], "]"}], ",", 
+     RowBox[{"TableHeadings", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"None", ",", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "All", ",", "1"}], "]"}], "]"}]}], "}"}]}]}], 
+    "]"}], "&"}]}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->88123532],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {"\<\"phoneNumbers\"\>", "\<\"firstName\"\>", "\<\"lastName\"\>", \
+"\<\"age\"\>", "\<\"address\"\>", "\<\"newSubscription\"\>", "\<\"companyName\
+\"\>"},
+    {GridBox[{
+       {
+        RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"home\"\>"}], 
+        RowBox[{"\<\"number\"\>", "\[Rule]", "\<\"212 555-1234\"\>"}]},
+       {
+        RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"fax\"\>"}], 
+        RowBox[{"\<\"number\"\>", "\[Rule]", "\<\"646 555-4567\"\>"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.1]}, 
+          Offset[0.2]}, 
+        "RowsIndexed" -> {}}], "\<\"John\"\>", "\<\"Smith\"\>", "\<\"25\"\>", 
+     GridBox[{
+       {
+        RowBox[{"\<\"postalCode\"\>", "\[Rule]", "\<\"10021\"\>"}]},
+       {
+        RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"New York\"\>"}]},
+       {
+        RowBox[{"\<\"streetAddress\"\>", "\[Rule]", "\<\"21 2nd Street\"\>"}]},
+       {
+        RowBox[{"\<\"state\"\>", "\[Rule]", "\<\"NY\"\>"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.1]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\<\"false\"\>", "\<\"IBM\"\>"},
+    {
+     InterpretationBox["\<\"\"\>",
+      {}], "\<\"Adam\"\>", "\<\"Li\"\>", "\<\"15\"\>", GridBox[{
+       {
+        RowBox[{"\<\"postalCode\"\>", "\[Rule]", "\<\"33334\"\>"}]},
+       {
+        RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"BOca Raton\"\>"}]},
+       {
+        RowBox[{"\<\"streetAddress\"\>", "\[Rule]", "\<\"21 2nd Street\"\>"}]},
+       {
+        RowBox[{"\<\"state\"\>", "\[Rule]", "\<\"FL\"\>"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.1]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\<\"true\"\>", "\<\"IBM\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  TableForm[{{{{"type" -> "home", "number" -> "212 555-1234"}, {
+      "type" -> "fax", "number" -> "646 555-4567"}}, "John", "Smith", "25", {
+     "postalCode" -> "10021", "city" -> "New York", "streetAddress" -> 
+      "21 2nd Street", "state" -> "NY"}, "false", "IBM"}, {{}, "Adam", "Li", 
+     "15", {"postalCode" -> "33334", "city" -> "BOca Raton", "streetAddress" -> 
+      "21 2nd Street", "state" -> "FL"}, "true", "IBM"}}, 
+   TableHeadings -> {
+    None, {"phoneNumbers", "firstName", "lastName", "age", "address", 
+      "newSubscription", "companyName"}}]]], "Output",
+ ImageSize->{899, 108},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]//TableForm=",
+ CellID->4206170]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["DBjsonToAssociations",
+    BaseStyle->"Link",
+    ButtonData->"paclet:DBAPI/ref/DBjsonToAssociations"],
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["DBjsonToDataset",
+    BaseStyle->"Link",
+    ButtonData->"paclet:DBAPI/ref/DBjsonToDataset"],
+   FontFamily->"Verdana"]], "InlineFormula"]
+}], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["Utilities Package",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]], "MoreAbout",
+ CellID->89614653]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["RELATED LINKS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "RelatedLinksSection",
+ WholeCellGroupOpener->True,
+ CellID->1584193535],
+
+Cell[TextData[ButtonBox["DBexpressionToJSON",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/ref/DBexpressionToJSON"]], "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"DBjsonToRules - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DBAPI/guide/DBAPI", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}], 
+        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
+  "Metadata" -> {
+   "built" -> "{2015, 12, 24, 23, 58, 46.7759074}", 
+    "history" -> {"0.9", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "D B A P I Symbol", "language" -> "en", "paclet" -> 
+    "DBAPI", "status" -> "None", "summary" -> 
+    "ButtonBox[\"DBjsonToRules\", BaseStyle->\"Link\", \
+ButtonData->\"paclet:DBAPI/ref/DBjsonToRules\"][JSON String] transforms a \
+JSON string to a nested Rule structure", "synonyms" -> {}, "title" -> 
+    "DBjsonToRules", "titlemodifier" -> "", "windowtitle" -> "DBjsonToRules", 
+    "type" -> "Symbol", "uri" -> "DBAPI/ref/DBjsonToRules"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Microsoft Windows (64-bit) (July 7, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[6543, 214, 489, 14, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->90555023]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 21057, 628}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[607, 21, 2666, 61, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[3276, 84, 56, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[CellGroupData[{
+Cell[3357, 89, 707, 22, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4089, 115, 609, 18, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->116923367],
+Cell[4701, 135, 194, 8, 70, "Notes",
+ CellID->88723942],
+Cell[4898, 145, 197, 9, 70, "Notes",
+ CellID->96909655],
+Cell[5098, 156, 354, 13, 70, "Notes",
+ CellID->68413452],
+Cell[5455, 171, 231, 6, 70, "Notes",
+ CellID->58638840],
+Cell[5689, 179, 626, 21, 70, "Notes",
+ CellID->59529440],
+Cell[6318, 202, 176, 6, 70, "Notes",
+ CellID->69397352]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6543, 214, 489, 14, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->90555023],
+Cell[CellGroupData[{
+Cell[7057, 232, 192, 6, 70, "ExampleSection",
+ CellID->995186],
+Cell[7252, 240, 56, 1, 70, "ExampleText",
+ CellID->772149713],
+Cell[CellGroupData[{
+Cell[7333, 245, 93, 3, 70, "Input",
+ CellID->108474329],
+Cell[CellGroupData[{
+Cell[7451, 252, 126, 2, 70, "Print",
+ CellID->362366598],
+Cell[7580, 256, 147, 3, 70, "Print",
+ CellID->206220589],
+Cell[7730, 261, 128, 2, 70, "Print",
+ CellID->94113930],
+Cell[7861, 265, 147, 3, 70, "Print",
+ CellID->325861770]
+}, Open  ]]
+}, Open  ]],
+Cell[8035, 272, 65, 1, 70, "ExampleText",
+ CellID->13228248],
+Cell[CellGroupData[{
+Cell[8125, 277, 220, 7, 70, "Input",
+ CellID->110544352],
+Cell[8348, 286, 1442, 22, 598, "Output",
+ CellID->234955430]
+}, Open  ]],
+Cell[9805, 311, 197, 7, 70, "ExampleText",
+ CellID->8355679],
+Cell[CellGroupData[{
+Cell[10027, 322, 142, 4, 70, "Input",
+ CellID->339678374],
+Cell[10172, 328, 2338, 53, 156, "Output",
+ CellID->682903679]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12547, 386, 499, 16, 70, "Input",
+ CellID->88123532],
+Cell[13049, 404, 3777, 90, 143, "Output",
+ CellID->4206170]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16887, 501, 446, 13, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[17336, 516, 540, 18, 70, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17913, 539, 448, 13, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[18364, 554, 150, 3, 70, "MoreAbout",
+ CellID->89614653]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18551, 562, 456, 13, 70, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[19010, 577, 156, 3, 70, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[19181, 583, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

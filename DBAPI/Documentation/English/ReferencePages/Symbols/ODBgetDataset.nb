@@ -1,0 +1,619 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20059,        609]
+NotebookOptionsPosition[     16232,        488]
+NotebookOutlinePosition[     18215,        541]
+CellTagsIndexPosition[     18130,        536]
+WindowTitle->ODBgetDataset - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["D B A P I SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"ODBgetFieldAttributes\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/ref/ODBgetFieldAttributes"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"OrientDB Package\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/guide/ODBapiPackage"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBAPI/ref/ODBgetDataset\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DBAPI/ref/ODBgetDataset"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/DBAPI/ref/\
+ODBgetDataset.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "DBAPI/ref/ODBgetDataset", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell["ODBgetDataset", "ObjectName",
+ CellID->1224892054],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ODBgetDataset", "[", "ODBapi", "]"}]], "InlineFormula"],
+     " Transforms the response of the ",
+     Cell[BoxData[
+      ButtonBox["ODBapi",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula"],
+     " into a Dataset"
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  FrameBox[
+   StyleBox[
+    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
+   StripOnInput->False],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->3065732],
+
+Cell[TextData[StyleBox["Arguments :",
+ FontWeight->"Bold"]], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "The result of the ",
+ Cell[BoxData[
+  ButtonBox["ODBapi",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula"],
+ " function"
+}], "Notes",
+ CellID->342542756],
+
+Cell[TextData[StyleBox["Returns:",
+ FontWeight->"Bold"]], "Notes",
+ CellID->188199630],
+
+Cell[TextData[{
+ "It is usually applied as a postfix operation on ",
+ Cell[BoxData[
+  ButtonBox["ODBapi",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula"],
+ ". Strips the response from \"result\" string and transforms JSON string \
+into Wolfram ",
+ ButtonBox["Dataset.",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"]
+}], "Notes",
+ CellID->761027931],
+
+Cell[TextData[StyleBox["Dependencies:",
+ FontWeight->"Bold"]], "Notes",
+ CellID->300424206],
+
+Cell[TextData[{
+ "ODBgetDataset is based on DBjsonToDataset and DBjsonToAssociations function \
+of the ",
+ ButtonBox["Utilities Package",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+ "."
+}], "Notes",
+ CellID->414482605]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->475576084],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->23298793],
+
+Cell[TextData[{
+ "Execute ",
+ Cell[BoxData[
+  ButtonBox["ODBapi",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula"],
+ " with the getClass command"
+}], "ExampleText",
+ CellID->390502528],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"classInfo", "=", 
+  RowBox[{"ODBapi", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<getClass\>\""}], ",", " ", 
+    RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+    RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->113697542],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/class/DemoDB/Person\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/class/DemoDB/Person", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[57]:=",
+ CellID->297657940],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"name\\\":\\\"Person\\\",\\\"superClass\\\":\\\"\\\",\\\"\
+superClasses\\\":[],\\\"alias\\\":null,\\\"abstract\\\":false,\\\"strictmode\\\
+\":false,\\\"clusters\\\":[12],\\\"defaultCluster\\\":12,\\\"clusterSelection\
+\\\":\\\"round-robin\\\",\\\"records\\\":0,\\\"properties\\\":[{\\\"name\\\":\
+\\\"personDOB\\\",\\\"type\\\":\\\"DATE\\\",\\\"mandatory\\\":true,\\\"\
+readonly\\\":false,\\\"notNull\\\":true,\\\"min\\\":null,\\\"max\\\":null,\\\"\
+regexp\\\":null,\\\"collate\\\":\\\"default\\\"},{\\\"name\\\":\\\"personName\
+\\\",\\\"type\\\":\\\"STRING\\\",\\\"mandatory\\\":true,\\\"readonly\\\":\
+false,\\\"notNull\\\":true,\\\"min\\\":null,\\\"max\\\":null,\\\"regexp\\\":\
+null,\\\"collate\\\":\\\"ci\\\"},{\\\"name\\\":\\\"rentCar\\\",\\\"\
+linkedClass\\\":\\\"Car\\\",\\\"type\\\":\\\"LINK\\\",\\\"mandatory\\\":false,\
+\\\"readonly\\\":false,\\\"notNull\\\":false,\\\"min\\\":null,\\\"max\\\":\
+null,\\\"regexp\\\":null,\\\"collate\\\":\\\"default\\\"}]}\"\>", ",", 
+   "200"}], "}"}]], "Output",
+ ImageSize->{585, 152},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->347421544]
+}, Open  ]],
+
+Cell[TextData[{
+ "The postfix operation of ",
+ StyleBox[ButtonBox["ODBgetDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBgetDataset"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " transforms JSON Output above into a Wolfram ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " Further processing can be applied on the resulting ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ "."
+}], "ExampleText",
+ CellID->282846910],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"classInfoDS", "=", 
+  RowBox[{"classInfo", "//", "ODBgetDataset"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->27991777],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"name\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"Person\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"superClass\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"superClasses\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"alias\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null]}, {
+       StyleBox["\"abstract\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox["False", False]}, {
+       StyleBox["\"strictmode\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox["False", False]}, {
+       StyleBox["\"clusters\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 12, "\[ThinSpace]", "}"}], 
+        LineBreakWithin -> Automatic]}, {
+       StyleBox["\"defaultCluster\"", 
+        GrayLevel[0.3]], 12}, {
+       StyleBox["\"clusterSelection\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"round-robin\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"records\"", 
+        GrayLevel[0.3]], 0}, {
+       StyleBox["\"properties\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"personDOB\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox[
+                StyleBox[
+                "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, 
+                 FontWeight -> Bold, 
+                 GrayLevel[0.7]], 
+                Missing["KeyAbsent", "linkedClass"]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"DATE\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "6"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "2"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       ItemBox[
+        RowBox[{"3 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"11", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"name\" -> _, \"superClass\" -> _, \"superClasses\" -> _, \
+\"alias\" -> _, \"abstract\" -> _, \"strictmode\" -> _, \"clusters\" -> _, \
+\"defaultCluster\" -> _, \"clusterSelection\" -> _, \"records\" -> _, \
+\"properties\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{566, 268},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->105684170]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[Cell[BoxData[
+ StyleBox[
+  ButtonBox["ODBgetFieldAttributes",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBgetFieldAttributes"],
+  FontFamily->"Verdana"]], "InlineFormula"]], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["OrientDB Package",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/guide/ODBapiPackage"]], "MoreAbout",
+ CellID->273690718]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["RELATED LINKS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "RelatedLinksSection",
+ WholeCellGroupOpener->True,
+ CellID->1584193535],
+
+Cell[TextData[ButtonBox["ODBapi",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/ref/ODBapi"]], "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"ODBgetDataset - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DBAPI/guide/DBAPI", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}], 
+        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
+  "Metadata" -> {
+   "built" -> "{2015, 12, 24, 23, 59, 1.9409465}", 
+    "history" -> {"0.9", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "D B A P I Symbol", "language" -> "en", "paclet" -> 
+    "DBAPI", "status" -> "None", "summary" -> 
+    "ODBgetDataset[ODBapi] Transforms the response of the ODBapi into a \
+Dataset", "synonyms" -> {}, "title" -> "ODBgetDataset", "titlemodifier" -> "",
+     "windowtitle" -> "ODBgetDataset", "type" -> "Symbol", "uri" -> 
+    "DBAPI/ref/ODBgetDataset"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Microsoft Windows (64-bit) (July 7, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5585, 177, 490, 14, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->475576084]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 17987, 529}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[607, 21, 2559, 59, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[3169, 82, 56, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[CellGroupData[{
+Cell[3250, 87, 520, 16, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3795, 107, 607, 18, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->3065732],
+Cell[4405, 127, 90, 2, 70, "Notes",
+ CellID->1067943069],
+Cell[4498, 131, 205, 8, 70, "Notes",
+ CellID->342542756],
+Cell[4706, 141, 86, 2, 70, "Notes",
+ CellID->188199630],
+Cell[4795, 145, 394, 12, 70, "Notes",
+ CellID->761027931],
+Cell[5192, 159, 91, 2, 70, "Notes",
+ CellID->300424206],
+Cell[5286, 163, 250, 8, 70, "Notes",
+ CellID->414482605]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5585, 177, 490, 14, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->475576084],
+Cell[CellGroupData[{
+Cell[6100, 195, 194, 6, 70, "ExampleSection",
+ CellID->23298793],
+Cell[6297, 203, 218, 8, 70, "ExampleText",
+ CellID->390502528],
+Cell[CellGroupData[{
+Cell[6540, 215, 386, 9, 70, "Input",
+ CellID->113697542],
+Cell[6929, 226, 373, 9, 70, "Print",
+ CellID->297657940],
+Cell[7305, 237, 1188, 20, 173, "Output",
+ CellID->347421544]
+}, Open  ]],
+Cell[8508, 260, 523, 17, 70, "ExampleText",
+ CellID->282846910],
+Cell[CellGroupData[{
+Cell[9056, 281, 145, 4, 70, "Input",
+ CellID->27991777],
+Cell[9204, 287, 4981, 122, 70, "Output",
+ CellID->105684170]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14246, 416, 446, 13, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[14695, 431, 232, 6, 70, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14964, 442, 448, 13, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[15415, 457, 147, 3, 70, "MoreAbout",
+ CellID->273690718]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15599, 465, 456, 13, 70, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[16058, 480, 132, 3, 70, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[16205, 486, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

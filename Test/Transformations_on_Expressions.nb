@@ -1,0 +1,675 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23953,        666]
+NotebookOptionsPosition[     20579,        549]
+NotebookOutlinePosition[     22054,        598]
+CellTagsIndexPosition[     22011,        595]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["DB API Demo 1", "Title",
+ CellChangeTimes->{{3.6490728322061234`*^9, 3.6490728362944374`*^9}, {
+  3.6491006048840504`*^9, 3.6491006167473316`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Transformations on Expressions", "Chapter",
+ CellChangeTimes->{{3.649100644244402*^9, 3.64910065219948*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Load Packages", "Subsubsection",
+ CellChangeTimes->{{3.649098269553589*^9, 3.649098280905952*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.643625581471835*^9, 3.64362559770914*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"PrependTo", "[", 
+    RowBox[{"$Path", ",", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "$HomeDirectory", ",", "\"\<WolframWorkspaces/Base/DBapiprj\>\""}], 
+       "}"}], "]"}]}], "]"}], ";"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.654011830443759*^9, 3.6540118431064587`*^9}, {
+   3.654422741223345*^9, 3.6544227414832783`*^9}, {3.654422851600245*^9, 
+   3.65442288477632*^9}, {3.65805820219939*^9, 3.658058203926938*^9}, 
+   3.6599670024005003`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "\"\<DBAPI`\>\""}]], "Input",
+ CellChangeTimes->{{3.643625604994296*^9, 3.6436256123263273`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"DBAPI Application Project\"\>"], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.660456463567191*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Promoted and Distributed by \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{False->"\<\"HEALIS\"\>", True->
+      StyleBox["\<\"HEALIS\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL["http://healis.eu"], None},
+     ButtonNote->"http://healis.eu"],
+    Annotation[#, "http://healis.eu", "Hyperlink"]& ], 
+   "\[InvisibleSpace]", "\<\"- Healthy Information Systems/Services\"\>"}],
+  SequenceForm["Promoted and Distributed by ", 
+   Hyperlink["HEALIS", "http://healis.eu"], 
+   "- Healthy Information Systems/Services"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.6604564636621027`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Running on Mathematica \"\>", "\[InvisibleSpace]", 
+   RowBox[{"\<\"Version\"\>", 
+    "\[Rule]", "\<\"10.2.0 for Linux x86 (64-bit) (July 6, 2015)\"\>"}]}],
+  SequenceForm[
+  "Running on Mathematica ", "Version" -> 
+   "10.2.0 for Linux x86 (64-bit) (July 6, 2015)"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.660456463671514*^9}],
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.660456463675489*^9}],
+
+Cell[BoxData["\<\"Data Utilities Package v0.9\"\>"], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.660456463677105*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Copyright December 2015, By \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{False->"\<\"Athanassios I. Hatzis\"\>", True->
+      StyleBox["\<\"Athanassios I. Hatzis\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL["https://www.linkedin.com/in/athanassios"], None},
+     ButtonNote->"https://www.linkedin.com/in/athanassios"],
+    Annotation[#, "https://www.linkedin.com/in/athanassios", "Hyperlink"]& ]}],
+  SequenceForm["Copyright December 2015, By ", 
+   Hyperlink[
+   "Athanassios I. Hatzis", "https://www.linkedin.com/in/athanassios"]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.660456463678841*^9}],
+
+Cell[BoxData["\<\"Distributed under GNU LGPL - GNU Lesser General Public \
+License\\n\"\>"], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.660456463681003*^9}],
+
+Cell[BoxData["\<\"OrientDB API Package v0.9\"\>"], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.660456463687303*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Copyright December 2015, By \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{False->"\<\"Athanassios I. Hatzis\"\>", True->
+      StyleBox["\<\"Athanassios I. Hatzis\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL["https://www.linkedin.com/in/athanassios"], None},
+     ButtonNote->"https://www.linkedin.com/in/athanassios"],
+    Annotation[#, "https://www.linkedin.com/in/athanassios", "Hyperlink"]& ]}],
+  SequenceForm["Copyright December 2015, By ", 
+   Hyperlink[
+   "Athanassios I. Hatzis", "https://www.linkedin.com/in/athanassios"]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.660456463690954*^9}],
+
+Cell[BoxData["\<\"Distributed under GNU LGPL - GNU Lesser General Public \
+License\"\>"], "Print",
+ CellChangeTimes->{3.65805869257078*^9, 3.659966650198248*^9, 
+  3.6599670170719976`*^9, 3.66045646369293*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Shortened Package Commands", "Subsubsection",
+ CellChangeTimes->{{3.6490786865473137`*^9, 3.6490786893129387`*^9}, {
+  3.649098294010574*^9, 3.649098295402175*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"e2j", "=", "DBexpressionToJSON"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"e2jc", "=", 
+   RowBox[{
+    RowBox[{"DBexpressionToJSON", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"compact", "\[Rule]", "True"}]}], "]"}], "&"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.6490787760160637`*^9, 3.649078782689892*^9}, {
+  3.6490788219232903`*^9, 3.6490788355883293`*^9}, {3.6490976797341957`*^9, 
+  3.649097691302555*^9}, {3.6490977674812665`*^9, 3.64909789665611*^9}, {
+  3.6490990847206945`*^9, 3.6490991051669836`*^9}, {3.649100308925612*^9, 
+  3.649100337236159*^9}, {3.65996667451727*^9, 3.659966679085518*^9}, {
+  3.6599668839339314`*^9, 3.659966908502915*^9}, {3.659966942350543*^9, 
+  3.6599669613020372`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["List of Rules", "Section",
+ CellChangeTimes->{{3.649098256450055*^9, 3.649098258543805*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["List of Rules : Construction", "Subsection",
+ CellChangeTimes->{{3.649078755195751*^9, 3.6490787611664543`*^9}, {
+  3.649098238271344*^9, 3.6490982429129457`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lisR", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"\"\<json1\>\"", "->", 
+      RowBox[{"Thread", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<z\>\""}], "}"}], "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<a\>\"", ",", "\"\<b\>\"", ",", "3.9"}], "}"}]}], 
+       "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<json2\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<alpha\>\"", ",", "3", ",", "\"\<beta\>\"", ",", " ", "2"}], 
+       "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<price\>\"", "\[Rule]", "5.3945"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<title\>\"", "->", "\"\<This is a title\>\""}]}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6490729211943655`*^9, 3.6490729878506155`*^9}, {
+   3.6490730422812796`*^9, 3.649073165188732*^9}, {3.6490736134557695`*^9, 
+   3.6490736249606524`*^9}, 3.649098634685545*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["List of Rules : Representations", "Subsection",
+ CellChangeTimes->{{3.6490982058172426`*^9, 3.6490982476951723`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["TableForm", "Subsubsection",
+ CellChangeTimes->{{3.649098382429519*^9, 3.6490983838513937`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lisR", "//", "TableForm"}]], "Input",
+ CellChangeTimes->{{3.6490733933820534`*^9, 3.6490733984933815`*^9}, 
+   3.64909863523242*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      RowBox[{"\<\"json1\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\<\"x\"\>", "\[Rule]", "\<\"a\"\>"}], ",", 
+         RowBox[{"\<\"y\"\>", "\[Rule]", "\<\"b\"\>"}], ",", 
+         RowBox[{"\<\"z\"\>", "\[Rule]", "3.9`"}]}], "}"}]}]},
+     {
+      RowBox[{"\<\"json2\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"alpha\"\>", ",", "3", ",", "\<\"beta\"\>", ",", "2"}], 
+        "}"}]}]},
+     {
+      RowBox[{"\<\"price\"\>", "\[Rule]", "5.3945`"}]},
+     {
+      RowBox[{"\<\"title\"\>", "\[Rule]", "\<\"This is a title\"\>"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   Column],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.6490733991808815`*^9, 3.649073628930379*^9, 3.6490979405916567`*^9, 
+   3.649098740678709*^9, 3.64909910994921*^9, {3.6491003671902604`*^9, 
+   3.6491003963982677`*^9}, 3.659966703313847*^9, 3.659967017482292*^9, 
+   3.660456464000229*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dataset", "Subsubsection",
+ CellChangeTimes->{{3.649098396752761*^9, 3.6490983980183864`*^9}, {
+  3.6490991881318274`*^9, 3.649099189148429*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lisR", "//", "Association"}], "//", "Dataset"}]], "Input",
+ CellChangeTimes->{{3.6599667438481293`*^9, 3.659966754035348*^9}, {
+  3.659966787526937*^9, 3.6599667953661747`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          InterpretationBox[
+           TagBox[
+            RowBox[{"\"x\"", "\[Rule]", "\"a\""}], Short[#, 5]& ], "x" -> 
+           "a"], ",", 
+          InterpretationBox[
+           TagBox[
+            RowBox[{"\"y\"", "\[Rule]", "\"b\""}], Short[#, 5]& ], "y" -> 
+           "b"], ",", 
+          InterpretationBox[
+           TagBox[
+            RowBox[{"\"z\"", "\[Rule]", "3.9`"}], Short[#, 5]& ], "z" -> 3.9],
+           "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"4", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"json1\" -> _, \"json2\" -> _, \"price\" -> _, \"title\" -> \
+_|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.65996675571935*^9, {3.659966789289814*^9, 3.659966796157765*^9}, 
+   3.6599670176024113`*^9, 3.660456464112274*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lisR", "//", "ToAssociations"}], "//", "Dataset"}]], "Input",
+ CellChangeTimes->{{3.6490732134269753`*^9, 3.64907322235178*^9}, {
+   3.649097957892438*^9, 3.649097966852399*^9}, {3.6490981772635317`*^9, 
+   3.6490981835926332`*^9}, 3.64909863601367*^9, {3.6490991231445227`*^9, 
+   3.6490991348681555`*^9}, {3.6491003537879167`*^9, 
+   3.6491003538972917`*^9}, {3.6599667167095423`*^9, 3.659966725709263*^9}, {
+   3.6599668251892*^9, 3.659966833013183*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"4", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"json1\" -> _, \"json2\" -> _, \"price\" -> _, \"title\" -> \
+_|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.6490732235715065`*^9, 3.649073631617879*^9, 3.649098128089703*^9, 
+   3.649098183984235*^9, 3.649098740694334*^9, {3.649099109964835*^9, 
+   3.6490991356337805`*^9}, {3.649100367237135*^9, 3.6491003964295177`*^9}, 
+   3.659966833722598*^9, 3.659967017882461*^9, 3.6604564642313147`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["JSON", "Subsubsection",
+ CellChangeTimes->{{3.6490984030506124`*^9, 3.6490984035662374`*^9}}],
+
+Cell[TextData[StyleBox["Pretty-Printing",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.6490986856796856`*^9, 3.6490986959316387`*^9}, {
+  3.6599668602527037`*^9, 3.659966862124836*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lisR", "//", "e2j"}]], "Input",
+ CellChangeTimes->{{3.6490983420720973`*^9, 3.6490983461248317`*^9}, 
+   3.649098636685545*^9, {3.6491003568191667`*^9, 3.6491003569441667`*^9}}],
+
+Cell[BoxData["\<\"{\\n    \\\"json1\\\": {\\n        \\\"x\\\": \\\"a\\\",\\n \
+       \\\"y\\\": \\\"b\\\",\\n        \\\"z\\\": 3.9\\n    },\\n    \
+\\\"json2\\\": [\\n        \\\"alpha\\\",\\n        3,\\n        \
+\\\"beta\\\",\\n        2\\n    ],\\n    \\\"price\\\": 5.3945,\\n    \
+\\\"title\\\": \\\"This is a title\\\"\\n}\"\>"], "Output",
+ CellChangeTimes->{
+  3.649098347416824*^9, 3.649098740741209*^9, 3.64909911001171*^9, {
+   3.649100367268385*^9, 3.649100396476393*^9}, 3.658059006167666*^9, {
+   3.659966843959375*^9, 3.659966864570879*^9}, 3.6599670180213823`*^9, 
+   3.6604564647412558`*^9}]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Compact Form",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.649098655299803*^9, 3.649098657192381*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lisR", "//", "e2jc"}]], "Input",
+ CellChangeTimes->{{3.6490987061376934`*^9, 3.649098711060545*^9}, {
+   3.6491003603357677`*^9, 3.6491003604148693`*^9}, 3.659966873597004*^9, {
+   3.659966919734209*^9, 3.6599669216214933`*^9}}],
+
+Cell[BoxData["\<\"{\\\"json1\\\":{\\\"x\\\":\\\"a\\\",\\\"y\\\":\\\"b\\\",\\\"\
+z\\\":3.9},\\\"json2\\\":[\\\"alpha\\\",3,\\\"beta\\\",2],\\\"price\\\":5.\
+3945,\\\"title\\\":\\\"This is a title\\\"}\"\>"], "Output",
+ CellChangeTimes->{
+  3.649098740788084*^9, 3.64909911004296*^9, {3.649100367299635*^9, 
+   3.649100396507643*^9}, 3.6580590190118732`*^9, 3.659966923296623*^9, 
+   3.659967018165614*^9, 3.660456464864649*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{983, 803},
+WindowMargins->{{215, Automatic}, {Automatic, 51}},
+PrintingCopies->1,
+PrintingStartingPageNumber->1,
+PrintingPageRange->{Automatic, Automatic},
+PageHeaders->{{
+   Cell[
+    TextData[{
+      StyleBox[
+       CounterBox["Page"], "PageNumber"], "   ", "|", " ", 
+      StyleBox[
+       ValueBox["FileName"], "Header"]}], "Header", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, 
+   Cell[
+    TextData[
+     StyleBox[
+      ValueBox["Date"], TaggingRules -> {"Date", 1}]], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {None, None, 
+   Cell[
+    TextData[{
+      StyleBox[
+       ValueBox["FileName"], "Header"], " ", "|", "   ", 
+      StyleBox[
+       CounterBox["Page"], "PageNumber"]}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->True,
+"FirstPageFace"->Right,
+"FirstPageFooter"->True,
+"FirstPageHeader"->False,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{Automatic, Automatic},
+"PostScriptOutputFile"->"",
+"PrintingMargins"->{{7.2, 7.2}, {14.4, 14.4}}},
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 153, 2, 96, "Title"],
+Cell[CellGroupData[{
+Cell[758, 28, 114, 1, 69, "Chapter"],
+Cell[CellGroupData[{
+Cell[897, 33, 104, 1, 37, "Subsubsection"],
+Cell[1004, 36, 141, 2, 32, "Input"],
+Cell[1148, 40, 541, 13, 32, "Input"],
+Cell[CellGroupData[{
+Cell[1714, 57, 126, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[1865, 63, 171, 2, 23, "Print"],
+Cell[2039, 67, 907, 22, 23, "Print"],
+Cell[2949, 91, 459, 10, 23, "Print"],
+Cell[3411, 103, 146, 2, 23, "Print"],
+Cell[3560, 107, 173, 2, 23, "Print"],
+Cell[3736, 111, 925, 21, 23, "Print"],
+Cell[4664, 134, 213, 3, 43, "Print"],
+Cell[4880, 139, 171, 2, 23, "Print"],
+Cell[5054, 143, 925, 21, 23, "Print"],
+Cell[5982, 166, 209, 3, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6252, 176, 170, 2, 37, "Subsubsection"],
+Cell[6425, 180, 764, 16, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7226, 201, 98, 1, 67, "Section"],
+Cell[CellGroupData[{
+Cell[7349, 206, 169, 2, 47, "Subsection"],
+Cell[7521, 210, 1024, 24, 143, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8582, 239, 123, 1, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[8730, 244, 102, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[8857, 249, 156, 3, 32, "Input"],
+Cell[9016, 254, 1381, 37, 98, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10446, 297, 151, 2, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[10622, 303, 212, 4, 32, "Input"],
+Cell[10837, 309, 3261, 76, 147, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14135, 390, 492, 8, 32, "Input"],
+Cell[14630, 400, 3833, 90, 147, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18512, 496, 99, 1, 37, "Subsubsection"],
+Cell[18614, 499, 193, 3, 31, "Text"],
+Cell[CellGroupData[{
+Cell[18832, 506, 201, 3, 32, "Input"],
+Cell[19036, 511, 611, 9, 341, "Output"]
+}, Open  ]],
+Cell[19662, 523, 135, 2, 31, "Text"],
+Cell[CellGroupData[{
+Cell[19822, 529, 252, 4, 32, "Input"],
+Cell[20077, 535, 426, 6, 88, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

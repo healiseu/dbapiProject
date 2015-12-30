@@ -1,0 +1,1199 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     43104,       1189]
+NotebookOptionsPosition[     38177,       1026]
+NotebookOutlinePosition[     40172,       1079]
+CellTagsIndexPosition[     40086,       1074]
+WindowTitle->DBjsonToDataset - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["D B A P I SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBjsonToAssociations\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBjsonToAssociations"], "\<\"DBjsonToRules\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/ref/DBjsonToRules"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Utilities Package\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/guide/UtilitiesPackage"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBAPI/ref/DBjsonToDataset\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DBAPI/ref/DBjsonToDataset"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/DBAPI/ref/\
+DBjsonToDataset.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "DBAPI/ref/DBjsonToDataset", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell["DBjsonToDataset", "ObjectName",
+ CellID->1224892054],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["DBjsonToDataset",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/DBjsonToDataset"], "[", 
+       RowBox[{"JSON", " ", "string"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]transforms a JSON string to a ",
+     ButtonBox["Dataset",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Dataset"],
+     " structure"
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  FrameBox[
+   StyleBox[
+    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
+   StripOnInput->False],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->58172536],
+
+Cell[TextData[{
+ StyleBox["Arguments :",
+  FontWeight->"Bold"],
+ "\nJSON formatted string"
+}], "Notes",
+ CellID->88723942],
+
+Cell[TextData[{
+ StyleBox["Returns:",
+  FontWeight->"Bold"],
+ "\nBuilt-in ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " structure"
+}], "Notes",
+ CellID->96909655],
+
+Cell[TextData[{
+ StyleBox["Dependencies:",
+  FontWeight->"Bold"],
+ "\nBased on ",
+ ButtonBox["ImportString ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ImportString"],
+ "built-in function taking a format parameter with value \"",
+ ButtonBox["RawJSON",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/format/RawJSON"],
+ "\""
+}], "Notes",
+ CellID->68413452],
+
+Cell[TextData[{
+ StyleBox["Use:\[LineSeparator]",
+  FontWeight->"Bold"],
+ "to transform the response of URLFetch when it returns JSON data"
+}], "Notes",
+ CellID->58638840],
+
+Cell[TextData[{
+ StyleBox["Internals:\[LineSeparator]",
+  FontWeight->"Bold"],
+ "Important notice : The \"",
+ ButtonBox["RawJSON",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/format/RawJSON"],
+ "\" value of ",
+ ButtonBox["ImportString",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ImportString"],
+ " format parameter appeared in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " 10.2.0"
+}], "Notes",
+ CellID->59529440]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->378949811],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->439505],
+
+Cell["Load Packages", "ExampleText",
+ CellID->772149713],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "DBAPI`"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->108474329],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Data Utilities Package v0.9\"\>"], "Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->362366598],
+
+Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
+"Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->206220589],
+
+Cell[BoxData["\<\"OrientDB HTTP API Package v0.9\"\>"], "Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->94113930],
+
+Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
+"Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->325861770]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "RESTful API example",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->145514207],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"wordpressPosts", "=", 
+   RowBox[{
+    RowBox[{
+    "URLFetch", "[", "\"\<http://rachelbaker.me/wp-json/posts\>\"", "]"}], "//",
+     "DBjsonToDataset"}]}], ";"}]], "Input",
+ CellLabel->"In[73]:=",
+ CellID->349326260],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"wordpressPosts", "[", 
+  RowBox[{"All", ",", 
+   RowBox[{"{", "\"\<title\>\"", "}"}]}], "]"}]], "Input",
+ CellLabel->"In[77]:=",
+ CellID->825676315],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox[
+       "\"Use the New WordPress 3.5 Color Picker in a Plugin\"", FontColor -> 
+        GrayLevel[0.4]]}, {
+       StyleBox[
+       "\"Shortcodes Should Be a Last Resort\"", FontColor -> 
+        GrayLevel[0.4]]}, {
+       StyleBox[
+       "\"OpeninSublimeText.app: Open the Current Folder as a SublimeText2 \
+Project from Finder\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox[
+       "\"Font Awesome Icons WordPress Plugin\"", FontColor -> 
+        GrayLevel[0.4]]}, {
+       StyleBox[
+       "\"WordPress Plugin Repository Now Requires Plugin URL\"", FontColor -> 
+        GrayLevel[0.4]]}, {
+       StyleBox[
+       "\"Calculated Web Development with Soulver\"", FontColor -> 
+        GrayLevel[0.4]]}, {
+       StyleBox["\"I Love Open Source\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox[
+       "\"Bootstrap 2.1 is Going Purple\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox[
+       "\"Slides from WordCamp Milwaukee Presentation on WordPress Navigation\
+\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox[
+       "\"What Entrepreneurs are Thinking\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"10", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]]}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{515, 272},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[77]=",
+ CellID->388822604]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"wordpressPosts", "[", 
+  RowBox[{"All", ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<date\>\"", ",", "\"\<modified\>\""}], "}"}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[92]:=",
+ CellID->383506147],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"date\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"modified\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"2012-11-27T17:47:36\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2015-04-09T15:24:40\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-11-06T15:18:51\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-11-06T15:18:51\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-10-10T15:12:39\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-10-10T15:14:27\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-09-17T22:23:31\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-10-07T20:06:55\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-09-11T13:57:53\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-09-11T14:14:08\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-09-03T08:50:15\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-09-03T11:55:56\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-08-29T15:41:18\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-08-29T15:41:18\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-07-10T08:31:50\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-07-10T08:31:50\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-06-02T22:29:46\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-07-25T10:54:11\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"2012-05-10T10:49:09\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"2012-05-10T10:49:09\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"10", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{300, 269},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[92]=",
+ CellID->101006122]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Import Example",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->659147814],
+
+Cell["Import JSON as a string", "ExampleText",
+ CellID->13228248],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jsonStr", "=", 
+  RowBox[{"Import", "[", 
+   RowBox[{
+   "\"\<I:\\\\Downloads\\\\contacts_output.json\>\"", ",", "\"\<Text\>\""}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[57]:=",
+ CellID->110544352],
+
+Cell[BoxData["\<\"[ {\\n        \\\"firstName\\\" : \\\"John\\\",\\n        \
+\\\"lastName\\\" : \\\"Smith\\\",\\n        \\\"age\\\" : \\\"25\\\",\\n      \
+  \\\"address\\\" : {\\n            \\\"streetAddress\\\" : \\\"21 2nd Street\
+\\\",\\n            \\\"city\\\" : \\\"New York\\\",\\n            \
+\\\"state\\\" : \\\"NY\\\",\\n            \\\"postalCode\\\" : \
+\\\"10021\\\"\\n        },\\n        \\\"phoneNumbers\\\" : [ {\\n            \
+\\\"type\\\" : \\\"home\\\",\\n            \\\"number\\\" : \\\"212 \
+555-1234\\\"\\n        }, {\\n            \\\"type\\\" : \\\"fax\\\",\\n      \
+      \\\"number\\\" : \\\"646 555-4567\\\"\\n        } ],\\n        \
+\\\"newSubscription\\\" : \\\"false\\\",\\n        \\\"companyName\\\" : \
+\\\"IBM\\\"\\n    }, {\\n        \\\"firstName\\\" : \\\"Adam\\\",\\n        \
+\\\"lastName\\\" : \\\"Li\\\",\\n        \\\"age\\\" : \\\"15\\\",\\n        \
+\\\"address\\\" : {\\n            \\\"streetAddress\\\" : \\\"21 2nd Street\\\
+\",\\n            \\\"city\\\" : \\\"BOca Raton\\\",\\n            \
+\\\"state\\\" : \\\"FL\\\",\\n            \\\"postalCode\\\" : \
+\\\"33334\\\"\\n        },\\n        \\\"phoneNumbers\\\" : [ ],\\n        \\\
+\"newSubscription\\\" : \\\"true\\\",\\n        \\\"companyName\\\" : \\\"IBM\
+\\\"\\n    } \\n]\"\>"], "Output",
+ ImageSize->{326, 577},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[57]=",
+ CellID->467176415]
+}, Open  ]],
+
+Cell[TextData[{
+ "Apply ",
+ Cell[BoxData[
+  ButtonBox["DBjsonToDataset",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/DBjsonToDataset"]], "InlineFormula"]
+}], "ExampleText",
+ CellID->210961138],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"contacts", "=", 
+  RowBox[{"jsonStr", "//", "DBjsonToDataset"}]}]], "Input",
+ CellLabel->"In[58]:=",
+ CellID->32201993],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"firstName\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"lastName\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"age\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"address\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"phoneNumbers\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"newSubscription\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"companyName\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"John\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"Smith\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"25\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"streetAddress\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"21 2nd Street\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"city\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"New York\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"state\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"NY\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"postalCode\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"10021\"", FontColor -> GrayLevel[0.4]]}], 
+          "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"home\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"number\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"212 555-1234\"", FontColor -> GrayLevel[0.4]]}], 
+             "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"fax\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"number\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"646 555-4567\"", FontColor -> GrayLevel[0.4]]}], 
+             "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic], 
+       StyleBox["\"false\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"IBM\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"Adam\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"Li\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"15\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"streetAddress\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"21 2nd Street\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"city\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"BOca Raton\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"state\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"FL\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"postalCode\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"33334\"", FontColor -> GrayLevel[0.4]]}], 
+          "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic], 
+       StyleBox["\"true\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"IBM\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"4 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"2", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{1450, 93},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[58]=",
+ CellID->55560666]
+}, Open  ]],
+
+Cell["\<\
+For inspection purpose, break the Dataset into 3 subsets: one for simple \
+fields, i.e. firstName, lastName, newSubscription, and companyName, another \
+for address and another for phoneNumbers.\
+\>", "ExampleText",
+ CellID->76910575],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"contacts", "[", 
+     RowBox[{"All", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<firstName\>\"", ",", "\"\<lastName\>\"", ",", 
+        "\"\<newSubscription\>\"", ",", "\"\<companyName\>\""}], "}"}]}], 
+     "]"}], "\[IndentingNewLine]", 
+    RowBox[{"contacts", "[", 
+     RowBox[{"All", ",", "\"\<address\>\""}], "]"}]}], ",", 
+   RowBox[{"Dataset", "/@", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"contacts", "[", 
+       RowBox[{"All", ",", "\"\<phoneNumbers\>\""}], "]"}], "//", "Normal"}], 
+     ")"}]}]}], "}"}]], "Input",
+ CellLabel->"In[69]:=",
+ CellID->324557049],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    TagBox[
+     TemplateBox[{GridBox[{{
+          StyleBox["\"firstName\"", 
+           GrayLevel[0.3]], 
+          StyleBox["\"lastName\"", 
+           GrayLevel[0.3]], 
+          StyleBox["\"newSubscription\"", 
+           GrayLevel[0.3]], 
+          StyleBox["\"companyName\"", 
+           GrayLevel[0.3]]}, {
+          StyleBox["\"John\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"Smith\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"false\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"IBM\"", FontColor -> GrayLevel[0.4]]}, {
+          StyleBox["\"Adam\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"Li\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"true\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"IBM\"", FontColor -> GrayLevel[0.4]]}, {
+          ItemBox[
+           RowBox[{"2 levels", 
+             AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+             RowBox[{"2", "rows"}]}], 
+           BaseStyle -> {
+            FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+             GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+           ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+           Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+          "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+        GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+        FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+            RGBColor[0, 0, 0, 0.4], {
+             RGBColor[0, 0, 0, 0.09]}, 
+            RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+            RGBColor[0, 0, 0, 0.4], 
+            RGBColor[0, 0, 0, 0.3], {
+             RGBColor[0, 0, 0, 0.08]}, 
+            RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+        GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+            RGBColor[0.92, 0.92, 0.9]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+        GridFrameMargins -> {{2, 3}, {1, 3}}, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, RowMinHeight -> 
+        1.3],"Dataset[{__Association}]"},
+      "Dataset",
+      DisplayFunction->(TagBox[
+        StyleBox[#, {
+         ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+          "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+          SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+          True, Background -> RGBColor[0.985, 0.98, 0.973], 
+          LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+          LineSpacing -> {1.1, 5}}], Deploy]& ),
+      InterpretationFunction->(#2& )],
+     False,
+     Editable->False,
+     SelectWithContents->True,
+     Selectable->False], " ", 
+    TagBox[
+     TemplateBox[{GridBox[{{
+          StyleBox["\"streetAddress\"", 
+           GrayLevel[0.3]], 
+          StyleBox["\"city\"", 
+           GrayLevel[0.3]], 
+          StyleBox["\"state\"", 
+           GrayLevel[0.3]], 
+          StyleBox["\"postalCode\"", 
+           GrayLevel[0.3]]}, {
+          StyleBox["\"21 2nd Street\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"New York\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"NY\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"10021\"", FontColor -> GrayLevel[0.4]]}, {
+          StyleBox["\"21 2nd Street\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"BOca Raton\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"FL\"", FontColor -> GrayLevel[0.4]], 
+          StyleBox["\"33334\"", FontColor -> GrayLevel[0.4]]}, {
+          ItemBox[
+           RowBox[{"2 levels", 
+             AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+             RowBox[{"2", "rows"}]}], 
+           BaseStyle -> {
+            FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+             GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+           ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+           Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+          "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+        GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+        FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+            RGBColor[0, 0, 0, 0.4], {
+             RGBColor[0, 0, 0, 0.09]}, 
+            RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+            RGBColor[0, 0, 0, 0.4], 
+            RGBColor[0, 0, 0, 0.3], {
+             RGBColor[0, 0, 0, 0.08]}, 
+            RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+        GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+            RGBColor[0.92, 0.92, 0.9]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+        GridFrameMargins -> {{2, 3}, {1, 3}}, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, RowMinHeight -> 
+        1.3],"Dataset[{__Association}]"},
+      "Dataset",
+      DisplayFunction->(TagBox[
+        StyleBox[#, {
+         ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+          "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+          SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+          True, Background -> RGBColor[0.985, 0.98, 0.973], 
+          LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+          LineSpacing -> {1.1, 5}}], Deploy]& ),
+      InterpretationFunction->(#2& )],
+     False,
+     Editable->False,
+     SelectWithContents->True,
+     Selectable->False]}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     TagBox[
+      TemplateBox[{GridBox[{{
+           StyleBox["\"type\"", 
+            GrayLevel[0.3]], 
+           StyleBox["\"number\"", 
+            GrayLevel[0.3]]}, {
+           StyleBox["\"home\"", FontColor -> GrayLevel[0.4]], 
+           StyleBox["\"212 555-1234\"", FontColor -> GrayLevel[0.4]]}, {
+           StyleBox["\"fax\"", FontColor -> GrayLevel[0.4]], 
+           StyleBox["\"646 555-4567\"", FontColor -> GrayLevel[0.4]]}, {
+           ItemBox[
+            RowBox[{"2 levels", 
+              AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+              RowBox[{"2", "rows"}]}], 
+            BaseStyle -> {
+             FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+              GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+            ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+            Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+         GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+         FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+             RGBColor[0, 0, 0, 0.4], {
+              RGBColor[0, 0, 0, 0.09]}, 
+             RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+             RGBColor[0, 0, 0, 0.4], 
+             RGBColor[0, 0, 0, 0.3], {
+              RGBColor[0, 0, 0, 0.08]}, 
+             RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+         GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+             RGBColor[0.92, 0.92, 0.9]}}, 
+         GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+         GridFrameMargins -> {{2, 3}, {1, 3}}, 
+         GridBoxItemSize -> {
+          "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, RowMinHeight -> 
+         1.3],"Dataset[{__Association}]"},
+       "Dataset",
+       DisplayFunction->(TagBox[
+         StyleBox[#, {
+          ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+           "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+           SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+           True, Background -> RGBColor[0.985, 0.98, 0.973], 
+           LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+           LineSpacing -> {1.1, 5}}], Deploy]& ),
+       InterpretationFunction->(#2& )],
+      False,
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False], ",", 
+     TagBox[
+      TemplateBox[{StyleBox[
+         GridBox[{{
+            RowBox[{"{", "\[ThinSpace]", "\[ThinSpace]", "}"}]}, {
+            ItemBox[
+             RowBox[{"1 level", 
+               AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+               RowBox[{"0", "elements"}]}], 
+             BaseStyle -> {
+              FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+               GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+             ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+             Background -> RGBColor[0.92, 0.92, 0.9]]}}, 
+          GridBoxAlignment -> {{{Left}}}, 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+          GridBoxSpacings -> {"Rows" -> {{0, 0}}, "Columns" -> {{0}}}, 
+          GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+          FrameStyle -> RGBColor[0, 0, 0, 0.4], 
+          GridFrameMargins -> {{2, 1}, {0, 2}}], LineBreakWithin -> 
+         Automatic],"Dataset[{__}]"},
+       "Dataset",
+       DisplayFunction->(TagBox[
+         StyleBox[#, {
+          ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+           "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+           SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+           True, Background -> RGBColor[0.985, 0.98, 0.973], 
+           LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+           LineSpacing -> {1.1, 5}}], Deploy]& ),
+       InterpretationFunction->(#2& )],
+      False,
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False]}], "}"}]}], "}"}]], "Output",
+ ImageSize->{394, 291},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[69]=",
+ CellID->339174034]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["DBjsonToAssociations",
+    BaseStyle->"Link",
+    ButtonData->"paclet:DBAPI/ref/DBjsonToAssociations"],
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["DBjsonToRules",
+    BaseStyle->"Link",
+    ButtonData->"paclet:DBAPI/ref/DBjsonToRules"],
+   FontFamily->"Verdana"]], "InlineFormula"]
+}], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["Utilities Package",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]], "MoreAbout",
+ CellID->323783048]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["RELATED LINKS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "RelatedLinksSection",
+ WholeCellGroupOpener->True,
+ CellID->1584193535],
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox["DBexpressionToJSON",
+  BaseStyle->"Link",
+  ButtonData->
+   "paclet:DBAPI/ref/DBexpressionToJSON"]], "InlineFormula"]], "SeeAlso",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"DBjsonToDataset - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DBAPI/guide/DBAPI", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}], 
+        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
+  "Metadata" -> {
+   "built" -> "{2015, 12, 24, 23, 58, 44.4253215}", 
+    "history" -> {"0.9", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "D B A P I Symbol", "language" -> "en", "paclet" -> 
+    "DBAPI", "status" -> "None", "summary" -> 
+    "DBjsonToDataset[JSON string] transforms a JSON string to a Dataset \
+structure", "synonyms" -> {}, "title" -> "DBjsonToDataset", "titlemodifier" -> 
+    "", "windowtitle" -> "DBjsonToDataset", "type" -> "Symbol", "uri" -> 
+    "DBAPI/ref/DBjsonToDataset"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Microsoft Windows (64-bit) (July 7, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5965, 194, 490, 14, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->378949811]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 39943, 1067}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[609, 21, 2670, 61, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[3282, 84, 58, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[CellGroupData[{
+Cell[3365, 89, 620, 19, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4010, 112, 608, 18, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->58172536],
+Cell[4621, 132, 122, 5, 70, "Notes",
+ CellID->88723942],
+Cell[4746, 139, 202, 9, 70, "Notes",
+ CellID->96909655],
+Cell[4951, 150, 359, 13, 70, "Notes",
+ CellID->68413452],
+Cell[5313, 165, 171, 5, 70, "Notes",
+ CellID->58638840],
+Cell[5487, 172, 429, 16, 70, "Notes",
+ CellID->59529440]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5965, 194, 490, 14, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->378949811],
+Cell[CellGroupData[{
+Cell[6480, 212, 192, 6, 70, "ExampleSection",
+ CellID->439505],
+Cell[6675, 220, 56, 1, 70, "ExampleText",
+ CellID->772149713],
+Cell[CellGroupData[{
+Cell[6756, 225, 93, 3, 70, "Input",
+ CellID->108474329],
+Cell[CellGroupData[{
+Cell[6874, 232, 126, 2, 70, "Print",
+ CellID->362366598],
+Cell[7003, 236, 147, 3, 70, "Print",
+ CellID->206220589],
+Cell[7153, 241, 128, 2, 70, "Print",
+ CellID->94113930],
+Cell[7284, 245, 147, 3, 70, "Print",
+ CellID->325861770]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7492, 255, 263, 8, 70, "ExampleSection",
+ CellID->145514207],
+Cell[7758, 265, 252, 8, 70, "Input",
+ CellID->349326260],
+Cell[CellGroupData[{
+Cell[8035, 277, 172, 5, 70, "Input",
+ CellID->825676315],
+Cell[8210, 284, 3164, 73, 293, "Output",
+ CellID->388822604]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11411, 362, 214, 7, 70, "Input",
+ CellID->383506147],
+Cell[11628, 371, 3612, 69, 290, "Output",
+ CellID->101006122]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15289, 446, 258, 8, 70, "ExampleSection",
+ CellID->659147814],
+Cell[15550, 456, 65, 1, 70, "ExampleText",
+ CellID->13228248],
+Cell[CellGroupData[{
+Cell[15640, 461, 221, 7, 70, "Input",
+ CellID->110544352],
+Cell[15864, 470, 1443, 22, 598, "Output",
+ CellID->467176415]
+}, Open  ]],
+Cell[17322, 495, 203, 7, 70, "ExampleText",
+ CellID->210961138],
+Cell[CellGroupData[{
+Cell[17550, 506, 143, 4, 70, "Input",
+ CellID->32201993],
+Cell[17696, 512, 7179, 177, 114, "Output",
+ CellID->55560666]
+}, Open  ]],
+Cell[24890, 692, 244, 5, 70, "ExampleText",
+ CellID->76910575],
+Cell[CellGroupData[{
+Cell[25159, 701, 658, 20, 70, "Input",
+ CellID->324557049],
+Cell[25820, 723, 9943, 210, 312, "Output",
+ CellID->339174034]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35824, 940, 446, 13, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[36273, 955, 536, 18, 70, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36846, 978, 448, 13, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[37297, 993, 151, 3, 70, "MoreAbout",
+ CellID->323783048]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37485, 1001, 456, 13, 70, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[37944, 1016, 191, 5, 70, "SeeAlso",
+ CellID->1038487239]
+}, Open  ]],
+Cell[38150, 1024, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,4320 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    172956,       4311]
+NotebookOptionsPosition[    162117,       3937]
+NotebookOutlinePosition[    162719,       3959]
+CellTagsIndexPosition[    162676,       3956]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["OrientDB API Demo 3", "Title",
+ CellChangeTimes->{{3.64362554330289*^9, 3.643625554148593*^9}, 
+   3.6436469499316936`*^9, {3.643665905408079*^9, 3.6436659097375216`*^9}, 
+   3.6476961447502427`*^9, {3.64769631234964*^9, 3.6476963271211243`*^9}, {
+   3.6484449266627827`*^9, 3.6484449274752827`*^9}, {3.64889698355902*^9, 
+   3.648896986200622*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\"\<By Athanassios I. Hatzis, PhD\>\"", "<>", "\"\< - (C) \>\"", "<>",
+   " ", 
+  RowBox[{"DateString", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6374688175872555`*^9, 3.6374688440403805`*^9}, {
+  3.6374689405091305`*^9, 3.6374689667278805`*^9}, {3.6374690546497555`*^9, 
+  3.6374690557278805`*^9}, {3.6374696089310055`*^9, 3.6374696345716305`*^9}, {
+  3.637515842135413*^9, 3.637515873791663*^9}, {3.648964474582922*^9, 
+  3.6489644773963985`*^9}}],
+
+Cell[BoxData["\<\"By Athanassios I. Hatzis, PhD - (C) Wed 30 Dec 2015 \
+12:41:37\"\>"], "Output",
+ CellChangeTimes->{3.6489559375329585`*^9, 3.6489561578425283`*^9, 
+  3.6489644788807735`*^9, 3.648969642963614*^9, 3.649056089280241*^9, 
+  3.649108972941699*^9, 3.649175415591299*^9, 3.660460898028228*^9},
+ FontFamily->"Lucida Sans Unicode",
+ FontSize->16,
+ FontWeight->"Bold"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Schema Less vs Schema Full Operations", "Chapter",
+ CellChangeTimes->{{3.647696329483429*^9, 3.6476963333906555`*^9}, {
+  3.648438028515046*^9, 3.6484380302035227`*^9}, {3.648444931024111*^9, 
+  3.6484449315094624`*^9}, {3.648446868589402*^9, 3.64844688170366*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Load Packages", "Subchapter",
+ CellChangeTimes->{{3.649104003238674*^9, 3.6491040056927757`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.643625581471835*^9, 3.64362559770914*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "\"\<DBAPI`\>\""}]], "Input",
+ CellChangeTimes->{{3.643625604994296*^9, 3.6436256123263273`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"DBAPI Application Project\"\>"], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.660460912499563*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Promoted and Distributed by \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{False->"\<\"HEALIS\"\>", True->
+      StyleBox["\<\"HEALIS\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL["http://healis.eu"], None},
+     ButtonNote->"http://healis.eu"],
+    Annotation[#, "http://healis.eu", "Hyperlink"]& ], 
+   "\[InvisibleSpace]", "\<\"- Healthy Information Systems/Services\"\>"}],
+  SequenceForm["Promoted and Distributed by ", 
+   Hyperlink["HEALIS", "http://healis.eu"], 
+   "- Healthy Information Systems/Services"],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.660460912507523*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Running on Mathematica \"\>", "\[InvisibleSpace]", 
+   RowBox[{"\<\"Version\"\>", 
+    "\[Rule]", "\<\"10.2.0 for Linux x86 (64-bit) (July 6, 2015)\"\>"}]}],
+  SequenceForm[
+  "Running on Mathematica ", "Version" -> 
+   "10.2.0 for Linux x86 (64-bit) (July 6, 2015)"],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.660460912509067*^9}],
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.6604609125099697`*^9}],
+
+Cell[BoxData["\<\"Data Utilities Package v0.9\"\>"], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.6604609125108747`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Copyright December 2015, By \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{False->"\<\"Athanassios I. Hatzis\"\>", True->
+      StyleBox["\<\"Athanassios I. Hatzis\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL["https://www.linkedin.com/in/athanassios"], None},
+     ButtonNote->"https://www.linkedin.com/in/athanassios"],
+    Annotation[#, "https://www.linkedin.com/in/athanassios", "Hyperlink"]& ]}],
+  SequenceForm["Copyright December 2015, By ", 
+   Hyperlink[
+   "Athanassios I. Hatzis", "https://www.linkedin.com/in/athanassios"]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.6604609125124187`*^9}],
+
+Cell[BoxData["\<\"Distributed under GNU LGPL - GNU Lesser General Public \
+License\\n\"\>"], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.6604609125135403`*^9}],
+
+Cell[BoxData["\<\"OrientDB API Package v0.9\"\>"], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.6604609125145617`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Copyright December 2015, By \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{False->"\<\"Athanassios I. Hatzis\"\>", True->
+      StyleBox["\<\"Athanassios I. Hatzis\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL["https://www.linkedin.com/in/athanassios"], None},
+     ButtonNote->"https://www.linkedin.com/in/athanassios"],
+    Annotation[#, "https://www.linkedin.com/in/athanassios", "Hyperlink"]& ]}],
+  SequenceForm["Copyright December 2015, By ", 
+   Hyperlink[
+   "Athanassios I. Hatzis", "https://www.linkedin.com/in/athanassios"]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.660460912515999*^9}],
+
+Cell[BoxData["\<\"Distributed under GNU LGPL - GNU Lesser General Public \
+License\"\>"], "Print",
+ CellChangeTimes->{{3.649104193688745*^9, 3.649104223199487*^9}, 
+   3.649106081116597*^9, 3.6491061846131563`*^9, 3.649108973254199*^9, 
+   3.6491113814173207`*^9, 3.649111649179718*^9, 3.6491117481658497`*^9, 
+   3.6491133174848347`*^9, 3.6491134944848347`*^9, 3.649140426265562*^9, 
+   3.6491520273035765`*^9, 3.649152265543228*^9, 3.6491555422132506`*^9, 
+   3.649156056896505*^9, 3.649156282147481*^9, 3.649158619345848*^9, 
+   3.6491593439855576`*^9, 3.649160936249306*^9, 3.649161541505166*^9, 
+   3.649161682659007*^9, 3.660460912516975*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Shortened Package Commands", "Subsubsection",
+ CellChangeTimes->{{3.6490786865473137`*^9, 3.6490786893129387`*^9}, {
+  3.649098294010574*^9, 3.649098295402175*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"l2k", " ", "=", 
+   RowBox[{
+    RowBox[{"DBListSetToSQL92", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"values", "\[Rule]", "False"}]}], "]"}], "&"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"l2v", " ", "=", " ", "DBListSetToSQL92"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.649111369904626*^9, 3.6491114337893915`*^9}, {
+   3.6604614208648443`*^9, 3.6604614328409357`*^9}, 3.6604614630810423`*^9, {
+   3.660462651553335*^9, 3.660462652713519*^9}, {3.660462690737631*^9, 
+   3.66046271545732*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"e2j", "=", "DBexpressionToJSON"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"e2jC", "=", 
+    RowBox[{
+     RowBox[{"DBexpressionToJSON", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"compact", "\[Rule]", "True"}]}], "]"}], "&"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"j2r", "=", "DBjsonToRules"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"j2a", "=", "DBjsonToAssociations"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"j2d", "=", "DBjsonToDataset"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"odb", " ", "=", " ", "ODBapi"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gds", " ", "=", " ", "ODBgetDataset"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gfa", " ", "=", " ", "ODBgetFieldAttributes"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6490787760160637`*^9, 3.649078782689892*^9}, {
+  3.6490788219232903`*^9, 3.6490788355883293`*^9}, {3.6490976797341957`*^9, 
+  3.649097691302555*^9}, {3.6490977674812665`*^9, 3.64909789665611*^9}, {
+  3.6490990847206945`*^9, 3.6490991051669836`*^9}, {3.649100308925612*^9, 
+  3.649100337236159*^9}, {3.649104097408596*^9, 3.6491041666115966`*^9}, {
+  3.649104233359644*^9, 3.649104264983667*^9}, {3.6491045472114973`*^9, 
+  3.649104569861888*^9}, {3.649111437376305*^9, 3.649111438001305*^9}, {
+  3.6491522511340485`*^9, 3.649152251425064*^9}, {3.6604610137213163`*^9, 
+  3.660461025368745*^9}, {3.660461284753456*^9, 3.660461308794135*^9}, {
+  3.660461435536963*^9, 3.660461436369562*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Database Operations", "Subchapter",
+ CellChangeTimes->{{3.643625572733554*^9, 3.6436255765333586`*^9}, {
+  3.6436642512524357`*^9, 3.64366425314892*^9}, {3.6436648996399174`*^9, 
+  3.6436649019447536`*^9}, {3.6436651156055875`*^9, 3.6436651159493375`*^9}, {
+  3.648438015325593*^9, 3.648438019200593*^9}, {3.6484390475405793`*^9, 
+  3.648439049672891*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Del Database", "Subsubsection",
+ CellChangeTimes->{{3.6484389049283915`*^9, 3.648438907860688*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odb", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<delDatabase\>\""}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"usr", "\[Rule]", "\"\<root\>\""}], ",", "\[IndentingNewLine]", 
+   RowBox[{"pwd", "\[Rule]", " ", "\"\<123\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6484388315853252`*^9, 3.64843888949926*^9}, {
+   3.648438960506032*^9, 3.64843896058574*^9}, 3.6491041392727294`*^9, {
+   3.6491043622778945`*^9, 3.649104377736879*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ CellChangeTimes->{3.648438869827035*^9, 3.648438910811064*^9, 
+  3.648438961758591*^9, 3.64910427732937*^9, 3.6491043839741836`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Add Database", "Subsubsection",
+ CellChangeTimes->{{3.648438050834382*^9, 3.648438053396882*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"odb", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"com", "\[Rule]", " ", "\"\<addDatabase\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{"dbtype", "\[Rule]", "\"\<plocal/document\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"usr", "\[Rule]", " ", "\"\<root\>\""}], ",", 
+     RowBox[{"pwd", "\[Rule]", " ", "\"\<123\>\""}]}], "]"}], ")"}], "[", 
+  RowBox[{"[", "2", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6436281120564833`*^9, 3.6436281773816786`*^9}, {
+   3.6436282413949013`*^9, 3.6436282942939425`*^9}, 3.648437813348054*^9, 
+   3.648438240230748*^9, {3.648438721971531*^9, 3.648438723412893*^9}, 
+   3.6491041392883544`*^9}],
+
+Cell[BoxData["200"], "Output",
+ CellChangeTimes->{3.6436283251777315`*^9, 3.648438272724889*^9, 
+  3.648438640149753*^9, 3.6484387336222754`*^9, 3.648869625835919*^9, 
+  3.648882240105401*^9, 3.649104395149965*^9, 3.660461494986573*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Get Databases", "Subsubsection",
+ CellChangeTimes->{{3.643628096720546*^9, 3.6436281002391005`*^9}, {
+  3.643628317502927*^9, 3.643628318940427*^9}, {3.64843806163321*^9, 
+  3.648438068363679*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{"com", "->", "\"\<getDatabases\>\""}], "]"}], "//", 
+  "gds"}]], "Input",
+ CellChangeTimes->{{3.6436277059569507`*^9, 3.643627726983318*^9}, {
+   3.6436277743407393`*^9, 3.6436278396600757`*^9}, {3.64843788082071*^9, 
+   3.648437898818757*^9}, {3.6484379661615305`*^9, 3.6484379687084055`*^9}, {
+   3.6484390996497297`*^9, 3.6484391113940024`*^9}, {3.648439144383508*^9, 
+   3.6484391670878468`*^9}, {3.6490561960416813`*^9, 
+   3.6490562062943363`*^9}, {3.649058647696081*^9, 3.649058654683386*^9}, 
+   3.6491041393039794`*^9, 3.6491045376089582`*^9, {3.6491045815542707`*^9, 
+   3.6491045824614973`*^9}, {3.6491046520366926`*^9, 
+   3.6491046535689187`*^9}, {3.6491061081544867`*^9, 3.649106110143174*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 0}, {
+       StyleBox["\"databases\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"GratefulDeadConcerts\"", FontColor -> GrayLevel[0.4]], 
+          ",", 
+          StyleBox["\"TestDB\"", FontColor -> GrayLevel[0.4]], ",", 
+          StyleBox["\"demo\"", FontColor -> GrayLevel[0.4]], ",", 
+          StyleBox["\"MemberArticleDB\"", FontColor -> GrayLevel[0.4]], 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"databases=e\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"4", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"@type\" -> _, \"@version\" -> _, \"databases\" -> _, \
+\"@fieldTypes\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.6436280610408583`*^9, 3.643628081076991*^9}, 
+   3.6436283284453096`*^9, 3.643664227941889*^9, 3.643698666154963*^9, 
+   3.6484378405570383`*^9, {3.648437881930085*^9, 3.6484379012201242`*^9}, 
+   3.6484379839447336`*^9, 3.6484390018155365`*^9, 3.648439113428642*^9, {
+   3.648439149519232*^9, 3.648439167655492*^9}, 3.648882321722316*^9, 
+   3.649056207861955*^9, 3.6490586560749874`*^9, 3.6491045000191145`*^9, 
+   3.6491045384370832`*^9, 3.6491045833677473`*^9, 3.649104654803294*^9, 
+   3.649106111674569*^9, 3.6491062073738985`*^9, 3.660461500571855*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Login", "Subsubsection",
+ CellChangeTimes->{{3.6484381219232492`*^9, 3.6484381225326242`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odb", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<login\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", 
+   RowBox[{"usr", "\[Rule]", "\"\<admin\>\""}], ",", " ", 
+   RowBox[{"pwd", "\[Rule]", " ", "\"\<admin\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.643664318889048*^9, 3.643664386845103*^9}, 
+   3.64843824552567*^9, 3.6491041393196044`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ CellChangeTimes->{3.643664350046275*^9, 3.64366438850233*^9, 
+  3.643664671712301*^9, 3.6436647117025347`*^9, 3.648439032909438*^9, 
+  3.648444583574051*^9, 3.6488799213753757`*^9, 3.6488823339488783`*^9, 
+  3.649056220698492*^9, 3.6490587962156124`*^9, 3.6491045899790754`*^9, 
+  3.660461505469389*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Class Operations", "Subchapter",
+ CellChangeTimes->{{3.648438100249421*^9, 3.6484381067816477`*^9}, {
+  3.6484390535275965`*^9, 3.648439055661747*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Add Class", "Subsubsection",
+ CellChangeTimes->{{3.6436482989609547`*^9, 3.6436483002890797`*^9}, {
+  3.643664257487299*^9, 3.6436642609334903`*^9}, {3.643664766589254*^9, 
+  3.643664775041402*^9}, {3.648439616395796*^9, 3.6484396167453933`*^9}, {
+  3.648439952355395*^9, 3.64843996232181*^9}}],
+
+Cell[TextData[{
+ "Uses the \[OpenCurlyDoubleQuote]",
+ StyleBox["CREATE CLASS",
+  FontWeight->"Bold"],
+ "\[CloseCurlyDoubleQuote] command"
+}], "Text",
+ CellChangeTimes->{{3.6484399657974443`*^9, 3.6484399753078566`*^9}, 
+   3.6484401799056296`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addClass\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", 
+    RowBox[{"class", "\[Rule]", "\"\<CLA\>\""}]}], "]"}], "//", 
+  "gds"}]], "Input",
+ CellChangeTimes->{{3.6436642642953067`*^9, 3.643664312451548*^9}, {
+   3.643664393240611*^9, 3.6436643936624856`*^9}, {3.643664698244527*^9, 
+   3.6436647068714805`*^9}, 3.648438246447545*^9, {3.648439608164912*^9, 
+   3.648439637190719*^9}, {3.6484396806506205`*^9, 3.6484396898228874`*^9}, 
+   3.648439720085432*^9, {3.648880142452566*^9, 3.648880145233816*^9}, {
+   3.6490562394074764`*^9, 3.6490563047336483`*^9}, {3.6490586657419796`*^9, 
+   3.6490586736667843`*^9}, 3.6491041393196044`*^9, {3.649104603799388*^9, 
+   3.649104607379466*^9}, 3.649104673482005*^9, {3.6491060686722617`*^9, 
+   3.6491060697660117`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"value\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 0, 9}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.643664294657603*^9, 3.6436644228802595`*^9, 3.6436646790042925`*^9, 
+   3.6436647136556597`*^9, 3.648439639756577*^9, {3.648439714873519*^9, 
+   3.6484397348436017`*^9}, 3.6488696575116997`*^9, 3.648882346404933*^9, {
+   3.649056280285406*^9, 3.64905630737525*^9}, 3.649058697317175*^9, 
+   3.6491046133052473`*^9, 3.649104674388255*^9, 3.649106266755734*^9, 
+   3.660461516719528*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Del Class", "Subsubsection",
+ CellChangeTimes->{{3.648439935759405*^9, 3.6484399375326023`*^9}}],
+
+Cell[TextData[{
+ "Uses the ",
+ StyleBox["DROP CLASS",
+  FontWeight->"Bold"],
+ " command"
+}], "Text",
+ CellChangeTimes->{{3.648440005756628*^9, 3.6484400121531487`*^9}, 
+   3.6484401844186287`*^9, {3.6484438450381126`*^9, 3.6484438474994955`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<delClass\>\""}], ",", " ", 
+    RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<CLA\>\""}]}], "]"}], "//", 
+  "gds"}]], "Input",
+ CellChangeTimes->{{3.643664721363668*^9, 3.6436647511585894`*^9}, 
+   3.64843824708817*^9, 3.6484396084100857`*^9, {3.6484396603729253`*^9, 
+   3.6484396703949304`*^9}, {3.6488801800385036`*^9, 
+   3.6488801824584255`*^9}, {3.649056321910406*^9, 3.649056333868414*^9}, {
+   3.6490587063826046`*^9, 3.6490587094626827`*^9}, 3.6491041393352294`*^9, {
+   3.649104624995677*^9, 3.6491046288872786`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"value\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 0, 
+       InterpretationBox["True", True]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.6436647552220664`*^9, {3.6484396954124703`*^9, 3.648439730433679*^9}, 
+   3.64843990330929*^9, 3.6488823553814955`*^9, 3.649056336274664*^9, 
+   3.6490587110251827`*^9, 3.64910463009138*^9, {3.6491062538924527`*^9, 
+   3.649106272631711*^9}, 3.66046152965158*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Add Class via POST", "Subsubsection",
+ CellChangeTimes->{{3.648439943844407*^9, 3.6484399458686285`*^9}, {
+  3.6484401910744457`*^9, 3.6484401927006545`*^9}}],
+
+Cell[TextData[{
+ "Uses",
+ StyleBox[" HTTP POST request",
+  FontWeight->"Bold"],
+ " http://localhost:2480/class/TestDB/CLA"
+}], "Text",
+ CellChangeTimes->{{3.6484400768229494`*^9, 3.6484401125370703`*^9}, {
+  3.6484401874960146`*^9, 3.6484401883554716`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odb", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<addClassViaHTTP\>\""}], ",", 
+   RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<CLA\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6436647872191367`*^9, 3.6436648337857075`*^9}, 
+   3.64843824777567*^9, 3.6484396087097425`*^9, 3.6491041393508544`*^9, {
+   3.660461595259055*^9, 3.660461596817349*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"9\"\>", ",", "201"}], "}"}]], "Output",
+ CellChangeTimes->{3.6436648354907856`*^9, 3.6484399078825316`*^9, 
+  3.648882362790675*^9, 3.6491062834647183`*^9, 3.660461534961194*^9, 
+  3.660461602693741*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Schema Less Operations", "Subchapter",
+ CellChangeTimes->{{3.643664905629778*^9, 3.6436649137163944`*^9}, {
+   3.648440212540531*^9, 3.648440220310192*^9}, {3.6484402519754753`*^9, 
+   3.6484402551776743`*^9}, {3.6484416472430086`*^9, 
+   3.6484416622468424`*^9}, {3.648444970737978*^9, 3.6484449744889545`*^9}, 
+   3.648886736659521*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Make a List of Rules", "Subsubsection",
+ CellChangeTimes->{{3.6436649446511765`*^9, 3.6436649730076723`*^9}, {
+  3.648444659919754*^9, 3.6484447080789337`*^9}, {3.6484449845094624`*^9, 
+  3.648444988179384*^9}, {3.6484452864630904`*^9, 3.648445320939653*^9}, {
+  3.648445354047075*^9, 3.648445372734575*^9}, {3.6484480795376945`*^9, 
+  3.6484480805689445`*^9}, {3.649056498472906*^9, 3.64905652246607*^9}, {
+  3.6491063208426485`*^9, 3.6491063429285855`*^9}, {3.6491064813533907`*^9, 
+  3.6491064942840548`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lisR", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"\"\<json1\>\"", "->", 
+      RowBox[{"Thread", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<z\>\""}], "}"}], "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<a\>\"", ",", "\"\<b\>\"", ",", "3.9"}], "}"}]}], 
+       "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<json2\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<alpha\>\"", ",", "3", ",", "\"\<beta\>\"", ",", " ", "2"}], 
+       "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<price\>\"", "\[Rule]", "5.3945"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<title\>\"", "->", "\"\<This is a title\>\""}]}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Represent as Dataset", "Subsubsection",
+ CellChangeTimes->{{3.649106499973508*^9, 3.649106512319211*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lisR", "//", "Association"}], "//", "Dataset"}]], "Input",
+ CellChangeTimes->{{3.649106420536008*^9, 3.649106429388547*^9}, {
+  3.660461719289234*^9, 3.6604617296373997`*^9}, {3.660461759705606*^9, 
+  3.660461770370273*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          InterpretationBox[
+           TagBox[
+            RowBox[{"\"x\"", "\[Rule]", "\"a\""}], Short[#, 5]& ], "x" -> 
+           "a"], ",", 
+          InterpretationBox[
+           TagBox[
+            RowBox[{"\"y\"", "\[Rule]", "\"b\""}], Short[#, 5]& ], "y" -> 
+           "b"], ",", 
+          InterpretationBox[
+           TagBox[
+            RowBox[{"\"z\"", "\[Rule]", "3.9`"}], Short[#, 5]& ], "z" -> 3.9],
+           "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"4", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"json1\" -> _, \"json2\" -> _, \"price\" -> _, \"title\" -> \
+_|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.649106430279172*^9, 3.649109003104785*^9, 3.649111484161462*^9, 
+   3.649111677454912*^9, 3.6491117567058887`*^9, 3.6491133298735065`*^9, 
+   3.649113501688936*^9, 3.6604617303989573`*^9, {3.660461760979045*^9, 
+   3.660461771444203*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Represent as JSON in Compact Form", "Subsubsection",
+ CellChangeTimes->{{3.6491065204158907`*^9, 3.649106529021164*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jrec", "=", 
+  RowBox[{"lisR", "//", "e2jC"}]}]], "Input",
+ CellChangeTimes->{{3.6491064492401094`*^9, 3.649106463687375*^9}, {
+  3.649106543438452*^9, 3.6491065445212607`*^9}}],
+
+Cell[BoxData["\<\"{\\\"json1\\\":{\\\"x\\\":\\\"a\\\",\\\"y\\\":\\\"b\\\",\\\"\
+z\\\":3.9},\\\"json2\\\":[\\\"alpha\\\",3,\\\"beta\\\",2],\\\"price\\\":5.\
+3945,\\\"title\\\":\\\"This is a title\\\"}\"\>"], "Output",
+ CellChangeTimes->{{3.6491064553533907`*^9, 3.6491064649852266`*^9}, {
+   3.649106532411105*^9, 3.649106546841076*^9}, 3.649109005825488*^9, 
+   3.649111484192712*^9, 3.649111677486162*^9, 3.6491117567371387`*^9, 
+   3.6491133299047565`*^9, 3.6491135017358108`*^9, 3.660461737661812*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jrec", "//", "j2d"}]], "Input",
+ CellChangeTimes->{{3.6490581792752037`*^9, 3.6490581843876324`*^9}, {
+  3.6491083756009216`*^9, 3.649108377711273*^9}, {3.660461781049144*^9, 
+  3.660461787600025*^9}, {3.660461840632646*^9, 3.660461843041079*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"4", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"json1\" -> _, \"json2\" -> _, \"price\" -> _, \"title\" -> \
+_|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.649058185163023*^9, 3.6490588089255733`*^9, 
+  3.649061791321684*^9, 3.649108378805023*^9, 3.6491090077639647`*^9, 
+  3.6491114842083364`*^9, 3.649111677533037*^9, 3.6491117567840137`*^9, 
+  3.6491133299516315`*^9, 3.649113501782686*^9, 3.6604618449890623`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Represent as Keys and Values Lists", "Subsubsection",
+ CellChangeTimes->{{3.64910992134006*^9, 3.6491099563996305`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ks", "=", 
+  RowBox[{
+   RowBox[{"lisR", "//", "Association"}], "//", "Keys"}]}]], "Input",
+ CellChangeTimes->{{3.6491096441320524`*^9, 3.6491096921789274`*^9}, {
+  3.6491097611232634`*^9, 3.649109783865451*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"json1\"\>", ",", "\<\"json2\"\>", ",", "\<\"price\"\>", 
+   ",", "\<\"title\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6491096545578337`*^9, 3.6491096927883024`*^9}, {
+   3.649109764671115*^9, 3.649109790039279*^9}, 3.6491099637140837`*^9, 
+   3.649111484223962*^9, 3.649111677564287*^9, 3.6491117567996387`*^9, 
+   3.6491133299672565`*^9, 3.649113501845186*^9, 3.660461860074888*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vs", "=", 
+  RowBox[{
+   RowBox[{"lisR", "//", "Association"}], "//", "Values"}]}]], "Input",
+ CellChangeTimes->{{3.649109791994357*^9, 3.649109814284396*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\<\"x\"\>", "\[Rule]", "\<\"a\"\>"}], ",", 
+     RowBox[{"\<\"y\"\>", "\[Rule]", "\<\"b\"\>"}], ",", 
+     RowBox[{"\<\"z\"\>", "\[Rule]", "3.9`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"alpha\"\>", ",", "3", ",", "\<\"beta\"\>", ",", "2"}], "}"}],
+    ",", "5.3945`", ",", "\<\"This is a title\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6491098022160363`*^9, 3.6491098158791227`*^9}, 
+   3.649109966213107*^9, 3.649111486560876*^9, 3.649111677579912*^9, 
+   3.6491117568308887`*^9, 3.6491133299828815`*^9, 3.6491135018608108`*^9, 
+   3.660461865830443*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Transform to SQL-92 syntax with Keys, Values as strings parenthesized \
+\>", "Subsubsection",
+ CellChangeTimes->{{3.649112383076893*^9, 3.649112388655311*^9}, {
+  3.649112481586631*^9, 3.64911250581124*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ksString", "=", 
+  RowBox[{"ks", "//", "l2k"}]}]], "Input",
+ CellChangeTimes->{{3.649111942577959*^9, 3.6491119454783497`*^9}, {
+  3.6491120422537403`*^9, 3.6491120578533497`*^9}, {3.6491128756084747`*^9, 
+  3.649112943543562*^9}, {3.660462000329022*^9, 3.6604620037137127`*^9}, {
+  3.660462728834133*^9, 3.660462732601007*^9}}],
+
+Cell[BoxData["\<\"(json1, json2, price, title)\"\>"], "Output",
+ CellChangeTimes->{
+  3.6491119465574512`*^9, 3.6491120622605762`*^9, 3.649112513267295*^9, 
+   3.6491128823303366`*^9, {3.649112925531864*^9, 3.649112947936223*^9}, 
+   3.6491131253289723`*^9, 3.6491133300141315`*^9, 3.6491135018920608`*^9, 
+   3.660462005141827*^9, 3.6604627336375103`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vsString", "=", 
+  RowBox[{"vs", "//", "l2v"}]}]], "Input",
+ CellChangeTimes->{{3.660462736521998*^9, 3.660462737815873*^9}}],
+
+Cell[BoxData["\<\"({\\\"x\\\":\\\"a\\\",\\\"y\\\":\\\"b\\\",\\\"z\\\":3.9}, [\
+\\\"alpha\\\",3,\\\"beta\\\",2], 5.3945, \\\"This is a title\\\")\"\>"], \
+"Output",
+ CellChangeTimes->{{3.6604620346287403`*^9, 3.66046204615664*^9}, 
+   3.66046273895537*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Write Record to OrientDB", "Subsubsection",
+ CellChangeTimes->{{3.6436651553145723`*^9, 3.6436651722178926`*^9}, {
+  3.648441365474699*^9, 3.648441369635832*^9}, {3.6484416724626627`*^9, 
+  3.6484416725720377`*^9}, {3.648444999512392*^9, 3.648445002262392*^9}, {
+  3.6484454343019576`*^9, 3.648445439662309*^9}}],
+
+Cell[TextData[{
+ "Using the ",
+ StyleBox["POST Document ",
+  FontWeight->"Bold"],
+ "HTTP API command"
+}], "Text",
+ CellChangeTimes->{{3.6484413747149334`*^9, 3.648441380695402*^9}, {
+  3.648441527969575*^9, 3.648441576635591*^9}, {3.649058141247426*^9, 
+  3.6490581591118793`*^9}, {3.649108917377246*^9, 3.649108923394824*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addDOCUMENT\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<CLA\>\""}], ",", " ", 
+    RowBox[{"record", "\[Rule]", "jrec"}], ",", 
+    RowBox[{"debug", "\[Rule]", "True"}]}], "]"}], "//", "gds"}]], "Input",
+ CellChangeTimes->{{3.643665181143674*^9, 3.6436652235235567`*^9}, {
+   3.64366527892883*^9, 3.643665279100705*^9}, {3.6436653113458223`*^9, 
+   3.6436653117989473`*^9}, {3.6436654094278626`*^9, 
+   3.6436654314376287`*^9}, {3.643701725961607*^9, 3.643701734589228*^9}, 
+   3.648438248416295*^9, 3.6484396092182503`*^9, {3.6484411681311007`*^9, 
+   3.648441171785757*^9}, {3.648441591182466*^9, 3.648441596120942*^9}, {
+   3.6484417177712564`*^9, 3.6484417284636393`*^9}, {3.6484454732278247`*^9, 
+   3.6484454745614147`*^9}, {3.6488801083671227`*^9, 
+   3.6488801099452477`*^9}, {3.648882727439394*^9, 3.64888283584738*^9}, {
+   3.648882908137168*^9, 3.6488829128644257`*^9}, {3.648882957839967*^9, 
+   3.648882963029914*^9}, {3.6490581971864605`*^9, 3.649058239968687*^9}, {
+   3.649058275294859*^9, 3.6490582988583355`*^9}, {3.6490587609226437`*^9, 
+   3.649058781149206*^9}, {3.649058813428503*^9, 3.649058816506628*^9}, 
+   3.6491041393508544`*^9, {3.6491089340071287`*^9, 3.6491089474963865`*^9}, {
+   3.660462124865766*^9, 3.6604621689610023`*^9}, {3.660462230362067*^9, 
+   3.6604622441214027`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/document/TestDB\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"{\\\"@class\\\":\\\"CLA\\\",\\\"json1\\\":{\\\"x\
+\\\":\\\"a\\\",\\\"y\\\":\\\"b\\\",\\\"z\\\":3.9},\\\"json2\\\":[\\\"alpha\\\"\
+,3,\\\"beta\\\",2],\\\"price\\\":5.3945,\\\"title\\\":\\\"This is a \
+title\\\"}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/document/TestDB", "\n=== Body ===\n", 
+   "{\"@class\":\"CLA\",\"json1\":{\"x\":\"a\",\"y\":\"b\",\"z\":3.9},\"json2\
+\":[\"alpha\",3,\"beta\",2],\"price\":5.3945,\"title\":\"This is a title\"}"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6604622525532017`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"#9:0\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 1}, {
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"price=f\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"9", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"@type\" -> _, \"@rid\" -> _, \"@version\" -> _, \"@class\" \
+-> _, \"json1\" -> _, \"json2\" -> _, \"price\" -> _, \"title\" -> _, \
+\"@fieldTypes\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.6484411749844804`*^9, 3.648441688292741*^9, 3.6484417295261393`*^9, 
+   3.64844554801709*^9, 3.64886971394642*^9, 3.6488723491116743`*^9, 
+   3.64887995446424*^9, 3.648882605438484*^9, {3.648882768472597*^9, 
+   3.6488827960933976`*^9}, 3.648882837761694*^9, 3.648882876299735*^9, 
+   3.6488829659487133`*^9, 3.6488830057119503`*^9, {3.649058217196226*^9, 
+   3.649058223839781*^9}, {3.6490582895595074`*^9, 3.6490582994052105`*^9}, {
+   3.649058767723425*^9, 3.649058782742956*^9}, 3.6490588173826046`*^9, 
+   3.649108951278613*^9, 3.6491090130940423`*^9, 3.660462252680833*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Using the ",
+ StyleBox["INSERT INTO <class> CONTENT ",
+  FontWeight->"Bold"],
+ "osql command"
+}], "Text",
+ CellChangeTimes->{{3.649109156825488*^9, 3.6491092225076313`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addCONTENT\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<CLA\>\""}], ",", 
+    RowBox[{"record", "\[Rule]", "jrec"}], ",", 
+    RowBox[{"construct", "\[Rule]", "\"\<RECORD\>\""}], ",", 
+    RowBox[{"debug", "\[Rule]", "True"}]}], "]"}], "//", "gds"}]], "Input",
+ CellChangeTimes->{{3.6491092268703766`*^9, 3.6491092705803523`*^9}, {
+  3.660462280449603*^9, 3.660462329201763*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/TestDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"INSERT INTO CLA content \
+{\\\"json1\\\":{\\\"x\\\":\\\"a\\\",\\\"y\\\":\\\"b\\\",\\\"z\\\":3.9},\\\"\
+json2\\\":[\\\"alpha\\\",3,\\\"beta\\\",2],\\\"price\\\":5.3945,\\\"title\\\":\
+\\\"This is a title\\\"}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/TestDB/sql", "\n=== Body ===\n", 
+   "INSERT INTO CLA content \
+{\"json1\":{\"x\":\"a\",\"y\":\"b\",\"z\":3.9},\"json2\":[\"alpha\",3,\"beta\"\
+,2],\"price\":5.3945,\"title\":\"This is a title\"}"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.660462340800894*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#9:1\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"price=f\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"3 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.6491092729114075`*^9, 3.660462340919488*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Using the ",
+ StyleBox["INSERT INTO <class> <keys> VALUES <values> ",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.649112964630836*^9, 3.649112966682207*^9}, {
+  3.649113026114456*^9, 3.6491130961297536`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addVALUES\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<CLA\>\""}], ",", 
+    RowBox[{"keys", "\[Rule]", "ksString"}], ",", 
+    RowBox[{"values", "\[Rule]", "vsString"}], ",", 
+    RowBox[{"construct", "\[Rule]", "\"\<RECORD\>\""}], ",", 
+    RowBox[{"debug", "\[Rule]", "True"}]}], "]"}], "//", "gds"}]], "Input",
+ CellChangeTimes->{{3.649112530430381*^9, 3.6491126106403418`*^9}, {
+  3.660462382737694*^9, 3.660462430009006*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/TestDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"INSERT INTO CLA (json1, json2, price, title) \
+VALUES ({\\\"x\\\":\\\"a\\\",\\\"y\\\":\\\"b\\\",\\\"z\\\":3.9}, [\\\"alpha\\\
+\",3,\\\"beta\\\",2], 5.3945, \\\"This is a title\\\")\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/TestDB/sql", "\n=== Body ===\n", 
+   "INSERT INTO CLA (json1, json2, price, title) VALUES \
+({\"x\":\"a\",\"y\":\"b\",\"z\":3.9}, [\"alpha\",3,\"beta\",2], 5.3945, \
+\"This is a title\")"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6604624344522963`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#9:2\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"price=d\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"3 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.649113115139519*^9, 3.6491133531488967`*^9, 
+  3.6491134595453815`*^9, 3.649113552592166*^9, 3.660462434569331*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Read ALL Records", "Subsubsection",
+ CellChangeTimes->{{3.649109439898712*^9, 3.6491094612366023`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<getOSQLCommand\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", 
+    RowBox[{"sql", "\[Rule]", " ", "\"\<select from CLA\>\""}]}], "]"}], "//",
+   "gds"}]], "Input",
+ CellChangeTimes->{{3.649109300491485*^9, 3.649109373582306*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#9:0\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          InterpretationBox[
+           TagBox["\"alpha\"", Short[#, 5]& ], "alpha"], ",", 
+          InterpretationBox[
+           TagBox["3", Short[#, 5]& ], 3], ",", 
+          InterpretationBox[
+           TagBox["\"beta\"", Short[#, 5]& ], "beta"], ",", 
+          InterpretationBox[
+           TagBox["2", Short[#, 5]& ], 2], "\[ThinSpace]", "}"}], 
+        LineBreakWithin -> Automatic], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"price=f\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#9:1\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          InterpretationBox[
+           TagBox["\"alpha\"", Short[#, 5]& ], "alpha"], ",", 
+          InterpretationBox[
+           TagBox["3", Short[#, 5]& ], 3], ",", 
+          InterpretationBox[
+           TagBox["\"beta\"", Short[#, 5]& ], "beta"], ",", 
+          InterpretationBox[
+           TagBox["2", Short[#, 5]& ], 2], "\[ThinSpace]", "}"}], 
+        LineBreakWithin -> Automatic], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"price=f\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#9:2\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          InterpretationBox[
+           TagBox["\"alpha\"", Short[#, 5]& ], "alpha"], ",", 
+          InterpretationBox[
+           TagBox["3", Short[#, 5]& ], 3], ",", 
+          InterpretationBox[
+           TagBox["\"beta\"", Short[#, 5]& ], "beta"], ",", 
+          InterpretationBox[
+           TagBox["2", Short[#, 5]& ], 2], "\[ThinSpace]", "}"}], 
+        LineBreakWithin -> Automatic], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"price=d\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"3 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"3", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.649109374660431*^9, 3.649110021576677*^9, 
+  3.6491135560618925`*^9, 3.660462483620659*^9}]
+}, Open  ]],
+
+Cell["\<\
+Note that the fieldType of the last record added is different from the \
+previous two\
+\>", "Text",
+ CellChangeTimes->{{3.6491136326956816`*^9, 3.6491136524281034`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Read a Single Record from OrientDB", "Subsubsection",
+ CellChangeTimes->{{3.6484446301707306`*^9, 3.648444637980301*^9}, {
+  3.648445007233095*^9, 3.6484450096403217`*^9}, {3.6484467160509224`*^9, 
+  3.648446716986487*^9}, {3.6484480870953116`*^9, 3.6484480895181627`*^9}, {
+  3.649109468803985*^9, 3.649109470992462*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<getRecord\>\""}], ",", " ", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+    RowBox[{"id", "\[Rule]", "\"\<9:2\>\""}]}], "]"}], "//", "gds"}]], "Input",
+ CellChangeTimes->{{3.6484433510739655`*^9, 3.648443472371504*^9}, 
+   3.64844359294839*^9, {3.648443633205818*^9, 3.648443633610093*^9}, {
+   3.648445491817871*^9, 3.648445494395996*^9}, {3.6488697393909826`*^9, 
+   3.648869742141959*^9}, {3.6488830185740175`*^9, 3.6488830192003202`*^9}, {
+   3.649058347895445*^9, 3.649058360574156*^9}, {3.6490588280105343`*^9, 
+   3.6490588360437374`*^9}, 3.6491041393664794`*^9, {3.6491090305100584`*^9, 
+   3.6491090409202147`*^9}, {3.649113615951541*^9, 3.649113616889041*^9}, 
+   3.6491544901517344`*^9, 3.6491563399394245`*^9, {3.660462570633539*^9, 
+   3.660462572145208*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"#9:2\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 1}, {
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"price=d\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"9", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"@type\" -> _, \"@rid\" -> _, \"@version\" -> _, \"@class\" \
+-> _, \"json1\" -> _, \"json2\" -> _, \"price\" -> _, \"title\" -> _, \
+\"@fieldTypes\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.648443455894498*^9, 3.6484434728899937`*^9}, 
+   3.648443655181861*^9, 3.6484455594799805`*^9, {3.6488697274383345`*^9, 
+   3.6488697439310217`*^9}, 3.6488830238573885`*^9, {3.649058355461851*^9, 
+   3.649058361808531*^9}, 3.649058837607214*^9, 3.649109041968066*^9, 
+   3.649109487738556*^9, 3.649113618248416*^9, 3.660462573416718*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Delete Records permanently from OrientDB", "Subsubsection",
+ CellChangeTimes->{{3.648443812308987*^9, 3.648443816080427*^9}, {
+  3.648445014361025*^9, 3.6484450169713764`*^9}, {3.648446721688386*^9, 
+  3.6484467327499585`*^9}, {3.6484480944742174`*^9, 3.648448101858983*^9}}],
+
+Cell[TextData[{
+ "Uses the ",
+ StyleBox["TRUNCATE RECORD",
+  FontWeight->"Bold"],
+ " sql command"
+}], "Text",
+ CellChangeTimes->{{3.648443823128787*^9, 3.6484438303458195`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<delRecords\>\""}], ",", " ", 
+    RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", 
+    RowBox[{"id", "\[Rule]", " ", "\"\<[9:0, 9:1]\>\""}]}], "]"}], "//", 
+  "gds"}]], "Input",
+ CellChangeTimes->{{3.6484440715537853`*^9, 3.6484441101367135`*^9}, {
+   3.648444153738081*^9, 3.6484442064497223`*^9}, {3.6484442483384733`*^9, 
+   3.648444261955658*^9}, 3.648444392249401*^9, {3.648444449213868*^9, 
+   3.6484444781854153`*^9}, 3.6484445107931724`*^9, {3.648444592491043*^9, 
+   3.648444608836746*^9}, {3.648446689213002*^9, 3.6484466961794977`*^9}, {
+   3.649058853709753*^9, 3.6490588552107296`*^9}, 3.6491041393821044`*^9, {
+   3.6491136625257597`*^9, 3.6491136633070097`*^9}, {3.6491137172249784`*^9, 
+   3.64911372264783*^9}, {3.6604628270339127`*^9, 3.660462834289556*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"value\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 0, 2}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.6484442644823875`*^9, {3.6484444661904707`*^9, 3.6484444805279975`*^9}, 
+   3.6484445114549656`*^9, 3.648444610322098*^9, {3.6484455701606445`*^9, 
+   3.648445582617676*^9}, 3.6484457120627255`*^9, 3.6484466978926687`*^9, 
+   3.6490588582576046`*^9, 3.649113671824588*^9, 3.649113728727908*^9, 
+   3.6604628361795*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<getOSQLCommand\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", 
+    RowBox[{"sql", "\[Rule]", " ", "\"\<select from CLA\>\""}]}], "]"}], "//",
+   "gds"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"json1\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"json2\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"price\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"title\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#9:2\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"x\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"a\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"y\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"b\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"z\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            TagBox[
+             InterpretationBox["\"3.9\"", 3.9, AutoDelete -> True], 
+             NumberForm[#, 4]& ]}], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox["\"alpha\"", FontColor -> GrayLevel[0.4]], ",", 3, ",", 
+          StyleBox["\"beta\"", FontColor -> GrayLevel[0.4]], ",", 2, 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic], 
+       TagBox[
+        InterpretationBox["\"5.395\"", 5.3945, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"This is a title\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"price=d\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"3 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.6491137406986113`*^9, 3.660462840027567*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Uses the ",
+ StyleBox["TRUNCATE CLASS",
+  FontWeight->"Bold"],
+ " sql command"
+}], "Text",
+ CellChangeTimes->{{3.648446793102621*^9, 3.6484468040410976`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<delAllRecords\>\""}], ",", " ", 
+    RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+    RowBox[{"class", "\[Rule]", "\"\<CLA\>\""}]}], "]"}], "//", 
+  "gds"}]], "Input",
+ CellChangeTimes->{{3.6484467387881813`*^9, 3.6484467819034023`*^9}, 
+   3.6491041393821044`*^9, {3.649113749123416*^9, 3.649113749764041*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"value\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 0, 1, 
+       StyleBox["\"value=l\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.648446785163168*^9, 3.6490588697917843`*^9, 
+  3.6491137602542753`*^9, 3.660462865553919*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Schema Full (Mixed) Operations", "Subchapter",
+ CellChangeTimes->{{3.643698872588088*^9, 3.643698875617663*^9}, {
+  3.643701505667876*^9, 3.6437015076557617`*^9}, {3.643701572413477*^9, 
+  3.6437016010585623`*^9}, {3.648446904592332*^9, 3.648446906576707*^9}, {
+  3.648883962037073*^9, 3.648883963849573*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Add Schema Full Class", "Subsection",
+ CellChangeTimes->{{3.6437016185028677`*^9, 3.643701621227337*^9}, {
+  3.6437023007294474`*^9, 3.6437023027097645`*^9}, {3.6437042240497246`*^9, 
+  3.6437042254290156`*^9}, {3.648447216896309*^9, 3.6484472189285355`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<addClass\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}]}], "]"}], "//", 
+  "gds"}]], "Input",
+ CellChangeTimes->{{3.643702308803299*^9, 3.643702375749476*^9}, {
+   3.648447193596504*^9, 3.6484472093123245`*^9}, 3.6491041393977294`*^9, {
+   3.6491138533544703`*^9, 3.649113853959158*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"value\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 0, 10}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.6437023792673545`*^9, 3.6484472229343944`*^9, 
+  3.6488831075250263`*^9, 3.6490590178639703`*^9, 3.6491138380892363`*^9, 
+  3.660462884659657*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Add Record Fields (Properties)", "Subsection",
+ CellChangeTimes->{{3.6437017510970135`*^9, 3.6437017578032055`*^9}, {
+  3.6484472376365433`*^9, 3.6484472449060745`*^9}, {3.6484474273468575`*^9, 
+  3.648447456022639*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Get Class Information", "Subsubsection",
+ CellChangeTimes->{{3.6437024109905434`*^9, 3.6437024152407703`*^9}, {
+  3.648447264240059*^9, 3.64844726810041*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<getClass\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}]}], "]"}], "//", 
+  "gds"}]], "Input",
+ CellChangeTimes->{{3.643698895984305*^9, 3.643698962828725*^9}, {
+   3.643699423047862*^9, 3.643699427362097*^9}, {3.6437023957877693`*^9, 
+   3.643702398307516*^9}, {3.6484472623640823`*^9, 3.648447299663887*^9}, 
+   3.6491041394133544`*^9, {3.6491138613024197`*^9, 3.649113861836795*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"name\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"superClass\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"superClasses\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"alias\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null]}, {
+       StyleBox["\"abstract\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox["False", False]}, {
+       StyleBox["\"strictmode\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox["False", False]}, {
+       StyleBox["\"clusters\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 10, "\[ThinSpace]", "}"}], 
+        LineBreakWithin -> Automatic]}, {
+       StyleBox["\"defaultCluster\"", 
+        GrayLevel[0.3]], 10}, {
+       StyleBox["\"clusterSelection\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"round-robin\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"records\"", 
+        GrayLevel[0.3]], 0}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"10", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"name\" -> _, \"superClass\" -> _, \"superClasses\" -> _, \
+\"alias\" -> _, \"abstract\" -> _, \"strictmode\" -> _, \"clusters\" -> _, \
+\"defaultCluster\" -> _, \"clusterSelection\" -> _, \"records\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.6436989705563955`*^9, 3.643699428924445*^9, 
+  3.643699727596939*^9, 3.643700813275159*^9, 3.643702399811968*^9, 
+  3.6484472816433787`*^9, 3.6484473150752077`*^9, 3.6488831151263237`*^9, 
+  3.6490589595300145`*^9, 3.6490590352928457`*^9, 3.649113866088842*^9, 
+  3.660462900555834*^9}]
+}, Open  ]],
+
+Cell["There are no properties defined and no records added", "Text",
+ CellChangeTimes->{{3.6437066423234415`*^9, 3.6437066520497613`*^9}, {
+  3.6484473488898263`*^9, 3.6484473493585763`*^9}, {3.6490590402817955`*^9, 
+  3.649059066321431*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Add Properties", "Subsubsection",
+ CellChangeTimes->{{3.6437041939531507`*^9, 3.6437042021990147`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odb", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addProperty\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<fruitNameField\>\""}], ",", 
+   RowBox[{"proptype", "\[Rule]", "\"\<String\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.643704206469875*^9, 3.6437042809531612`*^9}, {
+   3.6437051180664425`*^9, 3.6437051217384796`*^9}, {3.6437052973432837`*^9, 
+   3.6437052976087666`*^9}, 3.6484473000545115`*^9, {3.648447677385198*^9, 
+   3.648447677572698*^9}, 3.6491041394289794`*^9, {3.6604629377376537`*^9, 
+   3.6604629381379843`*^9}, {3.6604629703619337`*^9, 3.660462991857688*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":1}]}\"\>", ",", "200"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.643704288540432*^9, 3.643704628114683*^9, 3.643704721974248*^9, 
+   3.643705112092841*^9, 3.643705161589301*^9, 3.6437054700163355`*^9, 
+   3.6437057957472*^9, 3.643705953265996*^9, 3.648447482196467*^9, 
+   3.6484477180531664`*^9, 3.6488831243828993`*^9, 3.6490590728702593`*^9, {
+   3.6491404154764996`*^9, 3.649140440975523*^9}, {3.6604629495801363`*^9, 
+   3.660462994266179*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odb", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addProperty\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<fruitDescrField\>\""}], ",", 
+   RowBox[{"proptype", "\[Rule]", "\"\<String\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6437059622384076`*^9, 3.6437059703418093`*^9}, 
+   3.648447300382637*^9, {3.648447687540471*^9, 3.648447687712346*^9}, 
+   3.6491041394289794`*^9, {3.660463001481575*^9, 3.660463020802434*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":2}]}\"\>", ",", "200"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6437059722111797`*^9, 3.6484477216801195`*^9, 3.648883124804368*^9, 
+   3.649059074918111*^9, 3.6491404464764996`*^9, {3.660463010060322*^9, 
+   3.660463022721581*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odb", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addProperty\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<fruitPriceField\>\""}], ",", " ", 
+   RowBox[{"proptype", "\[Rule]", "\"\<DECIMAL\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.643705983283313*^9, 3.643705996908258*^9}, {
+   3.643706101423029*^9, 3.6437061044103336`*^9}, 3.6484473008054886`*^9, {
+   3.648447693073674*^9, 3.6484476932455497`*^9}, 3.6491041394289794`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":3}]}\"\>", ",", "200"}], "}"}]], "Output",
+ CellChangeTimes->{3.643706237803238*^9, 3.648447726045354*^9, 
+  3.6488831249624186`*^9, 3.6490590769054155`*^9, 3.649140449649351*^9, 
+  3.660463027489142*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Delete Properties", "Subsubsection",
+ CellChangeTimes->{{3.649151875942932*^9, 3.649151879489807*^9}}],
+
+Cell[TextData[StyleBox["Note that Class properties, i.e. schemafull record \
+fields, are not removed from existing records. \nThey are deleted only from \
+the schema of the class",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.6491518919312134`*^9, 3.6491519780005493`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odb", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<delProperty\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<fruitNameField\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6491519937192993`*^9, 3.649152015036682*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ CellChangeTimes->{3.649152035236759*^9, 3.660463117539316*^9}]
+}, Open  ]],
+
+Cell["Add the property again", "Text",
+ CellChangeTimes->{{3.6491520941184235`*^9, 3.6491521003547516`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"odb", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addProperty\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<fruitNameField\>\""}], ",", 
+   RowBox[{"proptype", "\[Rule]", "\"\<String\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.649152105308853*^9, {3.660463127746396*^9, 3.6604631350094643`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":3}]}\"\>", ",", "200"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.649152109686783*^9, {3.660463121566227*^9, 3.6604631369317904`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Get Class Information", "Subsubsection",
+ CellChangeTimes->{{3.643706311722163*^9, 3.6437063135665493`*^9}, {
+  3.648448443191642*^9, 3.6484484762726965`*^9}}],
+
+Cell["Represent Class Information with Dataset structure", "Text",
+ CellChangeTimes->{{3.648448478367423*^9, 3.6484484951320715`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$fruitDS", "=", 
+  RowBox[{
+   RowBox[{"odb", "[", 
+    RowBox[{
+     RowBox[{"com", "\[Rule]", " ", "\"\<getClass\>\""}], ",", 
+     RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+     RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}]}], "]"}], "//", 
+   "gds"}]}]], "Input",
+ CellChangeTimes->{
+  3.6437066086967287`*^9, 3.648447301477363*^9, {3.648447741897893*^9, 
+   3.648447751822698*^9}, {3.6484478386559753`*^9, 3.6484478520973744`*^9}, {
+   3.6484478897803364`*^9, 3.6484479198379536`*^9}, 3.6491041394289794`*^9, {
+   3.6491521415539703`*^9, 3.649152143133072*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"name\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"superClass\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"superClasses\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"alias\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null]}, {
+       StyleBox["\"abstract\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox["False", False]}, {
+       StyleBox["\"strictmode\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox["False", False]}, {
+       StyleBox["\"clusters\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 10, "\[ThinSpace]", "}"}], 
+        LineBreakWithin -> Automatic]}, {
+       StyleBox["\"defaultCluster\"", 
+        GrayLevel[0.3]], 10}, {
+       StyleBox["\"clusterSelection\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"round-robin\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"records\"", 
+        GrayLevel[0.3]], 0}, {
+       StyleBox["\"properties\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"fruitPriceField\"", FontColor -> GrayLevel[0.4]]}],
+              ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"DECIMAL\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"mandatory\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox["False", False]}], ",", 
+             RowBox[{
+               StyleBox["\"readonly\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox["False", False]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "5"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "2"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       ItemBox[
+        RowBox[{"3 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"11", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"name\" -> _, \"superClass\" -> _, \"superClasses\" -> _, \
+\"alias\" -> _, \"abstract\" -> _, \"strictmode\" -> _, \"clusters\" -> _, \
+\"defaultCluster\" -> _, \"clusterSelection\" -> _, \"records\" -> _, \
+\"properties\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.648447920792055*^9, 3.6488831354212904`*^9, 
+  3.64905908754897*^9, 3.649152144945572*^9, 3.6491522959621735`*^9, 
+  3.660463141392055*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Extract and View the Attributes for all Properties (Fields) of the Class\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.648448504744376*^9, 3.6484485543466434`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"gfa", "[", 
+  RowBox[{"$fruitDS", ",", "All"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6484478182201586`*^9, 3.6484478220033617`*^9}, {
+  3.6484478624229145`*^9, 3.648447865595766*^9}, {3.6484479246524067`*^9, 
+  3.6484479303897114`*^9}, {3.6484479764092426`*^9, 3.648447985580141*^9}, {
+  3.6491522864758453`*^9, 3.6491522880227203`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"name\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"mandatory\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"readonly\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"notNull\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"min\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"max\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"regexp\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"collate\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"fruitPriceField\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"DECIMAL\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox["False", False], 
+       InterpretationBox["False", False], 
+       InterpretationBox["False", False], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       StyleBox["\"default\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitDescrField\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"STRING\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox["False", False], 
+       InterpretationBox["False", False], 
+       InterpretationBox["False", False], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       StyleBox["\"default\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitNameField\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"STRING\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox["False", False], 
+       InterpretationBox["False", False], 
+       InterpretationBox["False", False], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null], 
+       StyleBox["\"default\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"3", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.648447866345766*^9, 3.6484479313291645`*^9, {3.648447978878969*^9, 
+   3.6484479864561176`*^9}, 3.6488831637107134`*^9, 3.6490590970099077`*^9, {
+   3.6491522895227203`*^9, 3.6491522990246735`*^9}, 3.660463193458325*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Add Mixed Records", "Subsection",
+ CellChangeTimes->{{3.643706293126271*^9, 3.6437063008521366`*^9}, {
+  3.643707276564047*^9, 3.6437072921245527`*^9}, {3.643727672375858*^9, 
+  3.643727673536014*^9}, {3.648824999271387*^9, 3.648825000052637*^9}, {
+  3.6488839439301376`*^9, 3.6488839463573856`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Schema-less", "Subsubsection",
+ CellChangeTimes->{{3.6437070718421154`*^9, 3.6437071109344826`*^9}, {
+  3.643707302036501*^9, 3.643707317759214*^9}, {3.6437276356819386`*^9, 
+  3.6437276508838058`*^9}, {3.648883263661584*^9, 3.6488832662250605`*^9}, {
+  3.648883302255334*^9, 3.6488833200170527`*^9}, {3.6488834517824135`*^9, 
+  3.6488834527833896`*^9}, {3.6490591085147905`*^9, 3.649059131335103*^9}, {
+  3.6490591975235796`*^9, 3.649059200964986*^9}}],
+
+Cell["\<\
+It means that the keys of the record have not been defined as properties, \
+i.e. fields, of the class\
+\>", "Text",
+ CellChangeTimes->{{3.649059204060689*^9, 3.649059233737447*^9}}],
+
+Cell[TextData[{
+ "Uses the ",
+ StyleBox["POST document ",
+  FontWeight->"Bold"],
+ "HTTP API command"
+}], "Text",
+ CellChangeTimes->{{3.6484413747149334`*^9, 3.648441380695402*^9}, {
+  3.648441527969575*^9, 3.648441576635591*^9}, {3.649059189005025*^9, 
+  3.649059192569478*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fruitRec", "=", 
+  RowBox[{
+   RowBox[{"Thread", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<fruitName\>\"", ",", "\"\<fruitDescr\>\"", ",", " ", 
+       "\"\<fruitPrice\>\""}], "}"}], "->", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<apple\>\"", ",", " ", "\"\<this is an apple\>\"", ",", " ", 
+       "9.55"}], "}"}]}], "]"}], "//", "e2j"}]}]], "Input",
+ CellChangeTimes->{{3.6491530977401943`*^9, 3.6491531341435146`*^9}, {
+  3.649153188205203*^9, 3.6491531930014668`*^9}}],
+
+Cell[BoxData["\<\"{\\n    \\\"fruitName\\\": \\\"apple\\\",\\n    \
+\\\"fruitDescr\\\": \\\"this is an apple\\\",\\n    \\\"fruitPrice\\\": \
+9.55\\n}\"\>"], "Output",
+ CellChangeTimes->{{3.6491531202314053`*^9, 3.649153135644491*^9}, 
+   3.649153194131648*^9, 3.660463612886136*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addCONTENT\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+    RowBox[{"record", "\[Rule]", "fruitRec"}], ",", 
+    RowBox[{"construct", "\[Rule]", "\"\<RECORD\>\""}], ",", 
+    RowBox[{"debug", "\[Rule]", "True"}]}], "]"}], "//", "gds"}]], "Input",
+ CellChangeTimes->{{3.643706806232587*^9, 3.643706951910592*^9}, {
+   3.6437073306653333`*^9, 3.643707363022173*^9}, 3.648447302039863*^9, {
+   3.648825038347559*^9, 3.6488250912056265`*^9}, {3.648883345152795*^9, 
+   3.648883349550256*^9}, {3.6488835028468666`*^9, 3.648883552341025*^9}, {
+   3.6490592559171343`*^9, 3.649059309513814*^9}, {3.649059475399556*^9, 
+   3.6490594790411577`*^9}, {3.649059520435689*^9, 3.649059534877095*^9}, {
+   3.649059632105496*^9, 3.6490596353252225`*^9}, 3.6490597554331574`*^9, 
+   3.6490598184751496`*^9, 3.6491041394289794`*^9, {3.649153231142335*^9, 
+   3.6491532847409678`*^9}, {3.660463628410643*^9, 3.6604636670896*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/TestDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"INSERT INTO FRUIT content {\\n    \
+\\\"fruitName\\\": \\\"apple\\\",\\n    \\\"fruitDescr\\\": \\\"this is an \
+apple\\\",\\n    \\\"fruitPrice\\\": 9.55\\n}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/TestDB/sql", "\n=== Body ===\n", 
+   "INSERT INTO FRUIT content {\n    \"fruitName\": \"apple\",\n    \
+\"fruitDescr\": \"this is an apple\",\n    \"fruitPrice\": 9.55\n}"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.660463670711787*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitName\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitDescr\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPrice\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#10:2\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"apple\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"this is an apple\"", FontColor -> GrayLevel[0.4]], 
+       TagBox[
+        InterpretationBox["\"9.55\"", 9.55, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"fruitPrice=f\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.649059521295064*^9, 3.649059543458541*^9}, 
+   3.649059657413113*^9, 3.649059830351126*^9, 3.6490600188395414`*^9, 
+   3.6490604581262703`*^9, 3.6491532537321787`*^9, 3.6491532866794443`*^9, 
+   3.6604636217475777`*^9, 3.660463670824519*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Schema-full - Fields have been defined", "Subsubsection",
+ CellChangeTimes->{{3.643707085904129*^9, 3.643707101077488*^9}, {
+  3.6437073801808424`*^9, 3.643707388825652*^9}, {3.643727659845192*^9, 
+  3.643727666388553*^9}, {3.6488834297128572`*^9, 3.648883458578312*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addOSQLCommand\>\""}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+    "sql", "\[Rule]", " ", 
+     "\"\<INSERT INTO FRUIT(fruitNameField,fruitDescrField,fruitPriceField) \
+VALUES ('LEMONS','LEMONS ARE GREAT',17.99)\>\""}]}], "\[IndentingNewLine]", 
+   "]"}], "//", "gds"}]], "Input",
+ CellChangeTimes->{{3.6437070654405813`*^9, 3.6437070691943445`*^9}, {
+   3.6437073935778756`*^9, 3.643707396052727*^9}, {3.643707428456771*^9, 
+   3.643707599247291*^9}, 3.6484473026355667`*^9, {3.648825456515897*^9, 
+   3.648825522758234*^9}, {3.6488835608390718`*^9, 3.64888358372872*^9}, 
+   3.648969578181094*^9, 3.6490597634058137`*^9, {3.6490598375249543`*^9, 
+   3.649059868974173*^9}, {3.6490599063196335`*^9, 3.649059930546196*^9}, {
+   3.649060036917818*^9, 3.6490600866472993`*^9}, {3.649060261899731*^9, 
+   3.649060278358701*^9}, 3.6490603266316805`*^9, {3.649060695088727*^9, 
+   3.6490607000961475`*^9}, 3.6491041394446044`*^9, {3.649153317100343*^9, 
+   3.649153339390382*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitNameField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitDescrField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPriceField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#10:0\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"LEMONS\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"LEMONS ARE GREAT\"", FontColor -> GrayLevel[0.4]], 
+       TagBox[
+        InterpretationBox["\"17.99\"", 17.99, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"fruitPriceField=c\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.6491533403122573`*^9, 3.660463252676042*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addOSQLCommand\>\""}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+    "sql", "\[Rule]", " ", 
+     "\"\<INSERT INTO FRUIT SET fruitNameField='Strawberries', \
+fruitDescrField='I like them', fruitPriceField=18.59\>\""}]}], 
+   "\[IndentingNewLine]", "]"}], " ", "//", "gds"}]], "Input",
+ CellChangeTimes->{{3.64370784421763*^9, 3.643707943225936*^9}, 
+   3.6484473031668167`*^9, {3.648883648586142*^9, 3.6488836892707124`*^9}, 
+   3.648969583055669*^9, {3.6490601426135364`*^9, 3.6490601942404895`*^9}, {
+   3.649060306261208*^9, 3.649060329053047*^9}, 3.6491041394602294`*^9, {
+   3.6491533598952646`*^9, 3.6491533687106943`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitDescrField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitNameField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPriceField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#10:1\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"I like them\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"Strawberries\"", FontColor -> GrayLevel[0.4]], 
+       TagBox[
+        InterpretationBox["\"18.59\"", 18.59, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"fruitPriceField=c\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.649153372141359*^9, 3.660463265407752*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Get Records", "Subsection",
+ CellChangeTimes->{{3.643701422117196*^9, 3.6437014449506364`*^9}, {
+  3.643706272727112*^9, 3.643706275459695*^9}, {3.6437067589467916`*^9, 
+  3.6437067606537476`*^9}, {3.643707609667408*^9, 3.6437076138016357`*^9}, {
+  3.6488839748204713`*^9, 3.6488839756905885`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Get \[OpenCurlyQuote]apple\[CloseCurlyQuote] Record where fruitPrice : \
+FLOAT", "Subsubsection",
+ CellChangeTimes->{{3.6437274761684027`*^9, 3.643727480060981*^9}, {
+  3.643727527300043*^9, 3.643727533701996*^9}, {3.6488840491445675`*^9, 
+  3.648884066232458*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addOSQLCommand\>\""}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+    "sql", "\[Rule]", " ", 
+     "\"\<select from FRUIT where fruitName=='apple'\>\""}]}], "]"}], "//", 
+  "gds"}]], "Input",
+ CellChangeTimes->{{3.643707996292535*^9, 3.643708001074078*^9}, {
+   3.6437080419615135`*^9, 3.643708068577116*^9}, 3.6484473036521683`*^9, {
+   3.6488839845336924`*^9, 3.6488840324971066`*^9}, 3.648969586014342*^9, 
+   3.6490603522745905`*^9, 3.6491041397414794`*^9, {3.6491534485658407`*^9, 
+   3.6491534618532143`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitName\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitDescr\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPrice\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#10:2\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"apple\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"this is an apple\"", FontColor -> GrayLevel[0.4]], 
+       TagBox[
+        InterpretationBox["\"9.55\"", 9.55, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"fruitPrice=f\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.649153464369816*^9, 3.660463686461959*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Get \[OpenCurlyQuote]LEMONS\[CloseCurlyQuote] Record where \
+fruitPriceField : DECIMAL", "Subsubsection",
+ CellChangeTimes->{{3.6437274545277777`*^9, 3.643727459981879*^9}, {
+  3.64372754065448*^9, 3.643727541352505*^9}, {3.6488840861025753`*^9, 
+  3.648884096484411*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addOSQLCommand\>\""}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+    "sql", "\[Rule]", " ", 
+     "\"\<select from FRUIT where fruitNameField=='LEMONS'\>\""}]}], "]"}], "//",
+   "gds"}]], "Input",
+ CellChangeTimes->{{3.643707629601014*^9, 3.643707756136445*^9}, 
+   3.6484473041521683`*^9, {3.6488841045010123`*^9, 3.6488841390566764`*^9}, 
+   3.6489695896269455`*^9, 3.6490603741475153`*^9, 3.6491041397571044`*^9, {
+   3.6491534712233315`*^9, 3.649153477303409*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitNameField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitDescrField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPriceField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#10:0\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"LEMONS\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"LEMONS ARE GREAT\"", FontColor -> GrayLevel[0.4]], 
+       TagBox[
+        InterpretationBox["\"17.99\"", 17.99, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"fruitPriceField=c\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.6437076906169324`*^9, 3.643707719199232*^9}, 
+   3.643707757895855*^9, 3.648884141511755*^9, 3.648884294185531*^9, 
+   3.649060377594247*^9, 3.6490604953404236`*^9, 3.649153478695011*^9, 
+   3.660463518299973*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Get \[OpenCurlyQuote]Strawberries\[CloseCurlyQuote] Record where \
+fruitPriceField > 18.01", "Subsubsection",
+ CellChangeTimes->{{3.643727414134838*^9, 3.6437274365209417`*^9}, {
+  3.6437275466685123`*^9, 3.643727550403415*^9}, {3.6488843037421713`*^9, 
+  3.648884319176742*^9}, {3.6488843794769607`*^9, 3.6488843812465725`*^9}, {
+  3.660463801944508*^9, 3.660463803696681*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"odb", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<addOSQLCommand\>\""}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<FRUIT\>\""}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+    "sql", "\[Rule]", " ", 
+     "\"\<select from FRUIT where fruitPriceField > 18.01\>\""}]}], "]"}], "//",
+   "gds"}]], "Input",
+ CellChangeTimes->{{3.6437081553547535`*^9, 3.6437081719485316`*^9}, 
+   3.6484473046052933`*^9, {3.648884386892641*^9, 3.64888441731184*^9}, 
+   3.6489695950899844`*^9, 3.6490603901970553`*^9, 3.6491041397727294`*^9, {
+   3.6491534850729403`*^9, 3.6491534923414955`*^9}, {3.660463784226042*^9, 
+   3.660463787902725*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitDescrField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitNameField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPriceField\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"#10:1\"", FontColor -> GrayLevel[0.4]], 1, 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"I like them\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"Strawberries\"", FontColor -> GrayLevel[0.4]], 
+       TagBox[
+        InterpretationBox["\"18.59\"", 18.59, AutoDelete -> True], 
+        NumberForm[#, 4]& ], 
+       StyleBox["\"fruitPriceField=c\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"1", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.6437081737594137`*^9, 3.6488844197966833`*^9, 
+  3.6490604011821833`*^9, 3.6490604997936974`*^9, 3.6491534933258705`*^9, 
+  3.6604637064365797`*^9, 3.660463789510859*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Update Records", "Subsection",
+ CellChangeTimes->{{3.649153513840519*^9, 3.6491535168727455`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Read the Record we want to modify ", "Subsubsection",
+ CellChangeTimes->{{3.649157977151702*^9, 3.6491579913470144`*^9}, {
+  3.6491580613664007`*^9, 3.6491580657423773`*^9}, {3.6491605151462383`*^9, 
+  3.6491605254606915`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"recOLD", "=", 
+  RowBox[{
+   RowBox[{"odb", "[", 
+    RowBox[{
+     RowBox[{"com", "\[Rule]", "\"\<getRecord\>\""}], ",", 
+     RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", 
+     RowBox[{"id", "\[Rule]", " ", "\"\<10:2\>\""}]}], "]"}], "//", 
+   "gds"}]}]], "Input",
+ CellChangeTimes->{{3.6491545641292734`*^9, 3.6491546258041935`*^9}, {
+   3.6491546719536448`*^9, 3.649154680736848*^9}, 3.64915517753907*^9, {
+   3.6491563043823442`*^9, 3.649156305015157*^9}, {3.649157232573394*^9, 
+   3.6491572344513235`*^9}, {3.6491578489534597`*^9, 
+   3.6491578527981863`*^9}, {3.6491579112757254`*^9, 3.649157921997405*^9}, {
+   3.649157970363616*^9, 3.6491579743851004`*^9}, {3.6491580778781195`*^9, 
+   3.649158089381049*^9}, {3.649158817437585*^9, 3.6491588372578974`*^9}, {
+   3.649158883218835*^9, 3.649158923156335*^9}, {3.6491591178994246`*^9, 
+   3.6491591198369246`*^9}, {3.6491592133486433`*^9, 
+   3.6491592163818464`*^9}, {3.660463841376855*^9, 3.6604638428872623`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"#10:2\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 1}, {
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitName\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"apple\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitDescr\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"this is an apple\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitPrice\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"9.55\"", 9.55, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPrice=f\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"1 level", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"8", "elements"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"@type\" -> _, \"@rid\" -> _, \"@version\" -> _, \"@class\" \
+-> _, \"fruitName\" -> _, \"fruitDescr\" -> _, \"fruitPrice\" -> _, \
+\"@fieldTypes\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.6491546075179043`*^9, 3.649154643211457*^9}, {
+   3.649154683206574*^9, 3.649154692693879*^9}, 3.6491551818837967`*^9, {
+   3.649155555545282*^9, 3.649155565887079*^9}, 3.6491560484404497`*^9, 
+   3.649156215590841*^9, {3.6491562894170127`*^9, 3.6491563063089075`*^9}, 
+   3.649157237342925*^9, 3.6491578538763113`*^9, {3.649157917573577*^9, 
+   3.6491579234915457`*^9}, 3.649157993879241*^9, 3.649158034818549*^9, 
+   3.649158090302924*^9, 3.649158176274604*^9, 3.6491586277129755`*^9, 
+   3.649158840274499*^9, {3.6491589019737177`*^9, 3.6491589251729364`*^9}, 
+   3.6491591242617292`*^9, 3.6491592184755964`*^9, 3.649159356723074*^9, 
+   3.649161757203781*^9, 3.660463845766943*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"recNEW", "=", 
+   RowBox[{"recOLD", "//", "Normal"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6491588460098505`*^9, 3.6491588750918818`*^9}, {
+  3.6491589280258665`*^9, 3.649158937529741*^9}, {3.6491591374570417`*^9, 
+  3.6491591745898542`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Modify Values", "Subsubsection",
+ CellChangeTimes->{{3.6491580029373465`*^9, 3.649158007161194*^9}, {
+  3.649158235972846*^9, 3.649158239441596*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"recNEW", "[", "\"\<fruitDescr\>\"", "]"}], "=", 
+   "\"\<this is a delicious apple\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"recNEW", "[", "\"\<fruitPrice\>\"", "]"}], "=", "9.99"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.6491579281800222`*^9, 3.6491579525589285`*^9}, {
+   3.649158013198821*^9, 3.6491580981945257`*^9}, 3.6491581853244085`*^9, {
+   3.649158640055749*^9, 3.649158640368249*^9}, {3.649158952430813*^9, 
+   3.649158966903331*^9}, {3.6491591543711042`*^9, 3.649159198299815*^9}, {
+   3.649159254601573*^9, 3.649159255735362*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Transform to JSON", "Subsubsection",
+ CellChangeTimes->{{3.649158114825385*^9, 3.6491581178576117`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"recNEWJSON", "=", 
+  RowBox[{"recNEW", "//", "e2j"}]}]], "Input",
+ CellChangeTimes->{{3.64915812609394*^9, 3.649158131300971*^9}, {
+  3.649158486022661*^9, 3.6491584891017623`*^9}, {3.649158978641612*^9, 
+  3.649158979000987*^9}, {3.6491592346875105`*^9, 3.649159249333995*^9}}],
+
+Cell[BoxData["\<\"{\\n    \\\"@type\\\": \\\"d\\\",\\n    \\\"@rid\\\": \
+\\\"#10:2\\\",\\n    \\\"@version\\\": 1,\\n    \\\"@class\\\": \
+\\\"FRUIT\\\",\\n    \\\"fruitName\\\": \\\"apple\\\",\\n    \\\"fruitDescr\\\
+\": \\\"this is a delicious apple\\\",\\n    \\\"fruitPrice\\\": 9.99,\\n    \
+\\\"@fieldTypes\\\": \\\"fruitPrice=f\\\"\\n}\"\>"], "Output",
+ CellChangeTimes->{
+  3.649158133113471*^9, 3.649158229299018*^9, 3.6491584909464893`*^9, 
+   3.649158648590905*^9, 3.6491589810644636`*^9, {3.6491592414082136`*^9, 
+   3.6491592512568464`*^9}, 3.6491593798701773`*^9, 3.649161776161789*^9, 
+   3.660463892776123*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Update the Record for the First Time", "Subsubsection",
+ CellChangeTimes->{{3.649158250922065*^9, 3.6491582612843695`*^9}, {
+  3.6491585600871143`*^9, 3.6491585606808643`*^9}, {3.6491604966169415`*^9, 
+  3.649160503901121*^9}}],
+
+Cell[TextData[{
+ "Uses the ",
+ StyleBox["PUT document ",
+  FontWeight->"Bold"],
+ "HTTP API command"
+}], "Text",
+ CellChangeTimes->{{3.6491582765382757`*^9, 3.6491582909223576`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"recOLD", "=", 
+  RowBox[{
+   RowBox[{"odb", "[", 
+    RowBox[{
+     RowBox[{"com", "\[Rule]", "\"\<updRecordPUT\>\""}], ",", 
+     RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", 
+     RowBox[{"id", "\[Rule]", " ", "\"\<10:2\>\""}], ",", " ", 
+     RowBox[{"record", "\[Rule]", " ", "recNEWJSON"}]}], "]"}], "//", 
+   "gds"}]}]], "Input",
+ CellChangeTimes->{{3.649158314080327*^9, 3.6491583725089893`*^9}, {
+  3.649158448523638*^9, 3.649158525969927*^9}, {3.6491589883476667`*^9, 
+  3.6491589887568464`*^9}, {3.6491590476025496`*^9, 3.6491590495244246`*^9}, {
+  3.649159411714904*^9, 3.649159423080138*^9}, {3.6491595311680293`*^9, 
+  3.649159532715881*^9}, {3.6604639341297197`*^9, 3.6604639355462523`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"#10:2\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 2}, {
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitName\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"apple\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitDescr\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+       "\"this is a delicious apple\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitPrice\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"9.99\"", 9.99, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPrice=f\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"1 level", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"8", "elements"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"@type\" -> _, \"@rid\" -> _, \"@version\" -> _, \"@class\" \
+-> _, \"fruitName\" -> _, \"fruitDescr\" -> _, \"fruitPrice\" -> _, \
+\"@fieldTypes\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.649158508266802*^9, 3.6491585268166065`*^9}, 
+   3.6491587311016474`*^9, 3.649158993007823*^9, {3.6491590565263777`*^9, 
+   3.649159078697276*^9}, 3.6491594361953726`*^9, 3.649159534716857*^9, 
+   3.6491618010426483`*^9, 3.660463967095611*^9}]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Note that the @version number has been changed to 2",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.649159453683654*^9, 3.6491594661416616`*^9}, {
+  3.649161807123703*^9, 3.649161807186203*^9}, {3.660463972353805*^9, 
+  3.6604639724922047`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Modify Values for a Second Time", "Subsubsection",
+ CellChangeTimes->{{3.6491595470635366`*^9, 3.649159558678771*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"recNEWJSON", "=", 
+  RowBox[{
+   RowBox[{"Thread", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<fruitName\>\"", ",", "\"\<fruitDescr\>\"", ",", " ", 
+       "\"\<fruitPrice\>\""}], "}"}], "->", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<cheap apples\>\"", ",", " ", "\"\<these are cheap apples\>\"", ",",
+        " ", "9.11"}], "}"}]}], "]"}], "//", "e2jC"}]}]], "Input",
+ CellChangeTimes->{{3.6491602124835615`*^9, 3.6491602547706704`*^9}, 
+   3.649161162722231*^9}],
+
+Cell[BoxData["\<\"{\\\"fruitName\\\":\\\"cheap apples\\\",\\\"fruitDescr\\\":\
+\\\"these are cheap apples\\\",\\\"fruitPrice\\\":9.11}\"\>"], "Output",
+ CellChangeTimes->{3.6491602575782876`*^9, 3.6491606821970196`*^9, 
+  3.6491609441995015`*^9, 3.649161163590022*^9, 3.6491615570782585`*^9, 
+  3.6491618144283905`*^9, 3.660464005213174*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Update the Record for a Second Time", "Subsubsection",
+ CellChangeTimes->{{3.64916048553491*^9, 3.64916049344409*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"recNEW", "=", 
+  RowBox[{
+   RowBox[{"odb", "[", 
+    RowBox[{
+     RowBox[{"com", "\[Rule]", "\"\<updRecordPATCH\>\""}], ",", " ", 
+     RowBox[{"db", "\[Rule]", "\"\<TestDB\>\""}], ",", " ", 
+     RowBox[{"class", "\[Rule]", "\"\<Fruit\>\""}], ",", 
+     RowBox[{"id", "\[Rule]", "\"\<10:2\>\""}], ",", 
+     RowBox[{"ver", "\[Rule]", " ", "2"}], ",", " ", 
+     RowBox[{"record", "\[Rule]", " ", "recNEWJSON"}], ",", 
+     RowBox[{"debug", "\[Rule]", "True"}]}], "]"}], "//", "gds"}]}]], "Input",
+ CellChangeTimes->{{3.649160287292155*^9, 3.649160331521647*^9}, {
+   3.6491604322335615`*^9, 3.6491604658560867`*^9}, 3.649160710465965*^9, {
+   3.6491615631895866`*^9, 3.6491615639395866`*^9}, {3.6491618327516327`*^9, 
+   3.6491618328453827`*^9}, {3.660464025466241*^9, 3.660464037241393*^9}, {
+   3.660464133034753*^9, 3.660464167336893*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/document/TestDB/10:2\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"{\\\"@class\\\":\\\"Fruit\\\", \
+\\\"@version\\\":2, \\\"fruitName\\\":\\\"cheap \
+apples\\\",\\\"fruitDescr\\\":\\\"these are cheap apples\\\",\\\"fruitPrice\\\
+\":9.11}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/document/TestDB/10:2", "\n=== Body ===\n", 
+   "{\"@class\":\"Fruit\", \"@version\":2, \"fruitName\":\"cheap \
+apples\",\"fruitDescr\":\"these are cheap apples\",\"fruitPrice\":9.11}"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.66046417004947*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"#10:2\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 3}, {
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"FRUIT\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitName\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"cheap apples\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitDescr\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"these are cheap apples\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"fruitPrice\"", 
+        GrayLevel[0.3]], 
+       TagBox[
+        InterpretationBox["\"9.11\"", 9.11, AutoDelete -> True], 
+        NumberForm[#, 4]& ]}, {
+       StyleBox["\"@fieldTypes\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"fruitPrice=f\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"1 level", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"8", "elements"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"@type\" -> _, \"@rid\" -> _, \"@version\" -> _, \"@class\" \
+-> _, \"fruitName\" -> _, \"fruitDescr\" -> _, \"fruitPrice\" -> _, \
+\"@fieldTypes\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.649160693966551*^9, 3.649160711478465*^9}, 
+   3.649160948357705*^9, 3.649161176435053*^9, 3.6491615651270866`*^9, 
+   3.6491618368619843`*^9, 3.660464055177614*^9, 3.660464170175839*^9}]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Note that the @version number has been changed to 3",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.649161851576828*^9, 3.649161854160617*^9}, {
+  3.660464175881728*^9, 3.660464175920772*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1177, 924},
+WindowMargins->{{61, Automatic}, {Automatic, -15}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Landscape",
+"PaperSize"->{841.8, 595.2},
+"PrintingMargins"->{{14.173228499999999`, 14.173228499999999`}, \
+{42.519685499999994`, 42.519685499999994`}}},
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 355, 5, 96, "Title"],
+Cell[CellGroupData[{
+Cell[960, 31, 477, 8, 32, "Input"],
+Cell[1440, 41, 377, 7, 36, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1854, 53, 271, 3, 69, "Chapter"],
+Cell[CellGroupData[{
+Cell[2150, 60, 103, 1, 64, "Subchapter"],
+Cell[2256, 63, 141, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[2422, 69, 126, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[2573, 75, 609, 8, 23, "Print"],
+Cell[3185, 85, 1343, 28, 23, "Print"],
+Cell[4531, 115, 897, 16, 23, "Print"],
+Cell[5431, 133, 586, 8, 23, "Print"],
+Cell[6020, 143, 613, 8, 23, "Print"],
+Cell[6636, 153, 1365, 27, 23, "Print"],
+Cell[8004, 182, 653, 9, 43, "Print"],
+Cell[8660, 193, 611, 8, 23, "Print"],
+Cell[9274, 203, 1363, 27, 23, "Print"],
+Cell[10640, 232, 648, 9, 23, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11337, 247, 170, 2, 37, "Subsubsection"],
+Cell[11510, 251, 551, 13, 55, "Input"],
+Cell[12064, 266, 1624, 35, 231, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13737, 307, 362, 5, 64, "Subchapter"],
+Cell[CellGroupData[{
+Cell[14124, 316, 105, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[14254, 321, 580, 11, 121, "Input"],
+Cell[14837, 334, 216, 4, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15102, 344, 103, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[15230, 349, 797, 16, 121, "Input"],
+Cell[16030, 367, 236, 3, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16315, 376, 203, 3, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[16543, 383, 766, 13, 32, "Input"],
+Cell[17312, 398, 3287, 68, 147, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20648, 472, 100, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[20773, 477, 415, 8, 32, "Input"],
+Cell[21191, 487, 387, 7, 32, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21639, 501, 157, 2, 64, "Subchapter"],
+Cell[CellGroupData[{
+Cell[21821, 507, 300, 4, 37, "Subsubsection"],
+Cell[22124, 513, 247, 7, 30, "Text"],
+Cell[CellGroupData[{
+Cell[22396, 524, 886, 16, 32, "Input"],
+Cell[23285, 542, 2536, 55, 97, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25870, 603, 102, 1, 37, "Subsubsection"],
+Cell[25975, 606, 246, 7, 30, "Text"],
+Cell[CellGroupData[{
+Cell[26246, 617, 673, 13, 32, "Input"],
+Cell[26922, 632, 2452, 54, 97, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29423, 692, 164, 2, 37, "Subsubsection"],
+Cell[29590, 696, 257, 7, 31, "Text"],
+Cell[CellGroupData[{
+Cell[29872, 707, 439, 8, 32, "Input"],
+Cell[30314, 717, 247, 5, 32, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30622, 729, 344, 5, 64, "Subchapter"],
+Cell[CellGroupData[{
+Cell[30991, 738, 518, 7, 37, "Subsubsection"],
+Cell[31512, 747, 826, 21, 143, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32375, 773, 111, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[32511, 778, 259, 5, 32, "Input"],
+Cell[32773, 785, 3384, 78, 147, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36206, 869, 126, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[36357, 874, 201, 4, 32, "Input"],
+Cell[36561, 880, 504, 6, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37102, 891, 271, 4, 32, "Input"],
+Cell[37376, 897, 3805, 89, 147, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41230, 992, 126, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[41381, 997, 236, 5, 32, "Input"],
+Cell[41620, 1004, 433, 7, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42090, 1016, 183, 4, 32, "Input"],
+Cell[42276, 1022, 657, 14, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42982, 1042, 217, 4, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[43224, 1050, 352, 6, 32, "Input"],
+Cell[43579, 1058, 356, 5, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43972, 1068, 149, 3, 32, "Input"],
+Cell[44124, 1073, 255, 4, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44428, 1083, 318, 4, 37, "Subsubsection"],
+Cell[44749, 1089, 327, 8, 31, "Text"],
+Cell[CellGroupData[{
+Cell[45101, 1101, 1482, 24, 32, "Input"],
+Cell[46586, 1127, 708, 13, 62, "Print"],
+Cell[47297, 1142, 4754, 109, 277, "Output"]
+}, Open  ]],
+Cell[52066, 1254, 191, 6, 31, "Text"],
+Cell[CellGroupData[{
+Cell[52282, 1264, 549, 11, 55, "Input"],
+Cell[52834, 1277, 716, 14, 81, "Print"],
+Cell[53553, 1293, 4231, 101, 97, "Output"]
+}, Open  ]],
+Cell[57799, 1397, 238, 6, 31, "Text"],
+Cell[CellGroupData[{
+Cell[58062, 1407, 624, 12, 77, "Input"],
+Cell[58689, 1421, 682, 13, 81, "Print"],
+Cell[59374, 1436, 4302, 102, 97, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63725, 1544, 109, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[63859, 1549, 344, 8, 32, "Input"],
+Cell[64206, 1559, 8095, 198, 149, "Output"]
+}, Open  ]],
+Cell[72316, 1760, 179, 4, 31, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[72532, 1769, 328, 4, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[72885, 1777, 888, 15, 32, "Input"],
+Cell[73776, 1794, 4510, 105, 277, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[78335, 1905, 281, 3, 37, "Subsubsection"],
+Cell[78619, 1910, 177, 6, 31, "Text"],
+Cell[CellGroupData[{
+Cell[78821, 1920, 872, 15, 32, "Input"],
+Cell[79696, 1937, 2469, 54, 97, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[82202, 1996, 278, 7, 32, "Input"],
+Cell[82483, 2005, 4231, 101, 97, "Output"]
+}, Open  ]],
+Cell[86729, 2109, 176, 6, 31, "Text"],
+Cell[CellGroupData[{
+Cell[86930, 2119, 416, 9, 32, "Input"],
+Cell[87349, 2130, 2384, 53, 97, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[89794, 2190, 315, 4, 64, "Subchapter"],
+Cell[CellGroupData[{
+Cell[90134, 2198, 265, 3, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[90424, 2205, 468, 10, 32, "Input"],
+Cell[90895, 2217, 2295, 51, 97, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[93239, 2274, 226, 3, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[93490, 2281, 164, 2, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[93679, 2287, 571, 11, 32, "Input"],
+Cell[94253, 2300, 3561, 81, 303, "Output"]
+}, Open  ]],
+Cell[97829, 2384, 242, 3, 31, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[98108, 2392, 109, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[98242, 2397, 757, 12, 32, "Input"],
+Cell[99002, 2411, 572, 10, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[99611, 2426, 598, 10, 32, "Input"],
+Cell[100212, 2438, 356, 7, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[100605, 2450, 606, 10, 32, "Input"],
+Cell[101214, 2462, 325, 6, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[101588, 2474, 108, 1, 37, "Subsubsection"],
+Cell[101699, 2477, 281, 4, 51, "Text"],
+Cell[CellGroupData[{
+Cell[102005, 2485, 392, 8, 32, "Input"],
+Cell[102400, 2495, 146, 3, 32, "Output"]
+}, Open  ]],
+Cell[102561, 2501, 108, 1, 31, "Text"],
+Cell[CellGroupData[{
+Cell[102694, 2506, 474, 9, 32, "Input"],
+Cell[103171, 2517, 256, 5, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[103476, 2528, 165, 2, 37, "Subsubsection"],
+Cell[103644, 2532, 134, 1, 31, "Text"],
+Cell[CellGroupData[{
+Cell[103803, 2537, 614, 13, 32, "Input"],
+Cell[104420, 2552, 5049, 122, 329, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[109518, 2680, 173, 3, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[109716, 2687, 363, 6, 32, "Input"],
+Cell[110082, 2695, 4405, 101, 149, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[114548, 2803, 306, 4, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[114879, 2811, 459, 6, 37, "Subsubsection"],
+Cell[115341, 2819, 191, 4, 31, "Text"],
+Cell[115535, 2825, 278, 8, 30, "Text"],
+Cell[CellGroupData[{
+Cell[115838, 2837, 522, 14, 32, "Input"],
+Cell[116363, 2853, 283, 4, 121, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[116683, 2862, 1110, 18, 55, "Input"],
+Cell[117796, 2882, 642, 12, 138, "Print"],
+Cell[118441, 2896, 3219, 71, 130, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[121709, 2973, 277, 3, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[122011, 2980, 1292, 24, 187, "Input"],
+Cell[123306, 3006, 3044, 68, 97, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[126387, 3079, 939, 19, 165, "Input"],
+Cell[127329, 3100, 3043, 68, 97, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[130433, 3175, 304, 4, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[130762, 3183, 271, 4, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[131058, 3191, 829, 18, 121, "Input"],
+Cell[131890, 3211, 3019, 68, 97, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[134958, 3285, 278, 4, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[135261, 3293, 783, 17, 121, "Input"],
+Cell[136047, 3312, 3214, 71, 97, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[139310, 3389, 384, 5, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[139719, 3398, 833, 18, 121, "Input"],
+Cell[140555, 3418, 3171, 70, 97, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[143787, 3495, 104, 1, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[143916, 3500, 233, 3, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[144174, 3507, 1007, 18, 32, "Input"],
+Cell[145184, 3527, 3674, 78, 251, "Output"]
+}, Open  ]],
+Cell[148873, 3608, 281, 6, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[149191, 3619, 155, 2, 37, "Subsubsection"],
+Cell[149349, 3623, 625, 13, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[150011, 3641, 110, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[150146, 3646, 302, 5, 32, "Input"],
+Cell[150451, 3653, 627, 9, 231, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[151127, 3668, 233, 3, 37, "Subsubsection"],
+Cell[151363, 3673, 181, 6, 30, "Text"],
+Cell[CellGroupData[{
+Cell[151569, 3683, 739, 14, 32, "Input"],
+Cell[152311, 3699, 3249, 73, 251, "Output"]
+}, Open  ]],
+Cell[155575, 3775, 276, 4, 31, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[155888, 3784, 124, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[156037, 3789, 513, 14, 55, "Input"],
+Cell[156553, 3805, 341, 4, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[156943, 3815, 124, 1, 37, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[157092, 3820, 869, 16, 55, "Input"],
+Cell[157964, 3838, 659, 13, 62, "Print"],
+Cell[158626, 3853, 3189, 71, 251, "Output"]
+}, Open  ]],
+Cell[161830, 3927, 223, 3, 31, "Text"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

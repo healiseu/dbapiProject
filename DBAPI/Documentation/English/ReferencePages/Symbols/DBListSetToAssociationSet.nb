@@ -1,0 +1,664 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20982,        654]
+NotebookOptionsPosition[     16592,        513]
+NotebookOutlinePosition[     18698,        568]
+CellTagsIndexPosition[     18613,        563]
+WindowTitle->DBListSetToAssociationSet - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["D B A P I SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBListSetToRuleSet\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/DBListSetToRuleSet"], "\<\"DBListSetToDataset\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/ref/DBListSetToDataset"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Utilities Package\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/guide/UtilitiesPackage"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBAPI/ref/DBListSetToAssociationSet\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DBAPI/ref/DBListSetToAssociationSet"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/DBAPI/ref/\
+DBListSetToAssociationSet.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "DBAPI/ref/DBListSetToAssociationSet", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell["DBListSetToAssociationSet", "ObjectName",
+ CellID->1224892054],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["DBListSetToAssociationSet",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/DBListSetToAssociationSet"], "[", 
+       RowBox[{"Header", ",", " ", "Body"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]converts a relational set represented with ",
+     ButtonBox["List",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/List"],
+     "(s) to an equivalent one represented with ",
+     ButtonBox["Association",
+      BaseStyle->"Link",
+      ButtonData->"paclet:ref/Association"],
+     "(s)"
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  FrameBox[
+   StyleBox[
+    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
+   StripOnInput->False],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->297485943],
+
+Cell[TextData[{
+ StyleBox["Arguments :",
+  FontWeight->"Bold"],
+ "\nHeader is usually a ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ " of string items representing the columns of a table, i.e. keys\
+\[LineSeparator]Body is a nested ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ " of values representing the rows of a table"
+}], "Notes",
+ CellID->88723942],
+
+Cell[TextData[{
+ StyleBox["Returns:",
+  FontWeight->"Bold"],
+ "\nA ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ " of ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ "(s)"
+}], "Notes",
+ CellID->96909655]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->134955558],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->231023529],
+
+Cell["Load Packages", "ExampleText",
+ CellID->772149713],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "DBAPI`"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->108474329],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Data Utilities Package v0.9\"\>"], "Print",
+ CellLabel->"During evaluation of In[9]:=",
+ CellID->746857190],
+
+Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
+"Print",
+ CellLabel->"During evaluation of In[9]:=",
+ CellID->38175601],
+
+Cell[BoxData["\<\"OrientDB HTTP API Package v0.9\"\>"], "Print",
+ CellLabel->"During evaluation of In[9]:=",
+ CellID->40949789],
+
+Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
+"Print",
+ CellLabel->"During evaluation of In[9]:=",
+ CellID->136569220]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+The Stock relation set represented with a Head (1st list with column names) \
+and a body (lists of values)\
+\>", "ExampleText",
+ CellID->140046681],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"stockRelSet", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<StockID\>\"", ",", "\"\<StockNameEN\>\"", ",", 
+        "\"\<StockPrice\>\"", ",", "\"\<StockNameGR\>\""}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "991", ",", "\"\<Pinto Beans\>\"", ",", "11.1`", ",", 
+        "\"\<\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha] \
+\[CapitalPi]\:03af\[Nu]\[Tau]\[Omicron]\>\""}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "992", ",", "\"\<Kidney Beans\>\"", ",", "9.85`", ",", 
+        "\"\<\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha] \
+\[CapitalKappa]\:03cc\[Kappa]\[Kappa]\[Iota]\[Nu]\[Alpha]\>\""}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "993", ",", "\"\<White Beans\>\"", ",", "13.45`", ",", 
+        "\"\<\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha] \
+\:0386\[Sigma]\[Pi]\[Rho]\[Alpha]\>\""}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "994", ",", "\"\<Wax Beans\>\"", ",", "18.72`", ",", 
+        "\"\<\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha] \
+\[CapitalKappa]\[Alpha]\[Nu]\[Alpha]\[Rho]\:03af\[Nu]\[Iota]\[Alpha]\>\""}], 
+       "}"}]}], "}"}]}], ")"}], "//", "TableForm"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->208189987],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"StockID\"\>", "\<\"StockNameEN\"\>", "\<\"StockPrice\"\>", \
+"\<\"StockNameGR\"\>"},
+    {"991", "\<\"Pinto Beans\"\>", 
+     "11.1`", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha]\
+ \[CapitalPi]\:03af\[Nu]\[Tau]\[Omicron]\"\>"},
+    {"992", "\<\"Kidney Beans\"\>", 
+     "9.85`", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha]\
+ \[CapitalKappa]\:03cc\[Kappa]\[Kappa]\[Iota]\[Nu]\[Alpha]\"\>"},
+    {"993", "\<\"White Beans\"\>", 
+     "13.45`", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\
+\[Alpha] \:0386\[Sigma]\[Pi]\[Rho]\[Alpha]\"\>"},
+    {"994", "\<\"Wax Beans\"\>", 
+     "18.72`", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\
+\[Alpha] \[CapitalKappa]\[Alpha]\[Nu]\[Alpha]\[Rho]\:03af\[Nu]\[Iota]\[Alpha]\
+\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{401, 76},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]//TableForm=",
+ CellID->134567492]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"head", "=", 
+  RowBox[{"stockRelSet", "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->199032751],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"StockID\"\>", ",", "\<\"StockNameEN\"\>", 
+   ",", "\<\"StockPrice\"\>", ",", "\<\"StockNameGR\"\>"}], "}"}]], "Output",
+ ImageSize->{324, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->304732213]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"body", "=", 
+  RowBox[{"stockRelSet", "[", 
+   RowBox[{"[", 
+    RowBox[{"2", ";;"}], "]"}], "]"}]}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->31692470],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "991", ",", "\<\"Pinto Beans\"\>", ",", "11.1`", 
+     ",", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha] \
+\[CapitalPi]\:03af\[Nu]\[Tau]\[Omicron]\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "992", ",", "\<\"Kidney Beans\"\>", ",", "9.85`", 
+     ",", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha] \
+\[CapitalKappa]\:03cc\[Kappa]\[Kappa]\[Iota]\[Nu]\[Alpha]\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "993", ",", "\<\"White Beans\"\>", ",", "13.45`", 
+     ",", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha] \
+\:0386\[Sigma]\[Pi]\[Rho]\[Alpha]\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "994", ",", "\<\"Wax Beans\"\>", ",", "18.72`", 
+     ",", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\[Alpha] \
+\[CapitalKappa]\[Alpha]\[Nu]\[Alpha]\[Rho]\:03af\[Nu]\[Iota]\[Alpha]\"\>"}], 
+    "}"}]}], "}"}]], "Output",
+ ImageSize->{586, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->708134376]
+}, Open  ]],
+
+Cell["Apply the transformation", "ExampleText",
+ CellID->165679089],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DBListSetToAssociationSet", "[", 
+  RowBox[{
+   RowBox[{"stockRelSet", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], ",", 
+   RowBox[{"stockRelSet", "[", 
+    RowBox[{"[", 
+     RowBox[{"2", ";;"}], "]"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->739210781],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"StockID\"\>", "\[Rule]", "991"}], ",", 
+     RowBox[{"\<\"StockNameEN\"\>", "\[Rule]", "\<\"Pinto Beans\"\>"}], ",", 
+     RowBox[{"\<\"StockPrice\"\>", "\[Rule]", "11.1`"}], ",", 
+     RowBox[{"\<\"StockNameGR\"\>", 
+      "\[Rule]", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\
+\[Alpha] \[CapitalPi]\:03af\[Nu]\[Tau]\[Omicron]\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"StockID\"\>", "\[Rule]", "992"}], ",", 
+     RowBox[{"\<\"StockNameEN\"\>", "\[Rule]", "\<\"Kidney Beans\"\>"}], ",", 
+     RowBox[{"\<\"StockPrice\"\>", "\[Rule]", "9.85`"}], ",", 
+     RowBox[{"\<\"StockNameGR\"\>", 
+      "\[Rule]", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\
+\[Alpha] \[CapitalKappa]\:03cc\[Kappa]\[Kappa]\[Iota]\[Nu]\[Alpha]\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"StockID\"\>", "\[Rule]", "993"}], ",", 
+     RowBox[{"\<\"StockNameEN\"\>", "\[Rule]", "\<\"White Beans\"\>"}], ",", 
+     RowBox[{"\<\"StockPrice\"\>", "\[Rule]", "13.45`"}], ",", 
+     RowBox[{"\<\"StockNameGR\"\>", 
+      "\[Rule]", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\
+\[Alpha] \:0386\[Sigma]\[Pi]\[Rho]\[Alpha]\"\>"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"StockID\"\>", "\[Rule]", "994"}], ",", 
+     RowBox[{"\<\"StockNameEN\"\>", "\[Rule]", "\<\"Wax Beans\"\>"}], ",", 
+     RowBox[{"\<\"StockPrice\"\>", "\[Rule]", "18.72`"}], ",", 
+     RowBox[{"\<\"StockNameGR\"\>", 
+      "\[Rule]", "\<\"\[CapitalPhi]\[Alpha]\[Sigma]\:03cc\[Lambda]\[Iota]\
+\[Alpha] \[CapitalKappa]\[Alpha]\[Nu]\[Alpha]\[Rho]\:03af\[Nu]\[Iota]\[Alpha]\
+\"\>"}]}], "\[RightAssociation]"}]}], "}"}]], "Output",
+ ImageSize->{552, 101},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->552549123]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   ButtonBox["DBListSetToRuleSet",
+    BaseStyle->"Link",
+    ButtonData->"paclet:DBAPI/ref/DBListSetToRuleSet"],
+   FontFamily->"Verdana"], " ", ".", " ", 
+  StyleBox[
+   ButtonBox["DBListSetToDataset",
+    BaseStyle->"Link",
+    ButtonData->"paclet:DBAPI/ref/DBListSetToDataset"],
+   FontFamily->"Verdana"]}]], "InlineFormula"]], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["Utilities Package",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]], "MoreAbout",
+ CellID->143792587]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["RELATED LINKS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "RelatedLinksSection",
+ WholeCellGroupOpener->True,
+ CellID->1584193535],
+
+Cell[TextData[ButtonBox["DBListSetToSQL92",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/ref/DBListSetToSQL92"]], "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"DBListSetToAssociationSet - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DBAPI/guide/DBAPI", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}], 
+        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
+  "Metadata" -> {
+   "built" -> "{2015, 12, 24, 23, 58, 49.0190715}", 
+    "history" -> {"0.9", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "D B A P I Symbol", "language" -> "en", "paclet" -> 
+    "DBAPI", "status" -> "None", "summary" -> 
+    "DBListSetToAssociationSet[Header, Body] converts a relational set \
+represented with List(s) to an equivalent one represented with \
+Association(s)", "synonyms" -> {}, "title" -> "DBListSetToAssociationSet", 
+    "titlemodifier" -> "", "windowtitle" -> "DBListSetToAssociationSet", 
+    "type" -> "Symbol", "uri" -> "DBAPI/ref/DBListSetToAssociationSet"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Microsoft Windows (64-bit) (July 7, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5615, 171, 490, 14, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->134955558]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 18470, 556}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[619, 21, 2716, 61, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[3338, 84, 68, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[CellGroupData[{
+Cell[3431, 89, 796, 23, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4252, 116, 609, 18, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->297485943],
+Cell[4864, 136, 420, 14, 70, "Notes",
+ CellID->88723942],
+Cell[5287, 152, 279, 13, 70, "Notes",
+ CellID->96909655]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5615, 171, 490, 14, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->134955558],
+Cell[CellGroupData[{
+Cell[6130, 189, 195, 6, 70, "ExampleSection",
+ CellID->231023529],
+Cell[6328, 197, 56, 1, 70, "ExampleText",
+ CellID->772149713],
+Cell[CellGroupData[{
+Cell[6409, 202, 93, 3, 70, "Input",
+ CellID->108474329],
+Cell[CellGroupData[{
+Cell[6527, 209, 125, 2, 70, "Print",
+ CellID->746857190],
+Cell[6655, 213, 145, 3, 70, "Print",
+ CellID->38175601],
+Cell[6803, 218, 127, 2, 70, "Print",
+ CellID->40949789],
+Cell[6933, 222, 146, 3, 70, "Print",
+ CellID->136569220]
+}, Open  ]]
+}, Open  ]],
+Cell[7106, 229, 157, 4, 70, "ExampleText",
+ CellID->140046681],
+Cell[CellGroupData[{
+Cell[7288, 237, 1344, 32, 70, "Input",
+ CellID->208189987],
+Cell[8635, 271, 1439, 34, 111, "Output",
+ CellID->134567492]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10111, 310, 157, 5, 70, "Input",
+ CellID->199032751],
+Cell[10271, 317, 295, 8, 36, "Output",
+ CellID->304732213]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10603, 330, 177, 6, 70, "Input",
+ CellID->31692470],
+Cell[10783, 338, 1119, 28, 54, "Output",
+ CellID->708134376]
+}, Open  ]],
+Cell[11917, 369, 67, 1, 70, "ExampleText",
+ CellID->165679089],
+Cell[CellGroupData[{
+Cell[12009, 374, 294, 9, 70, "Input",
+ CellID->739210781],
+Cell[12306, 385, 2035, 43, 122, "Output",
+ CellID->552549123]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14402, 435, 446, 13, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[14851, 450, 412, 12, 70, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15300, 467, 448, 13, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[15751, 482, 151, 3, 70, "MoreAbout",
+ CellID->143792587]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15939, 490, 456, 13, 70, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[16398, 505, 152, 3, 70, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[16565, 511, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,242 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8005,        232]
+NotebookOptionsPosition[      5554,        168]
+NotebookOutlinePosition[      7404,        210]
+CellTagsIndexPosition[      7361,        207]
+WindowTitle->OrientDB Package - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["D B A P I GUIDE", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Functions \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Dataset\"\>":>Documentation`HelpLookup[
+       "paclet:ref/Dataset"], "\<\"ODBapi\"\>":>Documentation`HelpLookup[
+       "paclet:DBAPI/ref/ODBapi"], "\<\"ODBgetDataset\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DBAPI/ref/ODBgetDataset"], "\<\"ODBgetFieldAttributes\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/ref/ODBgetFieldAttributes"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBAPI/guide/OrientDB Package\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DBAPI/guide/OrientDB Package"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/DBAPI/guide/\
+OrientDB Package.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "DBAPI/guide/OrientDB Package", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["OrientDB Package", "GuideTitle",
+ CellID->942062912],
+
+Cell[TextData[{
+ "The function ",
+ Cell[TextData[ButtonBox["ODBapi",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFunctionSans",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " in this package is built on top of the ",
+ ButtonBox["URLFetch",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/URLFetch"],
+ " built-in function. OrientDB RESTful HTTP API commands are ported into \
+Wolfram Language through ",
+ ButtonBox["URLFetch",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/URLFetch"],
+ " and then ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ODBapi",
+    BaseStyle->"Link",
+    ButtonData->"paclet:DBAPI/ref/ODBapi"],
+   Background->RGBColor[1, 0.9, 0.8]]], "InlineFormula"],
+ " commands are built with arguments that specify options with rules of the \
+form name\[Rule]value. This package has also other utility functions \
+especially implemented for OrientDB."
+}], "GuideAbstract",
+ CellID->2001916300],
+
+Cell[CellGroupData[{
+
+Cell["OrientDB API", "GuideFunctionsSubsection",
+ CellID->743553349],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ODBapi",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " The main function of the package"
+}], "GuideText",
+ CellID->203374175],
+
+Cell["\t", "GuideDelimiterSubsection",
+ CellID->311258892]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Utilily Functions", "GuideFunctionsSubsection",
+ CellID->21191971],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ODBgetDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBgetDataset"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Transforms OrientDB JSON response to a ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"]
+}], "GuideText",
+ CellID->119814716],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ODBgetFieldAttributes",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBgetFieldAttributes"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Returns field attributes of OrientDB class represented with a ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"]
+}], "GuideText",
+ CellID->269366724]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"OrientDB Package - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "GuideColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        StyleBox[
+         ButtonBox[
+         "Mathematica", ButtonData -> "paclet:guide/Mathematica", 
+          BaseStyle -> {"Link", "DockedLinkTrail"}], FontSlant -> "Italic"], 
+        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
+  "Metadata" -> {
+   "built" -> "{2015, 12, 24, 23, 58, 33.5102824}", 
+    "history" -> {"0.0", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "D B A P I Guide", "language" -> "en", "paclet" -> 
+    "DBAPI", "status" -> "None", "summary" -> 
+    "The function ODBapi in this package is built on top of the URLFetch \
+built-in function. OrientDB RESTful HTTP API commands are ported into Wolfram \
+Language through URLFetch and then ODBapi commands are built with arguments \
+that specify options with rules of the form name\[Rule]value. This package \
+has also other utility functions especially implemented for OrientDB.", 
+    "synonyms" -> {}, "title" -> "OrientDB Package", "titlemodifier" -> "", 
+    "windowtitle" -> "OrientDB Package", "type" -> "Guide", "uri" -> 
+    "DBAPI/guide/OrientDB Package"}, "SearchTextTranslated" -> ""},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+  CharacterEncoding -> "WindowsGreek"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[610, 21, 2591, 57, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3226, 82, 58, 1, 70, "GuideTitle",
+ CellID->942062912],
+Cell[3287, 85, 923, 26, 70, "GuideAbstract",
+ CellID->2001916300],
+Cell[CellGroupData[{
+Cell[4235, 115, 68, 1, 70, "GuideFunctionsSubsection",
+ CellID->743553349],
+Cell[4306, 118, 258, 8, 70, "GuideText",
+ CellID->203374175],
+Cell[4567, 128, 58, 1, 70, "GuideDelimiterSubsection",
+ CellID->311258892]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4662, 134, 72, 1, 70, "GuideFunctionsSubsection",
+ CellID->21191971],
+Cell[4737, 137, 359, 11, 70, "GuideText",
+ CellID->119814716],
+Cell[5099, 150, 401, 12, 70, "GuideText",
+ CellID->269366724]
+}, Open  ]]
+}, Open  ]],
+Cell[5527, 166, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,5293 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    172466,       5283]
+NotebookOptionsPosition[    149289,       4490]
+NotebookOutlinePosition[    153060,       4584]
+CellTagsIndexPosition[    152814,       4574]
+WindowTitle->ODBapi - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["D B A P I SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"OrientDB Package\"\>":>
+       Documentation`HelpLookup["paclet:DBAPI/guide/ODBapiPackage"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"DBAPI/ref/ODBapi\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DBAPI/ref/ODBapi"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/DBAPI/ref/ODBapi.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", "DBAPI/ref/ODBapi", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["ODBapi", "ObjectName",
+ CellTags->"odbapi",
+ CellID->1224892054],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["ODBapi",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/ODBapi"], "[", 
+       RowBox[{
+        RowBox[{"com", "\[Rule]", "\"\<add<Command>\>\""}], ",", " ", 
+        "options"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]Uses the POST method of the HTTP protocol for both \
+reading and writing the database"
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["ODBapi",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/ODBapi"], "[", 
+       RowBox[{
+        RowBox[{"com", "\[Rule]", "\"\<del<Command>\>\""}], ",", " ", 
+        "options"}], " ", "]"}]], "InlineFormula"],
+     " \[LineSeparator]Uses either the POST or the DELETE method of the HTTP \
+protocol to destructively alter the database"
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["ODBapi",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/ODBapi"], "[", 
+       RowBox[{
+        RowBox[{"com", "\[Rule]", "\"\<upd<Command>\>\""}], ",", " ", 
+        "options"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]Uses either the POST HTTP method to update record \
+values with SQL UPDATE command or the PUT and PATCH methods of the HTTP \
+protocol to update OrientDB structured Document records"
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["ODBapi",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/ODBapi"], "[", 
+       RowBox[{
+        RowBox[{"com", "\[Rule]", "\"\<get<Command>\>\""}], ",", " ", 
+        "options"}], " ", "]"}]], "InlineFormula"],
+     " \[LineSeparator]Uses the GET method of the HTTP protocol to retrieve \
+values from the database. Operations are idempotent, i.e. they do not alter \
+the database"
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["ODBapi",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/ODBapi"], "[", 
+       RowBox[{
+        RowBox[{"com", "\[Rule]", "\"\<import/export\>\""}], ",", " ", 
+        "options"}], " ", "]"}]], "InlineFormula"],
+     " \[LineSeparator]Export a gzip file that contains the database JSON \
+export using the GET method. Import a database from an uploaded JSON text \
+file."
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["ODBapi",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DBAPI/ref/ODBapi"], "[", 
+       RowBox[{
+        RowBox[{"com", "\[Rule]", "\"\<login/logout\>\""}], ",", " ", 
+        "options"}], " ", "]"}]], "InlineFormula"],
+     " \[LineSeparator]Uses the GET method of the HTTP protocol to connect to \
+a remote server using basic authentication and the same method for \
+disconnecting"
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
+   "Rows" -> {None, None, None, None, None, {None}}, "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  FrameBox[
+   StyleBox[
+    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
+   StripOnInput->False],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->140121570],
+
+Cell[TextData[StyleBox["Details and Options",
+ FontWeight->"Bold"]], "Notes",
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[StyleBox["URL Construction",
+   FontColor->RGBColor[0., 0.5019607843137255, 0.5019607843137255]]], 
+   "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->37887738],
+
+Cell["\<\
+\tThe following options are used in the construction of the HTTP request. \
+\[LineSeparator]\tThe OrientDB RESTful \tAPI uses the same syntax for all \
+HTTP methods.\
+\>", "Notes",
+ CellID->22629621],
+
+Cell[TextData[{
+ StyleBox["\t",
+  Background->RGBColor[1, 0.9, 0.8]],
+ StyleBox["Syntax: http://<server>:<port>/<command>/[<database>/<arguments>]\t\
+",
+  FontWeight->"Bold"]
+}], "Notes",
+ CellID->172327304],
+
+Cell[TextData[{
+ "\tDefault options for the OrientDB ",
+ StyleBox["server \[Rule] \"localhost\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " and the",
+ StyleBox[" port \[Rule] \"2480\"",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->238941620],
+
+Cell[TextData[{
+ StyleBox["\t",
+  Background->RGBColor[1, 0.9, 0.8]],
+ "Default option for the ",
+ StyleBox["<database>",
+  FontWeight->"Bold"],
+ ", ",
+ StyleBox["db \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->414856652],
+
+Cell[TextData[{
+ "\tDefault option for the ",
+ StyleBox["<command>, ",
+  FontWeight->"Bold"],
+ StyleBox["com \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->50003116],
+
+Cell[TextData[{
+ "\tDefault options for ",
+ StyleBox["<arguments>",
+  FontWeight->"Bold"],
+ ". These are controlled with the ",
+ StyleBox["arg \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " option. \[LineSeparator]\tThis option value is dependent on the following \
+options :"
+}], "Notes",
+ CellID->52482609],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["dbtype \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " option is used in ",
+ StyleBox["addDatabase",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " command \[LineSeparator]\tand typical values are \"plocal/graph\", \
+\"plocal/document\""
+}], "Notes",
+ CellID->433377957],
+
+Cell[TextData[{
+ StyleBox["\tclass \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " option is used in \[LineSeparator]\t",
+ StyleBox["addClass",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addClassViaHTTP",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addProperty",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ",",
+ StyleBox[" addPropertyViaHTTP",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["getClass",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->66505450],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["propnam \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["propval \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", and ",
+ StyleBox["proptype \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " options are used in : \[LineSeparator]\tcommands ",
+ StyleBox["updPropertyValues",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updPropertyValue",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addPropertyViaHTTP",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->145426120],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["id \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", with this option we pass the record id, OrientDB ",
+ StyleBox["@rid",
+  FontWeight->"Bold"],
+ ". It is used in :\[LineSeparator]\t",
+ StyleBox["updPropertyValue",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updRecordPUT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updRecordPATCH",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["delRecords commands",
+  Background->RGBColor[1, 0.9, 0.8]],
+ "."
+}], "Notes",
+ CellID->572142819],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["con \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", with this option we pass the connection id used in :\[LineSeparator]\t",
+ StyleBox["delConnection",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " command"
+}], "Notes",
+ CellID->327772531]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   StyleBox["Control of the URLFetch c",
+    FontColor->RGBColor[0., 0.5019607843137255, 0.5019607843137255],
+    Background->None],
+   StyleBox["ommand",
+    FontColor->RGBColor[0., 0.5019607843137255, 0.5019607843137255]]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->470092490],
+
+Cell[TextData[{
+ "\tEach ODBapi command is executed through ",
+ ButtonBox["URLFetch",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/URLFetch"],
+ " and by default it returns \[LineSeparator]\tfrom OrientDB \tserver the \
+contents as\ta JSON string and a status code."
+}], "Notes",
+ CellID->114907712],
+
+Cell[TextData[{
+ "\tDefault option for the HTTP method to use for request, ",
+ StyleBox["method \[Rule] \"POST\"",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->241020182],
+
+Cell[TextData[{
+ "\tDefault option for parameters to be sent for the http request, ",
+ StyleBox["param \[Rule] {}\[LineSeparator]\t",
+  Background->RGBColor[1, 0.9, 0.8]],
+ "URL parameters are not used in OrientDB API."
+}], "Notes",
+ CellID->310641717],
+
+Cell[TextData[{
+ "\tDefault option for the contents of message body to be sent, ",
+ StyleBox["body \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " \[LineSeparator]\tThe body option is used indirectly to pass the sql \
+script and sql commands.\[LineSeparator]\tThe following options are used to \
+constuct the message body:"
+}], "Notes",
+ CellID->334191424],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["sql \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " option is used in ",
+ StyleBox["addOSQLScript",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addOSQLCommand",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["getOSQLCommand",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->297610381],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["class \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " option is used in :\[LineSeparator]\t",
+ StyleBox["addDOCUMENT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addCONTENT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addVALUES",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addClass",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addPropertyValues",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updPropertyValues",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", \[LineSeparator]\t",
+ StyleBox["delClass",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["delAllRecords",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["delProperty",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["delPropertyValues",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["getClass",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->470613833],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["class \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " and ",
+ StyleBox["superclass \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " options are used in ",
+ StyleBox["addClass",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " command"
+}], "Notes",
+ CellID->125518819],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["keys \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " and ",
+ StyleBox["values \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " options are used in ",
+ StyleBox["addVALUES",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " command\[LineSeparator]\tThese options are formatted according to SQL-92 \
+syntax (see an ",
+ ButtonBox["example",
+  BaseStyle->"Hyperlink",
+  ButtonData->"InsertValues"],
+ ")"
+}], "Notes",
+ CellID->615183522],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["from \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " and ",
+ StyleBox["to \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " options are used in creating edges with content, ",
+ StyleBox["addCONTENT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " command."
+}], "Notes",
+ CellID->968484546],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["construct \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " is used in ",
+ StyleBox["addCONTENT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " and ",
+ StyleBox["addVALUES",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " commands"
+}], "Notes",
+ CellID->180082668],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["record \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " option takes a JSON string and is used in \[LineSeparator]\t",
+ StyleBox["addDOCUMENT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["addCONTENT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updRecordPUT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updRecordPATCH",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ","
+}], "Notes",
+ CellID->329339902],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["ver \[Rule] -1",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " option controls the version of the record to update, it is used in\
+\[LineSeparator]\t",
+ StyleBox["updRecordPUT",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updRecordPATCH",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ","
+}], "Notes",
+ CellID->164986832],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["attribnam \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["attribval \[Rule] \"\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " options are used in ",
+ StyleBox["updDatabase",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updClass",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ", ",
+ StyleBox["updProperty",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->129453999],
+
+Cell[TextData[{
+ "\tDefault options for connecting to the server with ",
+ StyleBox["usr \[Rule] \"admin\"",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " and ",
+ StyleBox["pwd \[Rule] \"admin\"",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "Notes",
+ CellID->469643702]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[StyleBox["Enumerated Options",
+   FontColor->RGBColor[0., 0.5019607843137255, 0.5019607843137255]]], 
+   "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellTags->"EnumeratedOptions",
+ CellID->239827978],
+
+Cell[BoxData[{GridBox[{
+   {"\[Placeholder]", 
+    StyleBox[
+     RowBox[{"debug", "\[IndentingNewLine]"}],
+     FontFamily->"Courier New",
+     FontSize->12,
+     FontWeight->"Bold"], Cell["\<\
+True/False
+If True, prints message body of the http request\
+\>", "TableText"]},
+   {"\[Placeholder]", 
+    StyleBox["com",
+     FontFamily->"Courier New",
+     FontSize->12,
+     FontWeight->"Bold"], Cell["\<\
+addOSQLScript, addOSQLCommand,
+addDatabase, 
+addClass, addClassViaHTTP,
+addProperty, addPropertyViaHTTP,
+addDOCUMENT, addCONTENT, addVALUES
+
+delDatabase, 
+delClass,
+delProperty, delPropertyValues,
+delAllRecords, delRecords,
+delConnection,
+
+updDatabase,
+updClass,
+updProperty,
+updPropertyValues, updPropertyValue,
+updRecordPUT, updRecordPATCH,
+
+getServer,
+getOSQLCommand,
+getDatabases, getDatabase,
+getClass, 
+getRecord,
+
+importDatabase, exportDatabase,
+
+logout, login\
+\>", "TableText"]}
+  }], "\[IndentingNewLine]", GridBox[{
+   {"\[Placeholder]", 
+    RowBox[{
+     StyleBox["construct",
+      FontFamily->"Courier New",
+      FontSize->12,
+      FontWeight->"Bold"], "\[IndentingNewLine]"}], Cell[
+    "RECORD, VERTEX, EDGE", "TableText"]}
+  }], "\[IndentingNewLine]", GridBox[{
+   {"\[Placeholder]", 
+    StyleBox["method",
+     FontFamily->"Courier New",
+     FontSize->12,
+     FontWeight->"Bold"], Cell["PUT, GET, DELETE, PUT, PATCH", "TableText"]}
+  }]}], "2ColumnTableMod",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
+   "RowsIndexed" -> {}},
+ GridBoxDividers->{"Rows" -> {{True, True, True}}}},
+ CellID->12695],
+
+Cell[TextData[{
+ "The Input Assistant of the ",
+ ButtonBox["Wolfram Predictive Interface",
+  BaseStyle->"Link",
+  ButtonData->"paclet:guide/WolframPredictiveInterface"],
+ " offers context-sensitive autocompletion for the ",
+ ButtonBox["enumerated option arguments",
+  BaseStyle->"Hyperlink",
+  ButtonData->"EnumeratedOptions"],
+ " of ",
+ Cell[BoxData[
+  ButtonBox["ODBapi",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula"],
+ ". A drop-down list with option values is filtered automatically as you \
+start typing the name of the option value e.g. ",
+ StyleBox["com \[Rule] log...",
+  Background->RGBColor[1, 0.9, 0.8]],
+ "  and only two option values are displayed ",
+ StyleBox["logout",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " and ",
+ StyleBox["login.",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " If you want the drop-down list filtering to appear do not start quoting \
+the option value. You can also select any of the ODBapi function templates to \
+assist you in the completion of the command."
+}], "Notes",
+ CellID->291459538],
+
+Cell[TextData[{
+ "The auto-completion rules are automatically loaded on Front End from ",
+ StyleBox["OptionValues folder",
+  FontWeight->"Bold"],
+ " at:"
+}], "Notes",
+ CellID->197257220],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNameJoin", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "$InstallationDirectory", ",", " ", "\"\<SystemFiles\>\"", ",", " ", 
+    "\"\<FrontEnd\>\"", ",", "\n", "  ", "\"\<SystemResources\>\"", ",", " ", 
+    "\"\<FunctionalFrequency\>\"", ",", " ", "\"\<OptionValues\>\""}], "}"}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->477983845],
+
+Cell[BoxData["\<\"C:\\\\Mathematica\\\\SystemFiles\\\\FrontEnd\\\\\
+SystemResources\\\\FunctionalFrequency\\\\OptionValues\"\>"], "Output",
+ ImageSize->{508, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->354679467]
+}, Open  ]],
+
+Cell[TextData[{
+ "Therefore to enable auto-completion for the ODBapi function search for the \
+file \"ODBapi.m\". If you installed the package under the ",
+ ButtonBox["$UserBaseDirectory",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/$UserBaseDirectory"],
+ " then it is located at:"
+}], "Notes",
+ CellID->26009474],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$UserBaseDirectory", " ", "<>", " ", 
+  "\"\<\\\\Applications\\\\DBAPI\\\\Options\\\\ODBapi.m\>\""}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->330150412],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\athanassios\\\\AppData\\\\Roaming\\\\\
+Mathematica\\\\Applications\\\\DBAPI\\\\Options\\\\ODBapi.m\"\>"], "Output",
+ ImageSize->{578, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->73572344]
+}, Open  ]],
+
+Cell[TextData[{
+ "Copy that file inside the",
+ StyleBox[" OptionValues folder",
+  FontWeight->"Bold"],
+ " of your ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " installation."
+}], "Notes",
+ CellID->579706542]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[StyleBox["Change Default Options",
+   FontColor->RGBColor[0., 0.5019607843137255, 0.5019607843137255]]], 
+   "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellTags->"EnumeratedOptions",
+ CellID->45748516],
+
+Cell[TextData[{
+ "Default options can be changed with the ",
+ ButtonBox["SetOptions",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/SetOptions"],
+ " command e.g."
+}], "Notes",
+ CellID->19590254],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"ODBapi", ",", 
+    RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}]}], "]"}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->442552855]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->795621244],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->181939391],
+
+Cell[TextData[{
+ "Load the two packages that are included in the ",
+ StyleBox["DBAPI`",
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ "context, the",
+ StyleBox[" ",
+  Background->RGBColor[1, 0.9, 0.8]],
+ StyleBox["DBAPI`Utils`",
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ "and the ",
+ StyleBox["DBAPI`OrientDB`",
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ ":"
+}], "MathCaption",
+ CellID->1825449234],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "DBAPI`"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->565066498],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\<\"Version\"\>", 
+  "\[Rule]", "\<\"10.2.0 for Microsoft Windows (64-bit) (July 7, \
+2015)\"\>"}]], "Print",
+ CellLabel->"During evaluation of In[8]:=",
+ CellID->115497945],
+
+Cell[BoxData["\<\"\"\>"], "Print",
+ CellLabel->"During evaluation of In[8]:=",
+ CellID->562426770],
+
+Cell[BoxData["\<\"Data Utilities Package v0.9\"\>"], "Print",
+ CellLabel->"During evaluation of In[8]:=",
+ CellID->69785145],
+
+Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
+"Print",
+ CellLabel->"During evaluation of In[8]:=",
+ CellID->311541333],
+
+Cell[BoxData["\<\"OrientDB HTTP API Package v0.9\"\>"], "Print",
+ CellLabel->"During evaluation of In[8]:=",
+ CellID->560431452],
+
+Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
+"Print",
+ CellLabel->"During evaluation of In[8]:=",
+ CellID->248322174]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Add Commands",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(5)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->250621648],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Add Database",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->316979146],
+
+Cell[TextData[StyleBox["Add Database command creates a, disk-based or memory, \
+document or graph, database with a username and password on remote database \
+Server",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->515986873],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ODBapi", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<addDatabase\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", 
+    RowBox[{"dbtype", "\[Rule]", "\"\<plocal/graph\>\""}], ",", 
+    RowBox[{"usr", "\[Rule]", "\"\<root\>\""}], ",", 
+    RowBox[{"pwd", "\[Rule]", "\"\<123\>\""}], ",", 
+    RowBox[{"debug", "\[Rule]", "True"}]}], "]"}], "//", "Short"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->214176277],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/database/DemoDB/plocal/graph\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/database/DemoDB/plocal/graph", "\n=== Body ===\n", 
+   ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[33]:=",
+ CellID->367494293],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\<\"{\\\"classes\\\":[{\\\"name\\\":\\\"OUser\\\",\\\"superClass\
+\\\":\\\"OIdentity\\\",\\\"alias\\\":nu\"\>", 
+     "\[Ellipsis]", \
+"\<\"alue\\\":-1}],\\\"properties\\\":[{\\\"name\\\":\\\"strictSql\\\",\\\"\
+value\\\":\\\"true\\\"}]}}\"\>"}], ",", "200"}], "}"}],
+  Short]], "Output",
+ ImageSize->{499, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]//Short=",
+ CellID->394290836]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Add Class",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->278150407],
+
+Cell[TextData[StyleBox["Add a class by executing SQL CREATE CLASS  to create \
+a new class in the schema and \[LineSeparator]optionally extend a superclass. \
+",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->824894262],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ODBapi", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<addClass\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", 
+    RowBox[{"class", "\[Rule]", "\"\<Person\>\""}], ",", 
+    RowBox[{"debug", "\[Rule]", "True"}]}], "]"}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->186146929],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"CREATE CLASS Person\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "CREATE CLASS Person"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[37]:=",
+ CellID->411714701]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addClass\>\""}], ",", 
+   RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", 
+   RowBox[{"class", "\[Rule]", "\"\<Employee\>\""}], ",", 
+   RowBox[{"superclass", "\[Rule]", "\"\<Person\>\""}], ",", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->753650141],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"CREATE CLASS Employee extends Person\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "CREATE CLASS Employee extends Person"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[38]:=",
+ CellID->772112485],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":13}]}\"\>", ",", "200"}], "}"}]], "Output",
+ ImageSize->{400, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->410241363]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Add a class via HTTP",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->782332945],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addClassViaHTTP\>\""}], ",", 
+   RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", 
+   RowBox[{"class", "\[Rule]", "\"\<Company\>\""}], ",", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->448393354],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/class/DemoDB/Company\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/class/DemoDB/Company", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->455147614],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"14\"\>", ",", "201"}], "}"}]], "Output",
+ ImageSize->{64, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->483816124]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Add Property",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->56533721],
+
+Cell[TextData[StyleBox["Add a property via SQL CREATE PROPERTY command",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->7432632],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addProperty\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", 
+   RowBox[{"class", "\[Rule]", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", "\"\<personName\>\""}], ",", 
+   RowBox[{"proptype", "\[Rule]", " ", "\"\<STRING\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->48164538],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"CREATE PROPERTY Person.personName STRING\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "CREATE PROPERTY Person.personName STRING"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[80]:=",
+ CellID->477331319],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":1}]}\"\>", ",", "200"}], "}"}]], "Output",
+ ImageSize->{393, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->36555810]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Add a property via HTTP",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->336507200],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<addPropertyViaHTTP\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", 
+   RowBox[{"class", "\[Rule]", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", "\"\<personGender\>\""}], ",", 
+   RowBox[{"proptype", "\[Rule]", " ", "\"\<STRING\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->98018934],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/property/DemoDB/Person/personGender/\
+STRING\"\>", "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/property/DemoDB/Person/personGender/STRING", 
+   "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[81]:=",
+ CellID->394328100],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"2\"\>", ",", "201"}], "}"}]], "Output",
+ ImageSize->{57, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->114155820]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Add Records",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->9802361],
+
+Cell[TextData[StyleBox["Add a JSON stuctured Document by inserting a \
+schemaless record into Person Class via the message body",
+ FontWeight->"Bold"]], "ExampleText",
+ CellTags->"addDOCUMENT",
+ CellID->48402971],
+
+Cell[TextData[{
+ "In Wolfram language we can represent the record with a hierarchical ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ " of ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ " "
+}], "ExampleText",
+ CellID->34439295],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"john", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"\"\<telephones\>\"", "\[Rule]", 
+      RowBox[{"Thread", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<home\>\"", ",", "\"\<business\>\"", ",", " ", 
+          "\"\<mobile\>\""}], "}"}], "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<2104566345\>\"", ",", "\"\<2108856844\>\"", ",", 
+          "\"\<6974059256\>\""}], "}"}]}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<firstName\>\"", "\[Rule]", "\"\<John\>\""}], ",", " ", 
+     RowBox[{"\"\<lastName\>\"", "\[Rule]", "\"\<Brown\>\""}], ",", 
+     RowBox[{"\"\<DOB\>\"", "\[Rule]", " ", "\"\<1971-10-01\>\""}], ",", 
+     RowBox[{"\"\<age\>\"", "\[Rule]", "44"}]}], "}"}]}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->81816368],
+
+Cell[TextData[{
+ "Then we transform the list of rules above to a JSON string using the ",
+ Cell[BoxData[
+  ButtonBox["DBexpressionToJSON",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/DBexpressionToJSON"]], "InlineFormula"],
+ " function of the ",
+ StyleBox[ButtonBox["Utilities Package",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ StyleBox[".",
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "ExampleText",
+ CellID->38407642],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"johnJSON", "=", 
+  RowBox[{"john", "//", 
+   RowBox[{
+    RowBox[{"DBexpressionToJSON", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"compact", "\[Rule]", "True"}]}], "]"}], "&"}]}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->118460324],
+
+Cell[BoxData["\<\"{\\\"telephones\\\":{\\\"home\\\":\\\"2104566345\\\",\\\"\
+business\\\":\\\"2108856844\\\",\\\"mobile\\\":\\\"6974059256\\\"},\\\"\
+firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"Brown\\\",\\\"DOB\\\":\\\"\
+1971-10-01\\\",\\\"age\\\":44}\"\>"], "Output",
+ ImageSize->{578, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->345350636]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addDOCUMENT\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"record", "\[Rule]", " ", "johnJSON"}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->620075524],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/document/DemoDB\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", \
+"\<\"{\\\"@class\\\":\\\"Person\\\",\\\"telephones\\\":{\\\"home\\\":\\\"\
+2104566345\\\",\\\"business\\\":\\\"2108856844\\\",\\\"mobile\\\":\\\"\
+6974059256\\\"},\\\"firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"Brown\\\",\
+\\\"DOB\\\":\\\"1971-10-01\\\",\\\"age\\\":44}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/document/DemoDB", "\n=== Body ===\n", 
+   "{\"@class\":\"Person\",\"telephones\":{\"home\":\"2104566345\",\"business\
+\":\"2108856844\",\"mobile\":\"6974059256\"},\"firstName\":\"John\",\"\
+lastName\":\"Brown\",\"DOB\":\"1971-10-01\",\"age\":44}"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[11]:=",
+ CellID->103445458],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"@type\\\":\\\"d\\\",\\\"@rid\\\":\\\"#12:2\\\",\\\"@\
+version\\\":1,\\\"@class\\\":\\\"Person\\\",\\\"telephones\\\":{\\\"home\\\":\
+\\\"2104566345\\\",\\\"business\\\":\\\"2108856844\\\",\\\"mobile\\\":\\\"\
+6974059256\\\"},\\\"firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"Brown\\\",\
+\\\"DOB\\\":\\\"1971-10-01\\\",\\\"age\\\":44}\"\>", ",", "201"}], 
+  "}"}]], "Output",
+ ImageSize->{578, 50},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->278299271]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Add the above JSON stuctured Document into Person via \
+SQL INSERT INTO command",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->426596392],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addCONTENT\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"record", "\[Rule]", " ", "johnJSON"}], ",", " ", 
+   RowBox[{"construct", "\[Rule]", " ", "\"\<RECORD\>\""}], ",", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->180529662],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"INSERT INTO Person content {\\\"telephones\\\":{\
+\\\"home\\\":\\\"2104566345\\\",\\\"business\\\":\\\"2108856844\\\",\\\"\
+mobile\\\":\\\"6974059256\\\"},\\\"firstName\\\":\\\"John\\\",\\\"lastName\\\"\
+:\\\"Brown\\\",\\\"DOB\\\":\\\"1971-10-01\\\",\\\"age\\\":44}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "INSERT INTO Person content \
+{\"telephones\":{\"home\":\"2104566345\",\"business\":\"2108856844\",\"mobile\
+\":\"6974059256\"},\"firstName\":\"John\",\"lastName\":\"Brown\",\"DOB\":\"\
+1971-10-01\",\"age\":44}"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[12]:=",
+ CellID->263046851],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@rid\\\":\\\"#12:\
+3\\\",\\\"@version\\\":1,\\\"@class\\\":\\\"Person\\\",\\\"telephones\\\":{\\\
+\"home\\\":\\\"2104566345\\\",\\\"business\\\":\\\"2108856844\\\",\\\"mobile\\\
+\":\\\"6974059256\\\"},\\\"firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"\
+Brown\\\",\\\"DOB\\\":\\\"1971-10-01\\\",\\\"age\\\":44}]}\"\>", ",", "200"}],
+   "}"}]], "Output",
+ ImageSize->{578, 67},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->205621877]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Add the above JSON stuctured Document into Person via \
+SQL INSERT VALUES command",
+ FontWeight->"Bold"]], "ExampleText",
+ CellTags->"InsertValues",
+ CellID->104620295],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"kstr", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"john", "//", "Association"}], "//", "Keys"}], "//", 
+   RowBox[{
+    RowBox[{"DBListSetToSQL92", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"values", "\[Rule]", "False"}]}], "]"}], "&"}]}]}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->453969814],
+
+Cell[BoxData["\<\"(telephones, firstName, lastName, DOB, age)\"\>"], "Output",
+ ImageSize->{305, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->200167903]
+}, Open  ]],
+
+Cell[TextData[{
+ "We apply a series of transformation to get the Keys and Values strings in \
+SQL-92 format. ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ " and ",
+ ButtonBox["Keys",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Keys"],
+ " are Wolfram functions, ",
+ Cell[BoxData[
+  ButtonBox["DBListSetToSQL92",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/DBListSetToSQL92"]], "InlineFormula"],
+ " is a function of the",
+ StyleBox[ButtonBox[" ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+  Background->RGBColor[1, 0.9, 0.8]],
+ StyleBox[ButtonBox["Utilities package",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ "."
+}], "ExampleText",
+ CellID->185542181],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vstr", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"john", "//", "Association"}], "//", "Values"}], "//", 
+   "DBListSetToSQL92"}]}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->463558094],
+
+Cell[BoxData["\<\"({\\\"home\\\":\\\"2104566345\\\",\\\"business\\\":\\\"\
+2108856844\\\",\\\"mobile\\\":\\\"6974059256\\\"}, \\\"John\\\", \
+\\\"Brown\\\", \\\"1971-10-01\\\", 44)\"\>"], "Output",
+ ImageSize->{494, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->310167499]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addVALUES\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"keys", "\[Rule]", "kstr"}], ",", " ", 
+   RowBox[{"values", "\[Rule]", "vstr"}], ",", " ", 
+   RowBox[{"construct", "\[Rule]", " ", "\"\<RECORD\>\""}], ",", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[7]:=",
+ CellID->8922180],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"INSERT INTO Person (telephones, firstName, \
+lastName, DOB, age) VALUES \
+({\\\"home\\\":\\\"2104566345\\\",\\\"business\\\":\\\"2108856844\\\",\\\"\
+mobile\\\":\\\"6974059256\\\"}, \\\"John\\\", \\\"Brown\\\", \\\"1971-10-01\\\
+\", 44)\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "INSERT INTO Person (telephones, firstName, lastName, DOB, age) VALUES \
+({\"home\":\"2104566345\",\"business\":\"2108856844\",\"mobile\":\"6974059256\
+\"}, \"John\", \"Brown\", \"1971-10-01\", 44)"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[15]:=",
+ CellID->322501453],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@rid\\\":\\\"#12:\
+4\\\",\\\"@version\\\":1,\\\"@class\\\":\\\"Person\\\",\\\"telephones\\\":{\\\
+\"business\\\":\\\"2108856844\\\",\\\"mobile\\\":\\\"6974059256\\\",\\\"home\\\
+\":\\\"2104566345\\\"},\\\"firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"\
+Brown\\\",\\\"DOB\\\":\\\"1971-10-01\\\",\\\"age\\\":44}]}\"\>", ",", "200"}],
+   "}"}]], "Output",
+ ImageSize->{578, 67},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[7]=",
+ CellID->125374916]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Add OSQL",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->212652573],
+
+Cell[TextData[StyleBox["AddOSQLScript means that the database may change. \
+OrientDB batch of SQL commands can be non-idempotent  and are executed via \
+POST in a single call ",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->398791406],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "osqlScript", "=", 
+   "\"\<\nCREATE CLASS Car EXTENDS V;\nCREATE VERTEX Car SET \
+brand='FIAT',model='Punto',year='2000-01-01'\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ODBapi", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<addOSQLScript\>\""}], ",", 
+    RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", 
+    RowBox[{"sql", "\[Rule]", "osqlScript"}], ",", 
+    RowBox[{"debug", "\[Rule]", "True"}]}], "]"}], " "}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->31826],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/batch/DemoDB\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"{\\n    \\\"transaction\\\": false,\\n    \
+\\\"operations\\\": [\\n        {\\n            \\\"type\\\": \\\"script\\\",\
+\\n            \\\"language\\\": \\\"sql\\\",\\n            \\\"script\\\": \
+\\\"\\\\nCREATE CLASS Car EXTENDS V;\\\\nCREATE VERTEX Car SET \
+brand='FIAT',model='Punto',year='2000-01-01'\\\"\\n        }\\n    \
+]\\n}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/batch/DemoDB", "\n=== Body ===\n", 
+   "{\n    \"transaction\": false,\n    \"operations\": [\n        {\n        \
+    \"type\": \"script\",\n            \"language\": \"sql\",\n            \
+\"script\": \"\\nCREATE CLASS Car EXTENDS V;\\nCREATE VERTEX Car SET \
+brand='FIAT',model='Punto',year='2000-01-01'\"\n        }\n    ]\n}"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[34]:=",
+ CellID->140525225],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@rid\\\":\\\"#11:\
+0\\\",\\\"@version\\\":1,\\\"@class\\\":\\\"Car\\\",\\\"brand\\\":\\\"FIAT\\\"\
+,\\\"model\\\":\\\"Punto\\\",\\\"year\\\":\\\"2000-01-01\\\"}]}\"\>", ",", 
+   "200"}], "}"}]], "Output",
+ ImageSize->{578, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->59445870]
+}, Open  ]],
+
+Cell[TextData[StyleBox["AddOSQLCommand means that the database may change. \
+\[LineSeparator]OrientDB SQL command executed under the hood via POST can be \
+non-idempotent",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->197842509],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<addOSQLCommand\>\""}], ",", 
+   RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", 
+   RowBox[{"sql", "\[Rule]", "\"\<SELECT FROM Car\>\""}], ",", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->3281],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"SELECT FROM Car\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "SELECT FROM Car"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->718068737],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@rid\\\":\\\"#11:\
+0\\\",\\\"@version\\\":1,\\\"@class\\\":\\\"Car\\\",\\\"brand\\\":\\\"FIAT\\\"\
+,\\\"model\\\":\\\"Punto\\\",\\\"year\\\":\\\"2000-01-01\\\"}]}\"\>", ",", 
+   "200"}], "}"}]], "Output",
+ ImageSize->{578, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->304138058]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Del Commands",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(5)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->870169581],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Del Database",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->630707372],
+
+Cell[TextData[StyleBox["Delete a Database with basic authentication to the \
+server",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->249686915],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<delDatabase\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<TestDB\>\""}], ",", " ", 
+   RowBox[{"usr", "\[Rule]", "\"\<root\>\""}], ",", " ", 
+   RowBox[{"pwd", "\[Rule]", " ", "\"\<123\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->681988968],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/database/TestDB\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/database/TestDB", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[77]:=",
+ CellID->129745950],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->125185783]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Del Class",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->533642582],
+
+Cell[TextData[StyleBox["Delete a Class, i.e. remove completely the class from \
+the schema. If the class extends vertex (V) then all the vertices have to be \
+deleted first. Command delClass is based on SQL DROP CLASS operation.",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->316028126],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "->", "\"\<delClass\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", "\"\<Company\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->207215180],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"DROP CLASS Company\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "DROP CLASS Company"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[78]:=",
+ CellID->704851935],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":true}]}\"\>", ",", "200"}], "}"}]], "Output",
+ ImageSize->{414, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->384752715]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Del Property",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->608456401],
+
+Cell[TextData[StyleBox["Delete a property via SQL - DROP PROPERTY\
+\[LineSeparator]Be aware that although the property is removed from the \
+schema, it still remains as a key in records that have been created with that \
+property.",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->30703752],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<delProperty\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<personGender\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->703392179],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"DROP PROPERTY Person.personGender\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "DROP PROPERTY Person.personGender"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[82]:=",
+ CellID->228054993],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->589283350]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Delete property values - This command removes a field \
+from all records by executing SQL UPDATE",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->268371351],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<delPropertyValues\>\""}], ",", 
+   RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<telephones\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->64973610],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"UPDATE Person remove telephones\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "UPDATE Person remove telephones"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[83]:=",
+ CellID->168705786],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":3}]}\"\>", ",", "200"}], "}"}]], "Output",
+ ImageSize->{393, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->271572719]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Del Records",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->182127033],
+
+Cell[TextData[StyleBox["Delete records via SQL - TRUNCATE RECORD by listing \
+all the record IDs",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->91946930],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<delRecords\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", 
+   RowBox[{"class", "\[Rule]", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"id", "\[Rule]", " ", "\"\<[12:2, 12:3]\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->10155939],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"TRUNCATE RECORD [12:2, 12:3]\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "TRUNCATE RECORD [12:2, 12:3]"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[79]:=",
+ CellID->137691201],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":2}]}\"\>", ",", "200"}], "}"}]], "Output",
+ ImageSize->{393, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->289645481]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Delete All records via SQL - TRUNCATE CLASS\
+\[LineSeparator]This command acts at a lower level than SQL DELETE Command. \
+It cannot delete a vertex or edge class if it contains records.",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->39048696],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<delAllRecords\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->41635915],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"TRUNCATE CLASS Person\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "TRUNCATE CLASS Person"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[85]:=",
+ CellID->209617768],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":3,\\\"@fieldTypes\\\":\\\"value=l\\\"}]}\"\>", ",", "200"}], 
+  "}"}]], "Output",
+ ImageSize->{561, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->39164006]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Del Connection",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->52354575],
+
+Cell[TextData[StyleBox["Delete Server Connection - It requires a connection \
+id and root password to kill the connection",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->59674047],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<delConnection\>\""}], ",", " ", 
+   RowBox[{"con", "\[Rule]", " ", "\"\<49\>\""}], ",", " ", 
+   RowBox[{"usr", "\[Rule]", " ", "\"\<root\>\""}], ",", " ", 
+   RowBox[{"pwd", "\[Rule]", " ", "\"\<123\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->53260414],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/connection/kill/49\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/connection/kill/49", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[94]:=",
+ CellID->105760405],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->481624593]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Get Commands",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(5)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1347504],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Get Server",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->236602702],
+
+Cell[TextData[StyleBox["Get Server Information ",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->34303378],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ODBapi", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<getServer\>\""}], ",", " ", 
+    RowBox[{"usr", "\[Rule]", "\"\<root\>\""}], ",", " ", 
+    RowBox[{"pwd", "\[Rule]", "\"\<123\>\""}], ",", 
+    RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}], "//", 
+  "ODBgetDataset"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->264293119],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/server\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm["http://localhost:2480/server", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[106]:=",
+ CellID->711115638],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"connections\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"connectionId\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"65\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"remoteAddress\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox[
+                StyleBox["\"/127.0.0.1:49386\"", 
+                 GrayLevel[0.45]], "/127.0.0.1:49386"]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "14"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "4"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"dbs\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"storages\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"demodb\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox[
+               "\"OLocalPaginatedStorage\"", FontColor -> GrayLevel[0.4]]}], 
+             ",", 
+             RowBox[{
+               StyleBox["\"path\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox[
+               "\"C:/orientdb217/databases/demodb\"", FontColor -> 
+                GrayLevel[0.4]]}], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"DemoDB\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox[
+               "\"OLocalPaginatedStorage\"", FontColor -> GrayLevel[0.4]]}], 
+             ",", 
+             RowBox[{
+               StyleBox["\"path\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox[
+               "\"C:/orientdb217/databases/DemoDB\"", FontColor -> 
+                GrayLevel[0.4]]}], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], 
+          "\[ThinSpace]", "}"}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"properties\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"db.pool.min\"", FontColor -> GrayLevel[0.4]]}], 
+             ",", 
+             RowBox[{
+               StyleBox["\"value\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"1\"", FontColor -> GrayLevel[0.4]]}], 
+             "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"db.pool.max\"", FontColor -> GrayLevel[0.4]]}], 
+             ",", 
+             RowBox[{
+               StyleBox["\"value\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"50\"", FontColor -> GrayLevel[0.4]]}], 
+             "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox[
+               "\"profiler.enabled\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"value\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"true\"", FontColor -> GrayLevel[0.4]]}], 
+             "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "2"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"globalProperties\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"key\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox[
+               "\"environment.dumpCfgAtStartup\"", FontColor -> 
+                GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"description\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox[
+               "\"Dumps the configuration at application startup\"", 
+                FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"value\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], "\[ThinSpace]\[Ellipsis]"}], ",", 
+             RowBox[{
+               StyleBox["\"defaultValue\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], "\[ThinSpace]\[Ellipsis]"}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "1"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "164"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       ItemBox[
+        RowBox[{"3 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"5", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"connections\" -> _, \"dbs\" -> _, \"storages\" -> _, \
+\"properties\" -> _, \"globalProperties\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{1281, 140},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->91658634]
+}, Open  ]],
+
+Cell[TextData[{
+ "The postfix operation of ",
+ StyleBox[ButtonBox["ODBgetDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBgetDataset"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " transforms JSON Output above into a Wolfram ",
+ ButtonBox["Dataset.",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " Further processing can be applied on the resulting",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ StyleBox[".",
+  FontWeight->"Bold"]
+}], "ExampleText",
+ CellID->258959764],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "[", 
+  RowBox[{"\"\<connections\>\"", ",", "All", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<connectionId\>\"", ",", "\"\<remoteAddress\>\"", ",", "\"\<db\>\"", 
+     ",", "\"\<user\>\""}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1938064],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"connectionId\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"remoteAddress\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"db\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"user\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"65\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox[
+        StyleBox["\"/127.0.0.1:49386\"", 
+         GrayLevel[0.45]], "/127.0.0.1:49386"], 
+       InterpretationBox[
+        StyleBox["\"-\"", 
+         GrayLevel[0.45]], "-"], 
+       InterpretationBox[
+        StyleBox["\"-\"", 
+         GrayLevel[0.45]], "-"]}, {
+       StyleBox["\"39\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox[
+        StyleBox["\"/127.0.0.1:49357\"", 
+         GrayLevel[0.45]], "/127.0.0.1:49357"], 
+       InterpretationBox[
+        StyleBox["\"-\"", 
+         GrayLevel[0.45]], "-"], 
+       InterpretationBox[
+        StyleBox["\"-\"", 
+         GrayLevel[0.45]], "-"]}, {
+       StyleBox["\"40\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox[
+        StyleBox["\"/127.0.0.1:49357\"", 
+         GrayLevel[0.45]], "/127.0.0.1:49357"], 
+       InterpretationBox[
+        StyleBox["\"-\"", 
+         GrayLevel[0.45]], "-"], 
+       InterpretationBox[
+        StyleBox["\"-\"", 
+         GrayLevel[0.45]], "-"]}, {
+       StyleBox["\"41\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox[
+        StyleBox["\"/127.0.0.1:49357\"", 
+         GrayLevel[0.45]], "/127.0.0.1:49357"], 
+       InterpretationBox[
+        StyleBox["\"-\"", 
+         GrayLevel[0.45]], "-"], 
+       InterpretationBox[
+        StyleBox["\"-\"", 
+         GrayLevel[0.45]], "-"]}, {
+       StyleBox["\"29\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox[
+        StyleBox["\"/0:0:0:0:0:0:0:1:49343\"", 
+         GrayLevel[0.45]], "/0:0:0:0:0:0:0:1:49343"], 
+       InterpretationBox[
+        StyleBox["\"DemoDB\"", 
+         GrayLevel[0.45]], "DemoDB"], 
+       InterpretationBox[
+        StyleBox["\"admin\"", 
+         GrayLevel[0.45]], "admin"]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"5", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{370, 169},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->499949870]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Get Database",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->31465665],
+
+Cell[TextData[StyleBox["Get Database Information",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->55725431],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dbInfo", "=", 
+  RowBox[{
+   RowBox[{"ODBapi", "[", 
+    RowBox[{
+     RowBox[{"com", "\[Rule]", "\"\<getDatabase\>\""}], ",", " ", 
+     RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", 
+     RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}], "//", 
+   "ODBgetDataset"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->695998994],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/database/DemoDB\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/database/DemoDB", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[62]:=",
+ CellID->545373528],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"server\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"version\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"2.1.7\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"build\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox[
+            "\"2.1.x@r${buildNumber}; 2015-12-08 16:49:51+0000\"", FontColor -> 
+             GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"osName\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"Windows 7\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"osVersion\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"6.1\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"osArch\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"amd64\"", FontColor -> GrayLevel[0.4]]}], ",", 
+          RowBox[{
+            StyleBox["\"javaVendor\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox["\"Oracle Corporation\"", FontColor -> GrayLevel[0.4]]}],
+           ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "1"], 
+           GrayLevel[0.5]], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic]}, {
+       StyleBox["\"classes\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"superClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"superClasses\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], "\[ThinSpace]\[Ellipsis]"}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "7"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "14"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"clusters\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"id\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 0}], ",", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"internal\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"records\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 3}], ",", 
+             RowBox[{
+               StyleBox["\"conflictStrategy\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], "\[ThinSpace]\[Ellipsis]"}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "4"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "15"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"currentUser\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"admin\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"indexes\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"OUser.name\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"configuration\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], "\[ThinSpace]\[Ellipsis]"}], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "2"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"config\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{
+          StyleBox["\[LeftAssociation]", 
+           GrayLevel[0.45]], "\[ThinSpace]", 
+          RowBox[{
+            StyleBox["\"values\"", 
+             GrayLevel[0.3]], 
+            StyleBox["\[Rule]", 
+             GrayLevel[0.5]], 
+            StyleBox[
+             RowBox[{"{", "\[ThinSpace]", 
+               StyleBox[
+                RowBox[{
+                  StyleBox["\[LeftAssociation]", 
+                   GrayLevel[0.45]], "\[ThinSpace]", 
+                  RowBox[{
+                    StyleBox["\"name\"", 
+                    GrayLevel[0.3]], 
+                    StyleBox["\[Rule]", 
+                    GrayLevel[0.5]], 
+                    StyleBox["\"dateFormat\"", FontColor -> GrayLevel[0.4]]}],
+                   ",", 
+                  RowBox[{
+                    StyleBox["\"value\"", 
+                    GrayLevel[0.3]], 
+                    StyleBox["\[Rule]", 
+                    GrayLevel[0.5]], "\[ThinSpace]\[Ellipsis]"}], 
+                  "\[ThinSpace]", 
+                  StyleBox["\[RightAssociation]", 
+                   GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+               StyleBox[
+                RowBox[{
+                  StyleBox["\[LeftAssociation]", 
+                   GrayLevel[0.45]], "\[ThinSpace]", 
+                  RowBox[{
+                    StyleBox["\"name\"", 
+                    GrayLevel[0.3]], 
+                    StyleBox["\[Rule]", 
+                    GrayLevel[0.5]], 
+                    StyleBox[
+                    "\"dateTimeFormat\"", FontColor -> GrayLevel[0.4]]}], ",", 
+                  RowBox[{
+                    StyleBox["\"value\"", 
+                    GrayLevel[0.3]], 
+                    StyleBox["\[Rule]", 
+                    GrayLevel[0.5]], "\[ThinSpace]\[Ellipsis]"}], 
+                  "\[ThinSpace]", 
+                  StyleBox["\[RightAssociation]", 
+                   GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+               StyleBox[
+                SubscriptBox["\[CenterEllipsis]", "8"], 
+                GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+             Automatic]}], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "1"], 
+           GrayLevel[0.5]], "\[ThinSpace]", 
+          StyleBox["\[RightAssociation]", 
+           GrayLevel[0.45]]}], LineBreakWithin -> Automatic]}, {
+       ItemBox[
+        RowBox[{"6 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"6", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"server\" -> _, \"classes\" -> _, \"clusters\" -> _, \
+\"currentUser\" -> _, \"indexes\" -> _, \"config\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{1110, 158},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->31910472]
+}, Open  ]],
+
+Cell[TextData[{
+ "The postfix operation of ",
+ StyleBox[ButtonBox["ODBgetDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBgetDataset"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " transforms JSON Output above into a Wolfram ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " Further processing can be applied on the resulting ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ "."
+}], "ExampleText",
+ CellID->765206859],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dbInfo", "[", 
+  RowBox[{"\"\<classes\>\"", ",", "All", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<name\>\"", ",", " ", "\"\<superClass\>\"", ",", " ", 
+     "\"\<records\>\"", ",", "\"\<properties\>\""}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->733861099],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"name\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"superClass\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"records\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"properties\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"CLA\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 1, 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "properties"]]}, {
+       StyleBox["\"Car\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"V\"", FontColor -> GrayLevel[0.4]], 1, 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "properties"]]}, {
+       StyleBox["\"E\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 0, 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "properties"]]}, {
+       StyleBox["\"Employee\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"Person\"", FontColor -> GrayLevel[0.4]], 0, 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"personDOB\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox[
+                StyleBox[
+                "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, 
+                 FontWeight -> Bold, 
+                 GrayLevel[0.7]], 
+                Missing["KeyAbsent", "linkedClass"]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"DATE\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "6"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "2"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"OFunction\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 0, 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"idempotent\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox[
+                StyleBox[
+                "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, 
+                 FontWeight -> Bold, 
+                 GrayLevel[0.7]], 
+                Missing["KeyAbsent", "linkedClass"]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"BOOLEAN\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "6"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "4"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"OIdentity\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 6, 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "properties"]]}, {
+       StyleBox["\"ORIDs\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 0, 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "properties"]]}, {
+       StyleBox["\"ORestricted\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 0, 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"_allowDelete\"", FontColor -> GrayLevel[0.4]]}], 
+             ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"OIdentity\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"LINKSET\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "7"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "3"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"ORole\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"OIdentity\"", FontColor -> GrayLevel[0.4]], 3, 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"mode\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox[
+                StyleBox[
+                "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, 
+                 FontWeight -> Bold, 
+                 GrayLevel[0.7]], 
+                Missing["KeyAbsent", "linkedClass"]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"BYTE\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "6"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "3"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"OSchedule\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 0, 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"function\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"OFunction\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"LINK\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "7"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "6"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"OTriggered\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 0, 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "properties"]]}, {
+       StyleBox["\"OUser\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"OIdentity\"", FontColor -> GrayLevel[0.4]], 3, 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"name\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox[
+                StyleBox[
+                "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, 
+                 FontWeight -> Bold, 
+                 GrayLevel[0.7]], 
+                Missing["KeyAbsent", "linkedClass"]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"STRING\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "6"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "3"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"Person\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 0, 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"personDOB\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox[
+                StyleBox[
+                "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, 
+                 FontWeight -> Bold, 
+                 GrayLevel[0.7]], 
+                Missing["KeyAbsent", "linkedClass"]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"DATE\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "6"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "2"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"V\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 1, 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "properties"]]}, {
+       StyleBox["\"_studio\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]], 1, 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "properties"]]}, {
+       ItemBox[
+        RowBox[{"4 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"15", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{718, 379},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->123545915]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Get Databases - A list of the databases on the server",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->273315728],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<getDatabases\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->34913317],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/listDatabases\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm["http://localhost:2480/listDatabases", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[29]:=",
+ CellID->347840468],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\"databases\\\":[\
+\\\"GratefulDeadConcerts\\\",\\\"demodb\\\",\\\"DemoDB\\\"],\\\"@fieldTypes\\\
+\":\\\"databases=e\\\"}\"\>", ",", "200"}], "}"}]], "Output",
+ ImageSize->{578, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->127011626]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Get Class",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->48995154],
+
+Cell[TextData[StyleBox["Get Class Information from the server",
+ FontWeight->"Bold"]], "ExampleText",
+ CellTags->"getClass",
+ CellID->72000305],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"classInfo", "=", 
+  RowBox[{"ODBapi", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", " ", "\"\<getClass\>\""}], ",", " ", 
+    RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
+    RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+    RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->113697542],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/class/DemoDB/Person\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/class/DemoDB/Person", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[57]:=",
+ CellID->297657940],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"name\\\":\\\"Person\\\",\\\"superClass\\\":\\\"\\\",\\\"\
+superClasses\\\":[],\\\"alias\\\":null,\\\"abstract\\\":false,\\\"strictmode\\\
+\":false,\\\"clusters\\\":[12],\\\"defaultCluster\\\":12,\\\"clusterSelection\
+\\\":\\\"round-robin\\\",\\\"records\\\":0,\\\"properties\\\":[{\\\"name\\\":\
+\\\"personDOB\\\",\\\"type\\\":\\\"DATE\\\",\\\"mandatory\\\":true,\\\"\
+readonly\\\":false,\\\"notNull\\\":true,\\\"min\\\":null,\\\"max\\\":null,\\\"\
+regexp\\\":null,\\\"collate\\\":\\\"default\\\"},{\\\"name\\\":\\\"personName\
+\\\",\\\"type\\\":\\\"STRING\\\",\\\"mandatory\\\":true,\\\"readonly\\\":\
+false,\\\"notNull\\\":true,\\\"min\\\":null,\\\"max\\\":null,\\\"regexp\\\":\
+null,\\\"collate\\\":\\\"ci\\\"},{\\\"name\\\":\\\"rentCar\\\",\\\"\
+linkedClass\\\":\\\"Car\\\",\\\"type\\\":\\\"LINK\\\",\\\"mandatory\\\":false,\
+\\\"readonly\\\":false,\\\"notNull\\\":false,\\\"min\\\":null,\\\"max\\\":\
+null,\\\"regexp\\\":null,\\\"collate\\\":\\\"default\\\"}]}\"\>", ",", 
+   "200"}], "}"}]], "Output",
+ ImageSize->{578, 152},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->347421544]
+}, Open  ]],
+
+Cell[TextData[{
+ "The postfix operation of ",
+ StyleBox[ButtonBox["ODBgetDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBgetDataset"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " transforms JSON Output above into a Wolfram ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " Further processing can be applied on the resulting ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ "."
+}], "ExampleText",
+ CellID->282846910],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"classInfoDS", "=", 
+  RowBox[{"classInfo", "//", "ODBgetDataset"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->27991777],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"name\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"Person\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"superClass\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"superClasses\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       StyleBox["\"alias\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox[
+        TagBox["Null", Short[#, 5]& ], Null]}, {
+       StyleBox["\"abstract\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox["False", False]}, {
+       StyleBox["\"strictmode\"", 
+        GrayLevel[0.3]], 
+       InterpretationBox["False", False]}, {
+       StyleBox["\"clusters\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 12, "\[ThinSpace]", "}"}], 
+        LineBreakWithin -> Automatic]}, {
+       StyleBox["\"defaultCluster\"", 
+        GrayLevel[0.3]], 12}, {
+       StyleBox["\"clusterSelection\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"round-robin\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"records\"", 
+        GrayLevel[0.3]], 0}, {
+       StyleBox["\"properties\"", 
+        GrayLevel[0.3]], 
+       StyleBox[
+        RowBox[{"{", "\[ThinSpace]", 
+          StyleBox[
+           RowBox[{
+             StyleBox["\[LeftAssociation]", 
+              GrayLevel[0.45]], "\[ThinSpace]", 
+             RowBox[{
+               StyleBox["\"name\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"personDOB\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             RowBox[{
+               StyleBox["\"linkedClass\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               InterpretationBox[
+                StyleBox[
+                "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, 
+                 FontWeight -> Bold, 
+                 GrayLevel[0.7]], 
+                Missing["KeyAbsent", "linkedClass"]]}], ",", 
+             RowBox[{
+               StyleBox["\"type\"", 
+                GrayLevel[0.3]], 
+               StyleBox["\[Rule]", 
+                GrayLevel[0.5]], 
+               StyleBox["\"DATE\"", FontColor -> GrayLevel[0.4]]}], ",", 
+             StyleBox[
+              SubscriptBox["\[CenterEllipsis]", "6"], 
+              GrayLevel[0.5]], "\[ThinSpace]", 
+             StyleBox["\[RightAssociation]", 
+              GrayLevel[0.45]]}], LineBreakWithin -> Automatic], ",", 
+          StyleBox[
+           SubscriptBox["\[CenterEllipsis]", "2"], 
+           GrayLevel[0.5]], "\[ThinSpace]", "}"}], LineBreakWithin -> 
+        Automatic]}, {
+       ItemBox[
+        RowBox[{"3 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"11", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"name\" -> _, \"superClass\" -> _, \"superClasses\" -> _, \
+\"alias\" -> _, \"abstract\" -> _, \"strictmode\" -> _, \"clusters\" -> _, \
+\"defaultCluster\" -> _, \"clusterSelection\" -> _, \"records\" -> _, \
+\"properties\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{566, 268},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->105684170]
+}, Open  ]],
+
+Cell[TextData[{
+ "With the package function ",
+ StyleBox[ButtonBox["ODBgetFieldAttributes",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBgetFieldAttributes"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " we can view specific attributes for all properties (fields) of the Car \
+class"
+}], "ExampleText",
+ CellID->145027620],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBgetFieldAttributes", "[", 
+  RowBox[{"classInfoDS", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<name\>\"", ",", "\"\<linkedClass\>\"", ",", "\"\<type\>\"", ",", 
+     "\"\<mandatory\>\"", ",", " ", "\"\<notNull\>\"", ",", 
+     "\"\<collate\>\""}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->36192946],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"name\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"linkedClass\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"mandatory\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"notNull\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"collate\"", 
+        GrayLevel[0.3]]}, {
+       StyleBox["\"personDOB\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "linkedClass"]], 
+       StyleBox["\"DATE\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox["True", True], 
+       InterpretationBox["True", True], 
+       StyleBox["\"default\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"personName\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox[
+        StyleBox[
+        "KeyAbsent", FontFamily -> "Arial", FontSize -> 11, FontWeight -> 
+         Bold, 
+         GrayLevel[0.7]], 
+        Missing["KeyAbsent", "linkedClass"]], 
+       StyleBox["\"STRING\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox["True", True], 
+       InterpretationBox["True", True], 
+       StyleBox["\"ci\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"rentCar\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"Car\"", FontColor -> GrayLevel[0.4]], 
+       StyleBox["\"LINK\"", FontColor -> GrayLevel[0.4]], 
+       InterpretationBox["False", False], 
+       InterpretationBox["False", False], 
+       StyleBox["\"default\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"2 levels", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"3", "rows"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]", 
+       "\[SpanFromLeft]", "\[SpanFromLeft]", "\[SpanFromLeft]", 
+       "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> {1.5, 1.2}, 
+     GridBoxBackground -> {"Columns" -> {}, "Rows" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],"Dataset[{__Association}]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{457, 115},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->550559273]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Get Record",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->109037700],
+
+Cell[TextData[StyleBox["Get Record - Returns a JSON structured document with \
+data and metadata fields that represents an OrientDB record.",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->161172005],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<getRecord\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Car\>\""}], ",", " ", 
+   RowBox[{"id", "\[Rule]", " ", "\"\<11:0\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->44694905],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/document/DemoDB/11:0\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/document/DemoDB/11:0", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[32]:=",
+ CellID->243289352],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"@type\\\":\\\"d\\\",\\\"@rid\\\":\\\"#11:0\\\",\\\"@\
+version\\\":1,\\\"@class\\\":\\\"Car\\\",\\\"brand\\\":\\\"FIAT\\\",\\\"model\
+\\\":\\\"Punto\\\",\\\"year\\\":\\\"2000-01-01\\\"}\"\>", ",", "200"}], 
+  "}"}]], "Output",
+ ImageSize->{571, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->242929501]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "ODBgetDataset"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->65905183],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{GridBox[{{
+       StyleBox["\"@type\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"d\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@rid\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"#11:0\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"@version\"", 
+        GrayLevel[0.3]], 1}, {
+       StyleBox["\"@class\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"Car\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"brand\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"FIAT\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"model\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"Punto\"", FontColor -> GrayLevel[0.4]]}, {
+       StyleBox["\"year\"", 
+        GrayLevel[0.3]], 
+       StyleBox["\"2000-01-01\"", FontColor -> GrayLevel[0.4]]}, {
+       ItemBox[
+        RowBox[{"1 level", 
+          AdjustmentBox[" | ", BoxBaselineShift -> -0.3], 
+          RowBox[{"7", "elements"}]}], 
+        BaseStyle -> {
+         FontFamily -> "Helvetica", FontSize -> 10, FontColor -> 
+          GrayLevel[0.4], Editable -> False, Selectable -> False}, 
+        ItemSize -> {Automatic, Automatic}, Alignment -> {Left, Center}, 
+        Background -> RGBColor[0.92, 0.92, 0.9]], "\[SpanFromLeft]"}}, 
+     GridBoxFrame -> {"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}}, 
+     FrameStyle -> RGBColor[0, 0, 0, 0.4], GridBoxDividers -> {"Columns" -> {
+         RGBColor[0, 0, 0, 0.4], 
+         RGBColor[0, 0, 0, 0.3], {
+          RGBColor[0, 0, 0, 0.09]}, 
+         RGBColor[0, 0, 0, 0.4]}, "Rows" -> {
+         RGBColor[0, 0, 0, 0.4], {
+          RGBColor[0, 0, 0, 0.08]}, 
+         RGBColor[0, 0, 0, 0.4]}}, RowSpacings -> 1.2, 
+     GridBoxBackground -> {"Columns" -> {
+         RGBColor[0.92, 0.92, 0.9]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, ColumnSpacings -> 2.5, 
+     GridFrameMargins -> {{2, 3}, {1, 3}}, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      RowMinHeight -> 1.3],
+    "Dataset[<|\"@type\" -> _, \"@rid\" -> _, \"@version\" -> _, \"@class\" \
+-> _, \"brand\" -> _, \"model\" -> _, \"year\" -> _|>]"},
+   "Dataset",
+   DisplayFunction->(TagBox[
+     StyleBox[#, {
+      ShowAutoStyles -> False, LineBreakWithin -> False, FontWeight -> 
+       "Light", FontFamily -> "Helvetica Neue", NumberMarks -> False, 
+       SpanMaxSize -> 3, SpanMinSize -> 1., Editable -> False, Selectable -> 
+       True, Background -> RGBColor[0.985, 0.98, 0.973], 
+       LinebreakAdjustments -> {0.4, 5, 100, 0, 0.5}, LineIndent -> 0, 
+       LineSpacing -> {1.1, 5}}], Deploy]& ),
+   InterpretationFunction->(#2& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ ImageSize->{173, 180},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->50889341]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Get OSQL",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->357444667],
+
+Cell[TextData[StyleBox["Executes an OrientDB SQL query against the database. \
+The SQL command is read-only. It is executed via the GET method of HTTP and \
+therefore it cannot change the database. ",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->187227985],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<getOSQLCommand\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{
+   "sql", "\[Rule]", " ", "\"\<select from Car where brand='FIAT'\>\""}], ",", 
+   RowBox[{"debug", "->", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->197486948],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"select from Car where brand='FIAT'\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "select from Car where brand='FIAT'"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[9]:=",
+ CellID->532409503],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@rid\\\":\\\"#11:\
+0\\\",\\\"@version\\\":1,\\\"@class\\\":\\\"Car\\\",\\\"brand\\\":\\\"FIAT\\\"\
+,\\\"model\\\":\\\"Punto\\\",\\\"year\\\":\\\"2000-01-01\\\"}]}\"\>", ",", 
+   "200"}], "}"}]], "Output",
+ ImageSize->{578, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->844689502]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Update Commands",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(5)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->181574905],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Update Database",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->36611070],
+
+Cell[TextData[StyleBox["Update Database command is executed via SQL - ALTER \
+DATABASE operation. This command updates database settings.",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->489969174],
+
+Cell["\<\
+Change DATETIMEFORMAT attribute in the database to use ISO 8601 dates\
+\>", "ExampleText",
+ CellID->330793683],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<updDatabase\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"attribnam", "\[Rule]", "\"\<DATETIMEFORMAT\>\""}], ",", " ", 
+   RowBox[{
+   "attribval", "\[Rule]", " ", "\"\<yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\>\""}], ",",
+    " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->696168301],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"ALTER DATABASE DATETIMEFORMAT \
+yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "ALTER DATABASE DATETIMEFORMAT yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[14]:=",
+ CellID->110308394],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->576463799]
+}, Open  ]],
+
+Cell["Enable Lightweight Edges, i.e. bidirectional links ", "ExampleText",
+ CellID->11993676],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<updDatabase\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{
+   "attribnam", "\[Rule]", " ", "\"\<custom useLightweightEdges=\>\""}], ",", 
+   " ", 
+   RowBox[{"attribval", "\[Rule]", " ", "\"\<true\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->24890243],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"ALTER DATABASE custom useLightweightEdges= \
+true\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "ALTER DATABASE custom useLightweightEdges= true"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[15]:=",
+ CellID->235574282],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->178984661]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Update Class",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->409177094],
+
+Cell[TextData[StyleBox["Update Class command is executed via SQL - ALTER \
+CLASS operation. This command alters a class in the schema.",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->56512676],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<updClass\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"attribnam", "\[Rule]", " ", "\"\<SHORTNAME\>\""}], ",", " ", 
+   RowBox[{"attribval", "\[Rule]", " ", "\"\<P\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->610726695],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"ALTER CLASS Person SHORTNAME P\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "ALTER CLASS Person SHORTNAME P"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[26]:=",
+ CellID->15230723],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->2493913]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Update Property",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->757698320],
+
+Cell[TextData[StyleBox["Update Property command is executed via SQL - ALTER \
+PROPERTY operation. This command alter's a class's property in the schema.",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->32358624],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", " ", "\"\<updProperty\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<personName\>\""}], ",", " ", 
+   RowBox[{"attribnam", "\[Rule]", " ", "\"\<MANDATORY\>\""}], ",", " ", 
+   RowBox[{"attribval", "\[Rule]", " ", "\"\<false\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->94215897],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->625020670],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"ALTER PROPERTY Person.personName MANDATORY false\
+\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "ALTER PROPERTY Person.personName MANDATORY false"],
+  Editable->False]], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellLabel->"During evaluation of In[23]:=",
+ CellID->636066881],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->182649967]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Update Property Value(s)",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->609940359],
+
+Cell[TextData[StyleBox["Update property values for all records in a class \
+that have that property (field) or insert key-value pairs in the Document \
+record if that field does not exist.",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->624051007],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<updPropertyValues\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Car\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<cc\>\""}], ",", " ", 
+   RowBox[{"propval", "\[Rule]", " ", "\"\<1200\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->326795990],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"UPDATE Car set cc=1200\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "UPDATE Car set cc=1200"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[9]:=",
+ CellID->87936927],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":2}]}\"\>", ",", "200"}], "}"}]], "Output",
+ ImageSize->{393, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->29403958]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Update the property value of a single record",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->36501160],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<updPropertyValue\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Car\>\""}], ",", " ", 
+   RowBox[{"id", "\[Rule]", " ", "\"\<11:0\>\""}], ",", " ", 
+   RowBox[{"propnam", "\[Rule]", " ", "\"\<year\>\""}], ",", " ", 
+   RowBox[{"propval", "\[Rule]", " ", "\"\<\\\"2001-01-01\\\"\>\""}], ",", 
+   " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->936479508],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/command/DemoDB/sql\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"UPDATE 11:0 set year=\\\"2001-01-01\\\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/command/DemoDB/sql", "\n=== Body ===\n", 
+   "UPDATE 11:0 set year=\"2001-01-01\""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[11]:=",
+ CellID->200902351],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"result\\\":[{\\\"@type\\\":\\\"d\\\",\\\"@version\\\":0,\\\
+\"value\\\":1}]}\"\>", ",", "200"}], "}"}]], "Output",
+ ImageSize->{393, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->29411575]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Update Record",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->685635812],
+
+Cell[TextData[StyleBox["Update a record via the PUT-Document HTTP API \
+command. With the default OrientDB update mode the entire document is \
+replaced. ",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->313241233],
+
+Cell[TextData[{
+ "First we modify the ",
+ ButtonBox["Rule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Rule"],
+ " expression of the ",
+ StyleBox[ButtonBox["addDOCUMENT example",
+  BaseStyle->"Hyperlink",
+  ButtonData->"addDOCUMENT"],
+  FontWeight->"Bold"],
+ " and convert it to a JSON string using built-in ",
+ StyleBox["ToAssociations",
+  FontWeight->"Bold"],
+ " function and ",
+ StyleBox[ButtonBox["DBexpressionToJSON",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/DBexpressionToJSON"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " functions of the ",
+ StyleBox[ButtonBox["Utilities Package",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ StyleBox[".",
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]]
+}], "ExampleText",
+ CellID->226867491],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"johnJSON", "=", 
+   RowBox[{
+    RowBox[{"ReplacePart", "[", 
+     RowBox[{
+      RowBox[{"john", "//", "ToAssociations"}], ",", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"\"\<telephones\>\"", ",", "\"\<business\>\""}], "}"}], 
+         "\[Rule]", "\"\<2108880809\>\""}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"\"\<telephones\>\"", ",", " ", "\"\<mobile\>\""}], "}"}], 
+         " ", "\[Rule]", " ", "\"\<6972020202\>\""}]}], "}"}]}], "]"}], "//", 
+    "DBexpressionToJSON"}]}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->394654616],
+
+Cell[TextData[{
+ "Then we pass the result as the value of ",
+ StyleBox["record \[Rule]",
+  Background->RGBColor[1, 0.9, 0.8]],
+ " option"
+}], "ExampleText",
+ CellID->562161299],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<updRecordPUT\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"id", "\[Rule]", " ", "\"\<12:0\>\""}], ",", " ", 
+   RowBox[{"record", "\[Rule]", " ", "johnJSON"}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->687768503],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"{\\\"@type\\\":\\\"d\\\",\\\"@rid\\\":\\\"#12:0\\\",\\\"@\
+version\\\":7,\\\"@class\\\":\\\"Person\\\",\\\"telephones\\\":{\\\"home\\\":\
+\\\"2104566345\\\",\\\"business\\\":\\\"2108880809\\\",\\\"mobile\\\":\\\"\
+6972020202\\\"},\\\"firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"Brown\\\",\
+\\\"DOB\\\":\\\"1971-10-01\\\",\\\"age\\\":44}\"\>", ",", "200"}], 
+  "}"}]], "Output",
+ ImageSize->{578, 50},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->879046160],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/document/DemoDB/12:0\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"{\\n    \\\"telephones\\\": {\\n        \\\"home\
+\\\": \\\"2104566345\\\",\\n        \\\"business\\\": \\\"2108880809\\\",\\n  \
+      \\\"mobile\\\": \\\"6972020202\\\"\\n    },\\n    \\\"firstName\\\": \\\
+\"John\\\",\\n    \\\"lastName\\\": \\\"Brown\\\",\\n    \\\"DOB\\\": \
+\\\"1971-10-01\\\",\\n    \\\"age\\\": 44\\n}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/document/DemoDB/12:0", "\n=== Body ===\n", 
+   "{\n    \"telephones\": {\n        \"home\": \"2104566345\",\n        \
+\"business\": \"2108880809\",\n        \"mobile\": \"6972020202\"\n    },\n   \
+ \"firstName\": \"John\",\n    \"lastName\": \"Brown\",\n    \"DOB\": \
+\"1971-10-01\",\n    \"age\": 44\n}"],
+  Editable->False]], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellLabel->"During evaluation of In[55]:=",
+ CellID->45148103]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Update a record via the PATCH-Document HTTP API command. This will \
+update the record Document with only the difference to apply. The ",
+  FontWeight->"Bold"],
+ StyleBox["ver \[Rule]",
+  FontWeight->"Bold",
+  Background->RGBColor[1, 0.9, 0.8]],
+ StyleBox[" here is mandatory.",
+  FontWeight->"Bold"]
+}], "ExampleText",
+ CellID->119635270],
+
+Cell["Build an expression with the telephones to change only", "ExampleText",
+ CellID->572069266],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"telcom", "=", 
+   RowBox[{
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{"\"\<telephones\>\"", "\[Rule]", "\[IndentingNewLine]", 
+      RowBox[{"Thread", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<home\>\"", ",", "\"\<business\>\"", ",", " ", "\"\<mobile\>\"", 
+          ",", "\"\<pager\>\""}], "}"}], "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<2104566345\>\"", ",", "\"\<2109990909\>\"", ",", 
+          "\"\<6973030303\>\"", ",", "\"\<444\>\""}], "}"}]}], "]"}]}], 
+     "\[RightAssociation]"}], "//", "DBexpressionToJSON"}]}], ";"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->23241247],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<updRecordPATCH\>\""}], ",", 
+   RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
+   RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
+   RowBox[{"id", "\[Rule]", "\"\<12:0\>\""}], ",", " ", 
+   RowBox[{"record", "\[Rule]", " ", "telcom"}], ",", " ", 
+   RowBox[{"ver", "\[Rule]", " ", "8"}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->172279099],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/document/DemoDB/12:0\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"{\\\"@class\\\":\\\"Person\\\", \
+\\\"@version\\\":8, \\n    \\\"telephones\\\": {\\n        \\\"home\\\": \
+\\\"2104566345\\\",\\n        \\\"business\\\": \\\"2109990909\\\",\\n        \
+\\\"mobile\\\": \\\"6973030303\\\",\\n        \\\"pager\\\": \\\"444\\\"\\n   \
+ }\\n}\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/document/DemoDB/12:0", "\n=== Body ===\n", 
+   "{\"@class\":\"Person\", \"@version\":8, \n    \"telephones\": {\n        \
+\"home\": \"2104566345\",\n        \"business\": \"2109990909\",\n        \
+\"mobile\": \"6973030303\",\n        \"pager\": \"444\"\n    }\n}"],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[76]:=",
+ CellID->24544802]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Import/Export",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(2)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->138390976],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Import",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->825739110],
+
+Cell[TextData[StyleBox["Imports a database from an uploaded JSON text file",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->564653690],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ODBapi", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<importDatabase\>\""}], ",", " ", 
+    RowBox[{"db", "\[Rule]", "\"\<FilmDB\>\""}], ",", " ", 
+    RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->587305041],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/import/FilmDB\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm["http://localhost:2480/import/FilmDB", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[24]:=",
+ CellID->288404789]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Export",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->307145003],
+
+Cell[TextData[StyleBox["Exports a gzip file that contains the database JSON \
+export via GET-Export",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->45063583],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ODBapi", "[", 
+   RowBox[{
+    RowBox[{"com", "\[Rule]", "\"\<exportDatabase\>\""}], ",", " ", 
+    RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
+    RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->188393926],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/export/DemoDB\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm["http://localhost:2480/export/DemoDB", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[19]:=",
+ CellID->6937447]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Login/Logout",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(2)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->498015232],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Login",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->536203735],
+
+Cell[TextData[StyleBox["Connect to a remote server using basic authentication \
+via GET-Connect HTTP method",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->199784609],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "\[Rule]", "\"\<login\>\""}], ",", " ", 
+   RowBox[{"db", "\[Rule]", " ", "\"\<GratefulDeadConcerts\>\""}], ",", " ", 
+   RowBox[{"usr", "\[Rule]", " ", "\"\<admin\>\""}], ",", " ", 
+   RowBox[{"pwd", "->", "\"\<admin\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->438638312],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/connect/GratefulDeadConcerts\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm[
+  "http://localhost:2480/connect/GratefulDeadConcerts", "\n=== Body ===\n", 
+   ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[38]:=",
+ CellID->14428335],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "204"}], "}"}]], "Output",
+ ImageSize->{50, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->179779365]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Logout",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->691666921],
+
+Cell[TextData[StyleBox["Disconnect from server via GET-Disconnect HTTP method",
+ FontWeight->"Bold"]], "ExampleText",
+ CellID->681742525],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ODBapi", "[", 
+  RowBox[{
+   RowBox[{"com", "->", "\"\<logout\>\""}], ",", " ", 
+   RowBox[{"debug", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->100166063],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"http://localhost:2480/disconnect\"\>", 
+   "\[InvisibleSpace]", "\<\"\\n=== Body ===\\n\"\>", 
+   "\[InvisibleSpace]", "\<\"\"\>"}],
+  SequenceForm["http://localhost:2480/disconnect", "\n=== Body ===\n", ""],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[44]:=",
+ CellID->205967501],
+
+Cell[BoxData["$Failed"], "Output",
+ ImageSize->{53, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->426747511]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ WholeCellGroupOpener->True],
+
+Cell[TextData[ButtonBox["OrientDB Package",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/guide/ODBapiPackage"]], "MoreAbout",
+ CellID->334605460]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["RELATED LINKS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "RelatedLinksSection",
+ WholeCellGroupOpener->True,
+ CellID->1584193535],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{
+  ButtonBox["ODBgetDataset",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBgetDataset"], " ", ".", " ", 
+  ButtonBox["ODBgetFieldAttributes",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:DBAPI/ref/ODBgetFieldAttributes"]}]], "InlineFormula"]], \
+"RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"ODBapi - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DBAPI/guide/DBAPI", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}], 
+        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
+  "Metadata" -> {
+   "built" -> "{2015, 12, 24, 23, 58, 58.5796183}", 
+    "history" -> {"0.0", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "D B A P I Symbol", "language" -> "en", "paclet" -> 
+    "DBAPI", "status" -> "None", "summary" -> 
+    "ODBapi[com -> \"add<Command>\", options] Uses the POST method of the \
+HTTP protocol for both reading and writing the databaseODBapi[com -> \
+\"del<Command>\", options ] Uses either the POST or the DELETE method of the \
+HTTP protocol to destructively alter the databaseODBapi[com -> \"upd<Command>\
+\", options] Uses either the POST HTTP method to update record values with \
+SQL UPDATE command or the PUT and PATCH methods of the HTTP protocol to \
+update OrientDB structured Document recordsODBapi[com -> \"get<Command>\", \
+options ] Uses the GET method of the HTTP protocol to retrieve values from \
+the database. Operations are idempotent, i.e. they do not alter the \
+databaseODBapi[com -> \"import/export\", options ] Export a gzip file that \
+contains the database JSON export using the GET method. Import a database \
+from an uploaded JSON text file.ODBapi[com -> \"login/logout\", options ] \
+Uses the GET method of the HTTP protocol to connect to a remote server using \
+basic authentication and the same method for disconnecting", "synonyms" -> {},
+     "title" -> "ODBapi", "titlemodifier" -> "", "windowtitle" -> "ODBapi", 
+    "type" -> "Symbol", "uri" -> "DBAPI/ref/ODBapi"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Microsoft Windows (64-bit) (July 7, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "odbapi"->{
+  Cell[2881, 76, 70, 2, 70, "ObjectName",
+   CellTags->"odbapi",
+   CellID->1224892054]},
+ "EnumeratedOptions"->{
+  Cell[16542, 584, 290, 7, 70, "ExampleSection",
+   CellTags->"EnumeratedOptions",
+   CellID->239827978],
+  Cell[21434, 759, 293, 7, 70, "ExampleSection",
+   CellTags->"EnumeratedOptions",
+   CellID->45748516]},
+ "PrimaryExamplesSection"->{
+  Cell[22187, 790, 490, 14, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->795621244]},
+ "addDOCUMENT"->{
+  Cell[33480, 1175, 212, 4, 70, "ExampleText",
+   CellTags->"addDOCUMENT",
+   CellID->48402971]},
+ "InsertValues"->{
+  Cell[40066, 1357, 192, 4, 70, "ExampleText",
+   CellTags->"InsertValues",
+   CellID->104620295]},
+ "getClass"->{
+  Cell[105717, 3187, 143, 3, 70, "ExampleText",
+   CellTags->"getClass",
+   CellID->72000305]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"odbapi", 151969, 4544},
+ {"EnumeratedOptions", 152083, 4548},
+ {"PrimaryExamplesSection", 152324, 4555},
+ {"addDOCUMENT", 152463, 4559},
+ {"InsertValues", 152580, 4563},
+ {"getClass", 152695, 4567}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[600, 21, 2278, 53, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[2881, 76, 70, 2, 70, "ObjectName",
+ CellTags->"odbapi",
+ CellID->1224892054],
+Cell[CellGroupData[{
+Cell[2976, 82, 3039, 82, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[6040, 168, 609, 18, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->140121570],
+Cell[6652, 188, 98, 2, 70, "Notes",
+ CellID->1067943069],
+Cell[CellGroupData[{
+Cell[6775, 194, 255, 6, 70, "ExampleSection",
+ CellID->37887738],
+Cell[7033, 202, 209, 5, 70, "Notes",
+ CellID->22629621],
+Cell[7245, 209, 207, 7, 70, "Notes",
+ CellID->172327304],
+Cell[7455, 218, 254, 8, 70, "Notes",
+ CellID->238941620],
+Cell[7712, 228, 250, 10, 70, "Notes",
+ CellID->414856652],
+Cell[7965, 240, 192, 7, 70, "Notes",
+ CellID->50003116],
+Cell[8160, 249, 317, 10, 70, "Notes",
+ CellID->52482609],
+Cell[8480, 261, 306, 10, 70, "Notes",
+ CellID->433377957],
+Cell[8789, 273, 508, 19, 70, "Notes",
+ CellID->66505450],
+Cell[9300, 294, 565, 20, 70, "Notes",
+ CellID->145426120],
+Cell[9868, 316, 554, 21, 70, "Notes",
+ CellID->572142819],
+Cell[10425, 339, 277, 9, 70, "Notes",
+ CellID->327772531]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10739, 353, 385, 10, 70, "ExampleSection",
+ CellID->470092490],
+Cell[11127, 365, 300, 8, 70, "Notes",
+ CellID->114907712],
+Cell[11430, 375, 184, 5, 70, "Notes",
+ CellID->241020182],
+Cell[11617, 382, 252, 6, 70, "Notes",
+ CellID->310641717],
+Cell[11872, 390, 364, 8, 70, "Notes",
+ CellID->334191424],
+Cell[12239, 400, 357, 14, 70, "Notes",
+ CellID->297610381],
+Cell[12599, 416, 956, 38, 70, "Notes",
+ CellID->470613833],
+Cell[13558, 456, 308, 12, 70, "Notes",
+ CellID->125518819],
+Cell[13869, 470, 472, 17, 70, "Notes",
+ CellID->615183522],
+Cell[14344, 489, 331, 12, 70, "Notes",
+ CellID->968484546],
+Cell[14678, 503, 292, 12, 70, "Notes",
+ CellID->180082668],
+Cell[14973, 517, 473, 18, 70, "Notes",
+ CellID->329339902],
+Cell[15449, 537, 355, 13, 70, "Notes",
+ CellID->164986832],
+Cell[15807, 552, 435, 17, 70, "Notes",
+ CellID->129453999],
+Cell[16245, 571, 260, 8, 70, "Notes",
+ CellID->469643702]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16542, 584, 290, 7, 70, "ExampleSection",
+ CellTags->"EnumeratedOptions",
+ CellID->239827978],
+Cell[16835, 593, 1599, 63, 70, "2ColumnTableMod",
+ CellID->12695],
+Cell[18437, 658, 1062, 28, 70, "Notes",
+ CellID->291459538],
+Cell[19502, 688, 186, 6, 70, "Notes",
+ CellID->197257220],
+Cell[CellGroupData[{
+Cell[19713, 698, 365, 9, 70, "Input",
+ CellID->477983845],
+Cell[20081, 709, 270, 6, 54, "Output",
+ CellID->354679467]
+}, Open  ]],
+Cell[20366, 718, 316, 8, 70, "Notes",
+ CellID->26009474],
+Cell[CellGroupData[{
+Cell[20707, 730, 178, 4, 70, "Input",
+ CellID->330150412],
+Cell[20888, 736, 278, 6, 54, "Output",
+ CellID->73572344]
+}, Open  ]],
+Cell[21181, 745, 216, 9, 70, "Notes",
+ CellID->579706542]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21434, 759, 293, 7, 70, "ExampleSection",
+ CellTags->"EnumeratedOptions",
+ CellID->45748516],
+Cell[21730, 768, 195, 7, 70, "Notes",
+ CellID->19590254],
+Cell[21928, 777, 198, 6, 70, "Input",
+ CellID->442552855]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22187, 790, 490, 14, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->795621244],
+Cell[CellGroupData[{
+Cell[22702, 808, 195, 6, 70, "ExampleSection",
+ CellID->181939391],
+Cell[22900, 816, 450, 17, 70, "MathCaption",
+ CellID->1825449234],
+Cell[CellGroupData[{
+Cell[23375, 837, 93, 3, 70, "Input",
+ CellID->565066498],
+Cell[CellGroupData[{
+Cell[23493, 844, 197, 5, 70, "Print",
+ CellID->115497945],
+Cell[23693, 851, 98, 2, 70, "Print",
+ CellID->562426770],
+Cell[23794, 855, 124, 2, 70, "Print",
+ CellID->69785145],
+Cell[23921, 859, 146, 3, 70, "Print",
+ CellID->311541333],
+Cell[24070, 864, 128, 2, 70, "Print",
+ CellID->560431452],
+Cell[24201, 868, 146, 3, 70, "Print",
+ CellID->248322174]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24408, 878, 256, 8, 70, "ExampleSection",
+ CellID->250621648],
+Cell[CellGroupData[{
+Cell[24689, 890, 283, 8, 70, "ExampleSubsection",
+ CellID->316979146],
+Cell[24975, 900, 224, 4, 70, "ExampleText",
+ CellID->515986873],
+Cell[CellGroupData[{
+Cell[25224, 908, 470, 11, 70, "Input",
+ CellID->214176277],
+Cell[25697, 921, 395, 10, 70, "Print",
+ CellID->367494293],
+Cell[26095, 933, 490, 14, 54, "Output",
+ CellID->394290836]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[26634, 953, 280, 8, 70, "ExampleSubsection",
+ CellID->278150407],
+Cell[26917, 963, 219, 4, 70, "ExampleText",
+ CellID->824894262],
+Cell[CellGroupData[{
+Cell[27161, 971, 343, 9, 70, "Input",
+ CellID->186146929],
+Cell[27507, 982, 413, 10, 70, "Print",
+ CellID->411714701]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27957, 997, 384, 9, 70, "Input",
+ CellID->753650141],
+Cell[28344, 1008, 447, 10, 70, "Print",
+ CellID->772112485],
+Cell[28794, 1020, 295, 8, 36, "Output",
+ CellID->410241363]
+}, Open  ]],
+Cell[29104, 1031, 104, 2, 70, "ExampleText",
+ CellID->782332945],
+Cell[CellGroupData[{
+Cell[29233, 1037, 328, 8, 70, "Input",
+ CellID->448393354],
+Cell[29564, 1047, 375, 9, 70, "Print",
+ CellID->455147614],
+Cell[29942, 1058, 214, 7, 36, "Output",
+ CellID->483816124]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[30205, 1071, 282, 8, 70, "ExampleSubsection",
+ CellID->56533721],
+Cell[30490, 1081, 128, 2, 70, "ExampleText",
+ CellID->7432632],
+Cell[CellGroupData[{
+Cell[30643, 1087, 475, 10, 70, "Input",
+ CellID->48164538],
+Cell[31121, 1099, 455, 10, 70, "Print",
+ CellID->477331319],
+Cell[31579, 1111, 293, 8, 36, "Output",
+ CellID->36555810]
+}, Open  ]],
+Cell[31887, 1122, 107, 2, 70, "ExampleText",
+ CellID->336507200],
+Cell[CellGroupData[{
+Cell[32019, 1128, 489, 10, 70, "Input",
+ CellID->98018934],
+Cell[32511, 1140, 421, 10, 70, "Print",
+ CellID->394328100],
+Cell[32935, 1152, 213, 7, 36, "Output",
+ CellID->114155820]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[33197, 1165, 280, 8, 70, "ExampleSubsection",
+ CellID->9802361],
+Cell[33480, 1175, 212, 4, 70, "ExampleText",
+ CellTags->"addDOCUMENT",
+ CellID->48402971],
+Cell[33695, 1181, 288, 11, 70, "ExampleText",
+ CellID->34439295],
+Cell[33986, 1194, 868, 22, 70, "Input",
+ CellID->81816368],
+Cell[34857, 1218, 544, 16, 70, "ExampleText",
+ CellID->38407642],
+Cell[CellGroupData[{
+Cell[35426, 1238, 260, 8, 70, "Input",
+ CellID->118460324],
+Cell[35689, 1248, 404, 8, 54, "Output",
+ CellID->345350636]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36130, 1261, 410, 9, 70, "Input",
+ CellID->620075524],
+Cell[36543, 1272, 841, 16, 70, "Print",
+ CellID->103445458],
+Cell[37387, 1290, 556, 12, 71, "Output",
+ CellID->278299271]
+}, Open  ]],
+Cell[37958, 1305, 163, 3, 70, "ExampleText",
+ CellID->426596392],
+Cell[CellGroupData[{
+Cell[38146, 1312, 475, 10, 70, "Input",
+ CellID->180529662],
+Cell[38624, 1324, 849, 16, 70, "Print",
+ CellID->263046851],
+Cell[39476, 1342, 575, 12, 88, "Output",
+ CellID->205621877]
+}, Open  ]],
+Cell[40066, 1357, 192, 4, 70, "ExampleText",
+ CellTags->"InsertValues",
+ CellID->104620295],
+Cell[CellGroupData[{
+Cell[40283, 1365, 318, 10, 70, "Input",
+ CellID->453969814],
+Cell[40604, 1377, 209, 5, 36, "Output",
+ CellID->200167903]
+}, Open  ]],
+Cell[40828, 1385, 837, 27, 70, "ExampleText",
+ CellID->185542181],
+Cell[CellGroupData[{
+Cell[41690, 1416, 207, 7, 70, "Input",
+ CellID->463558094],
+Cell[41900, 1425, 328, 7, 54, "Output",
+ CellID->310167499]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42265, 1437, 514, 11, 70, "Input",
+ CellID->8922180],
+Cell[42782, 1450, 807, 16, 70, "Print",
+ CellID->322501453],
+Cell[43592, 1468, 575, 12, 88, "Output",
+ CellID->125374916]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[44216, 1486, 279, 8, 70, "ExampleSubsection",
+ CellID->212652573],
+Cell[44498, 1496, 235, 4, 70, "ExampleText",
+ CellID->398791406],
+Cell[CellGroupData[{
+Cell[44758, 1504, 533, 15, 70, "Input",
+ CellID->31826],
+Cell[45294, 1521, 994, 18, 70, "Print",
+ CellID->140525225],
+Cell[46291, 1541, 424, 10, 54, "Output",
+ CellID->59445870]
+}, Open  ]],
+Cell[46730, 1554, 230, 4, 70, "ExampleText",
+ CellID->197842509],
+Cell[CellGroupData[{
+Cell[46985, 1562, 328, 8, 70, "Input",
+ CellID->3281],
+Cell[47316, 1572, 405, 10, 70, "Print",
+ CellID->718068737],
+Cell[47724, 1584, 425, 10, 54, "Output",
+ CellID->304138058]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48210, 1601, 256, 8, 70, "ExampleSection",
+ CellID->870169581],
+Cell[CellGroupData[{
+Cell[48491, 1613, 283, 8, 70, "ExampleSubsection",
+ CellID->630707372],
+Cell[48777, 1623, 143, 3, 70, "ExampleText",
+ CellID->249686915],
+Cell[CellGroupData[{
+Cell[48945, 1630, 401, 9, 70, "Input",
+ CellID->681988968],
+Cell[49349, 1641, 365, 9, 70, "Print",
+ CellID->129745950],
+Cell[49717, 1652, 212, 7, 36, "Output",
+ CellID->125185783]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[49978, 1665, 280, 8, 70, "ExampleSubsection",
+ CellID->533642582],
+Cell[50261, 1675, 288, 4, 70, "ExampleText",
+ CellID->316028126],
+Cell[CellGroupData[{
+Cell[50574, 1683, 331, 8, 70, "Input",
+ CellID->207215180],
+Cell[50908, 1693, 411, 10, 70, "Print",
+ CellID->704851935],
+Cell[51322, 1705, 297, 8, 36, "Output",
+ CellID->384752715]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[51668, 1719, 283, 8, 70, "ExampleSubsection",
+ CellID->608456401],
+Cell[51954, 1729, 289, 5, 70, "ExampleText",
+ CellID->30703752],
+Cell[CellGroupData[{
+Cell[52268, 1738, 428, 9, 70, "Input",
+ CellID->703392179],
+Cell[52699, 1749, 441, 10, 70, "Print",
+ CellID->228054993],
+Cell[53143, 1761, 212, 7, 36, "Output",
+ CellID->589283350]
+}, Open  ]],
+Cell[53370, 1771, 180, 3, 70, "ExampleText",
+ CellID->268371351],
+Cell[CellGroupData[{
+Cell[53575, 1778, 426, 9, 70, "Input",
+ CellID->64973610],
+Cell[54004, 1789, 437, 10, 70, "Print",
+ CellID->168705786],
+Cell[54444, 1801, 294, 8, 36, "Output",
+ CellID->271572719]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[54787, 1815, 282, 8, 70, "ExampleSubsection",
+ CellID->182127033],
+Cell[55072, 1825, 155, 3, 70, "ExampleText",
+ CellID->91946930],
+Cell[CellGroupData[{
+Cell[55252, 1832, 406, 9, 70, "Input",
+ CellID->10155939],
+Cell[55661, 1843, 431, 10, 70, "Print",
+ CellID->137691201],
+Cell[56095, 1855, 294, 8, 36, "Output",
+ CellID->289645481]
+}, Open  ]],
+Cell[56404, 1866, 269, 4, 70, "ExampleText",
+ CellID->39048696],
+Cell[CellGroupData[{
+Cell[56698, 1874, 359, 8, 70, "Input",
+ CellID->41635915],
+Cell[57060, 1884, 417, 10, 70, "Print",
+ CellID->209617768],
+Cell[57480, 1896, 332, 9, 36, "Output",
+ CellID->39164006]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[57861, 1911, 284, 8, 70, "ExampleSubsection",
+ CellID->52354575],
+Cell[58148, 1921, 180, 3, 70, "ExampleText",
+ CellID->59674047],
+Cell[CellGroupData[{
+Cell[58353, 1928, 414, 9, 70, "Input",
+ CellID->53260414],
+Cell[58770, 1939, 371, 9, 70, "Print",
+ CellID->105760405],
+Cell[59144, 1950, 212, 7, 36, "Output",
+ CellID->481624593]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59417, 1964, 254, 8, 70, "ExampleSection",
+ CellID->1347504],
+Cell[CellGroupData[{
+Cell[59696, 1976, 281, 8, 70, "ExampleSubsection",
+ CellID->236602702],
+Cell[59980, 1986, 106, 2, 70, "ExampleText",
+ CellID->34303378],
+Cell[CellGroupData[{
+Cell[60111, 1992, 379, 10, 70, "Input",
+ CellID->264293119],
+Cell[60493, 2004, 345, 8, 70, "Print",
+ CellID->711115638],
+Cell[60841, 2014, 10092, 255, 161, "Output",
+ CellID->91658634]
+}, Open  ]],
+Cell[70948, 2272, 593, 20, 70, "ExampleText",
+ CellID->258959764],
+Cell[CellGroupData[{
+Cell[71566, 2296, 287, 8, 70, "Input",
+ CellID->1938064],
+Cell[71856, 2306, 4057, 104, 190, "Output",
+ CellID->499949870]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[75962, 2416, 282, 8, 70, "ExampleSubsection",
+ CellID->31465665],
+Cell[76247, 2426, 107, 2, 70, "ExampleText",
+ CellID->55725431],
+Cell[CellGroupData[{
+Cell[76379, 2432, 353, 10, 70, "Input",
+ CellID->695998994],
+Cell[76735, 2444, 365, 9, 70, "Print",
+ CellID->545373528],
+Cell[77103, 2455, 10282, 257, 179, "Output",
+ CellID->31910472]
+}, Open  ]],
+Cell[87400, 2715, 523, 17, 70, "ExampleText",
+ CellID->765206859],
+Cell[CellGroupData[{
+Cell[87948, 2736, 300, 8, 70, "Input",
+ CellID->733861099],
+Cell[88251, 2746, 15992, 389, 400, "Output",
+ CellID->123545915]
+}, Open  ]],
+Cell[104258, 3138, 137, 2, 70, "ExampleText",
+ CellID->273315728],
+Cell[CellGroupData[{
+Cell[104420, 3144, 222, 6, 70, "Input",
+ CellID->34913317],
+Cell[104645, 3152, 358, 8, 70, "Print",
+ CellID->347840468],
+Cell[105006, 3162, 380, 9, 54, "Output",
+ CellID->127011626]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[105435, 3177, 279, 8, 70, "ExampleSubsection",
+ CellID->48995154],
+Cell[105717, 3187, 143, 3, 70, "ExampleText",
+ CellTags->"getClass",
+ CellID->72000305],
+Cell[CellGroupData[{
+Cell[105885, 3194, 386, 9, 70, "Input",
+ CellID->113697542],
+Cell[106274, 3205, 373, 9, 70, "Print",
+ CellID->297657940],
+Cell[106650, 3216, 1188, 20, 173, "Output",
+ CellID->347421544]
+}, Open  ]],
+Cell[107853, 3239, 523, 17, 70, "ExampleText",
+ CellID->282846910],
+Cell[CellGroupData[{
+Cell[108401, 3260, 145, 4, 70, "Input",
+ CellID->27991777],
+Cell[108549, 3266, 4981, 122, 70, "Output",
+ CellID->105684170]
+}, Open  ]],
+Cell[113545, 3391, 351, 10, 70, "ExampleText",
+ CellID->145027620],
+Cell[CellGroupData[{
+Cell[113921, 3405, 344, 9, 70, "Input",
+ CellID->36192946],
+Cell[114268, 3416, 3719, 87, 136, "Output",
+ CellID->550559273]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[118036, 3509, 281, 8, 70, "ExampleSubsection",
+ CellID->109037700],
+Cell[118320, 3519, 199, 3, 70, "ExampleText",
+ CellID->161172005],
+Cell[CellGroupData[{
+Cell[118544, 3526, 409, 9, 70, "Input",
+ CellID->44694905],
+Cell[118956, 3537, 375, 9, 70, "Print",
+ CellID->243289352],
+Cell[119334, 3548, 405, 10, 54, "Output",
+ CellID->242929501]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[119776, 3563, 104, 3, 70, "Input",
+ CellID->65905183],
+Cell[119883, 3568, 2852, 67, 201, "Output",
+ CellID->50889341]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[122784, 3641, 279, 8, 70, "ExampleSubsection",
+ CellID->357444667],
+Cell[123066, 3651, 258, 4, 70, "ExampleText",
+ CellID->187227985],
+Cell[CellGroupData[{
+Cell[123349, 3659, 371, 9, 70, "Input",
+ CellID->197486948],
+Cell[123723, 3670, 442, 10, 70, "Print",
+ CellID->532409503],
+Cell[124168, 3682, 425, 10, 54, "Output",
+ CellID->844689502]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[124654, 3699, 259, 8, 70, "ExampleSection",
+ CellID->181574905],
+Cell[CellGroupData[{
+Cell[124938, 3711, 285, 8, 70, "ExampleSubsection",
+ CellID->36611070],
+Cell[125226, 3721, 197, 3, 70, "ExampleText",
+ CellID->489969174],
+Cell[125426, 3726, 120, 3, 70, "ExampleText",
+ CellID->330793683],
+Cell[CellGroupData[{
+Cell[125571, 3733, 456, 11, 70, "Input",
+ CellID->696168301],
+Cell[126030, 3746, 493, 11, 70, "Print",
+ CellID->110308394],
+Cell[126526, 3759, 212, 7, 36, "Output",
+ CellID->576463799]
+}, Open  ]],
+Cell[126753, 3769, 93, 1, 70, "ExampleText",
+ CellID->11993676],
+Cell[CellGroupData[{
+Cell[126871, 3774, 459, 11, 70, "Input",
+ CellID->24890243],
+Cell[127333, 3787, 471, 11, 70, "Print",
+ CellID->235574282],
+Cell[127807, 3800, 212, 7, 36, "Output",
+ CellID->178984661]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[128068, 3813, 283, 8, 70, "ExampleSubsection",
+ CellID->409177094],
+Cell[128354, 3823, 193, 3, 70, "ExampleText",
+ CellID->56512676],
+Cell[CellGroupData[{
+Cell[128572, 3830, 490, 10, 70, "Input",
+ CellID->610726695],
+Cell[129065, 3842, 434, 10, 70, "Print",
+ CellID->15230723],
+Cell[129502, 3854, 210, 7, 36, "Output",
+ CellID->2493913]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[129761, 3867, 286, 8, 70, "ExampleSubsection",
+ CellID->757698320],
+Cell[130050, 3877, 211, 3, 70, "ExampleText",
+ CellID->32358624],
+Cell[CellGroupData[{
+Cell[130286, 3884, 574, 11, 70, "Input",
+ CellID->94215897],
+Cell[130863, 3897, 212, 7, 36, "Output",
+ CellID->625020670],
+Cell[131078, 3906, 523, 13, 70, "Print",
+ CellID->636066881],
+Cell[131604, 3921, 212, 7, 36, "Output",
+ CellID->182649967]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[131865, 3934, 295, 8, 70, "ExampleSubsection",
+ CellID->609940359],
+Cell[132163, 3944, 248, 4, 70, "ExampleText",
+ CellID->624051007],
+Cell[CellGroupData[{
+Cell[132436, 3952, 488, 10, 70, "Input",
+ CellID->326795990],
+Cell[132927, 3964, 417, 10, 70, "Print",
+ CellID->87936927],
+Cell[133347, 3976, 293, 8, 36, "Output",
+ CellID->29403958]
+}, Open  ]],
+Cell[133655, 3987, 127, 2, 70, "ExampleText",
+ CellID->36501160],
+Cell[CellGroupData[{
+Cell[133807, 3993, 564, 12, 70, "Input",
+ CellID->936479508],
+Cell[134374, 4007, 449, 10, 70, "Print",
+ CellID->200902351],
+Cell[134826, 4019, 293, 8, 36, "Output",
+ CellID->29411575]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[135168, 4033, 284, 8, 70, "ExampleSubsection",
+ CellID->685635812],
+Cell[135455, 4043, 214, 4, 70, "ExampleText",
+ CellID->313241233],
+Cell[135672, 4049, 872, 29, 70, "ExampleText",
+ CellID->226867491],
+Cell[136547, 4080, 698, 19, 70, "Input",
+ CellID->394654616],
+Cell[137248, 4101, 176, 6, 70, "ExampleText",
+ CellID->562161299],
+Cell[CellGroupData[{
+Cell[137449, 4111, 478, 10, 70, "Input",
+ CellID->687768503],
+Cell[137930, 4123, 556, 12, 71, "Output",
+ CellID->879046160],
+Cell[138489, 4137, 1012, 19, 70, "Print",
+ CellID->45148103]
+}, Open  ]],
+Cell[139516, 4159, 366, 10, 70, "ExampleText",
+ CellID->119635270],
+Cell[139885, 4171, 97, 1, 70, "ExampleText",
+ CellID->572069266],
+Cell[139985, 4174, 682, 18, 70, "Input",
+ CellID->23241247],
+Cell[CellGroupData[{
+Cell[140692, 4196, 515, 11, 70, "Input",
+ CellID->172279099],
+Cell[141210, 4209, 869, 16, 70, "Print",
+ CellID->24544802]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[142140, 4232, 257, 8, 70, "ExampleSection",
+ CellID->138390976],
+Cell[CellGroupData[{
+Cell[142422, 4244, 277, 8, 70, "ExampleSubsection",
+ CellID->825739110],
+Cell[142702, 4254, 134, 2, 70, "ExampleText",
+ CellID->564653690],
+Cell[CellGroupData[{
+Cell[142861, 4260, 306, 8, 70, "Input",
+ CellID->587305041],
+Cell[143170, 4270, 358, 8, 70, "Print",
+ CellID->288404789]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[143577, 4284, 277, 8, 70, "ExampleSubsection",
+ CellID->307145003],
+Cell[143857, 4294, 158, 3, 70, "ExampleText",
+ CellID->45063583],
+Cell[CellGroupData[{
+Cell[144040, 4301, 306, 8, 70, "Input",
+ CellID->188393926],
+Cell[144349, 4311, 356, 8, 70, "Print",
+ CellID->6937447]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[144766, 4326, 256, 8, 70, "ExampleSection",
+ CellID->498015232],
+Cell[CellGroupData[{
+Cell[145047, 4338, 276, 8, 70, "ExampleSubsection",
+ CellID->536203735],
+Cell[145326, 4348, 167, 3, 70, "ExampleText",
+ CellID->199784609],
+Cell[CellGroupData[{
+Cell[145518, 4355, 412, 9, 70, "Input",
+ CellID->438638312],
+Cell[145933, 4366, 394, 10, 70, "Print",
+ CellID->14428335],
+Cell[146330, 4378, 212, 7, 36, "Output",
+ CellID->179779365]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[146591, 4391, 277, 8, 70, "ExampleSubsection",
+ CellID->691666921],
+Cell[146871, 4401, 137, 2, 70, "ExampleText",
+ CellID->681742525],
+Cell[CellGroupData[{
+Cell[147033, 4407, 207, 6, 70, "Input",
+ CellID->100166063],
+Cell[147243, 4415, 352, 8, 70, "Print",
+ CellID->205967501],
+Cell[147598, 4425, 164, 5, 36, "Output",
+ CellID->426747511]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[147835, 4438, 429, 12, 70, "MoreAboutSection"],
+Cell[148267, 4452, 147, 3, 70, "MoreAbout",
+ CellID->334605460]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[148451, 4460, 456, 13, 70, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[148910, 4475, 337, 10, 70, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[149262, 4488, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
