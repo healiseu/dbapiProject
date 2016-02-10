@@ -37,4 +37,4 @@ Packages in this project extend Wolfram Language with commands that are related 
 [10]: http://test.healis.eu/dbapi/Test/Transformations_on_Expressions.nb
 [11]: http://test.healis.eu/dbapi/Test/OrientDB%20API%20Demo%201%20-%20Test%20API%20Commands.nb
 [12]: http://test.healis.eu/dbapi/Test/OrientDB%20API%20Demo%203%20-%20Schemaless%20vs%20Schemafull%20Operations.nb
-[13]: http://test.healis.eu/dbapi/Release/dbapi-latest-release.zip
+[13]: https://github.com/healiseu/test/tree/gh-pages/dbapi

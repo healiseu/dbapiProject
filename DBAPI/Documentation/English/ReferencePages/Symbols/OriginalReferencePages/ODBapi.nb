@@ -1,0 +1,773 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23087,        763]
+NotebookOptionsPosition[     17826,        600]
+NotebookOutlinePosition[     18448,        624]
+CellTagsIndexPosition[     18369,        619]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["XX", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DBAPI Package", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->224514300],
+
+Cell["DBAPI`OrientDB`", "Categorization",
+ CellLabel->"Context",
+ CellID->563740415],
+
+Cell["DBAPI/ref/ODBapi", "Categorization",
+ CellLabel->"URI",
+ CellID->349065377]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ODBapi", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"ODBapi", "[", " ", 
+   RowBox[{
+    RowBox[{
+     StyleBox["com", "TI"], "->", "\"\<\!\(\*
+StyleBox[\"addOSQLScript\", \"TI\"]\)\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["db", "TI"], "->", "\"\<DemoDB\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["sql", "TI"], "->", 
+     StyleBox["osqlScript", "TI"]}], ",", " ", 
+    RowBox[{
+     StyleBox["debug", "TI"], "->", 
+     ButtonBox["True",
+      BaseStyle->"Link"]}]}], " ", "]"}]], "InlineFormula"],
+ "\[LineSeparator]Executes a batch of SQL commands in a single call. Example \
+of OrientDB SQL script: osqlScript=\" CREATE CLASS Car EXTENDS V; CREATE \
+VERTEX Car SET brand='FIAT', model='Punto', year='2000-01-01'\"; ",
+ Cell[BoxData[
+  RowBox[{"ODBapi", "[", " ", 
+   RowBox[{
+    RowBox[{
+     StyleBox["com", "TI"], "->", "\"\<\!\(\*
+StyleBox[\"addOSQLCommand\", \"TI\"]\)\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["db", "TI"], "->", "\"\<DemoDB\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["sql", "TI"], "->", "\"\<SELECT FROM Car\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["debug", "TI"], "->", 
+     ButtonBox["True",
+      BaseStyle->"Link"]}]}], " ", "]"}]], "InlineFormula"],
+ " Executes an OrientDB SQL command e.g. SELECT FROM Car ",
+ Cell[BoxData[
+  RowBox[{"ODBapi", "[", " ", 
+   RowBox[{
+    RowBox[{
+     StyleBox["com", "TI"], "->", "\"\<\!\(\*
+StyleBox[\"addDatabase\", \"TI\"]\)\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["db", "TI"], "->", "\"\<TestDB\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["dbtype", "TI"], "->", " ", "\"\<\!\(\*
+StyleBox[
+RowBox[{\"plocal\", \"/\", \"document\"}], \"TI\"]\)\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["usr", "TI"], "->", "\"\<\!\(\*
+StyleBox[\"root\", \"TI\"]\)\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["pwd", "TI"], "->", "\"\<123\>\""}], ",", " ", 
+    RowBox[{
+     StyleBox["debug", "TI"], "->", 
+     ButtonBox["True",
+      BaseStyle->"Link"]}]}], " ", "]"}]], "InlineFormula"],
+ " Creates a disk-based or memory, document or graph, database with a \
+username and password on remote database Server ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"ODBapi", "[", "com"}], "->", "\"\<addClass\>\""}]], 
+  "InlineFormula"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"db", "->", "\"\<DemoDB\>\""}]], "InlineFormula"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"class", "->", "\"\<Buyer\>\""}]], "InlineFormula"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"superclass", "->", "\"\<Person\>\""}]], "InlineFormula"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"debug", "->", 
+   RowBox[{"True", "]"}]}]], "InlineFormula"],
+ " Executes CREATE CLASS sql command to create a new class in the schema and \
+optionally extends superclass. You can also create a class via HTTP."
+}], "Usage",
+ CellChangeTimes->{{3.659255846270919*^9, 3.659255846697626*^9}}],
+
+Cell["The following options can be given: ", "Notes"],
+
+Cell[BoxData[GridBox[{
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`server",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`server"], 
+    "localhost", Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`port",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`port"], "2480", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`db",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`db"],
+     "", Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`dbtype",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`dbtype"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`com",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`com"], "", Cell[
+    "XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`arg",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`arg"], "", Cell[
+    "XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`con",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`con"], "", Cell[
+    "XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`id",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`id"],
+     "", Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`ver",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`ver"], 
+    RowBox[{"-", "1"}], Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`propnam",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`propnam"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`propval",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`propval"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`proptype",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`proptype"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`record",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`record"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`sql",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`sql"], "", Cell[
+    "XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`class",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`class"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`superclass",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`superclass"], 
+    "", Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`keys",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`keys"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`values",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`values"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`construct",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`construct"], "",
+     Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`from",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`from"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`to",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`to"],
+     "", Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`method",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`method"], 
+    "POST", Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`param",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`param"], 
+    RowBox[{"{", "}"}], Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`body",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`body"], "", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`usr",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`usr"], "admin", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`pwd",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`pwd"], "admin", 
+    Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["DBAPI`OrientDB`Private`debug",
+     BaseStyle->"Link",
+     ButtonData->
+      "paclet:DBAPIOrientDBPrivate/ref/DBAPI`OrientDB`Private`debug"], 
+    ButtonBox["False",
+     BaseStyle->"Link"], Cell["XXXX", "TableText"]}
+  }]], "3ColumnTableMod"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`server", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`port", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`db", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`dbtype", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`com", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`arg", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`con", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`id", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`ver", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`propnam", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`propval", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "DBAPI`OrientDB`Private`proptype", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`record", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`sql", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`class", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "DBAPI`OrientDB`Private`superclass", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`keys", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`values", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "DBAPI`OrientDB`Private`construct", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`from", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`to", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`method", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`param", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`body", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`usr", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`pwd", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["DBAPI`OrientDB`Private`debug", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{4, Automatic}, {Automatic, 0}},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "WindowsGreek"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[12918, 442, 100, 2, 53, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 18230, 612}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 324, 14, 22, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[907, 38, 68, 1, 27, "CategorizationSection",
+ CellID->1122911449],
+Cell[978, 41, 79, 2, 31, "Categorization",
+ CellID->686433507],
+Cell[1060, 45, 86, 2, 31, "Categorization",
+ CellID->224514300],
+Cell[1149, 49, 84, 2, 31, "Categorization",
+ CellID->563740415],
+Cell[1236, 53, 81, 2, 31, "Categorization",
+ CellID->349065377]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1354, 60, 55, 1, 17, "KeywordsSection",
+ CellID->477174294],
+Cell[1412, 63, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1494, 69, 65, 1, 17, "TemplatesSection",
+ CellID->1872225408],
+Cell[1562, 72, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1659, 76, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1744, 80, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1828, 84, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1947, 91, 53, 1, 17, "DetailsSection",
+ CellID->307771771],
+Cell[2003, 94, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2069, 98, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2141, 102, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2208, 106, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2280, 110, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2344, 114, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2408, 118, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2474, 122, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2555, 126, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2659, 133, 49, 1, 62, "ObjectName",
+ CellID->1224892054],
+Cell[2711, 136, 2806, 78, 225, "Usage"],
+Cell[5520, 216, 53, 0, 23, "Notes"],
+Cell[5576, 218, 6188, 161, 976, "3ColumnTableMod"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11801, 384, 57, 1, 43, "TutorialsSection",
+ CellID->250839057],
+Cell[11861, 387, 45, 1, 16, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11943, 393, 83, 1, 30, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[12029, 396, 58, 1, 16, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12124, 402, 65, 1, 30, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[12192, 405, 49, 1, 16, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12278, 411, 55, 1, 30, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[12336, 414, 43, 1, 16, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12416, 420, 57, 1, 30, "MoreAboutSection",
+ CellID->38303248],
+Cell[12476, 423, 46, 1, 16, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[12537, 427, 356, 11, 68, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[12918, 442, 100, 2, 53, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[13021, 446, 125, 3, 30, "ExampleSection",
+ CellID->1293636265],
+Cell[13149, 451, 148, 3, 18, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[13322, 458, 106, 2, 18, "ExampleSection"],
+Cell[13431, 462, 134, 2, 70, "ExampleSubsection"],
+Cell[13568, 466, 132, 2, 70, "ExampleSubsection"],
+Cell[13703, 470, 130, 2, 70, "ExampleSubsection"],
+Cell[13836, 474, 134, 2, 70, "ExampleSubsection"],
+Cell[13973, 478, 131, 2, 70, "ExampleSubsection"],
+Cell[14107, 482, 131, 2, 70, "ExampleSubsection"],
+Cell[14241, 486, 131, 2, 70, "ExampleSubsection"],
+Cell[14375, 490, 130, 2, 70, "ExampleSubsection"],
+Cell[14508, 494, 131, 2, 70, "ExampleSubsection"],
+Cell[14642, 498, 135, 2, 70, "ExampleSubsection"],
+Cell[14780, 502, 135, 2, 70, "ExampleSubsection"],
+Cell[14918, 506, 139, 3, 70, "ExampleSubsection"],
+Cell[15060, 511, 134, 2, 70, "ExampleSubsection"],
+Cell[15197, 515, 131, 2, 70, "ExampleSubsection"],
+Cell[15331, 519, 133, 2, 70, "ExampleSubsection"],
+Cell[15467, 523, 141, 3, 70, "ExampleSubsection"],
+Cell[15611, 528, 132, 2, 70, "ExampleSubsection"],
+Cell[15746, 532, 134, 2, 70, "ExampleSubsection"],
+Cell[15883, 536, 140, 3, 70, "ExampleSubsection"],
+Cell[16026, 541, 132, 2, 70, "ExampleSubsection"],
+Cell[16161, 545, 130, 2, 70, "ExampleSubsection"],
+Cell[16294, 549, 134, 2, 70, "ExampleSubsection"],
+Cell[16431, 553, 133, 2, 70, "ExampleSubsection"],
+Cell[16567, 557, 132, 2, 70, "ExampleSubsection"],
+Cell[16702, 561, 131, 2, 70, "ExampleSubsection"],
+Cell[16836, 565, 131, 2, 70, "ExampleSubsection"],
+Cell[16970, 569, 133, 2, 70, "ExampleSubsection"]
+}, Closed]],
+Cell[17118, 574, 131, 3, 18, "ExampleSection",
+ CellID->258228157],
+Cell[17252, 579, 142, 3, 18, "ExampleSection",
+ CellID->2123667759],
+Cell[17397, 584, 135, 3, 18, "ExampleSection",
+ CellID->1305812373],
+Cell[17535, 589, 140, 3, 18, "ExampleSection",
+ CellID->1653164318],
+Cell[17678, 594, 132, 3, 18, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

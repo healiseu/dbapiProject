@@ -10,61 +10,110 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7674,        218]
-NotebookOptionsPosition[      5250,        161]
-NotebookOutlinePosition[      7426,        208]
-CellTagsIndexPosition[      7383,        205]
-WindowTitle->Database API Project - Wolfram Mathematica
+NotebookDataLength[     10401,        355]
+NotebookOptionsPosition[      7810,        263]
+NotebookOutlinePosition[      8232,        279]
+CellTagsIndexPosition[      8189,        276]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[GridBox[{
-   {Cell["D B A P I GUIDE", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox["\<\"URL \[RightGuillemet]\"\>",
-       StripOnInput->False], {"\<\"DBAPI/guide/Database API\"\>":>
-      None, "\<\"Copy Mathematica url\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["DBAPI/guide/Database API"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web url\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/mathematica/DBAPI/guide/Database \
-API.html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
-           Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-           "http://reference.wolfram.com/mathematica/", 
-            "DBAPI/guide/Database API", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
-  }]], "AnchorBarGrid",
- GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
-     Scaled[0.65], {
-      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
-   "RowsIndexed" -> {}}},
- CellID->1],
+Cell[TextData[{
+ "New in: ",
+ Cell["0.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Guide", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DBAPI", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["DBAPI`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["DBAPI/guide/Database API", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1427428552],
+
+Cell["XXXX", "Keywords",
+ CellID->1251852827]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->795394057],
+
+Cell["Athanassios I. Hatzis", "Details",
+ CellChangeTimes->{{3.6593498206425076`*^9, 3.659349826848562*^9}, {
+  3.6593498637362576`*^9, 3.6593498645497336`*^9}},
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["Athanassios I. Hatzis", "Details",
+ CellChangeTimes->{{3.659349837946218*^9, 3.659349861939382*^9}},
+ CellLabel->"Authors",
+ CellID->802101],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->509823116],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->199884516],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->463951815],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->8237523],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->813936640],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Database API Project", "GuideTitle",
+ CellChangeTimes->{{3.659346049980578*^9, 3.659346052328717*^9}, {
+  3.659346343730027*^9, 3.659346344636277*^9}},
  CellID->942062912],
 
 Cell[TextData[{
@@ -112,88 +161,110 @@ web services through ",
 options with rules of the form name\[Rule]value. An example of such a RESTful \
 API is the OrientDB HTTP API and the OrientDB package."
 }], "GuideAbstract",
- CellID->2001916300],
+ CellChangeTimes->{{3.6593460616694803`*^9, 3.659346081646043*^9}, {
+   3.6593461356401834`*^9, 3.6593461422222147`*^9}, {3.659346243167527*^9, 
+   3.6593462485044413`*^9}, {3.6593462849634256`*^9, 
+   3.6593463108013163`*^9}, {3.6593463482183084`*^9, 
+   3.6593464159370584`*^9}, {3.659346497146043*^9, 3.659346647932664*^9}, {
+   3.659346700463914*^9, 3.65934670537407*^9}, {3.659346747733445*^9, 
+   3.659346790604539*^9}, 3.659346836927781*^9, {3.659346894665848*^9, 
+   3.6593468974234223`*^9}, {3.6593469296406126`*^9, 
+   3.6593469305468626`*^9}, {3.659346973155261*^9, 3.659346979000964*^9}, {
+   3.6593470330556517`*^9, 3.6593470643027225`*^9}, {3.659347120273425*^9, 
+   3.6593471873554564`*^9}, 3.6593472761279173`*^9, {3.659347332304597*^9, 
+   3.659347345690339*^9}, {3.6593473904032297`*^9, 3.659347394623933*^9}, {
+   3.6593474395223703`*^9, 3.659347458855378*^9}, {3.659347635835847*^9, 
+   3.659347635835847*^9}, {3.6593478811746655`*^9, 3.6593479174754467`*^9}, {
+   3.6593479485857983`*^9, 3.6593479968016186`*^9}, {3.659348063380086*^9, 
+   3.659348063380086*^9}, {3.6593481278245983`*^9, 3.6593481278245983`*^9}, {
+   3.6593482895404186`*^9, 3.659348313923231*^9}, {3.659349364257885*^9, 
+   3.659349365783574*^9}, {3.659349460337162*^9, 3.6593494618225136`*^9}, {
+   3.6593495147961464`*^9, 3.659349628343998*^9}, {3.659349684029545*^9, 
+   3.6593497503186073`*^9}, {3.659364754777236*^9, 3.659364781529189*^9}, {
+   3.6593648180838766`*^9, 3.659364845906142*^9}, {3.6593649570731344`*^9, 
+   3.659364969466689*^9}, {3.659365000994033*^9, 3.65936504961415*^9}, {
+   3.6593652222157125`*^9, 3.6593652222157125`*^9}, {3.659365796853999*^9, 
+   3.659365801056051*^9}, {3.6593659465033164`*^9, 3.659365948052145*^9}, 
+   3.6595417172089043`*^9},
+ CellID->2001916300]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "GuideFunctionsSection",
+ CellID->1866139230],
 
 Cell[TextData[{
- Cell[TextData[{
-  ButtonBox["Utilities",
+ Cell[BoxData[
+  ButtonBox[
+   RowBox[{"Utilities", " ", "Package"}],
    BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
-  ButtonBox[" ",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"],
-  ButtonBox["Package",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]
- }], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " "
+   ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]], "InlineGuideFunction"],
+ " \[LongDash] "
 }], "GuideText",
+ CellChangeTimes->{{3.6593499202020774`*^9, 3.6593499272821555`*^9}, {
+  3.6593651072645407`*^9, 3.6593651223944235`*^9}, {3.6593651825457907`*^9, 
+  3.6593651825457907`*^9}},
  CellID->1463276848],
 
 Cell[TextData[{
- Cell[TextData[{
-  ButtonBox["OrientDB",
+ Cell[BoxData[
+  ButtonBox[
+   RowBox[{"OrientDB", " ", "API", " ", "Package"}],
    BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"],
-  ButtonBox[" ",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"],
-  ButtonBox["API",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"],
-  ButtonBox[" ",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"],
-  ButtonBox["Package",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"]
- }], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " "
+   ButtonData->"paclet:DBAPI/guide/ODBapiPackage"]], "InlineGuideFunction"],
+ " \[LongDash] "
 }], "GuideText",
- CellID->203374175]
+ CellChangeTimes->{{3.659347683815339*^9, 3.6593476920282297`*^9}, {
+  3.6593477398982983`*^9, 3.6593477398982983`*^9}, {3.659349902020437*^9, 
+  3.6593499316737576`*^9}, {3.6593641199689927`*^9, 3.6593641529637675`*^9}, {
+  3.659364490592314*^9, 3.659364490592314*^9}, {3.659364558717314*^9, 
+  3.659364587143095*^9}, {3.6593646824120016`*^9, 3.6593646824120016`*^9}, {
+  3.659365254497939*^9, 3.659365300699029*^9}, {3.659365343764497*^9, 
+  3.659365343764497*^9}},
+ CellID->203374175],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->311258892],
+
+Cell["XXXX . XXXX . ", "InlineGuideFunctionListing",
+ CellID->58033752]
+}, Open  ]]
 }, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell["Tutorials", "GuideTutorialsSection",
+ CellID->415694126],
+
+Cell["XXXX", "GuideTutorial",
+ CellID->806871991],
+
+Cell["XXXX", "GuideTutorial",
+ CellID->1885805579]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "GuideMoreAboutSection",
+ CellID->23220180],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->1567025153],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->252299663]
+}, Open  ]],
+
+Cell["Related Links", "GuideRelatedLinksSection",
+ CellID->415694148]
 },
-Saveable->False,
-ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-WindowTitle->"Database API Project - Wolfram Mathematica",
-TaggingRules->{
- "ModificationHighlight" -> False, "ColorType" -> "GuideColor", "LinkTrails" -> 
-  GridBox[{{
-      RowBox[{
-        StyleBox[
-         ButtonBox[
-         "Mathematica", ButtonData -> "paclet:guide/Mathematica", 
-          BaseStyle -> {"Link", "DockedLinkTrail"}], FontSlant -> "Italic"], 
-        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
-  "Metadata" -> {
-   "built" -> "{2015, 12, 24, 23, 58, 31.7944621}", 
-    "history" -> {"0.0", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
-     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
-    True, "label" -> "D B A P I Guide", "language" -> "en", "paclet" -> 
-    "DBAPI", "status" -> "None", "summary" -> 
-    "Packages in this project extend Wolfram Language with commands that are \
-related to data management and especially generic database management. There \
-is a basic Utilities package that is used in transformations between Wolfram \
-Language constructs such as List, Rule, Association, and Dataset, and \
-external serialization standards such as JSON and comma-separated values \
-(CSV) files. On top of that package we are porting RESTful APIs from various \
-web services through URLFetch into Wolfram Language building commands with \
-arguments that specify options with rules of the form name\[Rule]value. An \
-example of such a RESTful API is the OrientDB HTTP API and the OrientDB \
-package.", "synonyms" -> {}, "title" -> "Database API Project", 
-    "titlemodifier" -> "", "windowtitle" -> "Database API Project", "type" -> 
-    "Guide", "uri" -> "DBAPI/guide/Database API"}, "SearchTextTranslated" -> 
-  ""},
+WindowSize->{700, 770},
+WindowMargins->{{500, Automatic}, {Automatic, 17}},
 FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
-StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb", 
   CharacterEncoding -> "WindowsGreek"]
 ]
 (* End of Notebook Content *)
@@ -207,22 +278,87 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[614, 21, 1856, 41, 70, "AnchorBarGrid",
- CellID->1],
+Cell[558, 20, 325, 14, 22, "History",
+ CellID->1247902091],
 Cell[CellGroupData[{
-Cell[2495, 66, 62, 1, 70, "GuideTitle",
- CellID->942062912],
-Cell[2560, 69, 1579, 45, 70, "GuideAbstract",
- CellID->2001916300],
-Cell[4142, 116, 445, 16, 70, "GuideText",
- CellID->1463276848],
-Cell[4590, 134, 618, 22, 70, "GuideText",
- CellID->203374175]
+Cell[908, 38, 68, 1, 27, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 78, 2, 31, "Categorization",
+ CellID->686433507],
+Cell[1060, 45, 78, 2, 31, "Categorization",
+ CellID->605800465],
+Cell[1141, 49, 75, 2, 31, "Categorization",
+ CellID->468444828],
+Cell[1219, 53, 69, 1, 31, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1325, 59, 56, 1, 17, "KeywordsSection",
+ CellID->1427428552],
+Cell[1384, 62, 45, 1, 17, "Keywords",
+ CellID->1251852827]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1466, 68, 53, 1, 17, "DetailsSection",
+ CellID->307771771],
+Cell[1522, 71, 63, 2, 31, "Details",
+ CellID->795394057],
+Cell[1588, 75, 207, 4, 31, "Details",
+ CellID->350963985],
+Cell[1798, 81, 146, 3, 31, "Details",
+ CellID->802101],
+Cell[1947, 86, 71, 2, 31, "Details",
+ CellID->509823116],
+Cell[2021, 90, 61, 2, 31, "Details",
+ CellID->199884516],
+Cell[2085, 94, 61, 2, 31, "Details",
+ CellID->463951815],
+Cell[2149, 98, 61, 2, 31, "Details",
+ CellID->8237523],
+Cell[2213, 102, 78, 2, 31, "Details",
+ CellID->813936640],
+Cell[2294, 106, 67, 2, 31, "Details",
+ CellID->240026365]
 }, Open  ]],
-Cell[5223, 159, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[2398, 113, 177, 3, 76, "GuideTitle",
+ CellID->942062912],
+Cell[2578, 118, 3343, 70, 123, "GuideAbstract",
+ CellID->2001916300]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5958, 193, 54, 1, 68, "GuideFunctionsSection",
+ CellID->1866139230],
+Cell[6015, 196, 418, 11, 23, "GuideText",
+ CellID->1463276848],
+Cell[6436, 209, 717, 15, 23, "GuideText",
+ CellID->203374175],
+Cell[CellGroupData[{
+Cell[7178, 228, 48, 1, 26, "GuideDelimiter",
+ CellID->311258892],
+Cell[7229, 231, 71, 1, 23, "InlineGuideFunctionListing",
+ CellID->58033752]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7349, 238, 62, 1, 70, "GuideTutorialsSection",
+ CellID->415694126],
+Cell[7414, 241, 49, 1, 20, "GuideTutorial",
+ CellID->806871991],
+Cell[7466, 244, 50, 1, 20, "GuideTutorial",
+ CellID->1885805579]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7553, 250, 62, 1, 70, "GuideMoreAboutSection",
+ CellID->23220180],
+Cell[7618, 253, 51, 1, 20, "GuideMoreAbout",
+ CellID->1567025153],
+Cell[7672, 256, 50, 1, 20, "GuideMoreAbout",
+ CellID->252299663]
+}, Open  ]],
+Cell[7737, 260, 69, 1, 70, "GuideRelatedLinksSection",
+ CellID->415694148]
 }
 ]
 *)
 
 (* End of internal cache information *)
-

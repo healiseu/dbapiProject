@@ -10,123 +10,152 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24322,        714]
-NotebookOptionsPosition[     20311,        588]
-NotebookOutlinePosition[     22372,        642]
-CellTagsIndexPosition[     22287,        637]
-WindowTitle->ODBgetFieldAttributes - Wolfram Mathematica
+NotebookDataLength[     26870,        845]
+NotebookOptionsPosition[     21935,        670]
+NotebookOutlinePosition[     22559,        694]
+CellTagsIndexPosition[     22480,        689]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[GridBox[{
-   {Cell["D B A P I SYMBOL", "PacletNameCell"], Cell[TextData[{
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
-        StripOnInput->False], {"\<\"ODBgetDataset\"\>":>
-       Documentation`HelpLookup["paclet:DBAPI/ref/ODBgetDataset"]},
-       Appearance->None,
-       MenuAppearance->Automatic]],
-      LineSpacing->{1.4, 0}],
-     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
-\[ThickSpace]",
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox["\<\"More About \[RightGuillemet]\"\>",
-        StripOnInput->False], {"\<\"OrientDB Package\"\>":>
-       Documentation`HelpLookup["paclet:DBAPI/guide/ODBapiPackage"]},
-       Appearance->None,
-       MenuAppearance->Automatic]],
-      LineSpacing->{1.4, 0}],
-     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
-\[ThickSpace]",
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox["\<\"URL \[RightGuillemet]\"\>",
-        StripOnInput->False], {"\<\"DBAPI/ref/ODBgetFieldAttributes\"\>":>
-       None, "\<\"Copy Mathematica url\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell["DBAPI/ref/ODBgetFieldAttributes"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-       Delimiter, "\<\"Copy web url\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell[
-              BoxData[
-               MakeBoxes[
-                Hyperlink[
-                "http://reference.wolfram.com/mathematica/DBAPI/ref/\
-ODBgetFieldAttributes.html"], StandardForm]], "Input", TextClipboardType -> 
-              "PlainText"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; 
-        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
-         NotebookLocate[{
-           URL[
-            StringJoin[
-            "http://reference.wolfram.com/mathematica/", 
-             "DBAPI/ref/ODBgetFieldAttributes", ".html"]], None}]}]},
-       Appearance->None,
-       MenuAppearance->Automatic]],
-      LineSpacing->{1.4, 0}]
-    }], "AnchorBar"]}
-  }]], "AnchorBarGrid",
- CellID->1],
+Cell[TextData[{
+ "New in: ",
+ Cell["0.9", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DBAPI", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["DBAPI`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["DBAPI/ref/ODBgetFieldAttributes", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
 
 Cell["ODBgetFieldAttributes", "ObjectName",
  CellID->1224892054],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[GridBox[{
-   {"", Cell[TextData[{
-     Cell[BoxData[
-      RowBox[{"ODBgetFieldAttributes", "[", 
-       RowBox[{"Dataset", ",", " ", 
-        RowBox[{"{", "attributes", "}"}]}], "]"}]], "InlineFormula"],
-     " Get the field (property) attributes from an OrientDB schema-full Class"
-    }]]}
-  }]], "Usage",
- GridBoxOptions->{
- GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}},
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"ODBgetFieldAttributes", "[", 
+   RowBox[{"Dataset", ",", " ", 
+    RowBox[{"{", "attributes", "}"}]}], "]"}]], "InlineFormula"],
+ " Get the field (property) attributes from an OrientDB schema-full Class"
+}], "Usage",
+ CellChangeTimes->{{3.6597601501096263`*^9, 3.6597601775305247`*^9}, {
+  3.659760717289135*^9, 3.6597607567764397`*^9}, {3.659760814034252*^9, 
+  3.6597609126006584`*^9}, {3.6597611273418694`*^9, 3.659761149184643*^9}, {
+  3.6597618471321425`*^9, 3.6597618576028457`*^9}, {3.659761898680971*^9, 
+  3.659761898680971*^9}},
  CellID->982511436],
-
-Cell[CellGroupData[{
-
-Cell[TextData[Cell[BoxData[
- ButtonBox[
-  FrameBox[
-   StyleBox[
-    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
-   StripOnInput->False],
-  Appearance->{Automatic, None},
-  BaseStyle->None,
-  ButtonFunction:>(FrontEndExecute[{
-     FrontEnd`SelectionMove[
-      FrontEnd`SelectedNotebook[], All, ButtonCell], 
-     FrontEndToken["OpenCloseGroup"], 
-     FrontEnd`SelectionMove[
-      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
-  Evaluator->None,
-  Method->"Preemptive"]]]], "NotesSection",
- WholeCellGroupOpener->True,
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->182457376],
 
 Cell[TextData[{
  StyleBox["Arguments :",
   FontWeight->"Bold"],
  " "
 }], "Notes",
+ CellChangeTimes->{{3.6597611678330803`*^9, 3.6597612294356194`*^9}, {
+  3.6597613519219475`*^9, 3.6597613810991936`*^9}, {3.6597614289568405`*^9, 
+  3.6597615573992233`*^9}, {3.659761923963197*^9, 3.659761960386049*^9}},
  CellID->1067943069],
 
 Cell[TextData[{
@@ -145,46 +174,98 @@ Cell[TextData[{
   ButtonData->"paclet:ref/List"],
  " of attributes"
 }], "Notes",
+ CellChangeTimes->{{3.6597611678330803`*^9, 3.6597612294356194`*^9}, {
+  3.6597613519219475`*^9, 3.6597613810991936`*^9}, {3.6597614289568405`*^9, 
+  3.6597615573992233`*^9}, {3.659761923963197*^9, 3.659762008110658*^9}},
  CellID->76205178],
 
 Cell[TextData[StyleBox["Returns : ",
  FontWeight->"Bold"]], "Notes",
+ CellChangeTimes->{{3.6597611678330803`*^9, 3.6597612294356194`*^9}, {
+  3.6597613519219475`*^9, 3.6597613810991936`*^9}, {3.6597614289568405`*^9, 
+  3.659761575607231*^9}, {3.6597616069343796`*^9, 3.6597616147810593`*^9}, {
+  3.659761996525697*^9, 3.659761996525697*^9}},
  CellID->532568345],
 
 Cell["\<\
 A table Dataset with columns the attributes of Class properties\
 \>", "Notes",
+ CellChangeTimes->{{3.6597611678330803`*^9, 3.6597612294356194`*^9}, {
+   3.6597613519219475`*^9, 3.6597613810991936`*^9}, {3.6597614289568405`*^9, 
+   3.659761575607231*^9}, {3.6597616069343796`*^9, 3.6597616147810593`*^9}, 
+   3.659761996525697*^9, {3.659762026712221*^9, 3.659762064695565*^9}, {
+   3.659762102134772*^9, 3.6597621433388734`*^9}, {3.6597621822158265`*^9, 
+   3.6597621849502015`*^9}, {3.6597622278730536`*^9, 3.6597622293427796`*^9}},
  CellID->384880221]
-}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[TextData[ButtonBox["EXAMPLES",
- BaseStyle->None,
- Appearance->{Automatic, None},
- Evaluator->None,
- Method->"Preemptive",
- ButtonFunction:>(FrontEndExecute[{
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], All, ButtonCell], 
-    FrontEndToken["OpenCloseGroup"], 
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], After, 
-     CellContents]}]& )]], "PrimaryExamplesSection",
- WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->121467063],
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->12911259],
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox["ODBapi",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula"]], "RelatedLinks",
+ CellChangeTimes->{{3.6598872386371*^9, 3.6598872447484283`*^9}},
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox["ODBgetDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DBAPI/ref/ODBgetDataset"]], "InlineFormula"]], "SeeAlso",
+ CellChangeTimes->{{3.659887226849991*^9, 3.659887232476944*^9}},
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
 
 Cell[TextData[{
  "Execute ",
@@ -194,6 +275,7 @@ Cell[TextData[{
    ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula"],
  " with the getClass command"
 }], "ExampleText",
+ CellChangeTimes->{{3.6597622563056707`*^9, 3.6597623176884828`*^9}},
  CellID->390502528],
 
 Cell[CellGroupData[{
@@ -206,7 +288,11 @@ Cell[BoxData[
     RowBox[{"db", "\[Rule]", "\"\<DemoDB\>\""}], ",", " ", 
     RowBox[{"class", "\[Rule]", " ", "\"\<Person\>\""}], ",", " ", 
     RowBox[{"debug", "\[Rule]", " ", "True"}]}], "]"}]}]], "Input",
- CellLabel->"In[1]:=",
+ CellChangeTimes->{{3.6595081988933525`*^9, 3.6595082091951103`*^9}, {
+  3.6595082524695244`*^9, 3.6595082690857353`*^9}, {3.659510490949418*^9, 
+  3.6595104928097696`*^9}, {3.659510524541215*^9, 3.6595105671554728`*^9}, {
+  3.6595109977925735`*^9, 3.659511008642291*^9}},
+ CellLabel->"In[57]:=",
  CellID->113697542],
 
 Cell[BoxData[
@@ -217,6 +303,10 @@ Cell[BoxData[
   SequenceForm[
   "http://localhost:2480/class/DemoDB/Person", "\n=== Body ===\n", ""],
   Editable->False]], "Print",
+ CellChangeTimes->{
+  3.659508270102337*^9, 3.659510494201371*^9, {3.659510529230668*^9, 
+   3.659510545110551*^9}, 3.659510765367483*^9, {3.6595109993239746`*^9, 
+   3.6595110101747494`*^9}},
  CellLabel->"During evaluation of In[57]:=",
  CellID->297657940],
 
@@ -236,10 +326,11 @@ linkedClass\\\":\\\"Car\\\",\\\"type\\\":\\\"LINK\\\",\\\"mandatory\\\":false,\
 \\\"readonly\\\":false,\\\"notNull\\\":false,\\\"min\\\":null,\\\"max\\\":\
 null,\\\"regexp\\\":null,\\\"collate\\\":\\\"default\\\"}]}\"\>", ",", 
    "200"}], "}"}]], "Output",
- ImageSize->{585, 152},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[1]=",
+ CellChangeTimes->{
+  3.659508270289837*^9, 3.659510494341996*^9, {3.659510529308793*^9, 
+   3.659510545173051*^9}, 3.6595107655309324`*^9, {3.659510999509599*^9, 
+   3.6595110102087803`*^9}},
+ CellLabel->"Out[57]=",
  CellID->347421544]
 }, Open  ]],
 
@@ -260,6 +351,8 @@ Cell[TextData[{
   ButtonData->"paclet:ref/Dataset"],
  "."
 }], "ExampleText",
+ CellChangeTimes->{{3.659511336877467*^9, 3.659511391012233*^9}, {
+  3.6595125508354654`*^9, 3.659512563900895*^9}},
  CellID->282846910],
 
 Cell[CellGroupData[{
@@ -267,7 +360,9 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"classInfoDS", "=", 
   RowBox[{"classInfo", "//", "ODBgetDataset"}]}]], "Input",
- CellLabel->"In[2]:=",
+ CellChangeTimes->{{3.6595107718785114`*^9, 3.6595107865339503`*^9}, {
+  3.6595110130395765`*^9, 3.6595110189790297`*^9}},
+ CellLabel->"In[58]:=",
  CellID->27991777],
 
 Cell[BoxData[
@@ -388,10 +483,8 @@ Cell[BoxData[
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
- ImageSize->{566, 268},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[2]=",
+ CellChangeTimes->{3.659510794817154*^9, 3.659511022152858*^9},
+ CellLabel->"Out[58]=",
  CellID->105684170]
 }, Open  ]],
 
@@ -405,6 +498,8 @@ Cell[TextData[{
  " we can view specific attributes for all properties (fields) of the Car \
 class"
 }], "ExampleText",
+ CellChangeTimes->{{3.6595112553882093`*^9, 3.659511305474147*^9}, {
+  3.659512587425309*^9, 3.659512686459489*^9}},
  CellID->145027620],
 
 Cell[CellGroupData[{
@@ -417,7 +512,10 @@ Cell[BoxData[
     "\"\<name\>\"", ",", "\"\<linkedClass\>\"", ",", "\"\<type\>\"", ",", 
      "\"\<mandatory\>\"", ",", " ", "\"\<notNull\>\"", ",", 
      "\"\<collate\>\""}], "}"}]}], "]"}]], "Input",
- CellLabel->"In[3]:=",
+ CellChangeTimes->{{3.6595108118884425`*^9, 3.659510860489029*^9}, {
+  3.6595110250913343`*^9, 3.659511027951686*^9}, {3.659511092198756*^9, 
+  3.6595111535327406`*^9}},
+ CellLabel->"In[61]:=",
  CellID->36192946],
 
 Cell[BoxData[
@@ -503,222 +601,254 @@ Cell[BoxData[
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
- ImageSize->{457, 115},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[3]=",
+ CellChangeTimes->{{3.6595108354011383`*^9, 3.6595108618025055`*^9}, 
+   3.659511029357936*^9, {3.659511170491725*^9, 3.659511179667506*^9}},
+ CellLabel->"Out[61]=",
  CellID->550559273]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
 }, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[TextData[ButtonBox["SEE ALSO",
- BaseStyle->None,
- Appearance->{Automatic, None},
- Evaluator->None,
- Method->"Preemptive",
- ButtonFunction:>(FrontEndExecute[{
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], All, ButtonCell], 
-    FrontEndToken["OpenCloseGroup"], 
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], After, 
-     CellContents]}]& )]], "SeeAlsoSection",
- WholeCellGroupOpener->True,
- CellID->1255426704],
-
-Cell[TextData[Cell[BoxData[
- StyleBox[
-  ButtonBox["ODBgetDataset",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/ref/ODBgetDataset"],
-  FontFamily->"Verdana"]], "InlineFormula"]], "SeeAlso",
- CellID->929782353]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[TextData[ButtonBox["MORE ABOUT",
- BaseStyle->None,
- Appearance->{Automatic, None},
- Evaluator->None,
- Method->"Preemptive",
- ButtonFunction:>(FrontEndExecute[{
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], All, ButtonCell], 
-    FrontEndToken["OpenCloseGroup"], 
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], After, 
-     CellContents]}]& )]], "MoreAboutSection",
- WholeCellGroupOpener->True,
- CellID->38303248],
-
-Cell[TextData[ButtonBox["OrientDB Package",
- BaseStyle->"Link",
- ButtonData->"paclet:DBAPI/guide/ODBapiPackage"]], "MoreAbout",
- CellID->74163798]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[TextData[ButtonBox["RELATED LINKS",
- BaseStyle->None,
- Appearance->{Automatic, None},
- Evaluator->None,
- Method->"Preemptive",
- ButtonFunction:>(FrontEndExecute[{
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], All, ButtonCell], 
-    FrontEndToken["OpenCloseGroup"], 
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], After, 
-     CellContents]}]& )]], "RelatedLinksSection",
- WholeCellGroupOpener->True,
- CellID->1584193535],
-
-Cell[TextData[ButtonBox["ODBapi",
- BaseStyle->"Link",
- ButtonData->"paclet:DBAPI/ref/ODBapi"]], "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-
-Cell[" ", "FooterCell"]
 },
-Saveable->False,
-ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-WindowTitle->"ODBgetFieldAttributes - Wolfram Mathematica",
-TaggingRules->{
- "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
-  GridBox[{{
-      RowBox[{
-        ButtonBox[
-        "Mathematica", ButtonData -> "paclet:DBAPI/guide/DBAPI", 
-         BaseStyle -> {"Link", "DockedLinkTrail"}], 
-        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
-  "Metadata" -> {
-   "built" -> "{2015, 12, 24, 23, 59, 3.8784465}", 
-    "history" -> {"0.9", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
-     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
-    True, "label" -> "D B A P I Symbol", "language" -> "en", "paclet" -> 
-    "DBAPI", "status" -> "None", "summary" -> 
-    "ODBgetFieldAttributes[Dataset, {attributes}] Get the field (property) \
-attributes from an OrientDB schema-full Class", "synonyms" -> {}, "title" -> 
-    "ODBgetFieldAttributes", "titlemodifier" -> "", "windowtitle" -> 
-    "ODBgetFieldAttributes", "type" -> "Symbol", "uri" -> 
-    "DBAPI/ref/ODBgetFieldAttributes"}, "SearchTextTranslated" -> ""},
+WindowSize->{820, 770},
+WindowMargins->{{Automatic, 444}, {Automatic, 7}},
 CellContext->"Global`",
 FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
-StyleDefinitions->Notebook[{
-   Cell[
-    StyleData[
-    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
-   Cell[
-    StyleData["Input"], CellContext -> "Global`"], 
-   Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Microsoft Windows (64-bit) (July 7, 2015)", 
-  StyleDefinitions -> "Default.nb"]
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "WindowsGreek"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[5224, 162, 490, 14, 70, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->121467063]}
+ "ExtendedExamples"->{
+  Cell[20415, 612, 100, 2, 53, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 22144, 630}
+ {"ExtendedExamples", 22341, 682}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[615, 21, 2575, 59, 70, "AnchorBarGrid",
- CellID->1],
-Cell[3193, 82, 64, 1, 70, "ObjectName",
+Cell[558, 20, 325, 14, 22, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[908, 38, 68, 1, 27, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 79, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1061, 45, 78, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1142, 49, 75, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1220, 53, 76, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1333, 59, 55, 1, 17, "KeywordsSection",
+ CellID->477174294],
+Cell[1391, 62, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1473, 68, 65, 1, 17, "TemplatesSection",
+ CellID->1872225408],
+Cell[1541, 71, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1638, 75, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1723, 79, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1807, 83, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1926, 90, 53, 1, 17, "DetailsSection",
+ CellID->307771771],
+Cell[1982, 93, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2048, 97, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2120, 101, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2187, 105, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2259, 109, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2323, 113, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2387, 117, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2453, 121, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2534, 125, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2638, 132, 64, 1, 62, "ObjectName",
  CellID->1224892054],
-Cell[CellGroupData[{
-Cell[3282, 87, 478, 13, 70, "Usage",
+Cell[2705, 135, 625, 13, 71, "Usage",
  CellID->982511436],
-Cell[CellGroupData[{
-Cell[3785, 104, 609, 18, 70, "NotesSection",
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->182457376],
-Cell[4397, 124, 102, 5, 70, "Notes",
+Cell[3333, 150, 324, 8, 23, "Notes",
  CellID->1067943069],
-Cell[4502, 131, 471, 16, 70, "Notes",
+Cell[3660, 160, 693, 19, 39, "Notes",
  CellID->76205178],
-Cell[4976, 149, 88, 2, 70, "Notes",
+Cell[4356, 181, 361, 6, 23, "Notes",
  CellID->532568345],
-Cell[5067, 153, 108, 3, 70, "Notes",
+Cell[4720, 189, 562, 9, 23, "Notes",
  CellID->384880221]
-}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5224, 162, 490, 14, 70, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->121467063],
-Cell[CellGroupData[{
-Cell[5739, 180, 194, 6, 70, "ExampleSection",
- CellID->12911259],
-Cell[5936, 188, 218, 8, 70, "ExampleText",
- CellID->390502528],
-Cell[CellGroupData[{
-Cell[6179, 200, 386, 9, 70, "Input",
- CellID->113697542],
-Cell[6568, 211, 373, 9, 70, "Print",
- CellID->297657940],
-Cell[6944, 222, 1188, 20, 173, "Output",
- CellID->347421544]
-}, Open  ]],
-Cell[8147, 245, 523, 17, 70, "ExampleText",
- CellID->282846910],
-Cell[CellGroupData[{
-Cell[8695, 266, 145, 4, 70, "Input",
- CellID->27991777],
-Cell[8843, 272, 4981, 122, 70, "Output",
- CellID->105684170]
-}, Open  ]],
-Cell[13839, 397, 351, 10, 70, "ExampleText",
- CellID->145027620],
-Cell[CellGroupData[{
-Cell[14215, 411, 344, 9, 70, "Input",
- CellID->36192946],
-Cell[14562, 422, 3719, 87, 136, "Output",
- CellID->550559273]
-}, Open  ]]
-}, Open  ]]
+Cell[5319, 203, 57, 1, 43, "TutorialsSection",
+ CellID->250839057],
+Cell[5379, 206, 45, 1, 16, "Tutorials",
+ CellID->341631938]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18342, 516, 446, 13, 70, "SeeAlsoSection",
+Cell[5461, 212, 83, 1, 30, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[5547, 215, 58, 1, 16, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5642, 221, 65, 1, 30, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[5710, 224, 234, 5, 19, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5981, 234, 55, 1, 30, "SeeAlsoSection",
  CellID->1255426704],
-Cell[18791, 531, 216, 6, 70, "SeeAlso",
+Cell[6039, 237, 242, 5, 19, "SeeAlso",
  CellID->929782353]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19044, 542, 448, 13, 70, "MoreAboutSection",
+Cell[6318, 247, 57, 1, 30, "MoreAboutSection",
  CellID->38303248],
-Cell[19495, 557, 146, 3, 70, "MoreAbout",
- CellID->74163798]
+Cell[6378, 250, 46, 1, 16, "MoreAbout",
+ CellID->1665078683]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19678, 565, 456, 13, 70, "RelatedLinksSection",
- CellID->1584193535],
-Cell[20137, 580, 132, 3, 70, "RelatedLinks",
- CellID->1038487239]
+Cell[6461, 256, 356, 11, 68, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[6820, 269, 288, 9, 23, "ExampleText",
+ CellID->390502528],
+Cell[CellGroupData[{
+Cell[7133, 282, 660, 13, 48, "Input",
+ CellID->113697542],
+Cell[7796, 297, 566, 13, 60, "Print",
+ CellID->297657940],
+Cell[8365, 312, 1293, 21, 197, "Output",
+ CellID->347421544]
 }, Open  ]],
-Cell[20284, 586, 23, 0, 70, "FooterCell"]
+Cell[9673, 336, 640, 19, 33, "ExampleText",
+ CellID->282846910],
+Cell[CellGroupData[{
+Cell[10338, 359, 269, 6, 27, "Input",
+ CellID->27991777],
+Cell[10610, 367, 4957, 120, 278, "Output",
+ CellID->105684170]
+}, Open  ]],
+Cell[15582, 490, 468, 12, 33, "ExampleText",
+ CellID->145027620],
+Cell[CellGroupData[{
+Cell[16075, 506, 515, 12, 48, "Input",
+ CellID->36192946],
+Cell[16593, 520, 3773, 86, 125, "Output",
+ CellID->550559273]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20415, 612, 100, 2, 53, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[20518, 616, 125, 3, 30, "ExampleSection",
+ CellID->1293636265],
+Cell[20646, 621, 148, 3, 18, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[20819, 628, 127, 3, 18, "ExampleSection",
+ CellID->2061341341],
+Cell[20949, 633, 130, 3, 70, "ExampleSubsection",
+ CellID->1757724783],
+Cell[21082, 638, 130, 3, 70, "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+Cell[21227, 644, 131, 3, 18, "ExampleSection",
+ CellID->258228157],
+Cell[21361, 649, 142, 3, 18, "ExampleSection",
+ CellID->2123667759],
+Cell[21506, 654, 135, 3, 18, "ExampleSection",
+ CellID->1305812373],
+Cell[21644, 659, 140, 3, 18, "ExampleSection",
+ CellID->1653164318],
+Cell[21787, 664, 132, 3, 18, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
 }
 ]
 *)
 
 (* End of internal cache information *)
-

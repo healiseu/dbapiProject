@@ -10,73 +10,101 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8005,        232]
-NotebookOptionsPosition[      5554,        168]
-NotebookOutlinePosition[      7404,        210]
-CellTagsIndexPosition[      7361,        207]
-WindowTitle->OrientDB Package - Wolfram Mathematica
+NotebookDataLength[      9162,        345]
+NotebookOptionsPosition[      6404,        247]
+NotebookOutlinePosition[      6826,        263]
+CellTagsIndexPosition[      6783,        260]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[GridBox[{
-   {Cell["D B A P I GUIDE", "PacletNameCell"], Cell[TextData[{
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox["\<\"Functions \[RightGuillemet]\"\>",
-        StripOnInput->False], {"\<\"Dataset\"\>":>Documentation`HelpLookup[
-       "paclet:ref/Dataset"], "\<\"ODBapi\"\>":>Documentation`HelpLookup[
-       "paclet:DBAPI/ref/ODBapi"], "\<\"ODBgetDataset\"\>":>
-       Documentation`HelpLookup[
-       "paclet:DBAPI/ref/ODBgetDataset"], "\<\"ODBgetFieldAttributes\"\>":>
-       Documentation`HelpLookup["paclet:DBAPI/ref/ODBgetFieldAttributes"]},
-       Appearance->None,
-       MenuAppearance->Automatic]],
-      LineSpacing->{1.4, 0}],
-     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
-\[ThickSpace]",
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox["\<\"URL \[RightGuillemet]\"\>",
-        StripOnInput->False], {"\<\"DBAPI/guide/OrientDB Package\"\>":>
-       None, "\<\"Copy Mathematica url\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell["DBAPI/guide/OrientDB Package"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-       Delimiter, "\<\"Copy web url\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell[
-              BoxData[
-               MakeBoxes[
-                Hyperlink[
-                "http://reference.wolfram.com/mathematica/DBAPI/guide/\
-OrientDB Package.html"], StandardForm]], "Input", TextClipboardType -> 
-              "PlainText"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; 
-        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
-         NotebookLocate[{
-           URL[
-            StringJoin[
-            "http://reference.wolfram.com/mathematica/", 
-             "DBAPI/guide/OrientDB Package", ".html"]], None}]}]},
-       Appearance->None,
-       MenuAppearance->Automatic]],
-      LineSpacing->{1.4, 0}]
-    }], "AnchorBar"]}
-  }]], "AnchorBarGrid",
- GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
-     Scaled[0.65], {
-      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
-   "RowsIndexed" -> {}}},
- CellID->1],
+Cell[TextData[{
+ "New in: ",
+ Cell["0.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Guide", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DBAPI", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["DBAPI`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["DBAPI/guide/OrientDB Package", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1427428552],
+
+Cell["XXXX", "Keywords",
+ CellID->1251852827]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->795394057],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->802101],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->509823116],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->199884516],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->463951815],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->8237523],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->813936640],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -85,9 +113,10 @@ Cell["OrientDB Package", "GuideTitle",
 
 Cell[TextData[{
  "The function ",
- Cell[TextData[ButtonBox["ODBapi",
-  BaseStyle->"Link",
-  ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFunctionSans",
+ Cell[BoxData[
+  ButtonBox["ODBapi",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula",
   Background->RGBColor[1, 0.9, 0.8]],
  " in this package is built on top of the ",
  ButtonBox["URLFetch",
@@ -109,93 +138,117 @@ Wolfram Language through ",
 form name\[Rule]value. This package has also other utility functions \
 especially implemented for OrientDB."
 }], "GuideAbstract",
- CellID->2001916300],
+ CellChangeTimes->{{3.659365578132661*^9, 3.659365608009614*^9}, {
+   3.659540025243246*^9, 3.6595400257588716`*^9}, {3.6595400588545747`*^9, 
+   3.6595400740743012`*^9}, {3.6595401091524262`*^9, 3.659540156123129*^9}, {
+   3.659540191259848*^9, 3.659540191447348*^9}, {3.6595402346397305`*^9, 
+   3.659540324022232*^9}, 3.659540424067154*^9, {3.6595406314846272`*^9, 
+   3.6595406374563065`*^9}, {3.6595406754387283`*^9, 3.659540735394783*^9}, {
+   3.6595408487463455`*^9, 3.6595408555607986`*^9}, {3.659775803110299*^9, 
+   3.6597758722929163`*^9}},
+ CellID->2001916300]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "GuideFunctionsSection",
+ CellChangeTimes->{{3.659540992087166*^9, 3.659541016377205*^9}},
+ CellID->1866139230],
 
 Cell[CellGroupData[{
 
 Cell["OrientDB API", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659514621012824*^9, 3.659514630473762*^9}, {
+  3.6595410196926346`*^9, 3.659541029339119*^9}},
  CellID->743553349],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["ODBapi",
-  BaseStyle->"Link",
-  ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " The main function of the package"
+ Cell[BoxData[
+  ButtonBox["ODBapi",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineGuideFunction"],
+ " \[LongDash] The main function of the package"
 }], "GuideText",
- CellID->203374175],
-
-Cell["\t", "GuideDelimiterSubsection",
- CellID->311258892]
+ CellChangeTimes->{{3.6593656337068796`*^9, 3.659365636364106*^9}, {
+  3.659365673103364*^9, 3.659365673103364*^9}, {3.659365836649801*^9, 
+  3.6593658820443325`*^9}, {3.659540884462166*^9, 3.659540894307869*^9}, {
+  3.659541008375252*^9, 3.659541009344002*^9}},
+ CellID->203374175]
 }, Open  ]],
+
+Cell["\t", "GuideDelimiter",
+ CellID->311258892],
 
 Cell[CellGroupData[{
 
 Cell["Utilily Functions", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659514621012824*^9, 3.659514630473762*^9}},
  CellID->21191971],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["ODBgetDataset",
-  BaseStyle->"Link",
-  ButtonData->"paclet:DBAPI/ref/ODBgetDataset"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " Transforms OrientDB JSON response to a ",
+ Cell[BoxData[
+  ButtonBox["ODBgetDataset",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBgetDataset"]], "InlineGuideFunction"],
+ " \[LongDash] Transforms OrientDB JSON response to a ",
  ButtonBox["Dataset",
   BaseStyle->"Link",
   ButtonData->"paclet:ref/Dataset"]
 }], "GuideText",
+ CellChangeTimes->{{3.659514536716926*^9, 3.659514562855598*^9}, {
+  3.6595146647423162`*^9, 3.6595147055401683`*^9}, {3.659514874694563*^9, 
+  3.6595148748633127`*^9}},
  CellID->119814716],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["ODBgetFieldAttributes",
-  BaseStyle->"Link",
-  ButtonData->"paclet:DBAPI/ref/ODBgetFieldAttributes"]], 
-  "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " Returns field attributes of OrientDB class represented with a ",
+ Cell[BoxData[
+  ButtonBox["ODBgetFieldAttributes",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/ODBgetFieldAttributes"]], 
+  "InlineGuideFunction"],
+ " \[LongDash] Returns field attributes of OrientDB class represented with a ",
  ButtonBox["Dataset",
   BaseStyle->"Link",
   ButtonData->"paclet:ref/Dataset"]
 }], "GuideText",
+ CellChangeTimes->{{3.659514468224738*^9, 3.65951447927552*^9}, {
+  3.659514567599738*^9, 3.6595145676778636`*^9}, {3.6595147135157537`*^9, 
+  3.659514775167121*^9}, {3.659514805193488*^9, 3.6595148705636053`*^9}},
  CellID->269366724]
 }, Open  ]]
 }, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell["Tutorials", "GuideTutorialsSection",
+ CellID->415694126],
+
+Cell["XXXX", "GuideTutorial",
+ CellID->806871991],
+
+Cell["XXXX", "GuideTutorial",
+ CellID->1885805579]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "GuideMoreAboutSection",
+ CellID->23220180],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->1567025153],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->252299663]
+}, Open  ]],
+
+Cell["Related Links", "GuideRelatedLinksSection",
+ CellID->415694148]
 },
-Saveable->False,
-ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-WindowTitle->"OrientDB Package - Wolfram Mathematica",
-TaggingRules->{
- "ModificationHighlight" -> False, "ColorType" -> "GuideColor", "LinkTrails" -> 
-  GridBox[{{
-      RowBox[{
-        StyleBox[
-         ButtonBox[
-         "Mathematica", ButtonData -> "paclet:guide/Mathematica", 
-          BaseStyle -> {"Link", "DockedLinkTrail"}], FontSlant -> "Italic"], 
-        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
-  "Metadata" -> {
-   "built" -> "{2015, 12, 24, 23, 58, 33.5102824}", 
-    "history" -> {"0.0", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
-     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
-    True, "label" -> "D B A P I Guide", "language" -> "en", "paclet" -> 
-    "DBAPI", "status" -> "None", "summary" -> 
-    "The function ODBapi in this package is built on top of the URLFetch \
-built-in function. OrientDB RESTful HTTP API commands are ported into Wolfram \
-Language through URLFetch and then ODBapi commands are built with arguments \
-that specify options with rules of the form name\[Rule]value. This package \
-has also other utility functions especially implemented for OrientDB.", 
-    "synonyms" -> {}, "title" -> "OrientDB Package", "titlemodifier" -> "", 
-    "windowtitle" -> "OrientDB Package", "type" -> "Guide", "uri" -> 
-    "DBAPI/guide/OrientDB Package"}, "SearchTextTranslated" -> ""},
+WindowSize->{700, 770},
+WindowMargins->{{Automatic, 552}, {13, Automatic}},
 FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
-StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb", 
   CharacterEncoding -> "WindowsGreek"]
 ]
 (* End of Notebook Content *)
@@ -209,34 +262,93 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[610, 21, 2591, 57, 70, "AnchorBarGrid",
- CellID->1],
+Cell[558, 20, 325, 14, 22, "History",
+ CellID->1247902091],
 Cell[CellGroupData[{
-Cell[3226, 82, 58, 1, 70, "GuideTitle",
+Cell[908, 38, 68, 1, 27, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 78, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1060, 45, 78, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1141, 49, 75, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1219, 53, 73, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1329, 59, 56, 1, 17, "KeywordsSection",
+ CellID->1427428552],
+Cell[1388, 62, 45, 1, 70, "Keywords",
+ CellID->1251852827]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1470, 68, 53, 1, 17, "DetailsSection",
+ CellID->307771771],
+Cell[1526, 71, 63, 2, 70, "Details",
+ CellID->795394057],
+Cell[1592, 75, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[1664, 79, 63, 2, 70, "Details",
+ CellID->802101],
+Cell[1730, 83, 71, 2, 70, "Details",
+ CellID->509823116],
+Cell[1804, 87, 61, 2, 70, "Details",
+ CellID->199884516],
+Cell[1868, 91, 61, 2, 70, "Details",
+ CellID->463951815],
+Cell[1932, 95, 61, 2, 70, "Details",
+ CellID->8237523],
+Cell[1996, 99, 78, 2, 70, "Details",
+ CellID->813936640],
+Cell[2077, 103, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2181, 110, 58, 1, 76, "GuideTitle",
  CellID->942062912],
-Cell[3287, 85, 923, 26, 70, "GuideAbstract",
- CellID->2001916300],
-Cell[CellGroupData[{
-Cell[4235, 115, 68, 1, 70, "GuideFunctionsSubsection",
- CellID->743553349],
-Cell[4306, 118, 258, 8, 70, "GuideText",
- CellID->203374175],
-Cell[4567, 128, 58, 1, 70, "GuideDelimiterSubsection",
- CellID->311258892]
+Cell[2242, 113, 1474, 35, 85, "GuideAbstract",
+ CellID->2001916300]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4662, 134, 72, 1, 70, "GuideFunctionsSubsection",
+Cell[3753, 153, 120, 2, 68, "GuideFunctionsSection",
+ CellID->1866139230],
+Cell[CellGroupData[{
+Cell[3898, 159, 185, 3, 33, "GuideFunctionsSubsection",
+ CellID->743553349],
+Cell[4086, 164, 491, 11, 23, "GuideText",
+ CellID->203374175]
+}, Open  ]],
+Cell[4592, 178, 48, 1, 26, "GuideDelimiter",
+ CellID->311258892],
+Cell[CellGroupData[{
+Cell[4665, 183, 138, 2, 33, "GuideFunctionsSubsection",
  CellID->21191971],
-Cell[4737, 137, 359, 11, 70, "GuideText",
+Cell[4806, 187, 499, 13, 23, "GuideText",
  CellID->119814716],
-Cell[5099, 150, 401, 12, 70, "GuideText",
+Cell[5308, 202, 586, 14, 37, "GuideText",
  CellID->269366724]
 }, Open  ]]
 }, Open  ]],
-Cell[5527, 166, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[5943, 222, 62, 1, 70, "GuideTutorialsSection",
+ CellID->415694126],
+Cell[6008, 225, 49, 1, 20, "GuideTutorial",
+ CellID->806871991],
+Cell[6060, 228, 50, 1, 20, "GuideTutorial",
+ CellID->1885805579]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6147, 234, 62, 1, 70, "GuideMoreAboutSection",
+ CellID->23220180],
+Cell[6212, 237, 51, 1, 20, "GuideMoreAbout",
+ CellID->1567025153],
+Cell[6266, 240, 50, 1, 20, "GuideMoreAbout",
+ CellID->252299663]
+}, Open  ]],
+Cell[6331, 244, 69, 1, 70, "GuideRelatedLinksSection",
+ CellID->415694148]
 }
 ]
 *)
 
 (* End of internal cache information *)
-

@@ -4,14 +4,15 @@
 (* :Context: DBAPI`OrientDB` *)
 (* :Dependencies: DBAPI`Utils`, GeneralUtilities`*)
 
-(* :PackageVersion: 0.9.0 *)
-(* :History:  Version 0.9.0 December 24 2015 -- Initial version *)
+(* :PackageVersion: 1.0.3 *)
+(* :History:  
+	Version 0.9.0 December 24 2015 -- 1st Release 
+	Version 1.0.3 February 09 2016 -- 2nd Release *)
+
 (* :MathematicaVersion: >10.2.0 *)
 
-(* :Discussion: *)
-
 (* :Author: Athanassios I. Hatzis *)
-(* :LatestReleaseDate: 2015-12-24 *)
+(* :LatestReleaseDate: 2016-02-09 *)
 (* :License: GNU LGPL - GNU Lesser General Public License *)
 (*
 	This file is part of DBAPI application project.
@@ -34,7 +35,7 @@
 BeginPackage["DBAPI`OrientDB`", {"DBAPI`Utils`","GeneralUtilities`"}];
 
 (* Unprotect and Clear All*)
-UnProtect[
+(*UnProtect[
 	ODBapi, 
 	ODBgetFieldAttributes,	
 	ODBgetDataset
@@ -45,7 +46,7 @@ ClearAll[
 	ODBgetFieldAttributes,	
 	ODBgetDataset	
  ]
- 
+ *)
 (* Usage Messages *)
 ODBapi::usage="
 	ODBapi[com->\"add<Command>\", options] 
@@ -121,24 +122,30 @@ Options[ODBfetch] = {
 					proptype->"",
 					attribnam->"",
 					attribval->"",
+					indexnam->"",
+					indextype->"",
 					record->"",
+					all->False,
+					uniq->False,
 					
 					(* sql command parameters *)
 					sql->"",
 					class->"",
 					superclass->"",
+					prjkt->"",
 					keys->"",
 					values->"",
 					construct->"",
 					from->"",
 					to->"",
-					
+	
 					(* URLFetch Parameters *)
-					method->"POST",
+					method->"PUT",
 					param->{},
 					body->"",
 					usr->"admin",
 					pwd->"admin",
+					mode->"COMMAND",
 					
 					(* Debug, i.e. print the URLFetch command *)
 					debug->False
@@ -147,99 +154,219 @@ Options[ODBfetch] = {
 Options[ODBapi]=Options[ODBfetch]
 
 ODBapi[opts: OptionsPattern[]] := Block[
-	{result, 
+	{result, allval, uniqval, modeval,
 	comval,  sqlval, conval,
 	dbval, dbtypeval, 
-	classval, superclassval, supertype, keysval, valuesval, constructval, fromval, toval,
-	recid, recval, recver,recordcontent, 
+	classval, superclassval, supertype,
+	prjktval, 
+	keysval, valuesval, constructval, fromval, toval,
+	recid, recval, recver, bodycontent, 
 	fieldnam, fieldval, fieldtype, fieldarg,
-	attrnam, attrval},
-		
-	dbval=OptionValue[db];
-	dbtypeval=OptionValue[dbtype];
+	attrnam, attrval, ndxnam, ndxtype,
+	methodval, argval, getcmd},
+	
+	(* supertype, bodycontent and fieldarg and getcmd
+	    are temporary variables that are not set to option values like the rest *) 
+
+	getcmd="";
+	argval="";
+	methodval=OptionValue[method];
+	allval=OptionValue[all];
+	uniqval=OptionValue[uniq];
+	modeval=OptionValue[mode];
+	
 	comval=OptionValue[com];
 	sqlval=OptionValue[sql];
+	conval=OptionValue[con];
+			
+	dbval=OptionValue[db];
+	dbtypeval=OptionValue[dbtype];
+	
 	classval=OptionValue[class];
 	superclassval=OptionValue[superclass];
+	supertype="";
+	
+	prjktval=OptionValue[prjkt];
+	
 	keysval=OptionValue[keys];
 	valuesval=OptionValue[values];
 	constructval=OptionValue[construct];
 	fromval=OptionValue[from];
 	toval=OptionValue[to];
-	conval=OptionValue[con];	
+		
 	recid=OptionValue[id];
 	recval=OptionValue[record];
 	recver=OptionValue[ver];
+	bodycontent="";
+	
 	fieldnam=OptionValue[propnam];
 	fieldval=OptionValue[propval];
 	fieldtype=OptionValue[proptype];
+	fieldarg="";
+	
+	ndxnam=OptionValue[indexnam];
+	ndxtype=OptionValue[indextype];
+	
 	attrnam=OptionValue[attribnam];
 	attrval=OptionValue[attribval];
+	
+	(* Used in Which [comval == "getDatabases"....	*)
+	If[ comval=="getDatabases",
+		Which[
+			dbval!="",
+			getcmd="database",
+			
+			True,
+			getcmd="listDatabases"] ];
+			
+	(* Used in Which [comval == "addOSQL"..... 
+	The argument mode [BATCH, COMMMAND] specifies whether to execute 
+	an sql scipt or an sql command. The sql argument is mandatory	*)
+	If[ comval=="addOSQL",
+		Which[
+			modeval=="BATCH",
+			getcmd="batch";
+			bodycontent=ODBmakeJSONScript[sqlval],
+			
+			modeval=="COMMAND",
+			argval="sql";getcmd="command";
+			bodycontent=sqlval,
+			
+			True,
+			comval="ABORT"] ];				
+	
+	(* Used in Which [comval == "getRecords".....
+	You can either get a single record, i.e. structured document back by specifying the record id	
+	Or get multiple records back with	
+	Mandatory parameters, classval, fieldnam, fieldvalue	*)
+	If[ comval=="getRecords",
+		Which[ 
+			recid!="",
+			argval=recid;getcmd="document";
+			bodycontent="",
+			
+			classval!="" && fieldval !="" && fieldnam !="",
+			argval="sql";getcmd="command";
+			bodycontent="select " <> prjktval <> " from " <> classval <> " WHERE " <> fieldnam <> "=" <> "\""<> fieldval <> "\"",
+			
+			classval!="",
+			argval="sql";getcmd="command";
+			bodycontent="select " <> prjktval <> " from " <> classval,
+			
+			True, 
+			comval="ABORT"] ];
+	
+	(* Used in Which [comval=="delRecords"....
+		WIth tha all->True Optional arguement 
+		We use TRUNCATE CLASS to delete ALL records from a DOCUMENT class
+		and DELETE VERTEX to delete ALL vertices from a VERTEX class
+		Otherwise delete specific records by passing the recid, all->False *)
+	If[	(comval=="delRecords"),
+		Which[classval !="" && allval==True && constructval=="DOCUMENT", bodycontent="TRUNCATE CLASS "<> classval,
+			classval !="" && allval==True && constructval=="VERTEX",  bodycontent="DELETE VERTEX " <> classval,
+			allval==False && recid!="", bodycontent= "TRUNCATE RECORD "<>recid,
+		True, comval="ABORT"] ]; 		 
+	
+	(* Used in Which [comval=="addEdge".....
+		There are three cases, two of them use the default OrientDB Edges that can take properties
+		We add either a json CONTENT record or a single value with SET
+		The last case is used in OrientDB LightweightEdges, i.e. bidirectional links with no record attached  
+	*)	
+	If[ (comval=="addEdge"),
+		Which[classval !="" && fromval!="" && toval!="",
+			  If[recval !="", 
+				bodycontent="CREATE EDGE " <> classval <> " FROM " <> fromval <> " TO " <> toval <> " CONTENT " <> recval,
+				bodycontent="CREATE EDGE " <> classval <> " FROM " <> fromval <> " TO " <> toval ],
+			
+			  classval !="" && fromval!="" && toval!="" && fieldnam!="" && fieldval!="", 
+			  bodycontent="CREATE EDGE " <> classval <> "  FROM " <> fromval <> " TO " <> toval <> " SET " <> fieldnam<>"="<>fieldval,						
+			  
+			  True, comval="ABORT"] ];
 		
-	(* Used in Which [comval == "addDOCUMENT" ...... 
+	(* Used in Which [comval == "addRecord" ...... 
 	It uses the HTTP POST - Document and the body has a JSON content
-	recordval is a JSON formatted String and 
+	recval is a JSON formatted String and 
 	more specifically a JSON object with an unordered collection of key-value pairs
-	StringTake strips JSON from the brackets { ..... } and concatenates this with the rest of the String 
+	StringTake strips JSON from the brackets { ..... } and concatenates this with the rest of the String
+	In the case recval="", i.e. it can be ommitted then an empty Document record is created 
+	bodycontent="INSERT INTO "<>classval <> " content " <> " {\"@type\":\"d\"} " 
 	*)
-	If[ 
-		(classval !="" && recval !="" && comval=="addDOCUMENT"), 
-		recordcontent="{\"@class\":\"" <> classval <> "\"," <> StringTake[recval, {2, -2}] <> "}"		
+	If[ (comval=="addRecord" && classval !=""),		
+		Which[	recval!="", bodycontent="{\"@class\":\"" <> classval <> "\"," <> StringTake[recval, {2, -2}] <> "}",
+				recval=="", bodycontent="{\"@class\":\"" <> classval<>"\"}",
+		True, comval="ABORT"]	];
+		
+	(* Used in Which [comval == "addInstance" ...... 	
+	INSERT INTO Profile SET name = 'Jay'
+	CREATE VERTEX Car SET brand = 'fiat'
+	Note that construct option in that case is mandatory and takes values (DOCUMENT, VERTEX)
+	
+	The UPSERT clause only guarantees atomicity when you use a UNIQUE index and perform the look-up on the index through the WHERE condition.
+	orientdb> UPDATE Client SET id = 23 UPSERT WHERE id = 23
+	Here, you must have a unique index on Client.id to guarantee uniqueness on concurrent operations.	*)
+	If[	(comval=="addInstance" && classval !=""),
+		If[	(fieldnam!="" && fieldval!=""),
+			Which[constructval=="DOCUMENT", bodycontent="INSERT INTO "<>classval<>" SET "<>fieldnam<>"="<>fieldval,
+				constructval=="VERTEX", bodycontent="CREATE VERTEX "<>classval<>" SET "<>fieldnam<>"="<>fieldval,
+				uniqval, bodycontent="UPDATE " <> classval <> " SET " <> fieldnam <> "=" <> fieldval <> " upsert return after @rid where " <> fieldnam <> "=" <> fieldval,
+			True, comval="ABORT"],
+			Which[constructval=="DOCUMENT", bodycontent="INSERT INTO "<>classval<>" CONTENT "<>"{\"@class\":\""<>classval<>"\"}",
+				constructval=="VERTEX", bodycontent="CREATE VERTEX "<>classval,				
+			True, comval="ABORT"]
+		] 
 	];
 	
+	(* Used in Which [comval=="updValues"....
+		You can either update the value of a field in a number of records, all->True 
+		or in a single record with a specific rid.	*)
+	If[(comval=="updValues" && fieldnam!="" && fieldval!=""),
+		Which[allval==True && classval!="", bodycontent="UPDATE "<>classval<>" set "<>fieldnam<>"="<>fieldval,
+			allval==False && recid!="", bodycontent="UPDATE "<>recid<>" set "<>fieldnam<>"="<>fieldval,
+		True, comval="ABORT"] ];
 	
-	(* Used in Which [comval == "addCONTENT" ...... 
+	(* Used in Which [comval=="addValues".... 
+	Attention : keysval and valuesval are formatted according to SQL-92 syntax, e.g. 
+	INSERT INTO Profile (name, surname) VALUES ("Jay", "Miner"), ("Bary", "Osborn"), .... 
+	Do not use that to insert JSON content
+	This is probably the fastest method for inserting multiple records *)
+	If[ (comval=="addValues"),
+		Which[ keysval!="" && valuesval!="",
+			bodycontent = "INSERT INTO "<>classval<>" "<>keysval<>" VALUES "<>valuesval,
+		True, comval="ABORT"] ]; 
+	
+	(* Used in Which [comval == "addContent" ...... 
 	recordval is a JSON formatted String e.g.
 	INSERT INTO Profile CONTENT {"name": "Jay", "surname" = "Miner"}
-	Note that construct option in that case is mandatory and takes values (RECORD, VERTEX, EDGE)
+	Note that construct option in that case is mandatory and takes values (DOCUMENT, VERTEX, EDGE)
 	CREATE VERTEX Person CONTENT {"name": "Jay", "surname" = "Miner"}
 	CREATE EDGE hasFriend FROM #22:33 TO #22:55 CONTENT { "name" : "Jay", "surname" : "Miner" }
 	
-	Set Option construct->"RECORD" or construct->"VERTEX" or construct->"EDGE" otherwise comval=ABORT operation 	*)
-	If[ 
-		(classval !="" && recval !="" && comval=="addCONTENT"),
-		 Which[constructval=="RECORD", recordcontent="INSERT INTO " <> classval <> " content "	<> recval,
-		 		   constructval=="VERTEX",  recordcontent="CREATE VERTEX " <> classval <> " content "	<> recval,
-		 		   constructval=="EDGE", recordcontent="CREATE EDGE " <> classval <> " FROM " <> fromval <> " TO " <> toval <> " content " <> recval,
-		 		   True, comval="ABORT"]	
-	];
-	
-	
-	(* Used in Which [comval == "addVALUES" ...... 
-	Attention : keysval and valuesval are formatted according to SQL-92 syntax, e.g. 
-	INSERT INTO Profile (name, surname) VALUES ("Jay", "Miner"), ("Bary", "Osborn"), ....
-	CREATE VERTEX Profile (name,surname) 
-	Do not use that to insert JSON content
-	This is probably the fastest method for inserting multiple records
-	Note that construct option in that case is mandatory and takes values (RECORD, VERTEX)
+	Set Option construct->"DOCUMENT" or construct->"VERTEX" or construct->"EDGE" otherwise comval=ABORT operation 	*)	
+	If[ (comval=="addContent" && classval !="" && recval !=""),
+		 Which[constructval=="DOCUMENT", bodycontent="INSERT INTO " <> classval <> " content "	<> recval,
+		 		   constructval=="VERTEX",  bodycontent="CREATE VERTEX " <> classval <> " content "	<> recval,
+		 		   constructval=="EDGE", bodycontent="CREATE EDGE " <> classval <> " FROM " <> fromval <> " TO " <> toval <> " content " <> recval,
+		 True, comval="ABORT"] ];
+		 		   
+	(* Used in Which [comval == "updRecord".......
+	It uses the HTTP PUT or PATCH method - Document and the body has a JSON content
+	Default method is HTTP PUT, remember to set method->"PATCH" for HTTP PATCH	
+	Each updated record has a version metadata property. This prevents updating documents changed by other users (MVCC).
+	With the PUT method, version is optional but with the PATCH method record version is MANDATORY
 	*)
-	If[ 
-		(keysval !="" && valuesval !="" && comval=="addVALUES"),
-		Which[constructval=="RECORD", recordcontent="INSERT INTO "<> classval <> " "<> keysval <> " VALUES " <> valuesval,
-		 		   constructval=="VERTEX",  recordcontent="CREATE VERTEX " <> classval <> " "<> keysval <> " VALUES " <> valuesval,		 		   
-		 		   True, comval="ABORT"]
-	]; 	
-	
-	(* Used in Which [comval == "updRecordPUT".......
-	It uses the HTTP PUT - Document and the body has a JSON content	
-	Remember to always pass the version to update. This prevent to update documents changed by other users (MVCC).
-	*)
-	If[
-		(recid !="" && comval=="updRecordPUT"),
+	If[ comval=="updRecord" && recid !="",
 		Which[
-			recver!=-1, recordcontent="{\"@version\":" <> ToString[recver] <> ", " <> StringTake[recval, {2, -2}] <> "}",
-			recver==-1, recordcontent=recval]
-	];
-	
-	
-	(* Used in Which [comval == "updRecordPATCH".......
-	Uses the HTTP PATCH - Document and the body has a JSON content	
-	Record version is MANDATORY here. This prevent to update documents changed by other users (MVCC).
-	*)
-	If[
-		(recid !="" && recver!=-1 && comval=="updRecordPATCH"),		
-		recordcontent="{\"@class\":" <> "\""<>classval<> "\", " <>"\"@version\":"<>ToString[recver]<> ", "<> StringTake[recval, {2, -2}] <> "}"				
-	];
+			recver!=-1 && methodval=="PUT",
+			bodycontent="{\"@version\":" <> ToString[recver] <> ", " <> StringTake[recval, {2, -2}] <> "}",
+			
+			recver==-1 && methodval=="PUT",
+			bodycontent=recval,	
+		
+			recver!=-1 && methodval=="PATCH", 
+			bodycontent="{\"@class\":" <> "\""<>classval<> "\", " <>"\"@version\":"<>ToString[recver]<> ", "<> StringTake[recval, {2, -2}] <> "}",
+		
+			True, 
+			comval="ABORT"] ];
 	
  	(* Used in Which [comval == "addProperty" ...... 
  	Uses HTTP POST 
@@ -254,22 +381,16 @@ ODBapi[opts: OptionsPattern[]] := Block[
 		supertype=" extends "<>superclassval];
 	
 	result = Which[
-						comval == "addOSQLScript", ODBfetch[
-																		method-> "POST",
-																		com->"batch", 																					
-																		body->ODBmakeJSONScript[sqlval], 
+						comval == "addOSQL", ODBfetch[
+																		method-> "POST",																		
+																		com->getcmd,																		
+																		arg->argval,																		
+																		db->dbval,
+																		body->bodycontent,																		
 																		opts, 
 																		Sequence@@Options@ODBapi],
-												
-						comval == "addOSQLCommand", ODBfetch[
-																		method-> "POST", 
-																		com->"command", 
-																		db->dbval<>"/sql", 
-																		body->sqlval,
-																		opts, 
-																		Sequence@@Options@ODBapi],
-						
-						comval == "getOSQLCommand", ODBfetch[
+																		
+						comval == "getOSQL", ODBfetch[
 																		method-> "GET", 
 																		com->"command", 
 																		db->dbval<>"/sql", 
@@ -295,6 +416,14 @@ ODBapi[opts: OptionsPattern[]] := Block[
 																		arg->dbtypeval, 
 																		opts, 
 																		Sequence@@Options@ODBapi],
+
+						comval == "addEdge", ODBfetch[
+																		method-> "POST", 
+																		com->"command",
+																		db->dbval<>"/sql",
+																		body->bodycontent, 
+																		opts, 
+																		Sequence@@Options@ODBapi],
 																				
 						comval == "addClass", ODBfetch[
 																		method-> "POST", 
@@ -309,6 +438,14 @@ ODBapi[opts: OptionsPattern[]] := Block[
 																		com->"class",
 																		arg->classval, 
 																		opts, 
+																		Sequence@@Options@ODBapi],
+						
+						comval == "addIndex", ODBfetch[
+																		method-> "POST", 
+																		com->"command",
+																		db->dbval<>"/sql",
+																		body->"CREATE INDEX "<>ndxnam<>" ON "<>classval<>" ("<>fieldnam<>") "<>ndxtype, 
+																		opts,
 																		Sequence@@Options@ODBapi],
 						
 						comval == "addProperty", ODBfetch[
@@ -326,27 +463,35 @@ ODBapi[opts: OptionsPattern[]] := Block[
 																		opts, 
 																		Sequence@@Options@ODBapi],
 						
-						comval == "addDOCUMENT", ODBfetch[
+						comval == "addRecord", ODBfetch[
 																		method-> "POST", 
 																		com->"document",
 																		db->dbval,
-																		body->recordcontent,																																
+																		body->bodycontent,																																
 																		opts, 
 																		Sequence@@Options@ODBapi],
 												
-						comval == "addCONTENT", ODBfetch[ 
+						comval == "addContent", ODBfetch[ 
 																		method->"POST", 
 																		com-> "command", 
 																		db->dbval<>"/sql",
-																		body->recordcontent, 																	
+																		body->bodycontent, 																	
 																		opts, 
 																		Sequence@@Options@ODBapi],
 						
-						comval == "addVALUES", ODBfetch[ 
+						comval == "addValues", ODBfetch[ 
 																		method->"POST", 
 																		com-> "command", 
 																		db->dbval<>"/sql",
-																		body->recordcontent, 																	
+																		body->bodycontent, 																	
+																		opts, 
+																		Sequence@@Options@ODBapi],
+						
+						comval == "addInstance", ODBfetch[
+																		method-> "POST", 
+																		com->"command",
+																		db->dbval<>"/sql",
+																		body->bodycontent, 
 																		opts, 
 																		Sequence@@Options@ODBapi],
 						
@@ -364,21 +509,13 @@ ODBapi[opts: OptionsPattern[]] := Block[
 																		opts, 
 																		Sequence@@Options@ODBapi],																		
 						
-						comval == "delAllRecords", ODBfetch[
-																		method-> "POST", 
-																		com->"command", 
-																		db->dbval<>"/sql", 
-																		body->"TRUNCATE CLASS "<>classval,
-																		opts, 
-																		Sequence@@Options@ODBapi],
-																		
 						comval == "delRecords", ODBfetch[
 																		method-> "POST", 
 																		com->"command", 
 																		db->dbval<>"/sql", 
-																		body->"TRUNCATE RECORD "<>recid,
-																		opts,
-																		Sequence@@Options@ODBapi],
+																		body->bodycontent,
+																		opts, 
+																		Sequence@@Options@ODBapi],																		
 																								
 						comval == "delConnection", ODBfetch[
 																		method-> "POST", 
@@ -398,7 +535,7 @@ ODBapi[opts: OptionsPattern[]] := Block[
 																		opts, 
 																		Sequence@@Options@ODBapi],																		
 						
-						comval == "delPropertyValues", ODBfetch[
+						comval == "delValues", ODBfetch[
 																		method-> "POST", 
 																		com->"command",
 																		db->dbval<>"/sql",
@@ -430,38 +567,22 @@ ODBapi[opts: OptionsPattern[]] := Block[
 																		opts, 
 																		Sequence@@Options@ODBapi],
 						
-						comval == "updPropertyValues", ODBfetch[
+						comval == "updValues", ODBfetch[
 																		method-> "POST", 
 																		com->"command",
 																		db->dbval<>"/sql",
-																		body->"UPDATE "<>classval<>" set "<>fieldnam<>"="<>fieldval, 
+																		body->bodycontent, 
 																		opts, 
-																		Sequence@@Options@ODBapi],
-						
-						comval == "updPropertyValue", ODBfetch[
-																		method-> "POST", 
-																		com->"command",
-																		db->dbval<>"/sql",
-																		body->"UPDATE "<>recid<>" set "<>fieldnam<>"="<>fieldval, 
-																		opts, 
-																		Sequence@@Options@ODBapi],
+																		Sequence@@Options@ODBapi],												
 																		
-						comval == "updRecordPUT", ODBfetch[
-																		method-> "PUT", 
+						comval == "updRecord", ODBfetch[
+																		method-> methodval, 
 																		com->"document",
 																		arg->recid, 
-																		body->recordcontent,																																
+																		body->bodycontent,																																
 																		opts, 
 																		Sequence@@Options@ODBapi],
-																		
-						comval == "updRecordPATCH", ODBfetch[
-																		method-> "PATCH", 
-																		com->"document",
-																		arg->recid,
-																		body->recordcontent,																																
-																		opts, 
-																		Sequence@@Options@ODBapi],
-																		
+																																				
 						comval == "getServer", ODBfetch[
 																		method->"GET", 
 																		com->"server", 
@@ -470,15 +591,9 @@ ODBapi[opts: OptionsPattern[]] := Block[
 						
 						comval == "getDatabases", ODBfetch[
 																		method->"GET", 
-																		com->"listDatabases", 
+																		com->getcmd, 
 																		opts, Sequence@@Options@ODBapi],
-						
-						comval == "getDatabase", ODBfetch[
-																		method->"GET", 
-																		com->"database", 
-																		opts, 
-																		Sequence@@Options@ODBapi],
-						
+												
 						comval == "getClass", ODBfetch[
 																		method->"GET", 
 																		com->"class", 
@@ -486,26 +601,28 @@ ODBapi[opts: OptionsPattern[]] := Block[
 																		opts, Sequence@@Options@ODBapi],
 						
 						(* Better check first if record exists with an HTTP HEAD request *) 
-						comval == "getRecord", ODBfetch[
+						comval == "getRecords", ODBfetch[
 																		method->"GET", 
-																		com->"document", 
-																		arg->recid, 
+																		com->getcmd,																		
+																		arg->argval,																		
+																		db->dbval,
+																		body->bodycontent, 
 																		opts, 
 																		Sequence@@Options@ODBapi],
-						
-						comval == "importDatabase", ODBfetch[
+																								
+						comval == "impDatabase", ODBfetch[
 																		method->"POST", 
 																		com->"import", 
 																		opts, 
 																		Sequence@@Options@ODBapi],
 						
-						comval == "exportDatabase", ODBfetch[
+						comval == "expDatabase", ODBfetch[
 																		method->"GET", 
 																		com->"export", 
 																		opts, 
 																		Sequence@@Options@ODBapi],
 						
-						True, Return["ERROR: Wrong Arguments]"]																	
+						True, Return["ERROR: Wrong or Missing Arguments]"]																	
 																																
 					] (* End of Which *)
 	
@@ -555,16 +672,16 @@ ODBfetch[opts: OptionsPattern[]]:=Module[
 End[];
 
 (* Protect Section *)
-Protect[
+(*Protect[
 	ODBapi, 
 	ODBgetFieldAttributes,	
 	ODBgetDataset
 ]
-
+*)
 (* Print Information *)
 
-	Print["OrientDB API Package v0.9"]
-	Print["Copyright December 2015, By ", Hyperlink["Athanassios I. Hatzis","https://www.linkedin.com/in/athanassios"] ]	
-	Print["Distributed under GNU LGPL - GNU Lesser General Public License"]	
+	Print["OrientDB API Package v1.0.3"]
+	Print["Copyright February 2016, By ", Hyperlink["Athanassios I. Hatzis","https://www.linkedin.com/in/athanassios"] ]	
+	Print["Distributed under GNU LGPL - GNU Lesser General Public License\n"]	
 
 EndPackage[];

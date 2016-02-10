@@ -10,127 +10,157 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     39863,       1190]
-NotebookOptionsPosition[     33971,        990]
-NotebookOutlinePosition[     36016,       1044]
-CellTagsIndexPosition[     35930,       1039]
-WindowTitle->DBexpressionToJSON - Wolfram Mathematica
+NotebookDataLength[     45478,       1362]
+NotebookOptionsPosition[     38458,       1107]
+NotebookOutlinePosition[     39086,       1131]
+CellTagsIndexPosition[     39006,       1126]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[GridBox[{
-   {Cell["D B A P I SYMBOL", "PacletNameCell"], Cell[TextData[{
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox["\<\"More About \[RightGuillemet]\"\>",
-        StripOnInput->False], {"\<\"Utilities Package\"\>":>
-       Documentation`HelpLookup["paclet:DBAPI/guide/UtilitiesPackage"]},
-       Appearance->None,
-       MenuAppearance->Automatic]],
-      LineSpacing->{1.4, 0}],
-     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
-\[ThickSpace]",
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox["\<\"URL \[RightGuillemet]\"\>",
-        StripOnInput->False], {"\<\"DBAPI/ref/DBexpressionToJSON\"\>":>
-       None, "\<\"Copy Mathematica url\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell["DBAPI/ref/DBexpressionToJSON"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-       Delimiter, "\<\"Copy web url\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell[
-              BoxData[
-               MakeBoxes[
-                Hyperlink[
-                "http://reference.wolfram.com/mathematica/DBAPI/ref/\
-DBexpressionToJSON.html"], StandardForm]], "Input", TextClipboardType -> 
-              "PlainText"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; 
-        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
-         NotebookLocate[{
-           URL[
-            StringJoin[
-            "http://reference.wolfram.com/mathematica/", 
-             "DBAPI/ref/DBexpressionToJSON", ".html"]], None}]}]},
-       Appearance->None,
-       MenuAppearance->Automatic]],
-      LineSpacing->{1.4, 0}]
-    }], "AnchorBar"]}
-  }]], "AnchorBarGrid",
- GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
-     Scaled[0.65], {
-      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
-   "RowsIndexed" -> {}}},
- CellID->1],
+Cell[TextData[{
+ "New in: ",
+ Cell["0.9", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DBAPI", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["DBAPI`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["DBAPI/ref/DBexpressionToJSON", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
 
 Cell["DBexpressionToJSON", "ObjectName",
  CellID->1224892054],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[GridBox[{
-   {"", Cell[TextData[{
-     Cell[BoxData[
-      RowBox[{
-       RowBox[{
-        ButtonBox["DBexpressionToJSON",
-         BaseStyle->"Link",
-         ButtonData->"paclet:DBAPI/ref/DBexpressionToJSON"], "[", 
-        RowBox[{"expression", ",", " ", 
-         RowBox[{"(", "compact", ")"}]}], "]"}], " "}]], "InlineFormula"],
-     " \[LineSeparator]transforms any ",
-     ButtonBox["List",
-      BaseStyle->"Link",
-      ButtonData->"paclet:ref/List"],
-     ", ",
-     ButtonBox["Association",
-      BaseStyle->"Link",
-      ButtonData->"paclet:ref/Association"],
-     ", ",
-     ButtonBox["Dataset",
-      BaseStyle->"Link",
-      ButtonData->"paclet:ref/Dataset"],
-     " expression to JSON string"
-    }]]}
-  }]], "Usage",
- GridBoxOptions->{
- GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}},
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    ButtonBox["DBexpressionToJSON",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DBAPI/ref/DBexpressionToJSON"], "[", 
+    RowBox[{"expression", ",", " ", 
+     RowBox[{"(", "compact", ")"}]}], "]"}], " "}]], "InlineFormula"],
+ " \[LineSeparator]transforms any ",
+ ButtonBox["List",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/List"],
+ ", ",
+ ButtonBox["Association",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Association"],
+ ", ",
+ ButtonBox["Dataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dataset"],
+ " expression to JSON string"
+}], "Usage",
+ CellChangeTimes->{{3.659847755567879*^9, 3.6598478289467854`*^9}, {
+  3.6598479426714215`*^9, 3.659847978978062*^9}, {3.6598665044191256`*^9, 
+  3.659866581529477*^9}, {3.6598666199210787`*^9, 3.6598666312472506`*^9}},
  CellID->982511436],
-
-Cell[CellGroupData[{
-
-Cell[TextData[Cell[BoxData[
- ButtonBox[
-  FrameBox[
-   StyleBox[
-    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
-   StripOnInput->False],
-  Appearance->{Automatic, None},
-  BaseStyle->None,
-  ButtonFunction:>(FrontEndExecute[{
-     FrontEnd`SelectionMove[
-      FrontEnd`SelectedNotebook[], All, ButtonCell], 
-     FrontEndToken["OpenCloseGroup"], 
-     FrontEnd`SelectionMove[
-      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
-  Evaluator->None,
-  Method->"Preemptive"]]]], "NotesSection",
- WholeCellGroupOpener->True,
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->4553812],
 
 Cell[TextData[{
  StyleBox["Arguments :",
@@ -152,6 +182,15 @@ for JSON structure.\[LineSeparator]The compact\[Rule] argument is optional, \
 the default value is false. If it is true then JSON string is presented in a \
 compact form."
 }], "Notes",
+ CellChangeTimes->{{3.659772499831975*^9, 3.6597725003476*^9}, {
+   3.659772657169392*^9, 3.659772681149861*^9}, {3.6597729284809155`*^9, 
+   3.659773027696736*^9}, 3.6597763215269322`*^9, {3.6597779493698072`*^9, 
+   3.65977798131805*^9}, {3.6597780697067213`*^9, 3.659778215989925*^9}, {
+   3.65977878465281*^9, 3.659778798286599*^9}, {3.6597827324626937`*^9, 
+   3.6597827464041*^9}, 3.6597970045656447`*^9, {3.6598479903882184`*^9, 
+   3.659848060674351*^9}, {3.6598481107261095`*^9, 3.659848244391734*^9}, {
+   3.659866648331235*^9, 3.659866691018735*^9}, {3.6598667252824063`*^9, 
+   3.659866769510922*^9}, {3.659869508954769*^9, 3.6598695149567223`*^9}},
  CellID->88723942],
 
 Cell[TextData[{
@@ -159,6 +198,9 @@ Cell[TextData[{
   FontWeight->"Bold"],
  "\nA JSON string in either standard or compact form"
 }], "Notes",
+ CellChangeTimes->{{3.659773033214769*^9, 3.6597730342202344`*^9}, {
+   3.6597763438794713`*^9, 3.659776361103104*^9}, 3.6597780583698072`*^9, 
+   3.659797002095918*^9, {3.6598482877566385`*^9, 3.6598483003328104`*^9}},
  CellID->96909655],
 
 Cell[TextData[{
@@ -167,6 +209,11 @@ Cell[TextData[{
  "\nIt is based on the built-in ExportString function with a \"JSON\" format \
 argument"
 }], "Notes",
+ CellChangeTimes->{{3.659776499366776*^9, 3.6597765077759557`*^9}, {
+   3.659776548871659*^9, 3.659776555153885*^9}, {3.659779275974041*^9, 
+   3.659779287179119*^9}, {3.6597850637752705`*^9, 3.659785086876833*^9}, 
+   3.659797000627168*^9, {3.659848315735154*^9, 3.659848353113084*^9}, {
+   3.659850451280001*^9, 3.6598504643610563`*^9}},
  CellID->68413452],
 
 Cell[TextData[{
@@ -179,6 +226,14 @@ Cell[TextData[{
    ButtonData->"paclet:DBAPI/ref/ODBapi"]], "InlineFormula"],
  " function."
 }], "Notes",
+ CellChangeTimes->{{3.659772499831975*^9, 3.6597725003476*^9}, {
+   3.659772657169392*^9, 3.659772681149861*^9}, {3.6597729284809155`*^9, 
+   3.6597730585099893`*^9}, {3.659780146128526*^9, 3.659780192195909*^9}, {
+   3.6597802969586043`*^9, 3.659780323657823*^9}, {3.6597803555425887`*^9, 
+   3.6597804388736434`*^9}, {3.659781769314274*^9, 3.659781769314274*^9}, 
+   3.6597969988605666`*^9, {3.659848512507615*^9, 3.6598485650141582`*^9}, {
+   3.659850722619505*^9, 3.659850753460325*^9}, {3.6598510511859107`*^9, 
+   3.6598510659876685`*^9}},
  CellID->58638840],
 
 Cell[TextData[{
@@ -202,78 +257,134 @@ Cell[TextData[{
   ButtonData->"paclet:ref/Dataset"],
  ". "
 }], "Notes",
+ CellChangeTimes->{{3.659772499831975*^9, 3.6597725003476*^9}, {
+   3.659772657169392*^9, 3.659772681149861*^9}, {3.6597729284809155`*^9, 
+   3.6597730585099893`*^9}, {3.659780146128526*^9, 3.659780192195909*^9}, {
+   3.6597802969586043`*^9, 3.659780323657823*^9}, {3.6597803555425887`*^9, 
+   3.6597804388736434`*^9}, {3.659781769314274*^9, 3.6597819517401032`*^9}, {
+   3.659782027131705*^9, 3.6597820311326814`*^9}, {3.6597820852772126`*^9, 
+   3.6597821380235033`*^9}, {3.65978217540238*^9, 3.659782199616247*^9}, 
+   3.6597969953439655`*^9, {3.659848640377685*^9, 3.659848653280029*^9}, {
+   3.659848839744872*^9, 3.6598488443093257`*^9}, {3.659849405129356*^9, 
+   3.65984941205416*^9}, {3.659849825669161*^9, 3.659849941202364*^9}},
  CellID->59529440]
-}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[TextData[ButtonBox["EXAMPLES",
- BaseStyle->None,
- Appearance->{Automatic, None},
- Evaluator->None,
- Method->"Preemptive",
- ButtonFunction:>(FrontEndExecute[{
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], All, ButtonCell], 
-    FrontEndToken["OpenCloseGroup"], 
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], After, 
-     CellContents]}]& )]], "PrimaryExamplesSection",
- WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->163001187],
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->152982716],
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{
+  ButtonBox["DBjsonToRules",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/DBjsonToRules"], " ", ".", " ", 
+  ButtonBox["DBjsonToAssociations",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DBAPI/ref/DBjsonToAssociations"], " ", ".", " ", 
+  ButtonBox["DBjsonToDataset",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:DBAPI/ref/DBjsonToDataset"]}]], "InlineFormula"]], "RelatedLinks",
+ CellChangeTimes->{{3.6598865115355167`*^9, 3.659886546140009*^9}},
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["Utilities Package",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]], "MoreAbout",
+ CellChangeTimes->{3.659967984137442*^9},
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"<<", "DBAPI`"}]], "Input",
- CellLabel->"In[1]:=",
+ CellChangeTimes->{{3.659851675261767*^9, 3.6598516854561024`*^9}},
+ CellLabel->"In[23]:=",
  CellID->287453787],
 
 Cell[CellGroupData[{
 
 Cell[BoxData["\<\"Data Utilities Package v0.9\"\>"], "Print",
+ CellChangeTimes->{3.6598516862373524`*^9, 3.6598517656726*^9},
  CellLabel->"During evaluation of In[23]:=",
  CellID->720657148],
 
 Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
 "Print",
+ CellChangeTimes->{3.6598516862373524`*^9, 3.6598517656726*^9},
  CellLabel->"During evaluation of In[23]:=",
  CellID->46975881],
 
 Cell[BoxData["\<\"OrientDB HTTP API Package v0.9\"\>"], "Print",
+ CellChangeTimes->{3.6598516862373524`*^9, 3.6598517656726*^9},
  CellLabel->"During evaluation of In[23]:=",
  CellID->327541425],
 
 Cell[BoxData["\<\"(c) December 2015, By Athanassios I. Hatzis\\n\"\>"], \
 "Print",
+ CellChangeTimes->{3.6598516862373524`*^9, 3.6598517656726*^9},
  CellLabel->"During evaluation of In[23]:=",
  CellID->659288965]
-}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- InterpretationBox[Cell[TextData[{
-   "With nested List of Rule(s)",
-   "\[NonBreakingSpace]\[NonBreakingSpace]",
-   Cell["(1)", "ExampleCount"]
-  }], "ExampleSection"],
+ InterpretationBox[Cell["With nested List of Rule(s)", "ExampleSection"],
   $Line = 0; Null]], "ExampleSection",
- WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.6598545079033985`*^9, 3.6598545163457813`*^9}},
  CellID->40335563],
 
 Cell[TextData[{
@@ -287,6 +398,9 @@ Cell[TextData[{
   ButtonData->"paclet:ref/Rule"],
  "(s) e.g."
 }], "ExampleText",
+ CellChangeTimes->{{3.659695764918129*^9, 3.6596958144835587`*^9}, {
+  3.659695915154457*^9, 3.659695919672035*^9}, {3.6598479141626325`*^9, 
+  3.659847923866734*^9}, {3.659850350115939*^9, 3.6598503647184777`*^9}},
  CellID->34439295],
 
 Cell[CellGroupData[{
@@ -309,6 +423,9 @@ Cell[BoxData[
       RowBox[{"\"\<DOB\>\"", "\[Rule]", "\"\<1971-10-01\>\""}], ",", 
       RowBox[{"\"\<age\>\"", "\[Rule]", "44"}]}], "}"}]}], ")"}], "//", 
   "TableForm"}]], "Input",
+ CellChangeTimes->{{3.659436207480889*^9, 3.6594364602347946`*^9}, {
+  3.659847861478526*^9, 3.6598478951714215`*^9}, {3.659850004238497*^9, 
+  3.659850015429903*^9}},
  CellLabel->"In[31]:=",
  CellID->81816368],
 
@@ -345,20 +462,21 @@ Cell[BoxData[
    Column],
   Function[BoxForm`e$, 
    TableForm[BoxForm`e$]]]], "Output",
- ImageSize->{514, 72},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{{3.6598478859175153`*^9, 3.6598478958120465`*^9}, 
+   3.659850017148653*^9, 3.6598520120153418`*^9},
  CellLabel->"Out[31]//TableForm=",
  CellID->85439463]
 }, Open  ]],
 
 Cell["Transform to a JSON string", "ExampleText",
+ CellChangeTimes->{{3.659850212274825*^9, 3.659850223224758*^9}},
  CellID->395593473],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"johnRules", "//", "DBexpressionToJSON"}]], "Input",
+ CellChangeTimes->{{3.659850111304903*^9, 3.6598501215734577`*^9}},
  CellLabel->"In[18]:=",
  CellID->217270462],
 
@@ -367,14 +485,14 @@ Cell[BoxData["\<\"{\\n    \\\"telephones\\\": {\\n        \\\"home\\\": \
 \\\"mobile\\\": \\\"6974059256\\\"\\n    },\\n    \\\"firstName\\\": \\\"John\
 \\\",\\n    \\\"lastName\\\": \\\"Brown\\\",\\n    \\\"DOB\\\": \
 \\\"1971-10-01\\\",\\n    \\\"age\\\": 44\\n}\"\>"], "Output",
- ImageSize->{235, 186},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.6598501232140827`*^9},
  CellLabel->"Out[18]=",
  CellID->671499827]
 }, Open  ]],
 
 Cell["Same JSON output but in a compact form", "ExampleText",
+ CellChangeTimes->{{3.6598501926984577`*^9, 3.6598502035920124`*^9}, {
+  3.6598502339347897`*^9, 3.6598502515495324`*^9}},
  CellID->477125116],
 
 Cell[CellGroupData[{
@@ -385,6 +503,7 @@ Cell[BoxData[
    RowBox[{"DBexpressionToJSON", "[", 
     RowBox[{"#", ",", 
      RowBox[{"compact", "\[Rule]", "True"}]}], "]"}], "&"}]}]], "Input",
+ CellChangeTimes->{{3.659850127233614*^9, 3.6598501565119343`*^9}},
  CellLabel->"In[20]:=",
  CellID->103726790],
 
@@ -392,9 +511,7 @@ Cell[BoxData["\<\"{\\\"telephones\\\":{\\\"home\\\":\\\"2104566345\\\",\\\"\
 business\\\":\\\"2108856844\\\",\\\"mobile\\\":\\\"6974059256\\\"},\\\"\
 firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"Brown\\\",\\\"DOB\\\":\\\"\
 1971-10-01\\\",\\\"age\\\":44}\"\>"], "Output",
- ImageSize->{585, 33},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{{3.659850151431856*^9, 3.6598501575119343`*^9}},
  CellLabel->"Out[20]=",
  CellID->117453884]
 }, Open  ]]
@@ -403,13 +520,9 @@ firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"Brown\\\",\\\"DOB\\\":\\\"\
 Cell[CellGroupData[{
 
 Cell[BoxData[
- InterpretationBox[Cell[TextData[{
-   "With Association",
-   "\[NonBreakingSpace]\[NonBreakingSpace]",
-   Cell["(1)", "ExampleCount"]
-  }], "ExampleSection"],
+ InterpretationBox[Cell["With Association", "ExampleSection"],
   $Line = 0; Null]], "ExampleSection",
- WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.659854544991289*^9, 3.659854548428789*^9}},
  CellID->588098855],
 
 Cell[TextData[{
@@ -422,6 +535,11 @@ included in ",
   BaseStyle->"Link",
   ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]
 }], "ExampleText",
+ CellChangeTimes->{{3.659850263756564*^9, 3.6598502730173063`*^9}, {
+  3.659851930435295*^9, 3.659851947332756*^9}, {3.6598536352463036`*^9, 
+  3.659853666024624*^9}, {3.6598537085965967`*^9, 3.659853785132517*^9}, {
+  3.659854280787285*^9, 3.6598542939327927`*^9}, {3.6598543240314255`*^9, 
+  3.6598543445109177`*^9}},
  CellID->265692506],
 
 Cell[CellGroupData[{
@@ -429,6 +547,8 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"johnAssoc", "=", 
   RowBox[{"johnRules", "//", "ToAssociations"}]}]], "Input",
+ CellChangeTimes->{{3.6598499974513874`*^9, 3.6598500723615437`*^9}, {
+  3.6598535278830223`*^9, 3.659853529743374*^9}},
  CellLabel->"In[35]:=",
  CellID->566619433],
 
@@ -447,9 +567,8 @@ Cell[BoxData[
    RowBox[{"\<\"DOB\"\>", "\[Rule]", "\<\"1971-10-01\"\>"}], ",", 
    RowBox[{"\<\"age\"\>", "\[Rule]", "44"}]}], 
   "\[RightAssociation]"}]], "Output",
- ImageSize->{543, 33},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{{3.6598500312345905`*^9, 3.6598500734396687`*^9}, 
+   3.6598520218037395`*^9, 3.659853530758999*^9},
  CellLabel->"Out[35]=",
  CellID->353473752]
 }, Open  ]],
@@ -459,13 +578,12 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"johnAssoc", "[", 
   RowBox[{"\"\<telephones\>\"", ",", "\"\<mobile\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.659850296527072*^9, 3.6598503084391813`*^9}},
  CellLabel->"In[33]:=",
  CellID->812787],
 
 Cell[BoxData["\<\"6974059256\"\>"], "Output",
- ImageSize->{74, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.6598503092673063`*^9, 3.659852024016818*^9},
  CellLabel->"Out[33]=",
  CellID->2542575]
 }, Open  ]],
@@ -474,6 +592,8 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"johnAssoc", "//", "DBexpressionToJSON"}]], "Input",
+ CellChangeTimes->{{3.659851919660881*^9, 3.6598519218825607`*^9}, {
+  3.6598519825817795`*^9, 3.6598519972643967`*^9}},
  CellLabel->"In[34]:=",
  CellID->734214896],
 
@@ -482,9 +602,7 @@ Cell[BoxData["\<\"{\\n    \\\"telephones\\\": {\\n        \\\"home\\\": \
 \\\"mobile\\\": \\\"6974059256\\\"\\n    },\\n    \\\"firstName\\\": \\\"John\
 \\\",\\n    \\\"lastName\\\": \\\"Brown\\\",\\n    \\\"DOB\\\": \
 \\\"1971-10-01\\\",\\n    \\\"age\\\": 44\\n}\"\>"], "Output",
- ImageSize->{235, 186},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{{3.6598519983268967`*^9, 3.6598520262639275`*^9}},
  CellLabel->"Out[34]=",
  CellID->548619408]
 }, Open  ]]
@@ -493,25 +611,17 @@ Cell[BoxData["\<\"{\\n    \\\"telephones\\\": {\\n        \\\"home\\\": \
 Cell[CellGroupData[{
 
 Cell[BoxData[
- InterpretationBox[Cell[TextData[{
-   "With Dataset",
-   "\[NonBreakingSpace]\[NonBreakingSpace]",
-   Cell["(2)", "ExampleCount"]
-  }], "ExampleSection"],
+ InterpretationBox[Cell["With Dataset", "ExampleSection"],
   $Line = 0; Null]], "ExampleSection",
- WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.65985456695418*^9, 3.65985456945418*^9}},
  CellID->180905804],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- InterpretationBox[Cell[TextData[{
-   "Table Dataset with named rows",
-   "\[NonBreakingSpace]\[NonBreakingSpace]",
-   Cell["(1)", "ExampleCount"]
-  }], "ExampleSubsection"],
-  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
- WholeCellGroupOpener->True,
+ InterpretationBox[Cell["Table Dataset with named rows", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellChangeTimes->{{3.6598545766602345`*^9, 3.6598545833047657`*^9}},
  CellID->154961750],
 
 Cell[TextData[{
@@ -524,6 +634,8 @@ Cell[TextData[{
   ButtonData->"paclet:ref/Dataset"],
  " functions"
 }], "ExampleText",
+ CellChangeTimes->{{3.659854838279375*^9, 3.6598548951697583`*^9}, {
+  3.659854959734212*^9, 3.659854983791829*^9}},
  CellID->661220054],
 
 Cell[CellGroupData[{
@@ -531,7 +643,8 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"johnRules", "//", "ToAssociations"}], "//", "Dataset"}]], "Input",
- CellLabel->"In[1]:=",
+ CellChangeTimes->{{3.6598535585226707`*^9, 3.6598535633859525`*^9}},
+ CellLabel->"In[36]:=",
  CellID->135381797],
 
 Cell[BoxData[
@@ -615,10 +728,8 @@ Cell[BoxData[
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
- ImageSize->{536, 136},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[1]=",
+ CellChangeTimes->{3.6598535641838036`*^9},
+ CellLabel->"Out[36]=",
  CellID->751456867]
 }, Open  ]],
 
@@ -629,7 +740,8 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"johnRules", "//", "ToAssociations"}], "//", "Dataset"}], "//", 
   "DBexpressionToJSON"}]], "Input",
- CellLabel->"In[2]:=",
+ CellChangeTimes->{{3.6598543909288864`*^9, 3.659854418006035*^9}},
+ CellLabel->"In[37]:=",
  CellID->207349506],
 
 Cell[BoxData["\<\"{\\n    \\\"telephones\\\": {\\n        \\\"home\\\": \
@@ -637,24 +749,19 @@ Cell[BoxData["\<\"{\\n    \\\"telephones\\\": {\\n        \\\"home\\\": \
 \\\"mobile\\\": \\\"6974059256\\\"\\n    },\\n    \\\"firstName\\\": \\\"John\
 \\\",\\n    \\\"lastName\\\": \\\"Brown\\\",\\n    \\\"DOB\\\": \
 \\\"1971-10-01\\\",\\n    \\\"age\\\": 44\\n}\"\>"], "Output",
- ImageSize->{235, 186},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[2]=",
+ CellChangeTimes->{3.65985441992791*^9},
+ CellLabel->"Out[37]=",
  CellID->431177040]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- InterpretationBox[Cell[TextData[{
-   "Table Dataset with named columns",
-   "\[NonBreakingSpace]\[NonBreakingSpace]",
-   Cell["(1)", "ExampleCount"]
-  }], "ExampleSubsection"],
-  $Line = 0; Null]], "ExampleSubsection", "ExampleSubsection",
- WholeCellGroupOpener->True,
+ InterpretationBox[Cell[
+  "Table Dataset with named columns", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellChangeTimes->{{3.659854602046953*^9, 3.659854609788164*^9}},
  CellID->177234673],
 
 Cell[CellGroupData[{
@@ -742,7 +849,11 @@ Cell[BoxData[
         RowBox[{"\"\<pweight\>\"", "\[Rule]", "2.1`"}], ",", 
         RowBox[{"\"\<punit\>\"", "\[Rule]", "\"\<gr\>\""}]}], 
        "\[RightAssociation]"}]}], "}"}], ")"}], "//", "Dataset"}]}]], "Input",
- CellLabel->"In[1]:=",
+ CellChangeTimes->{{3.6598512868392315`*^9, 3.6598513015501685`*^9}, {
+   3.6598513467405987`*^9, 3.65985135785388*^9}, {3.659851396040403*^9, 
+   3.659851397946653*^9}, 3.6598514892337627`*^9, {3.6598515246634502`*^9, 
+   3.659851559018012*^9}},
+ CellLabel->"In[29]:=",
  CellID->141585609],
 
 Cell[BoxData[
@@ -884,10 +995,9 @@ Cell[BoxData[
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
- ImageSize->{512, 247},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[1]=",
+ CellChangeTimes->{{3.659851549274117*^9, 3.659851562746871*^9}, 
+   3.659851778493889*^9, 3.6598519729226*^9},
+ CellLabel->"Out[29]=",
  CellID->63955843]
 }, Open  ]],
 
@@ -895,7 +1005,11 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"partDS", "//", "DBexpressionToJSON"}]], "Input",
- CellLabel->"In[2]:=",
+ CellChangeTimes->{{3.659851606382222*^9, 3.659851622247534*^9}, {
+   3.659851655158251*^9, 3.6598516612744617`*^9}, 3.659851699325243*^9, {
+   3.6598517871218185`*^9, 3.6598517872155685`*^9}, {3.659851851082756*^9, 
+   3.659851851285881*^9}},
+ CellLabel->"In[28]:=",
  CellID->498799384],
 
 Cell[BoxData["\<\"[\\n    {\\n        \\\"pid\\\": 991,\\n        \\\"pname\\\
@@ -921,280 +1035,337 @@ Turbine Generator\\\",\\n        \\\"pcolor\\\": \\\"Magenta\\\"\\n    },\\n  \
 \": 999,\\n        \\\"pname\\\": \\\"7 Segment Display\\\",\\n        \
 \\\"pcolor\\\": \\\"Green\\\",\\n        \\\"pweight\\\": 2.1,\\n        \
 \\\"punit\\\": \\\"gr\\\"\\n    }\\n]\"\>"], "Output",
- ImageSize->{375, 985},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[2]=",
+ CellChangeTimes->{
+  3.6598516623369617`*^9, 3.65985169388286*^9, {3.6598517817292404`*^9, 
+   3.6598517886999435`*^9}, 3.6598518639968185`*^9},
+ CellLabel->"Out[28]=",
  CellID->44250155]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[TextData[ButtonBox["MORE ABOUT",
- BaseStyle->None,
- Appearance->{Automatic, None},
- Evaluator->None,
- Method->"Preemptive",
- ButtonFunction:>(FrontEndExecute[{
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], All, ButtonCell], 
-    FrontEndToken["OpenCloseGroup"], 
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], After, 
-     CellContents]}]& )]], "MoreAboutSection",
- WholeCellGroupOpener->True,
- CellID->38303248],
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
 
-Cell[TextData[ButtonBox["Utilities Package",
- BaseStyle->"Link",
- ButtonData->"paclet:DBAPI/guide/UtilitiesPackage"]], "MoreAbout",
- CellID->312740019]
-}, Open  ]],
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
 
 Cell[CellGroupData[{
 
-Cell[TextData[ButtonBox["RELATED LINKS",
- BaseStyle->None,
- Appearance->{Automatic, None},
- Evaluator->None,
- Method->"Preemptive",
- ButtonFunction:>(FrontEndExecute[{
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], All, ButtonCell], 
-    FrontEndToken["OpenCloseGroup"], 
-    FrontEnd`SelectionMove[
-     FrontEnd`SelectedNotebook[], After, 
-     CellContents]}]& )]], "RelatedLinksSection",
- WholeCellGroupOpener->True,
- CellID->1584193535],
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
 
-Cell[TextData[Cell[BoxData[
- RowBox[{
-  ButtonBox["DBjsonToRules",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/ref/DBjsonToRules"], " ", ".", " ", 
-  ButtonBox["DBjsonToAssociations",
-   BaseStyle->"Link",
-   ButtonData->"paclet:DBAPI/ref/DBjsonToAssociations"], " ", ".", " ", 
-  ButtonBox["DBjsonToDataset",
-   BaseStyle->"Link",
-   ButtonData->
-    "paclet:DBAPI/ref/DBjsonToDataset"]}]], "InlineFormula"]], "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
 
-Cell[" ", "FooterCell"]
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
 },
-Saveable->False,
-ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-WindowTitle->"DBexpressionToJSON - Wolfram Mathematica",
-TaggingRules->{
- "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
-  GridBox[{{
-      RowBox[{
-        ButtonBox[
-        "Mathematica", ButtonData -> "paclet:DBAPI/guide/DBAPI", 
-         BaseStyle -> {"Link", "DockedLinkTrail"}], 
-        Cell[">", "DockedLinkTrailSeparator"]}]}}, ColumnAlignments -> Left], 
-  "Metadata" -> {
-   "built" -> "{2015, 12, 24, 23, 58, 39.4018840}", 
-    "history" -> {"0.9", "", "", ""}, "context" -> "DBAPI`", "keywords" -> {},
-     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
-    True, "label" -> "D B A P I Symbol", "language" -> "en", "paclet" -> 
-    "DBAPI", "status" -> "None", "summary" -> 
-    "DBexpressionToJSON[expression, (compact)] transforms any List, \
-Association, Dataset expression to JSON string", "synonyms" -> {}, "title" -> 
-    "DBexpressionToJSON", "titlemodifier" -> "", "windowtitle" -> 
-    "DBexpressionToJSON", "type" -> "Symbol", "uri" -> 
-    "DBAPI/ref/DBexpressionToJSON"}, "SearchTextTranslated" -> ""},
+WindowSize->{1047, 770},
+WindowMargins->{{Automatic, 157}, {41, Automatic}},
 CellContext->"Global`",
 FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
-StyleDefinitions->Notebook[{
-   Cell[
-    StyleData[
-    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
-   Cell[
-    StyleData["Input"], CellContext -> "Global`"], 
-   Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Microsoft Windows (64-bit) (July 7, 2015)", 
-  StyleDefinitions -> "Default.nb"]
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "WindowsGreek"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[6483, 210, 490, 14, 70, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->163001187]}
+ "ExtendedExamples"->{
+  Cell[36938, 1049, 100, 2, 53, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 35787, 1032}
+ {"ExtendedExamples", 38866, 1119}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[612, 21, 2331, 53, 70, "AnchorBarGrid",
- CellID->1],
-Cell[2946, 76, 61, 1, 70, "ObjectName",
+Cell[558, 20, 325, 14, 22, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[908, 38, 68, 1, 27, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 79, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1061, 45, 78, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1142, 49, 75, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1220, 53, 73, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1330, 59, 55, 1, 17, "KeywordsSection",
+ CellID->477174294],
+Cell[1388, 62, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1470, 68, 65, 1, 17, "TemplatesSection",
+ CellID->1872225408],
+Cell[1538, 71, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1635, 75, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1720, 79, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1804, 83, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1923, 90, 53, 1, 17, "DetailsSection",
+ CellID->307771771],
+Cell[1979, 93, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2045, 97, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2117, 101, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2184, 105, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2256, 109, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2320, 113, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2384, 117, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2450, 121, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2531, 125, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2635, 132, 61, 1, 62, "ObjectName",
  CellID->1224892054],
-Cell[CellGroupData[{
-Cell[3032, 81, 904, 29, 70, "Usage",
+Cell[2699, 135, 885, 27, 71, "Usage",
  CellID->982511436],
-Cell[CellGroupData[{
-Cell[3961, 114, 607, 18, 70, "NotesSection",
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->4553812],
-Cell[4571, 134, 642, 20, 70, "Notes",
+Cell[3587, 164, 1304, 29, 79, "Notes",
  CellID->88723942],
-Cell[5216, 156, 146, 5, 70, "Notes",
+Cell[4894, 195, 366, 8, 37, "Notes",
  CellID->96909655],
-Cell[5365, 163, 186, 6, 70, "Notes",
+Cell[5263, 205, 526, 11, 37, "Notes",
  CellID->68413452],
-Cell[5554, 171, 290, 10, 70, "Notes",
+Cell[5792, 218, 836, 18, 39, "Notes",
  CellID->58638840],
-Cell[5847, 183, 587, 21, 70, "Notes",
+Cell[6631, 238, 1327, 31, 53, "Notes",
  CellID->59529440]
-}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6483, 210, 490, 14, 70, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->163001187],
+Cell[7995, 274, 57, 1, 43, "TutorialsSection",
+ CellID->250839057],
+Cell[8055, 277, 45, 1, 16, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[6998, 228, 195, 6, 70, "ExampleSection",
- CellID->152982716],
+Cell[8137, 283, 83, 1, 30, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[8223, 286, 58, 1, 16, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[7218, 238, 93, 3, 70, "Input",
+Cell[8318, 292, 65, 1, 30, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[8386, 295, 522, 13, 19, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8945, 313, 55, 1, 30, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9003, 316, 43, 1, 16, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9083, 322, 57, 1, 30, "MoreAboutSection",
+ CellID->38303248],
+Cell[9143, 325, 194, 4, 16, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9374, 334, 356, 11, 68, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[9755, 349, 162, 4, 27, "Input",
  CellID->287453787],
 Cell[CellGroupData[{
-Cell[7336, 245, 126, 2, 70, "Print",
+Cell[9942, 357, 190, 3, 21, "Print",
  CellID->720657148],
-Cell[7465, 249, 146, 3, 70, "Print",
+Cell[10135, 362, 210, 4, 41, "Print",
  CellID->46975881],
-Cell[7614, 254, 129, 2, 70, "Print",
+Cell[10348, 368, 193, 3, 21, "Print",
  CellID->327541425],
-Cell[7746, 258, 147, 3, 70, "Print",
+Cell[10544, 373, 211, 4, 41, "Print",
  CellID->659288965]
 }, Open  ]]
-}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7954, 268, 270, 8, 70, "ExampleSection",
+Cell[10804, 383, 215, 4, 30, "ExampleSection",
  CellID->40335563],
-Cell[8227, 278, 293, 11, 70, "ExampleText",
+Cell[11022, 389, 509, 14, 20, "ExampleText",
  CellID->34439295],
 Cell[CellGroupData[{
-Cell[8545, 293, 788, 19, 70, "Input",
+Cell[11556, 407, 956, 22, 88, "Input",
  CellID->81816368],
-Cell[9336, 314, 1284, 37, 107, "Output",
+Cell[12515, 431, 1316, 36, 82, "Output",
  CellID->85439463]
 }, Open  ]],
-Cell[10635, 354, 69, 1, 70, "ExampleText",
+Cell[13846, 470, 135, 2, 20, "ExampleText",
  CellID->395593473],
 Cell[CellGroupData[{
-Cell[10729, 359, 119, 3, 70, "Input",
+Cell[14006, 476, 187, 4, 27, "Input",
  CellID->217270462],
-Cell[10851, 364, 494, 9, 207, "Output",
+Cell[14196, 482, 449, 7, 216, "Output",
  CellID->671499827]
 }, Open  ]],
-Cell[11360, 376, 81, 1, 70, "ExampleText",
+Cell[14660, 492, 204, 3, 20, "ExampleText",
  CellID->477125116],
 Cell[CellGroupData[{
-Cell[11466, 381, 232, 7, 70, "Input",
+Cell[14889, 499, 300, 8, 27, "Input",
  CellID->103726790],
-Cell[11701, 390, 405, 8, 54, "Output",
+Cell[15192, 509, 385, 6, 64, "Output",
  CellID->117453884]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12155, 404, 260, 8, 70, "ExampleSection",
+Cell[15626, 521, 201, 4, 30, "ExampleSection",
  CellID->588098855],
-Cell[12418, 414, 356, 10, 70, "ExampleText",
+Cell[15830, 527, 676, 15, 33, "ExampleText",
  CellID->265692506],
 Cell[CellGroupData[{
-Cell[12799, 428, 146, 4, 70, "Input",
+Cell[16531, 546, 267, 6, 27, "Input",
  CellID->566619433],
-Cell[12948, 434, 823, 19, 54, "Output",
+Cell[16801, 554, 855, 18, 64, "Output",
  CellID->353473752]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13808, 458, 156, 4, 70, "Input",
+Cell[17693, 577, 224, 5, 27, "Input",
  CellID->812787],
-Cell[13967, 464, 174, 5, 36, "Output",
+Cell[17920, 584, 153, 3, 25, "Output",
  CellID->2542575]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14178, 474, 119, 3, 70, "Input",
+Cell[18110, 592, 240, 5, 27, "Input",
  CellID->734214896],
-Cell[14300, 479, 494, 9, 207, "Output",
+Cell[18353, 599, 475, 7, 216, "Output",
  CellID->548619408]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14843, 494, 256, 8, 70, "ExampleSection",
+Cell[18877, 612, 195, 4, 30, "ExampleSection",
  CellID->180905804],
 Cell[CellGroupData[{
-Cell[15124, 506, 300, 8, 70, "ExampleSubsection",
+Cell[19097, 620, 224, 4, 21, "ExampleSubsection",
  CellID->154961750],
-Cell[15427, 516, 320, 10, 70, "ExampleText",
+Cell[19324, 626, 437, 12, 33, "ExampleText",
  CellID->661220054],
 Cell[CellGroupData[{
-Cell[15772, 530, 144, 4, 70, "Input",
+Cell[19786, 642, 215, 5, 27, "Input",
  CellID->135381797],
-Cell[15919, 536, 3472, 85, 157, "Output",
+Cell[20004, 649, 3428, 83, 146, "Output",
  CellID->751456867]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19428, 626, 189, 6, 70, "Input",
+Cell[23469, 737, 258, 7, 27, "Input",
  CellID->207349506],
-Cell[19620, 634, 493, 9, 207, "Output",
+Cell[23730, 746, 446, 7, 216, "Output",
  CellID->431177040]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[20162, 649, 303, 8, 70, "ExampleSubsection",
+Cell[24225, 759, 226, 5, 21, "ExampleSubsection",
  CellID->177234673],
 Cell[CellGroupData[{
-Cell[20490, 661, 3718, 84, 70, "Input",
+Cell[24476, 768, 3966, 88, 368, "Input",
  CellID->141585609],
-Cell[24211, 747, 6056, 143, 70, "Output",
+Cell[28445, 858, 6080, 142, 257, "Output",
  CellID->63955843]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30304, 895, 115, 3, 70, "Input",
+Cell[34562, 1005, 360, 7, 27, "Input",
  CellID->498799384],
-Cell[30422, 900, 1882, 27, 1006, "Output",
+Cell[34925, 1014, 1940, 27, 1109, "Output",
  CellID->44250155]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32377, 935, 448, 13, 70, "MoreAboutSection",
- CellID->38303248],
-Cell[32828, 950, 151, 3, 70, "MoreAbout",
- CellID->312740019]
-}, Open  ]],
+Cell[36938, 1049, 100, 2, 53, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[37041, 1053, 125, 3, 30, "ExampleSection",
+ CellID->1293636265],
+Cell[37169, 1058, 148, 3, 18, "ExampleSection",
+ CellID->1020263627],
 Cell[CellGroupData[{
-Cell[33016, 958, 456, 13, 70, "RelatedLinksSection",
- CellID->1584193535],
-Cell[33475, 973, 454, 12, 70, "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-Cell[33944, 988, 23, 0, 70, "FooterCell"]
+Cell[37342, 1065, 127, 3, 18, "ExampleSection",
+ CellID->2061341341],
+Cell[37472, 1070, 130, 3, 70, "ExampleSubsection",
+ CellID->1757724783],
+Cell[37605, 1075, 130, 3, 70, "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+Cell[37750, 1081, 131, 3, 18, "ExampleSection",
+ CellID->258228157],
+Cell[37884, 1086, 142, 3, 18, "ExampleSection",
+ CellID->2123667759],
+Cell[38029, 1091, 135, 3, 18, "ExampleSection",
+ CellID->1305812373],
+Cell[38167, 1096, 140, 3, 18, "ExampleSection",
+ CellID->1653164318],
+Cell[38310, 1101, 132, 3, 18, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
 }
 ]
 *)
 
 (* End of internal cache information *)
-
